@@ -1,0 +1,99 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="li" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="62">
+            <item index="0" class="java.lang.String" itemvalue="Django" />
+            <item index="1" class="java.lang.String" itemvalue="asgiref" />
+            <item index="2" class="java.lang.String" itemvalue="certifi" />
+            <item index="3" class="java.lang.String" itemvalue="charset-normalizer" />
+            <item index="4" class="java.lang.String" itemvalue="python-decouple" />
+            <item index="5" class="java.lang.String" itemvalue="requests" />
+            <item index="6" class="java.lang.String" itemvalue="urllib3" />
+            <item index="7" class="java.lang.String" itemvalue="ghasedakpack" />
+            <item index="8" class="java.lang.String" itemvalue="idna" />
+            <item index="9" class="java.lang.String" itemvalue="django-hitcount" />
+            <item index="10" class="java.lang.String" itemvalue="social-auth-app-django" />
+            <item index="11" class="java.lang.String" itemvalue="PyJWT" />
+            <item index="12" class="java.lang.String" itemvalue="decorator" />
+            <item index="13" class="java.lang.String" itemvalue="django-ckeditor" />
+            <item index="14" class="java.lang.String" itemvalue="jsonfield" />
+            <item index="15" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="16" class="java.lang.String" itemvalue="cffi" />
+            <item index="17" class="java.lang.String" itemvalue="imageio-ffmpeg" />
+            <item index="18" class="java.lang.String" itemvalue="defusedxml" />
+            <item index="19" class="java.lang.String" itemvalue="django-storages" />
+            <item index="20" class="java.lang.String" itemvalue="numpy" />
+            <item index="21" class="java.lang.String" itemvalue="pycparser" />
+            <item index="22" class="java.lang.String" itemvalue="sqlparse" />
+            <item index="23" class="java.lang.String" itemvalue="requests-oauthlib" />
+            <item index="24" class="java.lang.String" itemvalue="docopt" />
+            <item index="25" class="java.lang.String" itemvalue="oauthlib" />
+            <item index="26" class="java.lang.String" itemvalue="moviepy" />
+            <item index="27" class="java.lang.String" itemvalue="django-jalali" />
+            <item index="28" class="java.lang.String" itemvalue="django-model-utils" />
+            <item index="29" class="java.lang.String" itemvalue="jdatetime" />
+            <item index="30" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="31" class="java.lang.String" itemvalue="django-social-share" />
+            <item index="32" class="java.lang.String" itemvalue="swapper" />
+            <item index="33" class="java.lang.String" itemvalue="six" />
+            <item index="34" class="java.lang.String" itemvalue="botocore" />
+            <item index="35" class="java.lang.String" itemvalue="django-cleanup" />
+            <item index="36" class="java.lang.String" itemvalue="django-crispy-forms" />
+            <item index="37" class="java.lang.String" itemvalue="proglog" />
+            <item index="38" class="java.lang.String" itemvalue="django-admin-persian-fonts" />
+            <item index="39" class="java.lang.String" itemvalue="cryptography" />
+            <item index="40" class="java.lang.String" itemvalue="python3-openid" />
+            <item index="41" class="java.lang.String" itemvalue="jmespath" />
+            <item index="42" class="java.lang.String" itemvalue="tqdm" />
+            <item index="43" class="java.lang.String" itemvalue="boto3" />
+            <item index="44" class="java.lang.String" itemvalue="django-mptt" />
+            <item index="45" class="java.lang.String" itemvalue="persiantools" />
+            <item index="46" class="java.lang.String" itemvalue="s3transfer" />
+            <item index="47" class="java.lang.String" itemvalue="imageio" />
+            <item index="48" class="java.lang.String" itemvalue="Unidecode" />
+            <item index="49" class="java.lang.String" itemvalue="django-js-asset" />
+            <item index="50" class="java.lang.String" itemvalue="django-allauth" />
+            <item index="51" class="java.lang.String" itemvalue="pytz" />
+            <item index="52" class="java.lang.String" itemvalue="django-utils-six" />
+            <item index="53" class="java.lang.String" itemvalue="kavenegar" />
+            <item index="54" class="java.lang.String" itemvalue="Pillow" />
+            <item index="55" class="java.lang.String" itemvalue="platformdirs" />
+            <item index="56" class="java.lang.String" itemvalue="isodate" />
+            <item index="57" class="java.lang.String" itemvalue="requests-file" />
+            <item index="58" class="java.lang.String" itemvalue="lxml" />
+            <item index="59" class="java.lang.String" itemvalue="zeep" />
+            <item index="60" class="java.lang.String" itemvalue="attrs" />
+            <item index="61" class="java.lang.String" itemvalue="requests-toolbelt" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

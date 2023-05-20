@@ -9701,6 +9701,7 @@ textarea:-ms-input-placeholder {
 
 .account_form button:hover {
   background: #222222;
+  color: #fff
 }
 
 .login_submit label input[type="checkbox"] {

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>حساب من</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!-- customer login start -->
+    <div class="login_page_bg">
+        <div class="container">
+            <div class="customer_login">
+                <div class="row">
+                    <!--login area start-->
+                    <div class="col-lg-6 col-md-6 mx-auto">
+                        <div class="account_form login">
+                            <h2>ورود</h2>
+                            <form method="post">
+                                {% for error in form.phone.errors %}
+                                    <p class="alert-danger p-1 rounded text-center">{{ error }}</p>
+                                {% endfor %}
+                                {% csrf_token %}
+                                <p>
+                                    <label>شماره موبایل <span>*</span></label>
+                                    {{ form.phone }}
+                                </p>
+                                <p>
+                                    <label>رمز عبور <span>*</span></label>
+                                    {{ form.password }}
+                                </p>
+                                <div class="login_submit">
+                                    <a href="#">رمز عبور خود را فراموش کرده اید؟</a>
+                                    <label for="remember">
+                                        <input id="remember" type="checkbox">
+                                        مرا به خاطر بسپار
+                                    </label>
+                                    <button type="submit">ورود</button>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <!--login area start-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- customer login end -->
+{% endblock %}
