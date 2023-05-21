@@ -130,7 +130,7 @@ class ResetPasswordView(FormView):
 
 
 class ResetPasswordOtpView(FormView):
-    template_name = ''
+    template_name = 'accounts/password-reset-otp.html'
     form_class = ResetPasswordOtpForm
 
     def form_valid(self, form):
@@ -143,7 +143,7 @@ class ResetPasswordOtpView(FormView):
                 user.save()
                 login(self.request, user, backend="django.contrib.auth.backends.ModelBackend")
                 otp.delete()
-                return redirect('accounts:personal-info')
+                return redirect('home:home')
             form.add_error('code', messages.WRONG_OTP_CODE)
             return render(self.request, self.template_name, {"form": form})
         otp.delete()
