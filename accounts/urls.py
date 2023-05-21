@@ -10,8 +10,8 @@ urlpatterns = [
 
     path('check-otp', CheckOtpView.as_view(), name='check-otp'),
 
-    path('personal-info/', PersonalInfoView.as_view(), name='personal-info'),
-    path('edit-personal-info/', EditPersonalInfoView.as_view(), name='edit-personal-info'),
+    path('my-account/', MyAccountView.as_view(), name='my-account'),
+    path('edit-profile/', EditProfileView.as_view(), name='edit-profile'),
 
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
     path('reset-password/', ResetPasswordView.as_view(), name='reset-password'),

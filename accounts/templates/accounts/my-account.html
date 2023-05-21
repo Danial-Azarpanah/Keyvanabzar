@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block main %}
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>حساب من</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+
+    <div class="account_page_bg">
+        <div class="container">
+            <section class="main_content_area">
+                <div class="account_dashboard">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3 col-lg-3">
+                            <!-- Nav tabs -->
+                            <div class="dashboard_tab_button">
+                                <ul role="tablist" class="nav flex-column dashboard-list">
+                                    <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link active">داشبورد</a>
+                                    </li>
+                                    <li><a href="#orders" data-bs-toggle="tab" class="nav-link">سفارشات</a></li>
+                                    <li><a href="#downloads" data-bs-toggle="tab" class="nav-link">دانلودها</a></li>
+                                    <li><a href="#address" data-bs-toggle="tab" class="nav-link">آدرس ها</a></li>
+                                    <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">جزییات حساب</a>
+                                    </li>
+                                    <li><a href="login.html" class="nav-link">خروج</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 col-lg-9">
+                            <!-- Tab panes -->
+                            <div class="tab-content dashboard_content">
+                                <div class="tab-pane fade show active" id="dashboard">
+                                    <h3>داشبورد </h3>
+                                    <p>از داشبورد حساب شما شما به راحتی می توانید <a href="#">سفارشات اخیر</a>, خود را
+                                        بررسی و مشاهده کنید، <a href="#">آدرس های حمل و نقل </a> و صورتحساب خود را
+                                        مدیریت کنید و <a href="#">رمز عبور و جزئیات حساب خود را ویرایش کنید. </a>
+                                    </p>
+                                </div>
+                                <div class="tab-pane fade" id="orders">
+                                    <h3>سفارشات</h3>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>سفارش</th>
+                                                <th>تاریخ</th>
+                                                <th>وضعیت</th>
+                                                <th>مجموع</th>
+                                                <th>عملیات</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>مهر 10, 1398</td>
+                                                <td><span class="success">کامل</span></td>
+                                                <td>25.00 تومان برای 1 مورد</td>
+                                                <td><a href="cart.html" class="view">نمایش</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>مهر 10, 1398</td>
+                                                <td>در حال پردازش</td>
+                                                <td>17.00 تومان برای 1 مورد</td>
+                                                <td><a href="cart.html" class="view">نمایش</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="downloads">
+                                    <h3>دانلودها</h3>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>محصول</th>
+                                                <th>دانلودها</th>
+                                                <th>تاریخ انقضا</th>
+                                                <th>دانلود</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Shopnovilla - قالب PSD رایگان املاک و مستغلات</td>
+                                                <td>مهر 10, 1398</td>
+                                                <td><span class="danger">منقضی</span></td>
+                                                <td><a href="#" class="view">برای دانلود فایل خود اینجا را کلیک
+                                                    کنید</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>قالب html ارگانیک - تجارت الکترونیک</td>
+                                                <td>مهر 11, 1398</td>
+                                                <td>هرگز</td>
+                                                <td><a href="#" class="view">برای دانلود فایل خود اینجا را کلیک
+                                                    کنید</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="address">
+                                    <p>آدرس های زیر به طور پیش فرض در صفحه پرداخت استفاده خواهند شد.</p>
+                                    <h4 class="billing-address">آدرس صورتحساب</h4>
+                                    <a href="#" class="view">ویرایش</a>
+                                    <p><strong>محیا رجایی</strong></p>
+                                    <address>
+                                        <span><strong>شهر:</strong> قم</span>,
+                                        <br>
+                                        <span><strong>خیابان:</strong> انقلاب</span>,
+                                        <br>
+                                        <span><strong>کد پستی:</strong> 37186-12345</span>,
+                                        <br>
+                                        <span><strong>کشور:</strong> ایران</span>
+                                    </address>
+                                </div>
+                                <div class="tab-pane fade" id="account-details">
+                                    <h3>جزییات حساب </h3>
+                                    <div class="login">
+                                        <div class="login_form_container">
+                                            <div class="account_login_form">
+                                                <form action="#">
+
+                                                    <p>حساب دارید? <a href="#">به جای آن وارد سیستم شوید!</a></p>
+
+                                                    <div class="input-radio">
+                                                        <span class="custom-radio"><input type="radio" value="1"
+                                                                                          name="id_gender"> آقا</span>
+                                                        <span class="custom-radio"><input type="radio" value="1"
+                                                                                          name="id_gender"> خانم</span>
+                                                    </div>
+                                                    <br>
+
+                                                    <label>نام و نام خانوادگی</label>
+                                                    <input type="text" name="last-name" value="{{ instance.fullname }}">
+
+                                                    <label>شماره موبایل</label>
+                                                    <input type="text" name="user-password"
+                                                           value="{{ instance.phone_number }}">
+
+                                                    <label>تاریخ عضویت</label>
+                                                    <input type="text" placeholder="{{ instance.date_joined }}">
+
+                                                    <span class="custom_checkbox">
+                                                        <input type="checkbox" value="1" name="optin">
+                                                        <label>پیشنهادات را از شرکای ما دریافت کنید</label>
+                                                    </span>
+                                                    <br>
+
+                                                    <span class="custom_checkbox">
+                                                        <input type="checkbox" value="1" name="newsletter">
+                                                        <label>برای خبرنامه ما ثبت نام کنید <br><em> شما می توانید هر
+                                                                لحظه اشتراک خود را لغو کنید. برای این منظور، لطفا
+                                                                اطلاعات تماس ما را در اعلامیه حقوقی بیابید.</em></label>
+                                                    </span>
+
+                                                    <div class="save_button primary_btn default_button">
+                                                        <button type="submit">ذخیره</button>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- my account end   -->
+
+{% endblock %}

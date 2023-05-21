@@ -96,7 +96,7 @@ class CheckOtpForm(forms.Form):
             {'class': 'input-field', 'placeholder': ' کد تایید را وارد نمایید ', 'maxlength': 6}))
 
 
-class EditPersonalInfoForm(forms.ModelForm):
+class EditProfileForm(forms.ModelForm):
     avatar = forms.ImageField(required=False)
 
     fullname = forms.CharField(
@@ -106,9 +106,6 @@ class EditPersonalInfoForm(forms.ModelForm):
         widget=forms.TextInput(
             {'class': 'input-field', 'placeholder': ' شماره موبایل خود را وارد نمایید ', 'maxlength': 11}),
         validators=[check_number])
-    email = forms.EmailField(
-        widget=forms.TextInput(
-            {'class': 'input-field', 'placeholder': ' پست الکترونیک خود را وارد نمایید '}))
 
     class Meta:
         model = User
@@ -161,8 +158,6 @@ class ResetPasswordOtpForm(CheckOtpForm):
     def clean(self):
         password = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password2')
-        print(password)
-        print(password2)
         if password != password2:
             raise ValidationError("گذرواژه‌ها یکسان نیستند! دوباره سعی نمائید")
         if len(password) < 8:

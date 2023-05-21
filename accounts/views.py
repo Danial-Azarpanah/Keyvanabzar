@@ -32,7 +32,6 @@ class SignUpView(AuthenticatedMixin, FormView):
     form_class = SignUpForm
 
     def form_valid(self, form):
-
         token = uuid4().hex
         code = randint(10000, 99999)
         expiration = timezone.localtime(timezone.now()) + timezone.timedelta(minutes=15)
@@ -71,20 +70,16 @@ class CheckOtpView(FormView):
         return render(self.request, self.template_name, {"form": form})
 
 
-class PersonalInfoView(RequiredLoginMixin, View):
-    template_name = ''
+class MyAccountView(RequiredLoginMixin, View):
+    template_name = 'accounts/my-account.html'
 
     def get(self, req):
         return render(req, self.template_name, {'instance': req.user})
 
 
-class EditPersonalInfoView(RequiredLoginMixin, View):
+class EditProfileView(RequiredLoginMixin, View):
     template_name = ''
-    form_class = EditPersonalInfoForm
-
-    def get(self, req):
-        form = self.form_class(instance=req.user)
-        return render(req, self.template_name, {"form": form})
+    form_class = EditProfileForm
 
     def post(self, req):
         form = self.form_class(req.POST, instance=req.user)
