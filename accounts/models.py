@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from persiantools.jdatetime import JalaliDate
 
 from accounts.managers import UserManager
 from django.contrib.auth.models import AbstractBaseUser
@@ -29,6 +30,9 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return f"{self.fullname} - {self.phone_number}"
+
+    def get_jalali_date(self):
+        return JalaliDate(self.date_joined, locale=('fa')).strftime('%c')
 
     def has_perm(self, perm, obj=None):
         return True
