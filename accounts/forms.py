@@ -151,7 +151,20 @@ class ResetPasswordForm(forms.Form):
 
 
 class ResetPasswordOtpForm(CheckOtpForm):
-    new_password = forms.CharField(
+    password = forms.CharField(
         widget=forms.PasswordInput(
-            {'class': 'input-field', 'placeholder': 'رمز عبور جدید خود را وارد نمایید '}),
-        validators=[validate_password])
+            {'class': 'input-field'}))
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            {'class': 'input-field'}))
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('password2')
+        print(password)
+        print(password2)
+        if password != password2:
+            raise ValidationError("گذرواژه‌ها یکسان نیستند! دوباره سعی نمائید")
+        if len(password) < 8:
+            raise ValidationError("طول گذرواژه باید حداقل ۸ کاراکتر باشد!")
+        return password

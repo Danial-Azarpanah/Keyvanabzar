@@ -139,7 +139,7 @@ class ResetPasswordOtpView(FormView):
         if otp.is_not_expired():
             if form.cleaned_data['code'] == otp.code:
                 user = User.objects.get(phone_number=otp.phone_number)
-                user.set_password(form.cleaned_data.get('new_password'))
+                user.set_password(form.cleaned_data.get('password'))
                 user.save()
                 login(self.request, user, backend="django.contrib.auth.backends.ModelBackend")
                 otp.delete()
