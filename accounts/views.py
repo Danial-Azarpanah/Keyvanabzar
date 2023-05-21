@@ -111,7 +111,7 @@ class ChangePasswordView(RequiredLoginMixin, FormView):
 
 
 class ResetPasswordView(FormView):
-    template_name = ''
+    template_name = 'accounts/reset-password.html'
     form_class = ResetPasswordForm
 
     def form_valid(self, form):
