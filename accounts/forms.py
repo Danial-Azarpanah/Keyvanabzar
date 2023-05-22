@@ -116,23 +116,21 @@ class EditProfileForm(forms.ModelForm):
 class ChangePasswordForm(forms.Form):
     old_password = forms.CharField(
         widget=forms.PasswordInput(
-            {'class': 'input-field', 'placeholder': 'رمز عبور قبلی خود را وارد نمایید '}))
+            {'class': 'input-field'}))
 
     new_password = forms.CharField(
         widget=forms.PasswordInput(
-            {'class': 'input-field', 'placeholder': 'رمز عبور جدید خود را وارد نمایید '}),
-        validators=[validate_password])
+            {'class': 'input-field'}))
 
     repeat_new_password = forms.CharField(
         widget=forms.PasswordInput(
-            {'class': 'input-field', 'placeholder': 'رمز عبور جدید خود را مجدد وارد نمایید '}))
+            {'class': 'input-field'}))
 
-    def clean_repeat_new_password(self):
+    def clean(self):
         new_password = self.cleaned_data.get("new_password")
         repeat_new_password = self.cleaned_data.get("repeat_new_password")
         if new_password and repeat_new_password and new_password != repeat_new_password:
             raise ValidationError("رمز عبور مشابه نمیباشد")
-        return repeat_new_password
 
 
 class ResetPasswordForm(forms.Form):

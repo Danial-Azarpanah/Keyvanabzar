@@ -39,7 +39,7 @@
                                     <li><a href="#address" data-bs-toggle="tab" class="nav-link">آدرس ها</a></li>
                                     <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">جزییات حساب</a>
                                     </li>
-                                    <li><a href="login.html" class="nav-link">خروج</a></li>
+                                    <li><a href="sign-in.html" class="nav-link">خروج</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                             <div class="account_login_form">
                                                 <form action="#">
 
-                                                    <p>حساب دارید? <a href="#">به جای آن وارد سیستم شوید!</a></p>
+                                                    <p><a  href="{% url 'accounts:change-password' %}"> تغییر گذرواژه </a></p>
 
                                                     <div class="input-radio">
                                                         <span class="custom-radio"><input type="radio" value="1"

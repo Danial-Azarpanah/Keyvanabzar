@@ -12,7 +12,7 @@ from accounts import messages
 
 
 class SignInView(AuthenticatedMixin, FormView):
-    template_name = 'accounts/login.html'
+    template_name = 'accounts/sign-in.html'
     form_class = SignInForm
 
     def post(self, req, *args, **kwargs):
@@ -28,7 +28,7 @@ class SignInView(AuthenticatedMixin, FormView):
 
 
 class SignUpView(AuthenticatedMixin, FormView):
-    template_name = 'accounts/register.html'
+    template_name = 'accounts/sign-up.html'
     form_class = SignUpForm
 
     def form_valid(self, form):
@@ -90,7 +90,7 @@ class EditProfileView(RequiredLoginMixin, View):
 
 
 class ChangePasswordView(RequiredLoginMixin, FormView):
-    template_name = ''
+    template_name = 'accounts/change-password.html'
     form_class = ChangePasswordForm
 
     def form_valid(self, form):
@@ -99,7 +99,7 @@ class ChangePasswordView(RequiredLoginMixin, FormView):
             user.set_password(form.cleaned_data.get('new_password'))
             user.save()
             login(self.request, user, backend="django.contrib.auth.backends.ModelBackend")
-            return redirect('accounts:personal-info')
+            return redirect('home:home')
         else:
             form.add_error('old_password', messages.WRONG_OLD_PASSWORD)
             return render(self.request, self.template_name, {'form': form})
@@ -125,7 +125,7 @@ class ResetPasswordView(FormView):
 
 
 class ResetPasswordOtpView(FormView):
-    template_name = 'accounts/password-reset-otp.html'
+    template_name = 'accounts/reset-password-otp.html'
     form_class = ResetPasswordOtpForm
 
     def form_valid(self, form):
