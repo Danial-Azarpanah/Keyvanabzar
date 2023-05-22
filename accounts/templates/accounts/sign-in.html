@@ -27,7 +27,7 @@
                     <!--login area start-->
                     <div class="col-lg-6 col-md-6 mx-auto">
                         <div class="account_form login">
-                            <h2>ورود</h2>
+                            <h2>ورود به حساب کاربری</h2>
                             <form method="post">
 
                                 {% for error in form.phone.errors %}
@@ -36,7 +36,7 @@
 
                                 {% csrf_token %}
                                 <p>
-                                    <label>شماره موبایل <span>*</span></label>
+                                    <label> شماره موبایل <span>*</span></label>
                                     {{ form.phone }}
                                 </p>
                                 <p>
