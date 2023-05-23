@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # Local apps
     "home.apps.HomeConfig",
     "accounts.apps.AccountsConfig",
+    "product.apps.ProductConfig",
 
     # Libraries
 ]
