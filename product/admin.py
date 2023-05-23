@@ -7,23 +7,22 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'price')
     list_filter = ('created_at',)
     search_fields = ('title', 'price')
-    prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = [
         ("نام و دسته بندی محصول",
          {
-             'fields': ('title',),
+             'fields': ('title', 'id'),
          }),
         ('مشخصات محصول',
          {
-             'fields': ('price', 'discount', 'weight')
+             'fields': ('price', 'discount', 'weight', 'description', 'country', 'image')
          }),
-        ('توضیحات و تصویر محصول',
+        ('مشخصات بیشتر',
          {
              'classes': ('collapse', 'open'),
-             'fields': ['description', 'image', 'power_battery', 'maximum_torque',
-                        'speed_range', 'speed_gear', 'dimensions', 'hammer_mode', 'spare_battery', 'box',
-                        'slug',]
-
+             'fields': ['battery_capacity', 'maximum_torque',
+                        'speed_range', 'speed_gear', 'dimensions', 'hammer_mode',
+                        'hit_per_minute', 'chuck_capacity', 'left_right_movement',
+                        'has_battery', 'spare_battery', 'has_box',]
          }),
     ]
