@@ -22,7 +22,8 @@ class ProductAdmin(admin.ModelAdmin):
          {
              'classes': ('collapse', 'open'),
              'fields': ['description', 'image', 'power_battery', 'maximum_torque',
-                        'speed_range', 'hammer_mode', 'spare_battery', 'box', 'slug']
+                        'speed_range', 'speed_gear', 'dimensions', 'hammer_mode', 'spare_battery', 'box',
+                        'slug',]
 
          }),
     ]

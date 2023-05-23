@@ -14,7 +14,7 @@ class User(AbstractBaseUser):
                               blank=True, verbose_name='عکس پروفایل')
     address = models.TextField("آدرس", null=True, blank=True)
     postal_code = models.PositiveIntegerField("کد پستی", null=True, blank=True)
-    date_joined = models.DateTimeField("تاریخ عضویت", default=timezone.now())
+    date_joined = models.DateTimeField("تاریخ عضویت", auto_now_add=True)
 
     is_active = models.BooleanField('وضعیت کاربر', default=True)
     is_admin = models.BooleanField('مدیر', default=False)
