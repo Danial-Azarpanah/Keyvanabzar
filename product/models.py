@@ -4,10 +4,35 @@ from persiantools.jdatetime import JalaliDate
 
 # Create your models here.
 
+
+class AdditionalItems(models.Model):
+    title = models.CharField('آیتم محصول', max_length=155)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'آیتم اضافی'
+        verbose_name_plural = 'آیتم های اضافی'
+
+
+class Image(models.Model):
+    code = models.CharField("کد محصول", max_length=30, )
+    image = models.ImageField('تصویر محصول', upload_to='products/')
+
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        verbose_name = 'تصویر محصول'
+        verbose_name_plural = 'تصاویر محصولات'
+
+
 class Product(models.Model):
     id = models.CharField("کد محصول", max_length=30, unique=True, primary_key=True)
     title = models.CharField('عنوان محصول', max_length=100)
-    image = models.ImageField('تصویر محصول', upload_to='products/')
+    image = models.ManyToManyField(Image, related_name='images',
+                                   verbose_name='تصاویر محصول')
     description = models.TextField('توضیحات محصول')
     price = models.PositiveIntegerField('قیمت(ریال)', default=0)
     discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
@@ -26,6 +51,8 @@ class Product(models.Model):
     has_box = models.BooleanField('جعبه دارد', default=False)
     created_at = models.DateTimeField("تاریخ ایجاد", auto_now_add=True)
     country = models.CharField("کشور سازنده", max_length=30, null=True, blank=True)
+    additional_items = models.ManyToManyField(AdditionalItems, related_name='items',
+                                              verbose_name='آیتم اضافی', null=True, blank=True)
 
     def __str__(self):
         return F" محصول : {self.title} - {self.description[:30]}"

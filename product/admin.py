@@ -23,6 +23,10 @@ class ProductAdmin(admin.ModelAdmin):
              'fields': ['battery_capacity', 'maximum_torque',
                         'speed_range', 'speed_gear', 'dimensions', 'hammer_mode',
                         'hit_per_minute', 'chuck_capacity', 'left_right_movement',
-                        'has_battery', 'spare_battery', 'has_box',]
+                        'has_battery', 'spare_battery', 'has_box', 'additional_items']
          }),
     ]
+
+
+admin.site.register(Image)
+admin.site.register(AdditionalItems)
