@@ -1,8 +1,26 @@
 from django.db import models
 from persiantools.jdatetime import JalaliDate
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 # Create your models here.
+
+
+class Category(MPTTModel):
+    title = models.CharField('عنوان دسته بندی', max_length=30)
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
+                            related_name='children',
+                            verbose_name='زیردسته')
+    slug = models.SlugField('اسلاگ', allow_unicode=True, blank=True, null=True, unique=True)
+    created_at = models.DateTimeField('تاریخ ایجاد دسته بندی', auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'دسته بندی'
+        verbose_name_plural = 'دسته بندی‌ ها'
+        ordering = ['parent__id']
 
 
 class AdditionalItems(models.Model):
@@ -33,8 +51,10 @@ class Product(models.Model):
     title = models.CharField('عنوان محصول', max_length=100)
     image = models.ManyToManyField(Image, related_name='images',
                                    verbose_name='تصاویر محصول')
+    category = models.ManyToManyField(Category, related_name='videos', verbose_name='دسته بندی')
     description = models.TextField('توضیحات محصول')
     price = models.PositiveIntegerField('قیمت(ریال)', default=0)
+    post_price = models.PositiveIntegerField('هزینه ارسال', default=50)
     discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
     battery_capacity = models.CharField('ظرفیت باتری', max_length=55, null=True, blank=True)
     maximum_torque = models.CharField('حداکثر گشتاور', max_length=55, null=True, blank=True)
