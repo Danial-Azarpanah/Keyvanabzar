@@ -37,6 +37,9 @@
                                             {% for error in form.phone_number.errors %}
                                                 <p class="alert alert-danger p-1 mt-3">{{ error }}</p>
                                             {% endfor %}
+                                            {% for message in messages %}
+                                                 <p class="alert alert-success p-1 mt-3">{{ message }}</p>
+                                            {% endfor %}
                                             {% csrf_token %}
                                             <br>
                                             <div class="col-lg-6 inline-block">
