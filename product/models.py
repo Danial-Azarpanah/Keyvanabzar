@@ -1,6 +1,7 @@
 from django.db import models
 from persiantools.jdatetime import JalaliDate
 from mptt.models import MPTTModel, TreeForeignKey
+from accounts.models import *
 
 
 # Create your models here.
@@ -84,3 +85,15 @@ class Product(models.Model):
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
         ordering = ('-created_at',)
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites', verbose_name='کاربر')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='favorites', verbose_name='محصول')
+
+    def __str__(self):
+        return f"{self.user.fullname} - {self.product.title}"
+
+    class Meta:
+        verbose_name = 'علاقه مندی'
+        verbose_name_plural = 'علاقه مندی ها'

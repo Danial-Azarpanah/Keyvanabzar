@@ -37,3 +37,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Image)
 admin.site.register(AdditionalItems)
+admin.site.register(Favorite)
