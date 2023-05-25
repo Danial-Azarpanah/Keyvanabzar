@@ -11,6 +11,7 @@ urlpatterns = [
     path('check-otp', CheckOtpView.as_view(), name='check-otp'),
 
     path('my-account/', MyAccountView.as_view(), name='my-account'),
+    path('change-phone/', ChangePhoneView.as_view(), name='change-phone'),
     path('edit-profile/', EditProfileView.as_view(), name='edit-profile'),
 
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),

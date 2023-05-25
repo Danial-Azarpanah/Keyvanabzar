@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/favicon.ico" %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo/dewalt.jpeg" %}">
 
     <!-- CSS
     ========================= -->
@@ -182,7 +182,7 @@
                             </div>
                             <div class="header_configure_area">
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"><i class="icon-user"></i>
+                                    <a href="wishlist.html"><i class="icon-bookmark"></i>
                                         <span class="wishlist_count">3</span>
                                     </a>
                                 </div>
@@ -399,79 +399,25 @@
                         <div class="main_menu menu_position text-left">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="index.html">خانه<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="">خانه</a></li>
+                                    <li><a class="active" href="index.html">حساب کاربری<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu">
-                                            <li><a href="index.html">خانه 1</a></li>
-                                            <li><a href="index-2.html">خانه 2</a></li>
-                                            <li><a href="index-3.html">خانه 3</a></li>
-                                            <li><a href="index-4.html">خانه 4</a></li>
+                                            {% if request.user.is_authenticated %}
+                                                <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
+                                                <li><a href="">سفارش‌ها</a></li>
+                                                <li><a href="">سبد خرید</a></li>
+                                                <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
+                                            {% else %}
+                                                <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
+                                                <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
+                                                <li><a href="">سبد خرید</a></li>
+                                            {% endif %}
                                         </ul>
                                     </li>
-                                    <li class="mega_items"><a href="shop.html">خرید</i
-                                        class="fa fa-angle-down"></i></a>
-                                        <div class="mega_menu">
-                                            <ul class="mega_menu_inner">
-                                                <li><a href="#">طرح‌بندی فروشگاه</a>
-                                                    <ul>
-                                                        <li><a href="shop-fullwidth.html">عرض کامل</a></li>
-                                                        <li><a href="shop-fullwidth-list.html">لیست با عرض کامل</a>
-                                                        </li>
-                                                        <li><a href="shop-right-sidebar.html">سایدبار سمت چپ </a>
-                                                        </li>
-                                                        <li><a href="shop-right-sidebar-list.html"> لیست با سایدبار
-                                                            سمت چپ</a></li>
-                                                        <li><a href="shop-list.html">نمای فهرست</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">صفحات دیگر</a>
-                                                    <ul>
-                                                        <li><a href="cart.html">سبد خرید</a></li>
-                                                        <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                                        <li><a href="checkout.html">بررسی</a></li>
-                                                        <li><a href="my-account.html">حساب من</a></li>
-                                                        <li><a href="404.html"> خطای 404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">انواع محصول</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">جزئیات محصول</a></li>
-                                                        <li><a href="product-sidebar.html">معرفی محصول با
-                                                            سایدبار</a></li>
-                                                        <li><a href="product-grouped.html">معرفی محصول با گروه
-                                                            بندی</a></li>
-                                                        <li><a href="variable-product.html">معرفی محصول با متغیر</a>
-                                                        </li>
-                                                        <li><a href="product-countdown.html">معرفی محصول با
-                                                            شمارنده</a></li>
-
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="blog.html">وبلاگ<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
-                                            <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
-                                            <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
-                                            <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">صفحات <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">درباره ما</a></li>
-                                            <li><a href="faq.html">سوالات متداول</a></li>
-                                            <li><a href="contact.html">تماس</a></li>
-                                            <li><a href="login.html">ورود</a></li>
-                                            <li><a href="404.html"> خطای 404</a></li>
-                                            <li><a href="compare.html">مقایسه</a></li>
-                                            <li><a href="privacy-policy.html">حریم خصوصی</a></li>
-                                            <li><a href="coming-soon.html">به زودی</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="about.html">درباره ما</a></li>
-                                    <li><a href="contact.html"> تماس با ما</a></li>
+                                    <li><a href="">لیست محصولات</a></li>
+                                    <li><a href="">وبلاگ</a></li>
+                                    <li><a href="">درباره ما</a></li>
+                                    <li><a href=""> تماس با ما</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -493,70 +439,13 @@
 {% block main %}
 {% endblock %}
 
-<!--newsletter area start-->
-<div class="newsletter_area">
-    <div class="container">
-        <div class="newsletter_inner">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="newsletter_container">
-                        <h3>ما را دنبال کنید</h3>
-                        <p> ما تجمیع، بازاریابی و ردیابی وب سایت رسانه های اجتماعی شما را آسان می کنیم.</p>
-                        <div class="footer_social">
-                            <ul>
-                                <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="icon-twitter2"></i></a></li>
-                                <li><a class="rss" href="#"><i class="icon-rss"></i></a></li>
-                                <li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
-                                <li><a class="google" href="#"><i class="icon-google"></i></a></li>
-                                <li><a class="instagram2" href="#"><i class="icon-instagram2"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="newsletter_container">
-                        <h3>خبرنامه</h3>
-                        <p>به بیش از 60000 مشترک بپیوندید و هر چهارشنبه یک کوپن تخفیف جدید دریافت کنید.</p>
-                        <div class="subscribe_form">
-                            <form id="mc-form" class="mc-form footer-newsletter">
-                                <input id="mc-email" type="email" autocomplete="off"
-                                       placeholder="آدرس ایمیل خود را در اینجا وارد کنید..."/>
-                                <button id="mc-submit">اشتراک</button>
-                            </form>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts text-centre">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                            </div><!-- mailchimp-alerts end -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-7">
-                    <div class="newsletter_container col_3">
-                        <h3>دریافت برنامه</h3>
-                        <p>برنامه مزلی اکنون در Google Play و App Store در دسترس است. اکنون آن را دریافت کنید.</p>
-                        <div class="app_img">
-                            <ul>
-                                <li><a href="#"><img src="{% static "img/icon/icon-app.jpg" %}" alt=""></a></li>
-                                <li><a href="#"><img src="{% static "img/icon/icon1-app.jpg" %}" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--newsletter area end-->
 
 <!--footer area start-->
 <footer class="footer_widgets">
     <!--shipping area start-->
     <div class="shipping_area">
-        <div class="container"
-    </div>
+        <div class="container">
+        </div>
     </div>
     <!--shipping area end-->
     <div class="footer_top">
@@ -568,7 +457,7 @@
                         <div class="footer_contact">
                             <div class="footer_contact_inner">
                                 <div class="contact_icone">
-                                    <img src="{% static "img/icon/icon-phone.png" %}" alt="">
+                                    <img src="{% static "img/icon/icon-phone2.png" %}" alt="">
                                 </div>
                                 <div class="contact_text">
                                     <p>تلفن: </br> <strong><a href="tel:02198765432">02198765432</a> </strong></p>
@@ -620,29 +509,29 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="widgets_container widget_menu">
-                            <h3>موارد اضافی</h3>
-                            <div class="footer_menu">
-                                <ul>
-                                    <li><a href="#">برندها</a></li>
-                                    <li><a href="#">گواهی های هدیه</a></li>
-                                    <li><a href="#">محصولات جدید</a></li>
-                                    <li><a href="#">محصولات ویژه</a></li>
-                                    <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                    <li><a href="#">خبرنامه</a></li>
-                                </ul>
+                        <div class="widgets_container widget_menu" style="width: 300px">
+                            <div class="newsletter_container" style="color: white">
+                                <h3>خبرنامه</h3>
+                                <p>به بیش از 60000 مشترک بپیوندید و هر چهارشنبه یک کوپن تخفیف جدید دریافت کنید.</p>
+                                <div class="subscribe_form">
+                                    <form id="mc-form" class="mc-form footer-newsletter">
+                                        <input id="mc-email" type="email" autocomplete="off"
+                                               placeholder="آدرس ایمیل شما..."/>
+                                        <button id="mc-submit">اشتراک</button>
+                                    </form>
+                                    <!-- mailchimp-alerts Start -->
+                                    <div class="mailchimp-alerts text-centre">
+                                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                    </div><!-- mailchimp-alerts end -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="widgets_container widget_menu">
-                            <h3>پرداخت و روش ها</h3>
-                            <div class="footer_menu">
+                            <div class="footer_social">
                                 <ul>
-                                    <li><a href="#">روش های پرداخت</a></li>
-                                    <li><a href="my-account.html">حساب من</a></li>
-                                    <li><a href="#">مشاهده همه معاملات شگفت انگیز</a></li>
-                                    <li><a href="#">مکان هایی که به آنها ارسال می کنیم</a></li>
-                                    <li><a href="#">سؤالات متداول</a></li>
-                                    <li><a href="#">زمان تخمینی تحویل</a></li>
+                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
+                                    <li><a class="instagram2" href="#"><i class="icon-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
