@@ -11,11 +11,11 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
         ("نام و دسته بندی محصول",
          {
-             'fields': ('title', 'id'),
+             'fields': ('title', 'category', 'id'),
          }),
         ('مشخصات محصول',
          {
-             'fields': ('price', 'discount', 'weight', 'description', 'country', 'image')
+             'fields': ('price', 'post_price', 'discount', 'weight', 'description', 'country', 'image')
          }),
         ('مشخصات بیشتر',
          {
@@ -23,6 +23,17 @@ class ProductAdmin(admin.ModelAdmin):
              'fields': ['battery_capacity', 'maximum_torque',
                         'speed_range', 'speed_gear', 'dimensions', 'hammer_mode',
                         'hit_per_minute', 'chuck_capacity', 'left_right_movement',
-                        'has_battery', 'spare_battery', 'has_box',]
+                        'has_battery', 'spare_battery', 'has_box', 'additional_items']
          }),
     ]
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'parent')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(Image)
+admin.site.register(AdditionalItems)

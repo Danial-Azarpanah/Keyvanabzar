@@ -1,6 +1,8 @@
 asgiref==3.6.0
 Django==4.2.1
 django-admin-persian-fonts==0.2
+django-js-asset==2.0.0
+django-mptt==0.14.0
 persiantools==3.0.1
 Pillow==9.5.0
 python-decouple==3.8
