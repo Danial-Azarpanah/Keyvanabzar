@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+    <!--wishlist area start -->
+    <div class="wishlist_page_bg">
+        <div class="container">
+            <div class="wishlist_area">
+                <div class="wishlist_inner">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table_desc wishlist">
+                                    <div class="cart_page">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th class="product_remove">حذف</th>
+                                                <th class="product_thumb">عکس</th>
+                                                <th class="product_name">محصول</th>
+                                                <th class="product-price">قیمت</th>
+                                                <th class="product_quantity">وضعیت سهام</th>
+                                                <th class="product_total">افزودن به سبد خرید</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for item in favorites %}
+                                                <tr>
+                                                    <td class="product_remove"><a href="{% url 'product:add-favorite' item.id %}">X</a></td>
+                                                    <td class="product_thumb"><a href="#"><img
+                                                            src="{% static 'img/s-product/product.jpg' %}" alt=""></a>
+                                                    </td>
+                                                    <td class="product_name"><a href="#">{{ item.title }}</a></td>
+                                                    <td class="product-price">{{ item.price }} تومان</td>
+                                                    <td class="product_quantity">در انبار</td>
+                                                    <td class="product_total"><a href="#">افزودن به سبد خرید</a></td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="wishlist_share">
+                            <h4>اشتراک گذاری در:</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
