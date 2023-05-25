@@ -10,10 +10,8 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractBaseUser):
     phone_number = models.CharField("شماره موبایل", max_length=11, unique=True)
     fullname = models.CharField('نام و نام خوانوادگی', max_length=100)
-    avatar = models.FileField(upload_to="users/profile", null=True,
-                              blank=True, verbose_name='عکس پروفایل')
     address = models.TextField("آدرس", null=True, blank=True)
-    postal_code = models.PositiveIntegerField("کد پستی", null=True, blank=True)
+    postal_code = models.CharField("کد پستی", null=True, blank=True, max_length=20)
     date_joined = models.DateTimeField("تاریخ عضویت", auto_now_add=True)
 
     is_active = models.BooleanField('وضعیت کاربر', default=True)
@@ -48,7 +46,7 @@ class User(AbstractBaseUser):
 class Otp(models.Model):
     token = models.CharField('توکن اعتبارسنجی', max_length=155, null=True)
     phone_number = models.CharField('شماره موبایل', max_length=11)
-    fullname = models.CharField('نام و نام خانوادگی', max_length=50, null=True)
+    fullname = models.CharField('نام و نام خانوادگی', max_length=50, null=True, blank=True)
     password = models.CharField('گذرواژه', max_length=100, null=True)
     code = models.CharField(' کد فعالسازی', max_length=6)
     expiration = models.DateTimeField('تاریخ انقضا', null=True, blank=True)
@@ -65,3 +63,12 @@ class Otp(models.Model):
     class Meta:
         verbose_name_plural = "کدهای اعتبارسنجی"
         verbose_name = "کد اعتبارسنجی"
+
+class EditedUser(Otp):
+    new_phone_number = models.CharField("شماره موبایل جدید", max_length=11)
+
+    class Meta:
+        verbose_name = "کد تایید ویرایش پروفایل"
+        verbose_name_plural = "کدهای تایید ویرایش پروفایل"
+
+

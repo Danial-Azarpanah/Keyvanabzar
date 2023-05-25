@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>حساب من</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!-- my account start  -->
+    <div class="account_page_bg">
+        <div class="container">
+            <section class="main_content_area">
+                <div class="account_dashboard">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-9 col-lg-9 container">
+                            <h3>جزییات حساب </h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                        <form method="post">
+                                            {% for error in form.non_field_errors %}
+                                                <p class="alert alert-danger p-1 mt-3">{{ error }}</p>
+                                            {% endfor %}
+                                            {% for error in form.phone_number.errors %}
+                                                <p class="alert alert-danger p-1 mt-3">{{ error }}</p>
+                                            {% endfor %}
+                                            {% csrf_token %}
+                                            <br>
+                                            <div class="col-lg-6 inline-block">
+                                                <label>نام و نام خانوادگی</label>
+                                                {{ form.fullname }}
+                                            </div>
+
+                                            <div class="col-lg-6 inline-block">
+                                                <label>شماره موبایل</label>
+                                                {{ form.phone_number }}
+                                            </div>
+
+                                            <div class="block">
+                                                <label>آدرس محل سکونت</label>
+                                                {{ form.address }}
+                                            </div>
+
+                                            <div class="block">
+                                                <label>کد پستی</label>
+                                                {{ form.postal_code }}
+                                            </div>
+
+                                            <div class="save_button primary_btn default_button text-center">
+                                                <button type="submit" class="w-25">ذخیره</button>
+                                                <button type="submit" class="w-25 change-password"
+                                                        style="background: #C70909">تغییر
+                                                    گذرواژه
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- my account end   -->
+{% endblock %}

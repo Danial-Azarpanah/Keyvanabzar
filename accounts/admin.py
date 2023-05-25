@@ -14,7 +14,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('phone_number', 'is_admin', 'is_active')
     list_filter = ('is_admin',)
     fieldsets = (
-        (None, {'fields': ('phone_number', 'fullname', 'avatar', 'password',)}),
+        (None, {'fields': ('phone_number', 'fullname', 'password',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
 
@@ -67,3 +67,5 @@ class OtpAdmin(admin.ModelAdmin):
         if not request.user.is_admin:
             return False
         return True
+
+admin.site.register(EditedUser)

@@ -52,7 +52,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('password', 'phone_number', 'avatar', 'is_active', 'is_admin')
+        fields = ('password', 'phone_number', 'is_active', 'is_admin')
 
 
 class SignInForm(forms.Form):
@@ -101,16 +101,30 @@ class EditProfileForm(forms.ModelForm):
 
     fullname = forms.CharField(
         widget=forms.TextInput(
-            {'class': 'input-field', 'placeholder': 'نام و نام خوانوادگی خود را وارد نمایید '}))
+            {'class': 'input-field'})
+    )
     phone_number = forms.CharField(
         widget=forms.TextInput(
-            {'class': 'input-field', 'placeholder': ' شماره موبایل خود را وارد نمایید ', 'maxlength': 11}),
+            {'class': 'input-field', 'maxlength': 11}
+        ),
         validators=[check_number])
+    address = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            {"class": "input-field"}
+        )
+    )
+    postal_code = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            {"class": "input-field"}
+        )
+    )
 
     class Meta:
         model = User
-        fields = ['avatar', 'fullname',
-                  'phone_number']
+        fields = ['fullname', 'phone_number',
+                  'address', 'postal_code']
 
 
 class ChangePasswordForm(forms.Form):
@@ -131,6 +145,8 @@ class ChangePasswordForm(forms.Form):
         repeat_new_password = self.cleaned_data.get("repeat_new_password")
         if new_password and repeat_new_password and new_password != repeat_new_password:
             raise ValidationError("رمز عبور مشابه نمیباشد")
+        if len(new_password) < 8:
+            raise ValidationError("طول گذرواژه باید حداقل ۸ کاراکتر باشد!")
 
 
 class ResetPasswordForm(forms.Form):
