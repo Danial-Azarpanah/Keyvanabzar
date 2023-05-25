@@ -140,8 +140,9 @@
                                                                                    title="افزودن به سبد خرید">افزودن به
                                                             سبد خرید</a></li>
 
-                                                        <li class="wishlist"><a href="wishlist.html"
-                                                                                title="افزودن به لیست علاقمندی ها"><i
+                                                        <li class="wishlist"><a
+                                                                href="{% url 'product:add-favorite' product.id %}"
+                                                                title="افزودن به لیست علاقمندی ها"><i
                                                                 class="icon-heart"></i> افزودن به لیست علاقمندی ها</a>
                                                         </li>
 
