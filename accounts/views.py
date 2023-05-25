@@ -1,8 +1,9 @@
-from django.contrib.auth import authenticate, login
+from random import randint
 from django.views.generic import *
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from random import randint
+from django.contrib import messages as msg
+from django.contrib.auth import authenticate, login
 
 from .forms import *
 from .mixins import *
@@ -12,6 +13,9 @@ from accounts import messages
 
 
 class SignInView(AuthenticatedMixin, FormView):
+    """
+    View for user login
+    """
     template_name = 'accounts/sign-in.html'
     form_class = SignInForm
 
@@ -28,6 +32,9 @@ class SignInView(AuthenticatedMixin, FormView):
 
 
 class SignUpView(AuthenticatedMixin, FormView):
+    """
+    View for user registration
+    """
     template_name = 'accounts/sign-up.html'
     form_class = SignUpForm
 
@@ -49,6 +56,9 @@ class SignUpView(AuthenticatedMixin, FormView):
 
 
 class CheckOtpView(FormView):
+    """
+    View for authenticating Otp codes for registration process
+    """
     template_name = 'accounts/check-otp.html'
     form_class = CheckOtpForm
 
@@ -70,14 +80,10 @@ class CheckOtpView(FormView):
         return render(self.request, self.template_name, {"form": form})
 
 
-class MyAccountView(RequiredLoginMixin, View):
-    template_name = 'accounts/edit-profile.html'
-
-    def get(self, req):
-        return render(req, self.template_name, {'instance': req.user})
-
-
 class EditProfileView(RequiredLoginMixin, View):
+    """
+    View for modifying profile
+    """
     form_class = EditProfileForm
 
     def get(self, request):
@@ -96,12 +102,8 @@ class EditProfileView(RequiredLoginMixin, View):
             expiration = timezone.localtime(timezone.now()) + timezone.timedelta(minutes=10)
             if new_phone != old_phone:
                 form.save()
-                print(user.phone_number, 1)
-                print(old_phone, 2)
-                print(new_phone, 3)
                 user.phone_number = old_phone
                 user.save()
-                print(user.phone_number, 4)
                 token = uuid4().hex
                 EditedUser.objects.create(
                     token=token,
@@ -119,6 +121,10 @@ class EditProfileView(RequiredLoginMixin, View):
 
 
 class ChangePhoneView(RequiredLoginMixin, FormView):
+    """
+    View for authenticating otp code for
+    phone number modifying process
+    """
     template_name = 'accounts/check-otp.html'
     form_class = CheckOtpForm
 
@@ -130,19 +136,19 @@ class ChangePhoneView(RequiredLoginMixin, FormView):
             edited_user = EditedUser.objects.get(token=token, code=cd.get("code"))
         except:
             form.add_error("code", "کد وارد شده صحیح نمی‌باشد")
-            return redirect(reverse_lazy("accounts:change-phone") + f"?token={token}")
+            return render(self.request, "accounts/check-otp.html", {"form": form})
 
         if edited_user.is_not_expired():
             user = User.objects.get(phone_number=edited_user.phone_number)
             user.phone_number = edited_user.new_phone_number
             user.save()
             edited_user.delete()
+            msg.success(self.request, "اطلاعات حساب کاربری شما با موفقیت تغییر یافت")
             return redirect("accounts:edit-profile")
         else:
             edited_user.delete()
             form.add_error("code", "کد وارد شده منقضی می‌باشد")
             return render(self.request, "accounts/check-otp.html", {"form": form})
-
 
 
 class ChangePasswordView(RequiredLoginMixin, FormView):
