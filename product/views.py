@@ -12,6 +12,11 @@ class ProductListView(ListView):
     paginate_by = 10
 
 
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product/product-detail.html'
+
+
 class AddFavoriteView(View):
     def get(self, req, pk):
         try:
