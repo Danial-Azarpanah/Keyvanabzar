@@ -23,34 +23,10 @@ class Category(MPTTModel):
         ordering = ['parent__id']
 
 
-class AdditionalItems(models.Model):
-    title = models.CharField('آیتم محصول', max_length=155)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'آیتم اضافی'
-        verbose_name_plural = 'آیتم های اضافی'
-
-
-class Image(models.Model):
-    code = models.CharField("کد محصول", max_length=30, )
-    image = models.ImageField('تصویر محصول', upload_to='products/')
-
-    def __str__(self):
-        return self.code
-
-    class Meta:
-        verbose_name = 'تصویر محصول'
-        verbose_name_plural = 'تصاویر محصولات'
-
-
 class Product(models.Model):
     id = models.CharField("کد محصول", max_length=30, unique=True, primary_key=True)
     title = models.CharField('عنوان محصول', max_length=100)
     category = models.ManyToManyField(Category, related_name='categories', verbose_name='دسته بندی')
-    image = models.ManyToManyField(Image, related_name='images', verbose_name='تصاویر محصول')
     country = models.CharField("کشور", max_length=50)
     description = models.TextField('توضیحات')
     price = models.PositiveIntegerField('قیمت (ریال)', default=0)
@@ -68,6 +44,30 @@ class Product(models.Model):
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
         ordering = ('-created_at',)
+
+
+class Picture(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='pictures')
+    picture = models.ImageField('تصویر محصول', upload_to='products/img/')
+
+    def __str__(self):
+        return self.picture.url
+
+    class Meta:
+        verbose_name = 'تصویر محصول'
+        verbose_name_plural = 'تصویر محصول'
+
+
+class AdditionalItems(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='items')
+    item = models.CharField('آیتم محصول', max_length=155)
+
+    def __str__(self):
+        return self.item
+
+    class Meta:
+        verbose_name = 'آیتم اضافی'
+        verbose_name_plural = 'آیتم های اضافی'
 
 
 class Spec(models.Model):
@@ -143,9 +143,6 @@ class Spec(models.Model):
     is_brushless_mototr = models.BooleanField("سیستم بدون ذغال", default=False)
     has_left_right_movement = models.BooleanField("گردش چپ راست", default=False)
     excessive_watt_protection = models.BooleanField("محافظ اضافه بار", default=False)
-
-    additional_items = models.ManyToManyField(AdditionalItems, null=True, blank=True,
-                                              related_name="products", verbose_name="اقلام همراه")
 
     class Meta:
         verbose_name = 'مشخصه فنی'
