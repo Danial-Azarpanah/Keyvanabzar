@@ -55,9 +55,10 @@
                                     <figure>
                                         <div class="product_thumb">
                                             <a class="primary_img" href="{% url 'product:product-detail' product.id %}"><img
-                                                    src="{% static 'img/product/product1.jpg' %}" alt=""></a>
-                                            <a class="secondary_img" href="product-details.html"><img
-                                                    src="assets/img/product/product2.jpg" alt=""></a>
+                                                    src="{{ product.pictures.first }}" alt=""></a>
+                                            <a class="secondary_img"
+                                               href="{% url 'product:product-detail' product.id %}"><img
+                                                    src="{{ product.pictures.first }}" alt=""></a>
                                             <div class="label_product">
                                                 {% if product.discount %}
                                                     <span class="label_sale">-{{ product.discount }}%</span>
@@ -110,23 +111,9 @@
                                                 {#                                                <p class="manufacture_product"><a href="#">قطعات</a></p>#}
                                                 <h4 class="product_name"><a
                                                         href="product-details.html">{{ product.title }}</a></h4>
-                                                <div class="product_rating">
-                                                    <ul>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                                 <div class="price_box">
                                                     {#                                                    <span class="old_price">320.00 تومان</span>#}
-                                                    <span class="current_price">{{ product.price }} تومان</span>
+                                                    <span class="current_price">{{ product.get_price }} تومان</span>
                                                 </div>
                                                 <div class="product_desc">
                                                     <p>{{ product.description }}</p>

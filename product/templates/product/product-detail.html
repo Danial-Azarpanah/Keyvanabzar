@@ -59,10 +59,10 @@
                                 </div>
                                 <div class="price_box">
                                     {% if product.discount > 0 %}
-                                        <span class="old_price">{{ product.get_price }}</span>
-                                        <span class="current_price">{{ product.get_discounted_price }} ریال</span>
+                                        <span class="old_price">{{ product.get_price }} تومان </span>
+                                        <span class="current_price">{{ product.get_discounted_price }} تومان </span>
                                     {% else %}
-                                        <span class="current_price">{{ product.get_price }}</span>
+                                        <span class="current_price">{{ product.get_price }} تومان </span>
                                     {% endif %}
                                 </div>
                                 <div class="product_desc">
@@ -98,7 +98,7 @@
                                         <li>
                                             <p>
                                                 <br>
-                                            <h4>دسته بندی‌ها:</h4>
+                                            <h4>دسته بندی ‌ها:</h4>
                                             {% for category in product.category.all %}
                                                 * <a href="">{{ category.title }}</a>
                                                 <br>
@@ -115,7 +115,8 @@
                                 </div>
                                 <div class=" product_d_action">
                                     <ul>
-                                        <li><a href="#" title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
+                                        <li><a href="{% url 'product:add-favorite' product.id %}"
+                                               title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
                                             ها</a></li>
                                         <li><a href="#" title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a></li>
                                     </ul>
