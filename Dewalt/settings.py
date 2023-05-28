@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "accounts.apps.AccountsConfig",
     "product.apps.ProductConfig",
+    "payment.apps.PaymentConfig",
 
     # Libraries
 ]

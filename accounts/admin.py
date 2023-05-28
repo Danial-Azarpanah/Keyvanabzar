@@ -11,7 +11,7 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ('phone_number', 'is_admin', 'is_active')
+    list_display = ('phone_number', 'is_admin', 'is_active', 'get_jalali_date')
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('phone_number', 'fullname', 'password',)}),
@@ -67,5 +67,6 @@ class OtpAdmin(admin.ModelAdmin):
         if not request.user.is_admin:
             return False
         return True
+
 
 admin.site.register(EditedUser)

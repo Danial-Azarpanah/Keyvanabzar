@@ -32,6 +32,8 @@ class User(AbstractBaseUser):
     def get_jalali_date(self):
         return JalaliDate(self.date_joined, locale=('fa')).strftime('%c')
 
+    get_jalali_date.short_description = "تاریخ ثبت نام در"
+
     def has_perm(self, perm, obj=None):
         return True
 
