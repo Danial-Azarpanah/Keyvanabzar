@@ -66,11 +66,10 @@ class Otp(models.Model):
         verbose_name_plural = "کدهای اعتبارسنجی"
         verbose_name = "کد اعتبارسنجی"
 
+
 class EditedUser(Otp):
     new_phone_number = models.CharField("شماره موبایل جدید", max_length=11)
 
     class Meta:
         verbose_name = "کد تایید ویرایش پروفایل"
         verbose_name_plural = "کدهای تایید ویرایش پروفایل"
-
-
