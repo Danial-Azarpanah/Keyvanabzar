@@ -244,7 +244,7 @@
                                         </div>
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
-                                                <a href="cart.html">مشاهده سبد خرید</a>
+                                                <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>
                                             </div>
                                             <div class="cart_button">
                                                 <a class="active" href="checkout.html">بررسی</a>
@@ -301,17 +301,17 @@
                             <nav>
                                 <ul>
                                     <li><a href="">خانه</a></li>
-                                    <li><a class="active" href="index.html">حساب کاربری<i class="fa fa-angle-down"></i></a>
+                                    <li><a class="active" href="">حساب کاربری<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu">
                                             {% if request.user.is_authenticated %}
                                                 <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
                                                 <li><a href="">سفارش‌ها</a></li>
-                                                <li><a href="">سبد خرید</a></li>
+                                                <li><a href="{% url 'payment:cart-detail' %}">سبد خرید</a></li>
                                                 <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
                                             {% else %}
                                                 <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
                                                 <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
-                                                <li><a href="">سبد خرید</a></li>
+                                                <li><a href="{% url 'payment:cart-detail' %}">سبد خرید</a></li>
                                             {% endif %}
                                         </ul>
                                     </li>
