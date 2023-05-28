@@ -40,6 +40,15 @@ class Product(models.Model):
     def get_jalali_date(self):
         return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
 
+    def get_discounted_price(self):
+        price = self.price - ((self.discount * 0.01) * self.price)
+        return "{:,.0f}".format(price)
+
+    def get_price(self):
+        price = self.price
+        return "{:,.0f}".format(price)
+
+
     class Meta:
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
