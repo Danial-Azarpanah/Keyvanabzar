@@ -26,44 +26,24 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                    src="assets/img/s-product/product.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">روغن موتور</a></td>
-                                            <td class="product-price">65.00 تومان</td>
-                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100"
-                                                                                                     value="1"
-                                                                                                     type="number"></td>
-                                            <td class="product_total">130.00 تومان</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                    src="assets/img/s-product/product2.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">تایر</a></td>
-                                            <td class="product-price">90.00 تومان</td>
-                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100"
-                                                                                                     value="1"
-                                                                                                     type="number"></td>
-                                            <td class="product_total">180.00 تومان</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                    src="assets/img/s-product/product3.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">کیف دستی</a></td>
-                                            <td class="product-price">80.00 تومان</td>
-                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100"
-                                                                                                     value="1"
-                                                                                                     type="number"></td>
-                                            <td class="product_total">160.00 تومان</td>
-                                        </tr>
-
+                                        {% for product in cart %}
+                                            <tr>
+                                                <td class="product_remove"><a
+                                                        href="{% url 'payment:cart-del' product.id %}"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                                </td>
+                                                <td class="product_thumb"><a href="#"><img
+                                                        src="{{ product.pictures.first }}" alt=""></a></td>
+                                                <td class="product_name"><a href="#">{{ product.title }}</a></td>
+                                                <td class="product-price">{{ product.price }}</td>
+                                                <td class="product_quantity"><label>تعداد</label> <input min="1"
+                                                                                                         max="100"
+                                                                                                         value="1"
+                                                                                                         type="number">
+                                                </td>
+                                                <td class="product_total">{{ product.total }}</td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

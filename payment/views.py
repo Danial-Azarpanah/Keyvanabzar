@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from product.models import Product
 from django.views.generic import *
+from django.shortcuts import *
 from .cart import Cart
 
 
@@ -10,10 +11,21 @@ class CartDetailView(View):
     template_name = 'payment/cart-detail.html'
 
     def get(self, request):
-        return render(request, self.template_name, {})
+        cart = Cart(request)
+        return render(request, self.template_name, {'cart': cart})
 
 
 class CartAddView(View):
 
     def get(self, request, pk):
-        pass
+        product = Product.objects.get(id=pk)
+        cart = Cart(request)
+        cart.add(product)
+        return redirect('payment:cart-detail')
+
+
+class CartDeleteView(View):
+    def get(self, request, pk):
+        cart = Cart(request)
+        cart.delete(pk)
+        return redirect('payment:cart-detail')

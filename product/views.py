@@ -30,7 +30,7 @@ class ProductDetailView(View):
                                                                "specs": fields_with_values})
 
 
-class AddFavoriteView(View):
+class AddFavoriteView(RequiredLoginMixin,View):
     def get(self, req, pk):
         try:
             fav = Favorite.objects.get(product_id=pk, user_id=req.user.id)

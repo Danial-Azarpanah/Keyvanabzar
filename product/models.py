@@ -48,7 +48,6 @@ class Product(models.Model):
         price = self.price
         return "{:,.0f}".format(price)
 
-
     class Meta:
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
@@ -69,14 +68,14 @@ class Picture(models.Model):
 
 class AdditionalItems(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='items')
-    item = models.CharField('آیتم محصول', max_length=155)
+    item = models.CharField('اقلام محصول', max_length=155)
 
     def __str__(self):
         return self.item
 
     class Meta:
-        verbose_name = 'آیتم اضافی'
-        verbose_name_plural = 'آیتم های اضافی'
+        verbose_name_plural = 'اقلام همراه'
+        verbose_name = 'اقلام محصول'
 
 
 class Spec(models.Model):
