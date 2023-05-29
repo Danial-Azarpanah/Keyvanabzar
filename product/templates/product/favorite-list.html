@@ -33,7 +33,7 @@
                                                             src="{{ item.pictures.first }}" alt=""></a>
                                                     </td>
                                                     <td class="product_name"><a href="#">{{ item.title }}</a></td>
-                                                    <td class="product-price">{{ item.get_price }} تومان</td>
+                                                    <td class="product-price">{{ item.get_price }}</td>
                                                     <td class="product_quantity">در انبار</td>
                                                     <td class="product_total"><a
                                                             href="{% url 'payment:cart-add' item.id %}">افزودن به سبد
