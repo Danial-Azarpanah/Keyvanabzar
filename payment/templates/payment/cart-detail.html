@@ -33,7 +33,7 @@
                                                         class="fa fa-trash-o"></i></a>
                                                 </td>
                                                 <td class="product_thumb"><a href="#"><img
-                                                        src="{{ product.pictures.first }}" alt=""></a></td>
+                                                        src="{{ product.picture }}" alt=""></a></td>
                                                 <td class="product_name"><a href="#">{{ product.title }}</a></td>
                                                 <td class="product-price">{{ product.price }}</td>
                                                 <td class="product_quantity"><label>تعداد</label> <input min="1"
@@ -70,20 +70,38 @@
                                 <div class="coupon_code right">
                                     <h3>مجموع سبد خرید</h3>
                                     <div class="coupon_inner">
-                                        <div class="cart_subtotal">
-                                            <p>جمع کل</p>
-                                            <p class="cart_amount">215.00 تومان</p>
-                                        </div>
+
+                                        {% if cart.total %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">{{ cart.total }}</p>
+                                            </div>
+                                        {% else %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">0 تومان </p>
+                                            </div>
+                                        {% endif %}
+
                                         <div class="cart_subtotal ">
                                             <p>هزینه ارسال</p>
                                             <p class="cart_amount"><span> نرخ ثابت:</span> 255.00 تومان</p>
                                         </div>
+
                                         <a href="#">محاسبه حمل و نقل</a>
 
-                                        <div class="cart_subtotal">
-                                            <p>جمع کل</p>
-                                            <p class="cart_amount">215.00 تومان</p>
-                                        </div>
+                                        {% if cart.total %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">{{ cart.total }}</p>
+                                            </div>
+                                        {% else %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">0 تومان </p>
+                                            </div>
+                                        {% endif %}
+
                                         <div class="checkout_btn">
                                             <a href="#">رفتن به تسویه حساب</a>
                                         </div>
