@@ -16,7 +16,7 @@ class AdditionalItemAdmin(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'price')
+    list_display = ('__str__', 'get_price')
     list_filter = ('created_at',)
     search_fields = ('title', 'price')
     inlines = [PictureAdmin, SpecAdmin, AdditionalItemAdmin]

@@ -42,11 +42,13 @@ class Product(models.Model):
 
     def get_discounted_price(self):
         price = self.price - ((self.discount * 0.01) * self.price)
-        return "{:,.0f}".format(price)
+        return "{:,.0f} تومان ".format(price)
 
     def get_price(self):
         price = self.price
-        return "{:,.0f}".format(price)
+        return "{:,.0f} تومان ".format(price)
+
+    get_price.short_description = 'قیمت'
 
     class Meta:
         verbose_name = 'محصول'

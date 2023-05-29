@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+    <!--shop  area start-->
+    <div class="shop_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-12">
+
+                    <!--shop banner area start-->
+                    <div class="shop_banner_area mb-30">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="shop_banner_thumb">
+                                    <img src="{% static 'img/bg/banner23.jpg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--shop banner area end-->
+                    <!--shop toolbar start-->
+                    <div class="shop_toolbar_wrapper">
+                        <div class="shop_toolbar_btn">
+                            <button data-role="grid_4" type="button" class=" btn-grid-4" data-bs-toggle="tooltip"
+                                    title="4"></button>
+                            <button data-role="grid_3" type="button" class=" btn-grid-3" data-bs-toggle="tooltip"
+                                    title="3"></button>
+                            <button data-role="grid_list" type="button" class="btn-list active" data-bs-toggle="tooltip"
+                                    title="لیست"></button>
+                        </div>
+                        <div class=" niceselect_option">
+                            <form class="select_option" action="#">
+                                <select name="orderby" id="short">
+
+                                    <option selected value="1">مرتب سازی بر اساس میانگین رتبه</option>
+                                    <option value="2">مرتب سازی بر اساس محبوبیت</option>
+                                    <option value="3">مرتب سازی بر اساس جدید بودن</option>
+                                    <option value="4">مرتب سازی بر اساس قیمت : نزولی</option>
+                                    <option value="5">مرتب سازی بر اساس قیمت : صعودی</option>
+                                    <option value="6">مرتب سازی بر اساس نام : نزولی</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="page_amount">
+                            <p>نمایش 1 تا 9 از 21 نتیجه</p>
+                        </div>
+                    </div>
+
+                    {% if not object_list %}
+                        <h3> موردی برای نمایش وجود ندارد </h3>
+                    {% endif %}
+                    <!--shop toolbar end-->
+                    <div class="row shop_wrapper grid_list">
+                        {% for product in object_list %}
+                            <div class="col-12 ">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="{% url 'product:product-detail' product.id %}"><img
+                                                    src="{{ product.pictures.first }}" alt=""></a>
+                                            <a class="secondary_img"
+                                               href="{% url 'product:product-detail' product.id %}"><img
+                                                    src="{{ product.pictures.first }}" alt=""></a>
+                                            <div class="label_product">
+                                                {% if product.discount %}
+                                                    <span class="label_sale">-{{ product.discount }}%</span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="quick_button">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                                   title="نمایش سریع"><i class="icon-eye"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product_content grid_content">
+                                            <div class="product_content_inner">
+                                                <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                                <h4 class="product_name"><a href="">عنوان محصول شماره
+                                                    19</a></h4>
+                                                <div class="product_rating">
+                                                    <ul>
+                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="price_box">
+                                                    <span class="old_price">320.00 تومان</span>
+                                                    <span class="current_price">120.00 تومان</span>
+                                                </div>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="add_to_cart"><a href="cart.html"
+                                                                               title="افزودن به سبد خرید">افزودن به سبد
+                                                        خرید</a></li>
+                                                    <li class="wishlist"><a href="wishlist.html"
+                                                                            title="افزودن به لیست علاقمندی ها"><i
+                                                            class="icon-heart"></i></a></li>
+                                                    <li class="compare"><a href="#" title="مقایسه"><i
+                                                            class="icon-rotate-cw"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product_content list_content">
+                                            <div class="left_caption">
+                                                <p class="manufacture_product"><a
+                                                        href="#">{{ product.category.all.first }}</a></p>
+                                                <h4 class="product_name"><a
+                                                        href="{% url 'product:product-detail' product.id %}">{{ product.title }}</a>
+                                                </h4>
+                                                <div class="price_box">
+
+                                                    {% if product.discount > 0 %}
+                                                        <span class="old_price">{{ product.get_price }}</span>
+                                                        <span class="current_price">{{ product.get_discounted_price }}</span>
+                                                    {% else %}
+                                                        <span class="current_price">{{ product.get_price }}</span>
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class="product_desc">
+                                                    <p>{{ product.description }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="right_caption">
+                                                <p class="text_available">وضعیت موجودی : <span>در انبار</span></p>
+                                                <div class="action_links">
+                                                    <ul>
+                                                        <li class="add_to_cart"><a
+                                                                href="{% url 'payment:cart-add' product.id %}"
+                                                                title="افزودن به سبد خرید">افزودن به
+                                                            سبد خرید</a></li>
+
+                                                        <li class="wishlist"><a
+                                                                href="{% url 'product:add-favorite' product.id %}"
+                                                                title="افزودن به لیست علاقمندی ها"><i
+                                                                class="icon-heart"></i> افزودن به لیست علاقمندی ها</a>
+                                                        </li>
+
+                                                        <li class="compare"><a href="#" title="مقایسه"><i
+                                                                class="icon-rotate-cw"></i>افزودن به لیست مقایسه</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if page_obj.has_other_pages %}
+                        <div class="shop_toolbar t_bottom">
+                            <div class="pagination">
+                                <ul>
+
+                                    {% if page_obj.has_previous %}
+                                        <li class="next"><a href="?page=
+
+                                                {{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">قبلی</a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for i in paginator.page_range %}
+                                        {% if page_obj.number == i %}
+                                            <a href="?page=
+                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                                                <li class="current">{{ i }}</li>
+                                            </a>
+                                        {% else %}
+                                            <a href="?page=
+                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                                                <li class="next">{{ i }}</li>
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                        <li class="next"><a href="?page=
+
+                                                {{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">بعدی</a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+                    <!--shop toolbar end-->
+                    <!--shop wrapper end-->
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <!--sidebar widget start-->
+                    <aside class="sidebar_widget">
+                        <div class="widget_list widget_categories">
+                            <h3>دسته بندی ها</h3>
+                            <ul>
+                                <li><a href="#">دوربین‌ها و دوربین‌های فیلم‌برداری</a></li>
+                                <li class="widget_sub_categories"><a href="javascript:void(0)">کامپیوتر و شبکه</a>
+                                    <ul class="widget_dropdown_categories">
+                                        <li><a href="#">کامپیوتر</a></li>
+                                        <li><a href="#">شبکه کردن</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">بازی و کنسول</a></li>
+                                <li><a href="#">هدفون و بلندگو</a></li>
+                                <li><a href="#">فیلم‌ها و بازی‌های ویدیویی</a></li>
+                                <li><a href="#">تلفن هوشمند</a></li>
+                                <li><a href="#">دسته بندی نشده</a></li>
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_filter">
+                            <h3>قیمت</h3>
+                            <form action="#">
+                                <div id="slider-range"></div>
+                                <button type="submit">فیلتر</button>
+                                <input type="text" name="text" id="amount"/>
+
+                            </form>
+                        </div>
+                        <div class="widget_list widget_categories">
+                            <h3>تولید کننده</h3>
+                            <ul>
+                                <li>
+                                    <input id="check1" type="checkbox">
+                                    <label for="check1">شرکت الف (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                                <li>
+                                    <input id="check2" type="checkbox">
+                                    <label for="check2">شرکت ب (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                                <li>
+                                    <input id="check3" type="checkbox">
+                                    <label for="check3">شرکت پ (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                                <li>
+                                    <input id="check4" type="checkbox">
+                                    <label for="check4">شرکت ت (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_categories">
+                            <h3>دسته بندی ها</h3>
+                            <ul>
+                                <li>
+                                    <input id="check5" type="checkbox">
+                                    <label for="check5">لوازم جانبی (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                                <li>
+                                    <input id="check6" type="checkbox">
+                                    <label for="check6">لباس (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                                <li>
+                                    <input id="check7" type="checkbox">
+                                    <label for="check7">کیف های دستی (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                                <li>
+                                    <input id="check8" type="checkbox">
+                                    <label for="check8">برترین ها (8)</label>
+                                    <span class="checkmark"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget_list tags_widget">
+                            <h3>برچسب های محصول</h3>
+                            <div class="tag_cloud">
+                                <a href="#">بلوز</a>
+                                <a href="#">لباس</a>
+                                <a href="#">مد</a>
+                                <a href="#">کیف دستی</a>
+                                <a href="#">لپ تاپ</a>
+                            </div>
+                        </div>
+                    </aside>
+                    <!--sidebar widget end-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--shop  area end-->
+
+{% endblock %}

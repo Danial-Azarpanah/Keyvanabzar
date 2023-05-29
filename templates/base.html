@@ -171,14 +171,18 @@
                     <div class="col-lg-10 col-md-6 col-sm-6 col-6">
                         <div class="header_right_box">
                             <div class="search_container">
-                                <form action="#">
+
+
+                                <form action="{% url 'product:search' %}">
                                     <div class="search_box">
-                                        <input placeholder="جستجوی محصول ..." type="text">
+                                        <input placeholder="جستجوی محصول ..." type="search" name="q"
+                                               value="{{ request.GET.q }}">
                                         <button type="submit">
                                             <i class="icon-search" style="font-size: larger"></i>
                                         </button>
                                     </div>
                                 </form>
+
                             </div>
                             <div class="header_configure_area">
                                 <div class="header_wishlist">
