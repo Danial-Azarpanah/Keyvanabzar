@@ -59,10 +59,10 @@
                                 </div>
                                 <div class="price_box">
                                     {% if product.discount > 0 %}
-                                        <span class="old_price">{{ product.get_price }} تومان </span>
-                                        <span class="current_price">{{ product.get_discounted_price }} تومان </span>
+                                        <span class="old_price">{{ product.get_price }}</span>
+                                        <span class="current_price">{{ product.get_discounted_price }}</span>
                                     {% else %}
-                                        <span class="current_price">{{ product.get_price }} تومان </span>
+                                        <span class="current_price">{{ product.get_price }}</span>
                                     {% endif %}
                                 </div>
                                 <div class="product_desc">

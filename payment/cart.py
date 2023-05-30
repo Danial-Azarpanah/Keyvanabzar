@@ -15,7 +15,7 @@ class Cart:
     def add(self, product):
         product_id = product.id
         if product_id not in self.cart:
-            self.cart[product_id] = {'id': product.id, 'title': product.title,
+            self.cart[product_id] = {'id': str(product.id), 'title': product.title,
                                      'price': str(product.price), 'quantity': 1}
         self.save()
 
@@ -28,15 +28,19 @@ class Cart:
             yield item
 
     def total(self):
-        pass
+        cart = self.cart.values()
+        total = 0
+        for item in cart:
+            total += int(item['quantity']) * int(item['price'])
+        return "{:,.0f} تومان ".format(total)
 
     def delete(self, pk):
         if pk in self.cart:
             del self.cart[pk]
             self.save()
 
-    def delete_cart(self):
-        pass
+    def del_cart(self):
+        del self.session[CART_SESSION_ID]
 
     def save(self):
         self.session.modified = True

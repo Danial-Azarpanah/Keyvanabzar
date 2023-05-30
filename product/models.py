@@ -42,11 +42,13 @@ class Product(models.Model):
 
     def get_discounted_price(self):
         price = self.price - ((self.discount * 0.01) * self.price)
-        return "{:,.0f}".format(price)
+        return "{:,.0f} تومان ".format(price)
 
     def get_price(self):
         price = self.price
-        return "{:,.0f}".format(price)
+        return "{:,.0f} تومان ".format(price)
+
+    get_price.short_description = 'قیمت'
 
     class Meta:
         verbose_name = 'محصول'
@@ -167,3 +169,17 @@ class Favorite(models.Model):
     class Meta:
         verbose_name = 'علاقه مندی'
         verbose_name_plural = 'علاقه مندی ها'
+
+
+class DiscountCode(models.Model):
+    name = models.CharField('نام کد تخفیف', max_length=30, )
+    percent = models.PositiveIntegerField('درصد', default=0)
+    quantity = models.PositiveIntegerField('تعداد', default=1)
+    created_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.name} - {self.quantity}'
+
+    class Meta:
+        verbose_name = 'کد تخفیف'
+        verbose_name_plural = 'کد های تخفیف'
