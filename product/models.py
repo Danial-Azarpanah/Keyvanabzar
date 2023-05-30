@@ -171,6 +171,21 @@ class Favorite(models.Model):
         verbose_name_plural = 'علاقه مندی ها'
 
 
+class Comment(models.Model):
+    """
+    Model to save user comments and replies
+    """
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments', verbose_name='محصول مربوطه')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', verbose_name='کاربر')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', null=True, blank=True,
+                               verbose_name='کامنت پدر')
+    body = models.TextField('متن کامنت')
+    created_at = models.DateTimeField('تاریخ و زمان', auto_now_add=True)
+
+    def get_jalali_date(self):
+        return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
+      
+      
 class DiscountCode(models.Model):
     name = models.CharField('نام کد تخفیف', max_length=30, )
     percent = models.PositiveIntegerField('درصد', default=0)

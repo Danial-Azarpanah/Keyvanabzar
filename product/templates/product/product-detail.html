@@ -50,6 +50,59 @@
                     <div class="col-lg-7 col-md-6">
                         <div class="product_d_right">
 
+                                <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
+
+                                <div class="price_box">
+                                    {% if product.discount > 0 %}
+                                        <span class="old_price">{{ product.get_price }}</span>
+                                        <span class="current_price">{{ product.get_discounted_price }} ریال</span>
+                                    {% else %}
+                                        <span class="current_price">{{ product.get_price }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="product_desc">
+                                    <p>
+                                        {{ product.description }}
+                                    </p>
+                                </div>
+                                <div class="product_variant color">
+                                    <h3>مشخصات کلی</h3>
+                                </div>
+                                <div class=" product_d_action">
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                - محصول کشور {{ product.country }}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                - {{ product.weight }} وزن
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <br>
+                                            <h4>اقلام همراه:</h4>
+                                            {% for item in product.items.all %}
+                                                * {{ item.item }}
+                                                <br>
+                                            {% endfor %}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <br>
+                                            <h4>دسته بندی‌ها:</h4>
+                                            {% for category in product.category.all %}
+                                                * <a href="">{{ category.title }}</a>
+                                                <br>
+                                            {% endfor %}
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product_variant quantity">
 
                             <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
                             <div class="product_rating">
@@ -149,26 +202,14 @@
                                     </li>
                                     <li>
                                         <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                           aria-selected="false"> نظرات (1)</a>
+                                           aria-selected="false"> نظرات ({{ comments.all.count }})</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="info" role="tabpanel">
                                     <div class="product_info_content">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                            طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-                                            بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
-                                            بیشتری را برای .</p>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                            طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-                                            بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
-                                            بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
-                                            زبان فارسی ایجاد کرد، در این صورت می توان امید داشت </p>
+                                        <p>{{ product.description }}</p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -190,67 +231,60 @@
 
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     <div class="reviews_wrapper">
-                                        <h2> 1 بررسی برای مبلمان</h2>
-                                        <div class="reviews_comment_box">
-                                            <div class="comment_thmb">
-                                                <img src="assets/img/blog/comment2.jpg" alt="">
-                                            </div>
-                                            <div class="comment_text">
-                                                <div class="reviews_meta">
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p><strong>مدیر سایت </strong>- مهر 12, 1398</p>
-                                                    <span>بسیار بسیار عالی</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="comment_title">
                                             <h2>افزودن نظر</h2>
-                                            <p> آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند </p>
                                         </div>
-                                        <div class="product_rating mb-10">
-                                            <h3>امتیاز شما</h3>
-                                            <ul>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            </ul>
+                                        <div class="product_review_form mb-4">
+                                            {% if request.user.is_authenticated %}
+                                                <form method="post">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <label for="review_comment">نظر شما </label>
+                                                            <input type="text" id="parent-id" name="parent-id" value=""
+                                                                   hidden>
+                                                            <textarea name="comment" id="review_comment"
+                                                                      minlength="3"
+                                                                      placeholder="نظر خود را بنویسید"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit">ارسال</button>
+                                                </form>
+                                            {% else %}
+                                                <label for="review_comment">
+                                                برای ثبت نظر ابتدا باید <a href="{% url "accounts:sign-in" %}">وارد حساب کاربری خود شوید</a>
+                                                </label>
+                                            {% endif %}
                                         </div>
-                                        <div class="product_review_form">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <label for="review_comment">نظر شما </label>
-                                                        <textarea name="comment" id="review_comment"></textarea>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <label for="author">نام</label>
-                                                        <input id="author" type="text">
-
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <label for="email">ایمیل</label>
-                                                        <input id="email" type="text">
+                                        {% for comment in comments %}
+                                            {% if not comment.parent %}
+                                                <div class="reviews_comment_box w-100">
+                                                    <div class="comment_text">
+                                                        <div class="reviews_meta mb-2">
+                                                            <p><strong>{{ comment.user.fullname }}</strong>
+                                                                - {{ comment.get_jalali_date }}</p>
+                                                            <span>{{ comment.body }}</span>
+                                                        </div>
+                                                        {% if request.user.is_authenticated %}
+                                                            <button class="btn-dark rounded-pill mb-2"
+                                                                    onclick="reply('{{ comment.id }}')">پاسخ
+                                                            </button>
+                                                        {% endif %}
+                                                        {% for reply in comment.replies.all %}
+                                                            <div class="reviews_comment_box w-100">
+                                                                <div class="comment_text bg-grey">
+                                                                    <div class="reviews_meta">
+                                                                        <p><strong>{{ reply.user.fullname }}</strong>
+                                                                            - {{ reply.get_jalali_date }}</p>
+                                                                        <span>{{ reply.body }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
-                                                <button type="submit">ارسال</button>
-                                            </form>
-                                        </div>
+                                            {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -579,4 +613,11 @@
             <!--product area end-->
         </div>
     </div>
+    <script>
+        function reply(id) {
+            document.getElementById("parent-id").value = id;
+            document.getElementById("review_comment").placeholder = "پاسخ خود را بنویسید"
+            document.getElementById("nav-tab").scrollIntoView();
+        }
+    </script>
 {% endblock %}
