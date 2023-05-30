@@ -102,9 +102,18 @@
                                             </div>
                                         {% endif %}
 
-                                        <div class="checkout_btn">
-                                            <a href="#">رفتن به تسویه حساب</a>
-                                        </div>
+
+                                        {% if request.user.is_authenticated %}
+                                            <div class="checkout_btn">
+                                                <a href="#">ثبت سفارش</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="checkout_btn">
+                                                <a href="{% url 'accounts:sign-in' %}?return_to={% url 'payment:cart-detail' %}">
+                                                    قبل از ثبت سفارش وارد حساب کاربری خود شوید </a>
+                                            </div>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>

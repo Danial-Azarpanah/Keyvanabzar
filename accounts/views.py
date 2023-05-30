@@ -21,10 +21,13 @@ class SignInView(AuthenticatedMixin, FormView):
 
     def post(self, req, *args, **kwargs):
         form = self.form_class(req.POST)
+        next_url = req.GET.get('return_to')
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['phone'], password=form.cleaned_data['password'])
             if user is not None:
                 login(req, user)
+                if next_url:
+                    return redirect(next_url)
                 return redirect('home:home')
             else:
                 form.add_error('phone', messages.WRONG_PASSWORD_OR_PHONE)

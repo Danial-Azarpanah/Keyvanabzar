@@ -17,10 +17,11 @@ class CartDetailView(View):
 
 class CartAddView(View):
 
-    def get(self, request, pk):
+    def post(self, request, pk):
         product = Product.objects.get(id=pk)
+        quantity = request.POST.get('quantity')
         cart = Cart(request)
-        cart.add(product)
+        cart.add(product, quantity)
         return redirect('payment:cart-detail')
 
 
