@@ -169,3 +169,17 @@ class Favorite(models.Model):
     class Meta:
         verbose_name = 'علاقه مندی'
         verbose_name_plural = 'علاقه مندی ها'
+
+
+class DiscountCode(models.Model):
+    name = models.CharField('نام کد تخفیف', max_length=30, )
+    percent = models.PositiveIntegerField('درصد', default=0)
+    quantity = models.PositiveIntegerField('تعداد', default=1)
+    created_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.name} - {self.quantity}'
+
+    class Meta:
+        verbose_name = 'کد تخفیف'
+        verbose_name_plural = 'کد های تخفیف'
