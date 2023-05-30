@@ -27,7 +27,7 @@ class User(AbstractBaseUser):
         verbose_name_plural = _('users')
 
     def __str__(self):
-        return f"{self.fullname} - {self.phone_number}"
+        return f"{self.phone_number}"
 
     def get_jalali_date(self):
         return JalaliDate(self.date_joined, locale=('fa')).strftime('%c')

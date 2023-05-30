@@ -69,7 +69,7 @@ class Picture(models.Model):
 
 
 class AdditionalItems(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='additional_items')
     item = models.CharField('اقلام محصول', max_length=155)
 
     def __str__(self):

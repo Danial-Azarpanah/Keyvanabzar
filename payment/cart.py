@@ -12,11 +12,12 @@ class Cart:
 
         self.cart = cart
 
-    def add(self, product):
+    def add(self, product, quantity):
         product_id = product.id
         if product_id not in self.cart:
             self.cart[product_id] = {'id': str(product.id), 'title': product.title,
-                                     'price': str(product.price), 'quantity': 1}
+                                     'price': str(product.price), 'quantity': 0}
+        self.cart[product_id]['quantity'] += int(quantity)
         self.save()
 
     def __iter__(self):
@@ -32,6 +33,10 @@ class Cart:
         total = 0
         for item in cart:
             total += int(item['quantity']) * int(item['price'])
+        return total
+
+    def get_total(self):
+        total = self.total()
         return "{:,.0f} تومان ".format(total)
 
     def delete(self, pk):

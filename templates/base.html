@@ -218,18 +218,20 @@
                                                     <a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                 </div>
                                             </div>
-                                            {% for product in cart %}
+                                            {% for item in cart %}
                                                 <div class="cart_item">
                                                     <div class="cart_img">
-                                                        <a href="{% url 'product:product-detail' product.id %}"><img src="{% static 'img/product/product3.jpg' %}"
-                                                                         alt=""></a>
+                                                        <a href="{% url 'product:product-detail' item.product.id %}"><img
+                                                                src="{{ item.product.pictures.first }}"
+                                                                alt=""></a>
                                                     </div>
                                                     <div class="cart_info">
-                                                        <a href="#">{{ product.title }}</a>
-                                                        <p> تعداد: 1 عدد <span> {{ product.price }} </span></p>
+                                                        <a href="#">{{ item.title }}</a>
+                                                        <p> تعداد: {{ item.quantity }} عدد <span> {{ item.price }} </span></p>
                                                     </div>
                                                     <div class="cart_remove">
-                                                        <a href="{% url 'payment:cart-del' product.id %}"><i class="ion-android-close"></i></a>
+                                                        <a href="{% url 'payment:cart-del' item.id %}"><i
+                                                                class="ion-android-close"></i></a>
                                                     </div>
                                                 </div>
                                             {% endfor %}
@@ -240,7 +242,7 @@
                                                 <div class="cart_total mt-10">
                                                     {% if cart.total %}
                                                         <span>جمع کل:</span>
-                                                        <span class="price">{{ cart.total }}</span>
+                                                        <span class="price">{{ cart.get_total }}</span>
                                                     {% endif %}
                                                 </div>
                                             </div>

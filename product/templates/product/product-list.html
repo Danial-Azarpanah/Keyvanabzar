@@ -108,9 +108,11 @@
                                         </div>
                                         <div class="product_content list_content">
                                             <div class="left_caption">
-                                                <p class="manufacture_product"><a href="#">{{ product.category.all.first }}</a></p>
+                                                <p class="manufacture_product"><a
+                                                        href="#">{{ product.category.all.first }}</a></p>
                                                 <h4 class="product_name"><a
-                                                        href="{% url 'product:product-detail' product.id %}">{{ product.title }}</a></h4>
+                                                        href="{% url 'product:product-detail' product.id %}">{{ product.title }}</a>
+                                                </h4>
                                                 <div class="price_box">
 
                                                     {% if product.discount > 0 %}
@@ -129,10 +131,11 @@
                                                 <p class="text_available">وضعیت موجودی : <span>در انبار</span></p>
                                                 <div class="action_links">
                                                     <ul>
+
                                                         <li class="add_to_cart"><a
-                                                                href="{% url 'payment:cart-add' product.id %}"
-                                                                title="افزودن به سبد خرید">افزودن به
-                                                            سبد خرید</a></li>
+                                                                href="{% url 'payment:cart-add' product.id %}">
+                                                            افزودن به سبد خرید</a></li>
+
 
                                                         <li class="wishlist"><a
                                                                 href="{% url 'product:add-favorite' product.id %}"
