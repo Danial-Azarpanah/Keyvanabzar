@@ -50,64 +50,11 @@
                     <div class="col-lg-7 col-md-6">
                         <div class="product_d_right">
 
-                                <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
-
-                                <div class="price_box">
-                                    {% if product.discount > 0 %}
-                                        <span class="old_price">{{ product.get_price }}</span>
-                                        <span class="current_price">{{ product.get_discounted_price }} ریال</span>
-                                    {% else %}
-                                        <span class="current_price">{{ product.get_price }}</span>
-                                    {% endif %}
-                                </div>
-                                <div class="product_desc">
-                                    <p>
-                                        {{ product.description }}
-                                    </p>
-                                </div>
-                                <div class="product_variant color">
-                                    <h3>مشخصات کلی</h3>
-                                </div>
-                                <div class=" product_d_action">
-                                    <ul>
-                                        <li>
-                                            <p>
-                                                - محصول کشور {{ product.country }}
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                - {{ product.weight }} وزن
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <br>
-                                            <h4>اقلام همراه:</h4>
-                                            {% for item in product.items.all %}
-                                                * {{ item.item }}
-                                                <br>
-                                            {% endfor %}
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <br>
-                                            <h4>دسته بندی‌ها:</h4>
-                                            {% for category in product.category.all %}
-                                                * <a href="">{{ category.title }}</a>
-                                                <br>
-                                            {% endfor %}
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product_variant quantity">
 
                             <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
                             <div class="product_rating">
                                 <ul>
-                                    <li class="review"><a href="#">(1 نظر مشتری )</a></li>
+                                    <li class="review"><a href="#">({{ comments.all.count }} نظر مشتری )</a></li>
                                 </ul>
                             </div>
                             <div class="price_box">
@@ -156,7 +103,7 @@
                                             * <a href="">{{ category.title }}</a>
                                             <br>
                                         {% endfor %}
-                                        </p>
+
                                     </li>
                                 </ul>
                             </div>
@@ -169,449 +116,450 @@
                                     <button class="button" type="submit">افزودن به سبد خرید</button>
                                 </form>
                             </div>
-
-                            <div class=" product_d_action">
-                                <ul>
-                                    <li><a href="{% url 'product:add-favorite' product.id %}"
-                                           title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
-                                        ها</a></li>
-                                    <li><a href="#" title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a></li>
-                                </ul>
-                            </div>
-
                         </div>
+                        <div class=" product_d_action">
+                            <ul>
+                                <li><a href="{% url "product:add-favorite" product.id %}"
+                                       title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
+                                    ها</a></li>
+                                <li><a href="#" title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a></li>
+                            </ul>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!--product details end-->
+        </div>
+        <!--product details end-->
 
-            <!--product info start-->
-            <div class="product_d_info">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product_d_inner">
-                            <div class="product_info_button">
-                                <ul class="nav" role="tablist" id="nav-tab">
-                                    <li>
-                                        <a class="active" data-bs-toggle="tab" href="#info" role="tab"
-                                           aria-controls="info" aria-selected="false">توضیحات</a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
-                                           aria-selected="false">مشخصات</a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                           aria-selected="false"> نظرات ({{ comments.all.count }})</a>
-                                    </li>
-                                </ul>
+        <!--product info start-->
+        <div class="product_d_info">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_d_inner">
+                        <div class="product_info_button">
+                            <ul class="nav" role="tablist" id="nav-tab">
+                                <li>
+                                    <a class="active" data-bs-toggle="tab" href="#info" role="tab"
+                                       aria-controls="info" aria-selected="false">توضیحات</a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
+                                       aria-selected="false">مشخصات</a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+                                       aria-selected="false"> نظرات ({{ comments.all.count }})</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="info" role="tabpanel">
+                                <div class="product_info_content">
+                                    <p>{{ product.description }}</p>
+                                </div>
                             </div>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="info" role="tabpanel">
-                                    <div class="product_info_content">
-                                        <p>{{ product.description }}</p>
-                                    </div>
+                            <div class="tab-pane fade" id="sheet" role="tabpanel">
+                                <div class="product_d_table">
+                                    <form action="#">
+                                        <table>
+                                            <tbody>
+                                            {% for spec in specs %}
+                                                <tr>
+                                                    <td class="first_child">{{ spec.0 }}</td>
+                                                    <td>{{ spec.1 }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </form>
                                 </div>
-                                <div class="tab-pane fade" id="sheet" role="tabpanel">
-                                    <div class="product_d_table">
-                                        <form action="#">
-                                            <table>
-                                                <tbody>
-                                                {% for spec in specs %}
-                                                    <tr>
-                                                        <td class="first_child">{{ spec.0 }}</td>
-                                                        <td>{{ spec.1 }}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                    </div>
-                                </div>
+                            </div>
 
-                                <div class="tab-pane fade" id="reviews" role="tabpanel">
-                                    <div class="reviews_wrapper">
-                                        <div class="comment_title">
-                                            <h2>افزودن نظر</h2>
-                                        </div>
-                                        <div class="product_review_form mb-4">
-                                            {% if request.user.is_authenticated %}
-                                                <form method="post">
-                                                    {% csrf_token %}
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <label for="review_comment">نظر شما </label>
-                                                            <input type="text" id="parent-id" name="parent-id" value=""
-                                                                   hidden>
-                                                            <textarea name="comment" id="review_comment"
-                                                                      minlength="3"
-                                                                      placeholder="نظر خود را بنویسید"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit">ارسال</button>
-                                                </form>
-                                            {% else %}
-                                                <label for="review_comment">
-                                                برای ثبت نظر ابتدا باید <a href="{% url "accounts:sign-in" %}">وارد حساب کاربری خود شوید</a>
-                                                </label>
-                                            {% endif %}
-                                        </div>
-                                        {% for comment in comments %}
-                                            {% if not comment.parent %}
-                                                <div class="reviews_comment_box w-100">
-                                                    <div class="comment_text">
-                                                        <div class="reviews_meta mb-2">
-                                                            <p><strong>{{ comment.user.fullname }}</strong>
-                                                                - {{ comment.get_jalali_date }}</p>
-                                                            <span>{{ comment.body }}</span>
-                                                        </div>
-                                                        {% if request.user.is_authenticated %}
-                                                            <button class="btn-dark rounded-pill mb-2"
-                                                                    onclick="reply('{{ comment.id }}')">پاسخ
-                                                            </button>
-                                                        {% endif %}
-                                                        {% for reply in comment.replies.all %}
-                                                            <div class="reviews_comment_box w-100">
-                                                                <div class="comment_text bg-grey">
-                                                                    <div class="reviews_meta">
-                                                                        <p><strong>{{ reply.user.fullname }}</strong>
-                                                                            - {{ reply.get_jalali_date }}</p>
-                                                                        <span>{{ reply.body }}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {% endfor %}
+                            <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                <div class="reviews_wrapper">
+                                    <div class="comment_title">
+                                        <h2>افزودن نظر</h2>
+                                    </div>
+                                    <div class="product_review_form mb-4">
+                                        {% if request.user.is_authenticated %}
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="review_comment">نظر شما </label>
+                                                        <input type="text" id="parent-id" name="parent-id" value=""
+                                                               hidden>
+                                                        <textarea name="comment" id="review_comment"
+                                                                  minlength="3"
+                                                                  placeholder="نظر خود را بنویسید"></textarea>
                                                     </div>
                                                 </div>
-                                            {% endif %}
-                                        {% endfor %}
+                                                <button type="submit">ارسال</button>
+                                            </form>
+                                        {% else %}
+                                            <label for="review_comment">
+                                                برای ثبت نظر ابتدا باید <a href="{% url "accounts:sign-in" %}">وارد
+                                                حساب کاربری خود شوید</a>
+                                            </label>
+                                        {% endif %}
                                     </div>
+                                    {% for comment in comments %}
+                                        {% if not comment.parent %}
+                                            <div class="reviews_comment_box w-100">
+                                                <div class="comment_text">
+                                                    <div class="reviews_meta mb-2">
+                                                        <p><strong>{{ comment.user.fullname }}</strong>
+                                                            - {{ comment.get_jalali_date }}</p>
+                                                        <span>{{ comment.body }}</span>
+                                                    </div>
+                                                    {% if request.user.is_authenticated %}
+                                                        <button class="btn-dark rounded-pill mb-2"
+                                                                onclick="reply('{{ comment.id }}')">پاسخ
+                                                        </button>
+                                                    {% endif %}
+                                                    {% for reply in comment.replies.all %}
+                                                        <div class="reviews_comment_box w-100">
+                                                            <div class="comment_text bg-grey">
+                                                                <div class="reviews_meta">
+                                                                    <p><strong>{{ reply.user.fullname }}</strong>
+                                                                        - {{ reply.get_jalali_date }}</p>
+                                                                    <span>{{ reply.body }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--product info end-->
-
-            <!--product area start-->
-            <section class="product_area related_products">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section_title title_style2">
-                            <div class="title_content">
-                                <h2>محصولات <span>مرتبط</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="product_carousel product_details_column5 owl-carousel">
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="assets/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="assets/img/product/product2.jpg" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">-56%</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                               title="نمایش سریع"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a href="#">قطعات</a></p>
-                                            <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
-                                                19</a></h4>
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="old_price">320.00 تومان</span>
-                                                <span class="current_price">120.00 تومان</span>
-                                            </div>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
-                                                    به سبد خرید</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                        class="icon-heart"></i></a></li>
-                                                <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                        class="icon-rotate-cw"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="assets/img/product/product3.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="assets/img/product/product4.jpg" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">-52%</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                               title="نمایش سریع"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a href="#">قطعات</a></p>
-                                            <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
-                                                13</a></h4>
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="old_price">310.00 تومان</span>
-                                                <span class="current_price">110.00 تومان</span>
-                                            </div>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
-                                                    به سبد خرید</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                        class="icon-heart"></i></a></li>
-                                                <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                        class="icon-rotate-cw"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="assets/img/product/product9.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="assets/img/product/product10.jpg" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">-56%</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                               title="نمایش سریع"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a href="#">قطعات</a></p>
-                                            <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
-                                                10</a></h4>
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="old_price">420.00 تومان</span>
-                                                <span class="current_price">180.00 تومان</span>
-                                            </div>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
-                                                    به سبد خرید</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                        class="icon-heart"></i></a></li>
-                                                <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                        class="icon-rotate-cw"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="assets/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="assets/img/product/product2.jpg" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">-52%</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                               title="نمایش سریع"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a href="#">قطعات</a></p>
-                                            <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
-                                                17</a></h4>
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="old_price">420.00 تومان</span>
-                                                <span class="current_price">180.00 تومان</span>
-                                            </div>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
-                                                    به سبد خرید</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                        class="icon-heart"></i></a></li>
-                                                <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                        class="icon-rotate-cw"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="assets/img/product/product3.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="assets/img/product/product4.jpg" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_new">جدید</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                               title="نمایش سریع"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a href="#">قطعات</a></p>
-                                            <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
-                                                26</a></h4>
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="old_price">320.00 تومان</span>
-                                                <span class="current_price">120.00 تومان</span>
-                                            </div>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
-                                                    به سبد خرید</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                        class="icon-heart"></i></a></li>
-                                                <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                        class="icon-rotate-cw"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="assets/img/product/product7.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="assets/img/product/product8.jpg" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">-52%</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                               title="نمایش سریع"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a href="#">قطعات</a></p>
-                                            <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
-                                                19</a></h4>
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="old_price">320.00 تومان</span>
-                                                <span class="current_price">120.00 تومان</span>
-                                            </div>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
-                                                    به سبد خرید</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                        class="icon-heart"></i></a></li>
-                                                <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                        class="icon-rotate-cw"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--product area end-->
         </div>
+        <!--product info end-->
+
+        <!--product area start-->
+        <section class="product_area related_products">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title title_style2">
+                        <div class="title_content">
+                            <h2>محصولات <span>مرتبط</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="product_carousel product_details_column5 owl-carousel">
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="assets/img/product/product1.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="assets/img/product/product2.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">-56%</span>
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                           title="نمایش سریع"><i class="icon-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_content_inner">
+                                        <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                        <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
+                                            19</a></h4>
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">320.00 تومان</span>
+                                            <span class="current_price">120.00 تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
+                                                به سبد خرید</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                    class="icon-heart"></i></a></li>
+                                            <li class="compare"><a href="compare.html" title="مقایسه"><i
+                                                    class="icon-rotate-cw"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="assets/img/product/product3.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="assets/img/product/product4.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">-52%</span>
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                           title="نمایش سریع"><i class="icon-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_content_inner">
+                                        <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                        <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
+                                            13</a></h4>
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">310.00 تومان</span>
+                                            <span class="current_price">110.00 تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
+                                                به سبد خرید</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                    class="icon-heart"></i></a></li>
+                                            <li class="compare"><a href="compare.html" title="مقایسه"><i
+                                                    class="icon-rotate-cw"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="assets/img/product/product9.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="assets/img/product/product10.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">-56%</span>
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                           title="نمایش سریع"><i class="icon-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_content_inner">
+                                        <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                        <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
+                                            10</a></h4>
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">420.00 تومان</span>
+                                            <span class="current_price">180.00 تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
+                                                به سبد خرید</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                    class="icon-heart"></i></a></li>
+                                            <li class="compare"><a href="compare.html" title="مقایسه"><i
+                                                    class="icon-rotate-cw"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="assets/img/product/product1.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="assets/img/product/product2.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">-52%</span>
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                           title="نمایش سریع"><i class="icon-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_content_inner">
+                                        <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                        <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
+                                            17</a></h4>
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">420.00 تومان</span>
+                                            <span class="current_price">180.00 تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
+                                                به سبد خرید</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                    class="icon-heart"></i></a></li>
+                                            <li class="compare"><a href="compare.html" title="مقایسه"><i
+                                                    class="icon-rotate-cw"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="assets/img/product/product3.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="assets/img/product/product4.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_new">جدید</span>
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                           title="نمایش سریع"><i class="icon-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_content_inner">
+                                        <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                        <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
+                                            26</a></h4>
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">320.00 تومان</span>
+                                            <span class="current_price">120.00 تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
+                                                به سبد خرید</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                    class="icon-heart"></i></a></li>
+                                            <li class="compare"><a href="compare.html" title="مقایسه"><i
+                                                    class="icon-rotate-cw"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img
+                                            src="assets/img/product/product7.jpg" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img
+                                            src="assets/img/product/product8.jpg" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">-52%</span>
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
+                                           title="نمایش سریع"><i class="icon-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_content_inner">
+                                        <p class="manufacture_product"><a href="#">قطعات</a></p>
+                                        <h4 class="product_name"><a href="product-details.html">عنوان محصول شماره
+                                            19</a></h4>
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">320.00 تومان</span>
+                                            <span class="current_price">120.00 تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart"><a href="cart.html" title="افزودن به سبد خرید">افزودن
+                                                به سبد خرید</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                    class="icon-heart"></i></a></li>
+                                            <li class="compare"><a href="compare.html" title="مقایسه"><i
+                                                    class="icon-rotate-cw"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--product area end-->
+    </div>
     </div>
     <script>
         function reply(id) {

@@ -24,7 +24,7 @@ class Cart:
         cart = self.cart.copy()
 
         for item in cart.values():
-            item['product'] = Product.objects.get(id=int(item['id']))
+            item['product'] = Product.objects.get(id=item['id'])
             item['total'] = int(item['quantity']) * int(item['price'])
             yield item
 
