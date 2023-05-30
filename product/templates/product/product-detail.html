@@ -147,19 +147,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="info" role="tabpanel">
                                     <div class="product_info_content">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                            طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-                                            بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
-                                            بیشتری را برای .</p>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                            طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-                                            بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
-                                            بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
-                                            زبان فارسی ایجاد کرد، در این صورت می توان امید داشت </p>
+                                        <p>{{ product.description }}</p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -185,20 +173,26 @@
                                             <h2>افزودن نظر</h2>
                                         </div>
                                         <div class="product_review_form mb-4">
-                                            <form method="post">
-                                                {% csrf_token %}
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <label for="review_comment">نظر شما </label>
-                                                        <input type="text" id="parent-id" name="parent-id" value=""
-                                                               hidden>
-                                                        <textarea name="comment" id="review_comment"
-                                                                  minlength="3"
-                                                                  placeholder="نظر خود را بنویسید"></textarea>
+                                            {% if request.user.is_authenticated %}
+                                                <form method="post">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <label for="review_comment">نظر شما </label>
+                                                            <input type="text" id="parent-id" name="parent-id" value=""
+                                                                   hidden>
+                                                            <textarea name="comment" id="review_comment"
+                                                                      minlength="3"
+                                                                      placeholder="نظر خود را بنویسید"></textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <button type="submit">ارسال</button>
-                                            </form>
+                                                    <button type="submit">ارسال</button>
+                                                </form>
+                                            {% else %}
+                                                <label for="review_comment">
+                                                برای ثبت نظر ابتدا باید <a href="{% url "accounts:sign-in" %}">وارد حساب کاربری خود شوید</a>
+                                                </label>
+                                            {% endif %}
                                         </div>
                                         {% for comment in comments %}
                                             {% if not comment.parent %}
@@ -558,8 +552,7 @@
         </div>
     </div>
     <script>
-        function reply(id)
-        {
+        function reply(id) {
             document.getElementById("parent-id").value = id;
             document.getElementById("review_comment").placeholder = "پاسخ خود را بنویسید"
             document.getElementById("nav-tab").scrollIntoView();
