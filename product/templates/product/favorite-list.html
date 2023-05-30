@@ -27,14 +27,17 @@
                                             <tbody>
                                             {% for item in favorites %}
                                                 <tr>
-                                                    <td class="product_remove"><a href="{% url 'product:add-favorite' item.id %}">X</a></td>
+                                                    <td class="product_remove"><a
+                                                            href="{% url 'product:add-favorite' item.id %}">X</a></td>
                                                     <td class="product_thumb"><a href="#"><img
-                                                            src="{% static 'img/s-product/product.jpg' %}" alt=""></a>
+                                                            src="{{ item.pictures.first }}" alt=""></a>
                                                     </td>
                                                     <td class="product_name"><a href="#">{{ item.title }}</a></td>
-                                                    <td class="product-price">{{ item.price }} تومان</td>
+                                                    <td class="product-price">{{ item.get_price }}</td>
                                                     <td class="product_quantity">در انبار</td>
-                                                    <td class="product_total"><a href="#">افزودن به سبد خرید</a></td>
+                                                    <td class="product_total"><a
+                                                            href="{% url 'payment:cart-add' item.id %}">افزودن به سبد
+                                                        خرید</a></td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>

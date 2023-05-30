@@ -2,6 +2,7 @@ from django.views.generic import *
 from django.shortcuts import *
 from accounts.mixins import *
 from product.models import *
+from django.db.models import Q
 
 
 # Create your views here.
@@ -43,7 +44,7 @@ class ProductDetailView(View):
         return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
 
 
-class AddFavoriteView(View):
+class AddFavoriteView(RequiredLoginMixin, View):
     def get(self, req, pk):
         try:
             fav = Favorite.objects.get(product_id=pk, user_id=req.user.id)
@@ -59,3 +60,13 @@ class FavoriteListView(RequiredLoginMixin, View):
     def get(self, req, **kwargs):
         favorites = Product.objects.filter(favorites__user=req.user)
         return render(req, self.template_name, {"favorites": favorites})
+
+
+class SearchView(ListView):
+    template_name = 'product/search-result.html'
+    model = Product
+    paginate_by = 10
+
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        return Product.objects.filter(Q(title__icontains=q) | Q(id__icontains=q))

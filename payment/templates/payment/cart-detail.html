@@ -26,44 +26,25 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                    src="assets/img/s-product/product.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">روغن موتور</a></td>
-                                            <td class="product-price">65.00 تومان</td>
-                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100"
-                                                                                                     value="1"
-                                                                                                     type="number"></td>
-                                            <td class="product_total">130.00 تومان</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                    src="assets/img/s-product/product2.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">تایر</a></td>
-                                            <td class="product-price">90.00 تومان</td>
-                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100"
-                                                                                                     value="1"
-                                                                                                     type="number"></td>
-                                            <td class="product_total">180.00 تومان</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                    src="assets/img/s-product/product3.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">کیف دستی</a></td>
-                                            <td class="product-price">80.00 تومان</td>
-                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100"
-                                                                                                     value="1"
-                                                                                                     type="number"></td>
-                                            <td class="product_total">160.00 تومان</td>
-                                        </tr>
-
+                                        {% for item in cart %}
+                                            <tr>
+                                                <td class="product_remove"><a
+                                                        href="{% url 'payment:cart-del' item.id %}"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                                </td>
+                                                <td class="product_thumb"><a
+                                                        href="{% url 'product:product-detail' item.product.id %}"><img
+                                                        src="{{ item.product.pictures.first }}" alt=""></a></td>
+                                                <td class="product_name"><a href="#">{{ item.title }}</a></td>
+                                                <td class="product-price">{{ item.price }}</td>
+                                                <td class="product_quantity"><label>تعداد</label> <input min="1"
+                                                                                                         max="100"
+                                                                                                         value="{{ item.quantity }}"
+                                                                                                         type="number">
+                                                </td>
+                                                <td class="product_total">{{ item.total }}</td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -90,23 +71,50 @@
                                 <div class="coupon_code right">
                                     <h3>مجموع سبد خرید</h3>
                                     <div class="coupon_inner">
-                                        <div class="cart_subtotal">
-                                            <p>جمع کل</p>
-                                            <p class="cart_amount">215.00 تومان</p>
-                                        </div>
+
+                                        {% if cart.total %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">{{ cart.get_total }}</p>
+                                            </div>
+                                        {% else %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">0 تومان </p>
+                                            </div>
+                                        {% endif %}
+
                                         <div class="cart_subtotal ">
                                             <p>هزینه ارسال</p>
                                             <p class="cart_amount"><span> نرخ ثابت:</span> 255.00 تومان</p>
                                         </div>
+
                                         <a href="#">محاسبه حمل و نقل</a>
 
-                                        <div class="cart_subtotal">
-                                            <p>جمع کل</p>
-                                            <p class="cart_amount">215.00 تومان</p>
-                                        </div>
-                                        <div class="checkout_btn">
-                                            <a href="#">رفتن به تسویه حساب</a>
-                                        </div>
+                                        {% if cart.total %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">{{ cart.get_total }}</p>
+                                            </div>
+                                        {% else %}
+                                            <div class="cart_subtotal">
+                                                <p>جمع کل</p>
+                                                <p class="cart_amount">0 تومان </p>
+                                            </div>
+                                        {% endif %}
+
+
+                                        {% if request.user.is_authenticated %}
+                                            <div class="checkout_btn">
+                                                <a href="{% url 'payment:order-creation' %}">ثبت سفارش</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="checkout_btn">
+                                                <a href="{% url 'accounts:sign-in' %}?return_to={% url 'payment:cart-detail' %}">
+                                                    قبل از ثبت سفارش وارد حساب کاربری خود شوید </a>
+                                            </div>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>

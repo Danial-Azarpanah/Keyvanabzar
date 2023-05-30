@@ -8,4 +8,6 @@ urlpatterns = [
 
     path('add-favorite/<str:pk>', views.AddFavoriteView.as_view(), name='add-favorite'),
     path('favorite-list/', views.FavoriteListView.as_view(), name='favorite-list'),
+
+    path('search/', views.SearchView.as_view(), name='search'),
 ]

@@ -114,27 +114,41 @@
                     <div class="col-lg-10 col-md-6 col-sm-6 col-6">
                         <div class="header_right_box">
                             <div class="search_container">
-                                <form action="#">
+
+
+                                <form action="{% url 'product:search' %}">
                                     <div class="search_box">
-                                        <input placeholder="جستجوی محصول ..." type="text">
+                                        <input placeholder="جستجوی محصول ..." type="search" name="q"
+                                               value="{{ request.GET.q }}">
                                         <button type="submit">
                                             <i class="icon-search" style="font-size: larger"></i>
                                         </button>
                                     </div>
                                 </form>
+
                             </div>
                             <div class="header_configure_area">
+
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"><i class="icon-bookmark"></i>
-                                        <span class="wishlist_count">3</span>
+                                    <a href="{% url 'product:favorite-list' %}"><i class="icon-bookmark"></i>
+
+                                        {% for item in request.user.favorites.all %}
+                                            <span class="wishlist_count">{{ request.user.favorites.all.count }}</span>
+                                        {% endfor %}
+
                                     </a>
                                 </div>
+
                                 <div class="mini_cart_wrapper">
                                     <a href="javascript:void(0)">
                                         <i class="icon-shopping-bag2"></i>
                                         <span class="cart_price">152.00 تومان <i
                                                 class="ion-ios-arrow-down"></i></span>
-                                        <span class="cart_count">2</span>
+
+
+                                        <span class="cart_count">0</span>
+
+
                                     </a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
@@ -147,44 +161,37 @@
                                                     <a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                 </div>
                                             </div>
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="{% static "img/s-product/product.jpg" %}"
-                                                                     alt=""></a>
+                                            {% for item in cart %}
+                                                <div class="cart_item">
+                                                    <div class="cart_img">
+                                                        <a href="{% url 'product:product-detail' item.product.id %}"><img
+                                                                src="{{ item.product.pictures.first }}"
+                                                                alt=""></a>
+                                                    </div>
+                                                    <div class="cart_info">
+                                                        <a href="#">{{ item.title }}</a>
+                                                        <p> تعداد: {{ item.quantity }} عدد <span> {{ item.price }} </span></p>
+                                                    </div>
+                                                    <div class="cart_remove">
+                                                        <a href="{% url 'payment:cart-del' item.id %}"><i
+                                                                class="ion-android-close"></i></a>
+                                                    </div>
                                                 </div>
-                                                <div class="cart_info">
-                                                    <a href="#">عنوان محصول</a>
-                                                    <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="{% static "img/s-product/product2.jpg" %}"
-                                                                     alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">عنوان محصول</a>
-                                                    <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
+                                            {% endfor %}
+
 
                                             <div class="mini_cart_table">
-                                                <div class="cart_total">
-                                                    <span>مجموع فرعی:</span>
-                                                    <span class="price">138.00 تومان</span>
-                                                </div>
+
                                                 <div class="cart_total mt-10">
-                                                    <span>جمع کل:</span>
-                                                    <span class="price">138.00 تومان</span>
+                                                    {% if cart.total %}
+                                                        <span>جمع کل:</span>
+                                                        <span class="price">{{ cart.get_total }}</span>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
                                                 <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>

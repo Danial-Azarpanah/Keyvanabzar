@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="shop_banner_thumb">
-                                    <img src="assets/img/bg/banner23.jpg" alt="">
+                                    <img src="{% static 'img/bg/banner23.jpg' %}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -55,9 +55,10 @@
                                     <figure>
                                         <div class="product_thumb">
                                             <a class="primary_img" href="{% url 'product:product-detail' product.id %}"><img
-                                                    src="{% static 'img/product/product1.jpg' %}" alt=""></a>
-                                            <a class="secondary_img" href="product-details.html"><img
-                                                    src="assets/img/product/product2.jpg" alt=""></a>
+                                                    src="{{ product.pictures.first }}" alt=""></a>
+                                            <a class="secondary_img"
+                                               href="{% url 'product:product-detail' product.id %}"><img
+                                                    src="{{ product.pictures.first }}" alt=""></a>
                                             <div class="label_product">
                                                 {% if product.discount %}
                                                     <span class="label_sale">-{{ product.discount }}%</span>
@@ -107,26 +108,20 @@
                                         </div>
                                         <div class="product_content list_content">
                                             <div class="left_caption">
-                                                {#                                                <p class="manufacture_product"><a href="#">قطعات</a></p>#}
+                                                <p class="manufacture_product"><a
+                                                        href="#">{{ product.category.all.first }}</a></p>
                                                 <h4 class="product_name"><a
-                                                        href="product-details.html">{{ product.title }}</a></h4>
-                                                <div class="product_rating">
-                                                    <ul>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                        href="{% url 'product:product-detail' product.id %}">{{ product.title }}</a>
+                                                </h4>
                                                 <div class="price_box">
-                                                    {#                                                    <span class="old_price">320.00 تومان</span>#}
-                                                    <span class="current_price">{{ product.price }} تومان</span>
+
+                                                    {% if product.discount > 0 %}
+                                                        <span class="old_price">{{ product.get_price }}</span>
+                                                        <span class="current_price">{{ product.get_discounted_price }}</span>
+                                                    {% else %}
+                                                        <span class="current_price">{{ product.get_price }}</span>
+                                                    {% endif %}
+
                                                 </div>
                                                 <div class="product_desc">
                                                     <p>{{ product.description }}</p>
@@ -136,9 +131,11 @@
                                                 <p class="text_available">وضعیت موجودی : <span>در انبار</span></p>
                                                 <div class="action_links">
                                                     <ul>
-                                                        <li class="add_to_cart"><a href="cart.html"
-                                                                                   title="افزودن به سبد خرید">افزودن به
-                                                            سبد خرید</a></li>
+
+                                                        <li class="add_to_cart"><a
+                                                                href="{% url 'payment:cart-add' product.id %}">
+                                                            افزودن به سبد خرید</a></li>
+
 
                                                         <li class="wishlist"><a
                                                                 href="{% url 'product:add-favorite' product.id %}"
