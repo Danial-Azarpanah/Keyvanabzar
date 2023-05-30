@@ -30,3 +30,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Favorite)
+admin.site.register(Comment)

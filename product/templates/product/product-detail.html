@@ -185,67 +185,54 @@
 
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     <div class="reviews_wrapper">
-                                        <h2> 1 بررسی برای مبلمان</h2>
-                                        <div class="reviews_comment_box">
-                                            <div class="comment_thmb">
-                                                <img src="assets/img/blog/comment2.jpg" alt="">
-                                            </div>
-                                            <div class="comment_text">
-                                                <div class="reviews_meta">
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p><strong>مدیر سایت </strong>- مهر 12, 1398</p>
-                                                    <span>بسیار بسیار عالی</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="comment_title">
                                             <h2>افزودن نظر</h2>
-                                            <p> آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند </p>
                                         </div>
-                                        <div class="product_rating mb-10">
-                                            <h3>امتیاز شما</h3>
-                                            <ul>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product_review_form">
-                                            <form action="#">
+                                        <div class="product_review_form mb-4">
+                                            <form method="post">
+                                                {% csrf_token %}
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <label for="review_comment">نظر شما </label>
-                                                        <textarea name="comment" id="review_comment"></textarea>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <label for="author">نام</label>
-                                                        <input id="author" type="text">
-
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <label for="email">ایمیل</label>
-                                                        <input id="email" type="text">
+                                                        <input type="text" id="parent-id" name="parent-id" value=""
+                                                               hidden>
+                                                        <textarea name="comment" id="review_comment"
+                                                                  minlength="3"
+                                                                  placeholder="نظر خود را بنویسید"></textarea>
                                                     </div>
                                                 </div>
                                                 <button type="submit">ارسال</button>
                                             </form>
                                         </div>
+                                        {% for comment in comments %}
+                                            {% if not comment.parent %}
+                                                <div class="reviews_comment_box w-100">
+                                                    <div class="comment_text">
+                                                        <div class="reviews_meta mb-2">
+                                                            <p><strong>{{ comment.user.fullname }}</strong>
+                                                                - {{ comment.get_jalali_date }}</p>
+                                                            <span>{{ comment.body }}</span>
+                                                        </div>
+                                                        {% if request.user.is_authenticated %}
+                                                            <button class="btn-dark rounded-pill mb-2"
+                                                                    onclick="reply('{{ comment.id }}')">پاسخ
+                                                            </button>
+                                                        {% endif %}
+                                                        {% for reply in comment.replies.all %}
+                                                            <div class="reviews_comment_box w-100">
+                                                                <div class="comment_text bg-grey">
+                                                                    <div class="reviews_meta">
+                                                                        <p><strong>{{ reply.user.fullname }}</strong>
+                                                                            - {{ reply.get_jalali_date }}</p>
+                                                                        <span>{{ reply.body }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -574,4 +561,12 @@
             <!--product area end-->
         </div>
     </div>
+    <script>
+        function reply(id)
+        {
+            document.getElementById("parent-id").value = id;
+            document.getElementById("review_comment").placeholder = "پاسخ خود را بنویسید"
+            document.getElementById("nav-tab").scrollIntoView();
+        }
+    </script>
 {% endblock %}
