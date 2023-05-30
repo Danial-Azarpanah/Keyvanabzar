@@ -74,7 +74,7 @@
                                         {% if cart.total %}
                                             <div class="cart_subtotal">
                                                 <p>جمع کل</p>
-                                                <p class="cart_amount">{{ cart.total }}</p>
+                                                <p class="cart_amount">{{ cart.get_total }}</p>
                                             </div>
                                         {% else %}
                                             <div class="cart_subtotal">
@@ -93,7 +93,7 @@
                                         {% if cart.total %}
                                             <div class="cart_subtotal">
                                                 <p>جمع کل</p>
-                                                <p class="cart_amount">{{ cart.total }}</p>
+                                                <p class="cart_amount">{{ cart.get_total }}</p>
                                             </div>
                                         {% else %}
                                             <div class="cart_subtotal">
@@ -105,7 +105,7 @@
 
                                         {% if request.user.is_authenticated %}
                                             <div class="checkout_btn">
-                                                <a href="#">ثبت سفارش</a>
+                                                <a href="{% url 'payment:order-creation' %}">ثبت سفارش</a>
                                             </div>
                                         {% else %}
                                             <div class="checkout_btn">

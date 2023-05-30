@@ -35,4 +35,4 @@ class OrderItems(models.Model):
 
     class Meta:
         verbose_name = 'جزئیات سفارش'
-        verbose_name_plural = ' جزئیات سفارش ها'
+        verbose_name_plural = 'جزئیات سفارش'

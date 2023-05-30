@@ -33,6 +33,10 @@ class Cart:
         total = 0
         for item in cart:
             total += int(item['quantity']) * int(item['price'])
+        return total
+
+    def get_total(self):
+        total = self.total()
         return "{:,.0f} تومان ".format(total)
 
     def delete(self, pk):
