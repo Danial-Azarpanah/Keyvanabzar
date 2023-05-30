@@ -52,11 +52,7 @@
                             <form action="#">
 
                                 <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
-                                <div class="product_rating">
-                                    <ul>
-                                        <li class="review"><a href="#">(1 نظر مشتری )</a></li>
-                                    </ul>
-                                </div>
+
                                 <div class="price_box">
                                     {% if product.discount > 0 %}
                                         <span class="old_price">{{ product.get_price }}</span>
@@ -144,7 +140,7 @@
                                     </li>
                                     <li>
                                         <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                           aria-selected="false"> نظرات (1)</a>
+                                           aria-selected="false"> نظرات ({{ comments.all.count }})</a>
                                     </li>
                                 </ul>
                             </div>
