@@ -26,22 +26,23 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for product in cart %}
+                                        {% for item in cart %}
                                             <tr>
                                                 <td class="product_remove"><a
-                                                        href="{% url 'payment:cart-del' product.id %}"><i
+                                                        href="{% url 'payment:cart-del' item.id %}"><i
                                                         class="fa fa-trash-o"></i></a>
                                                 </td>
-                                                <td class="product_thumb"><a href="#"><img
-                                                        src="{{ product.picture }}" alt=""></a></td>
-                                                <td class="product_name"><a href="#">{{ product.title }}</a></td>
-                                                <td class="product-price">{{ product.price }}</td>
+                                                <td class="product_thumb"><a
+                                                        href="{% url 'product:product-detail' item.product.id %}"><img
+                                                        src="{{ item.product.pictures.first }}" alt=""></a></td>
+                                                <td class="product_name"><a href="#">{{ item.title }}</a></td>
+                                                <td class="product-price">{{ item.price }}</td>
                                                 <td class="product_quantity"><label>تعداد</label> <input min="1"
                                                                                                          max="100"
-                                                                                                         value="{{ product.quantity }}"
+                                                                                                         value="{{ item.quantity }}"
                                                                                                          type="number">
                                                 </td>
-                                                <td class="product_total">{{ product.total }}</td>
+                                                <td class="product_total">{{ item.total }}</td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
