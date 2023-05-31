@@ -20,7 +20,6 @@
                                                 <th class="product_thumb">عکس</th>
                                                 <th class="product_name">محصول</th>
                                                 <th class="product-price">قیمت</th>
-                                                <th class="product_quantity">وضعیت سهام</th>
                                                 <th class="product_total">افزودن به سبد خرید</th>
                                             </tr>
                                             </thead>
@@ -38,7 +37,6 @@
                                                     {% else %}
                                                         <td class="product-price">{{ item.get_price }}</td>
                                                     {% endif %}
-                                                    <td class="product_quantity">در انبار</td>
                                                     <td class="product_total"><a
                                                             href="{% url 'payment:cart-add' item.id %}">افزودن به سبد
                                                         خرید</a></td>
@@ -52,20 +50,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="wishlist_share">
-                            <h4>اشتراک گذاری در:</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

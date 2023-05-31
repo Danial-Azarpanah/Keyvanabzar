@@ -10,7 +10,7 @@ from django.db.models import Q
 class ProductListView(ListView):
     template_name = 'product/product-list.html'
     model = Product
-    paginate_by = 10
+    paginate_by = 24
 
 
 class ProductDetailView(View):
@@ -65,7 +65,7 @@ class FavoriteListView(RequiredLoginMixin, View):
 class SearchView(ListView):
     template_name = 'product/search-result.html'
     model = Product
-    paginate_by = 10
+    paginate_by = 24
 
     def get_queryset(self):
         q = self.request.GET.get('q')

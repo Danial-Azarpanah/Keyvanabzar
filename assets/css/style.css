@@ -12717,3 +12717,61 @@ textarea:-ms-input-placeholder {
 .block {
     margin: 1%;
 }
+.action_links ul li.add_to_cart button {
+  padding: 0 26px;
+  height: 40px;
+  line-height: 40px;
+  width: auto;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #febd17;
+  color: #222222;
+}
+
+.action_links ul li.add_to_cart button:hover {
+  background: #999;
+  color: #ffffff;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  .action_links ul li.add_to_cart button {
+    padding: 0 16px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .action_links ul li.add_to_cart button {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .action_links ul li.add_to_cart button {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .action_links ul li.add_to_cart button {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .action_links ul li.add_to_cart button {
+    padding: 0 26px;
+  }
+}
+
+.action_links ul li button {
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  background: #ffffff;
+  display: block;
+}
+
+.action_links ul li button:hover {
+  color: #febd17;
+}
