@@ -149,7 +149,7 @@ body {
     font-style: normal;
     font-weight: 400;
     visibility: visible;
-    color: #222222;
+    color: #1a1a1a;
     font-family: 'Vazir FD-WOL' !important;
     direction: rtl;
 
@@ -396,7 +396,7 @@ textarea:-ms-input-placeholder {
 #scrollUp {
     background: #febd17 none repeat scroll 0 0;
     bottom: 85px;
-    color: #222222;
+    color: #1a1a1a;
     cursor: pointer;
     display: none;
     font-size: 20px;
@@ -408,7 +408,7 @@ textarea:-ms-input-placeholder {
     width: 45px;
     z-index: 9999;
     border-radius: 50%;
-    border: 2px solid #222222;
+    border: 2px solid #1a1a1a;
     -webkit-transition: .3s;
     transition: .3s;
 }
@@ -682,7 +682,7 @@ textarea:-ms-input-placeholder {
     opacity: 0;
     visibility: hidden;
     cursor: crosshair;
-    background: #222222;
+    background: #1a1a1a;
     top: 0;
 }
 
@@ -1048,7 +1048,7 @@ textarea:-ms-input-placeholder {
 }
 
 .sticky_header_right .main_menu nav > ul > li > a {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1089,7 +1089,7 @@ textarea:-ms-input-placeholder {
 }
 
 .main_header {
-    background: #222222;
+    background: #1a1a1a;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1142,7 +1142,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header_account > ul > li:hover > a {
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
@@ -1168,14 +1168,14 @@ textarea:-ms-input-placeholder {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header_account > ul > li > a {
         line-height: 22px;
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .header_account > ul > li > a {
         line-height: 22px;
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
@@ -1236,7 +1236,7 @@ textarea:-ms-input-placeholder {
     white-space: nowrap;
     padding: 8px 20px 8px 8px;
     line-height: 20px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .dropdown_currency li a:hover,
@@ -1322,13 +1322,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header_top_links ul li a {
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .header_top_links ul li a {
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
@@ -1619,12 +1619,12 @@ textarea:-ms-input-placeholder {
     text-align: center;
     width: 50px;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     border-radius: 4px;
 }
 
 .header_wishlist a:hover {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .header_wishlist a i {
@@ -1685,7 +1685,7 @@ textarea:-ms-input-placeholder {
 
 .header_wishlist a span.wishlist_count {
     background: #ffffff;
-    color: #222222;
+    color: #1a1a1a;
     font-size: 13px;
     height: 25px;
     right: -9px;
@@ -1724,7 +1724,7 @@ textarea:-ms-input-placeholder {
 
 .mini_cart_wrapper > a {
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     height: 50px;
     line-height: 50px;
     padding: 0 16px;
@@ -1763,7 +1763,7 @@ textarea:-ms-input-placeholder {
 }
 
 .mini_cart_wrapper > a:hover {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .mini_cart_wrapper > a i.ion-ios-arrow-down {
@@ -1783,7 +1783,7 @@ textarea:-ms-input-placeholder {
 
 .mini_cart_wrapper > a span.cart_count {
     background: #ffffff;
-    color: #222222;
+    color: #1a1a1a;
     font-size: 13px;
     height: 25px;
     right: -9px;
@@ -2030,7 +2030,7 @@ textarea:-ms-input-placeholder {
 .cart_button a.active {
     background: #febd17;
     border-color: #febd17;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 /*header middel css end*/
@@ -2300,22 +2300,22 @@ textarea:-ms-input-placeholder {
 
 .search_box input::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .search_box input::-moz-placeholder {
     /* Firefox 19+ */
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .search_box input:-ms-input-placeholder {
     /* IE 10+ */
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .search_box input:-moz-placeholder {
     /* Firefox 18- */
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .search_box input {
@@ -2323,7 +2323,7 @@ textarea:-ms-input-placeholder {
     background: inherit;
     width: 100%;
     height: 50px;
-    color: #222222;
+    color: #1a1a1a;
     font-size: 14px;
     font-weight: 400;
     padding: 0 20px 0 145px;
@@ -2357,7 +2357,7 @@ textarea:-ms-input-placeholder {
     left: 0;
     height: 100%;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     font-weight: 600;
     padding: 0 20px;
     min-width: 128px;
@@ -2415,13 +2415,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .call_support p {
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .call_support p {
-        color: #222222;
+        color: #1a1a1a;
     }
 }
 
@@ -2482,7 +2482,7 @@ textarea:-ms-input-placeholder {
 
 .categories_title::before {
     content: "\f394";
-    color: #222222;
+    color: #1a1a1a;
     display: inline-block;
     font-family: Ionicons;
     position: absolute;
@@ -2511,7 +2511,7 @@ textarea:-ms-input-placeholder {
     font-size: 14px;
     font-weight: 600;
     line-height: 26px;
-    color: #222222;
+    color: #1a1a1a;
     cursor: pointer;
     margin-bottom: 0;
     display: inline-block;
@@ -2826,7 +2826,7 @@ textarea:-ms-input-placeholder {
 }
 
 .categorie_sub_menu li a {
-    color: #222222;
+    color: #1a1a1a;
     text-transform: capitalize;
     display: block;
     font-size: 13px;
@@ -3137,12 +3137,12 @@ textarea:-ms-input-placeholder {
 }
 
 .menu_two nav > ul > li > a {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .offcanvas_two .canvas_open a {
-    color: #222222;
-    border: 1px solid #222222;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
 }
 
 .offcanvas_two .canvas_open a:hover {
@@ -3209,7 +3209,7 @@ textarea:-ms-input-placeholder {
 
 .color_three .search_box button {
     background: #fcb700;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .color_three .search_box button:hover {
@@ -3218,7 +3218,7 @@ textarea:-ms-input-placeholder {
 }
 
 .color_three .header_wishlist a {
-    color: #222222;
+    color: #1a1a1a;
     background: #fcb700;
 }
 
@@ -3228,7 +3228,7 @@ textarea:-ms-input-placeholder {
 }
 
 .color_three .mini_cart_wrapper > a {
-    color: #222222;
+    color: #1a1a1a;
     background: #fcb700;
 }
 
@@ -3297,7 +3297,7 @@ textarea:-ms-input-placeholder {
 }
 
 .menu_four nav > ul > li > a {
-    color: #222222;
+    color: #1a1a1a;
     line-height: 56px;
 }
 
@@ -3502,7 +3502,7 @@ textarea:-ms-input-placeholder {
     border-radius: 0 4px 4px 0;
     height: 48px;
     line-height: 48px;
-    color: #222222;
+    color: #1a1a1a;
     background: #febd17;
     position: relative;
 }
@@ -3550,7 +3550,7 @@ textarea:-ms-input-placeholder {
     line-height: 48px;
     font-size: 18px;
     border-radius: 4px 0 0 4px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3737,7 +3737,7 @@ textarea:-ms-input-placeholder {
 }
 
 .slider_c_three h1 {
-    color: #222222;
+    color: #1a1a1a;
     font-size: 48px;
     line-height: 43px;
 }
@@ -3778,7 +3778,7 @@ textarea:-ms-input-placeholder {
 }
 
 .slider_c_three p {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .slider_c_three a {
@@ -3796,7 +3796,7 @@ textarea:-ms-input-placeholder {
 
 /*home four css here*/
 .slider_s_four .slider_content a {
-    color: #222222;
+    color: #1a1a1a;
     background: #fcb700;
 }
 
@@ -3811,7 +3811,7 @@ textarea:-ms-input-placeholder {
 
 .slider_s_four .slider_content a i {
     transition: .3s;
-    color: #222222;
+    color: #1a1a1a;
     background: #F3A90A;
 }
 
@@ -4393,7 +4393,7 @@ textarea:-ms-input-placeholder {
     display: inline-block;
     text-align: center;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     border-radius: 2px;
 }
 
@@ -4454,7 +4454,7 @@ textarea:-ms-input-placeholder {
     font-size: 13px;
     font-weight: 600;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .action_links ul li.add_to_cart a:hover {
@@ -5133,7 +5133,7 @@ textarea:-ms-input-placeholder {
 
 .color_three .quick_button a {
     background: #fcb700;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .color_three .quick_button a:hover {
@@ -5151,14 +5151,14 @@ textarea:-ms-input-placeholder {
 
 .color_three .action_links ul li.add_to_cart a {
     background: #fcb700;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .color_three .action_links ul li.add_to_cart a:hover {
     /* background: #febd17;
   color: #ffffff; */
     background: #fcb700;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .color_three .action_links ul li a:hover {
@@ -5929,7 +5929,7 @@ textarea:-ms-input-placeholder {
     padding: 0 20px;
     width: 80px;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     font-size: 12px;
     font-weight: 600;
     height: 100%;
@@ -5942,7 +5942,7 @@ textarea:-ms-input-placeholder {
 
 .subscribe_form form button:hover {
     color: #ffffff;
-    background: #222222;
+    background: #1a1a1a;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -6040,7 +6040,7 @@ textarea:-ms-input-placeholder {
 }
 
 .newsletter_three .subscribe_form form button {
-    color: #222222;
+    color: #1a1a1a;
     background: #fcb700;
 }
 
@@ -6165,11 +6165,11 @@ textarea:-ms-input-placeholder {
 }
 
 .shipping_three .shipping_content h4 {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .shipping_three .shipping_content p {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .shipping_three .shipping_inner {
@@ -6188,11 +6188,11 @@ textarea:-ms-input-placeholder {
 }
 
 .shipping_four .shipping_content h4 {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .shipping_four .shipping_content p {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .shipping_padding .shipping_inner {
@@ -6259,7 +6259,7 @@ textarea:-ms-input-placeholder {
 
 .footer_top {
     padding: 74px 0 72px;
-    border-bottom: 1px solid #2f2f3b;
+    border-bottom: 1px solid #1a1a1a;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -6653,7 +6653,7 @@ textarea:-ms-input-placeholder {
 }
 
 .breadcrumb_content ul li a {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .breadcrumb_content ul li a:hover {
@@ -6905,7 +6905,7 @@ textarea:-ms-input-placeholder {
     padding: 0 20px;
     text-transform: capitalize;
     color: #ffffff;
-    background: #222222;
+    background: #1a1a1a;
     border: 0;
     border-radius: 30px;
     -webkit-transition: 0.3s;
@@ -7372,7 +7372,7 @@ textarea:-ms-input-placeholder {
     font-size: 13px;
     font-weight: 600;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     display: inline-block;
     width: 180px;
     text-align: center;
@@ -7405,7 +7405,7 @@ textarea:-ms-input-placeholder {
     width: inherit;
     height: inherit;
     background: inherit;
-    color: #222222;
+    color: #1a1a1a;
     border-radius: 0;
     text-align: right;
     font-size: 14px;
@@ -7694,7 +7694,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_d_right .product_rating ul li.review a {
-    color: #222222;
+    color: #1a1a1a;
     margin-right: 10px;
     font-size: 14px;
 }
@@ -7870,7 +7870,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_nav ul li a:hover {
-    background: #222222;
+    background: #1a1a1a;
 }
 
 .product_variant.quantity {
@@ -7932,7 +7932,7 @@ textarea:-ms-input-placeholder {
     line-height: 42px;
     text-transform: capitalize;
     min-width: 270px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -8122,7 +8122,7 @@ textarea:-ms-input-placeholder {
 
 .product_review_form button {
     border: none;
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
     font-weight: 600;
     padding: 5px 15px;
@@ -8284,7 +8284,7 @@ textarea:-ms-input-placeholder {
 
 .reviews_meta p strong {
     font-weight: 600;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .reviews_meta .product_rating {
@@ -8776,7 +8776,7 @@ textarea:-ms-input-placeholder {
 .table_desc .cart_page table tbody tr td.product_remove a {
     font-size: 20px;
     font-family: "Rubik", sans-serif;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .table_desc .cart_page table tbody tr td.product_remove a:hover {
@@ -8802,7 +8802,7 @@ textarea:-ms-input-placeholder {
 }
 
 .table_desc .cart_page table tbody tr td.product_name a {
-    color: #222222;
+    color: #1a1a1a;
     text-transform: capitalize;
     font-size: 14px;
     font-weight: 400;
@@ -8814,7 +8814,7 @@ textarea:-ms-input-placeholder {
 
 .table_desc .cart_page table tbody tr td.product-price {
     min-width: 130px;
-    color: #222222;
+    color: #1a1a1a;
     font-size: 16px;
     font-weight: 600;
 }
@@ -8857,7 +8857,7 @@ textarea:-ms-input-placeholder {
 }
 
 .cart_submit button {
-    background: #222222;
+    background: #1a1a1a;
     border: 0;
     color: #ffffff;
     display: inline-block;
@@ -8892,7 +8892,7 @@ textarea:-ms-input-placeholder {
 }
 
 .coupon_inner button {
-    background: #222222;
+    background: #1a1a1a;
     border: 0;
     color: #ffffff;
     display: inline-block;
@@ -8918,7 +8918,7 @@ textarea:-ms-input-placeholder {
     padding: 0 20px;
     margin-left: 20px;
     font-size: 12px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 @media only screen and (max-width: 767px) {
@@ -8964,7 +8964,7 @@ textarea:-ms-input-placeholder {
     color: #ffffff;
     line-height: 36px;
     padding: 5px 15px;
-    background: #222222;
+    background: #1a1a1a;
     font-size: 16px;
     font-weight: 600;
 }
@@ -9024,7 +9024,7 @@ textarea:-ms-input-placeholder {
 
 .checkout_btn a {
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     font-size: 15px;
     padding: 3px 14px;
     line-height: 30px;
@@ -9035,7 +9035,7 @@ textarea:-ms-input-placeholder {
 }
 
 .checkout_btn a:hover {
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
 }
 
@@ -9153,7 +9153,7 @@ textarea:-ms-input-placeholder {
 .form_group button {
     display: inline-block;
     width: 80px;
-    background: #222222;
+    background: #1a1a1a;
     border: 0;
     color: #ffffff;
     font-weight: 600;
@@ -9205,12 +9205,12 @@ textarea:-ms-input-placeholder {
     height: 45px;
     font-size: 12px;
     padding: 0 20px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 #checkout_coupon button {
     width: 130px;
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
     font-weight: 600;
     font-size: 13px;
@@ -9243,7 +9243,7 @@ textarea:-ms-input-placeholder {
     line-height: 30px;
     padding: 5px 10px;
     color: #ffffff;
-    background: #222222;
+    background: #1a1a1a;
     font-weight: 600;
 }
 
@@ -9253,7 +9253,7 @@ textarea:-ms-input-placeholder {
     height: 40px;
     width: 100%;
     padding: 0 20px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .checkout_form .nice-select {
@@ -9286,7 +9286,7 @@ textarea:-ms-input-placeholder {
     padding: 5px 10px;
     text-transform: capitalize;
     color: #ffffff;
-    background: #222222;
+    background: #1a1a1a;
     font-weight: 600;
     -webkit-transition: 0.3s;
     transition: 0.3s;
@@ -9320,7 +9320,7 @@ textarea:-ms-input-placeholder {
     line-height: 30px;
     padding: 5px 10px;
     text-transform: capitalize;
-    color: #222222;
+    color: #1a1a1a;
     background: #febd17;
     font-weight: 600;
     -webkit-transition: 0.3s;
@@ -9336,7 +9336,7 @@ textarea:-ms-input-placeholder {
 }
 
 .order_button button:hover {
-    background: #222222;
+    background: #1a1a1a;
 }
 
 .order-notes textarea {
@@ -9350,7 +9350,7 @@ textarea:-ms-input-placeholder {
     resize: none;
     line-height: 45px;
     width: 100%;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .order-notes label {
@@ -9449,12 +9449,12 @@ textarea:-ms-input-placeholder {
     height: 38px;
     line-height: 18px;
     padding: 10px 20px;
-    color: #222222;
+    color: #1a1a1a;
     border-radius: 3px;
 }
 
 .table_desc.wishlist table tbody tr td.product_total a:hover {
-    background: #222222;
+    background: #1a1a1a;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -9587,7 +9587,7 @@ textarea:-ms-input-placeholder {
     margin-bottom: 20px;
     width: 100%;
     padding: 10px 20px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .contact_message button {
@@ -9597,7 +9597,7 @@ textarea:-ms-input-placeholder {
     padding: 0 30px;
     text-transform: capitalize;
     border: none;
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
     cursor: pointer;
     -webkit-transition: 0.3s;
@@ -9688,7 +9688,7 @@ textarea:-ms-input-placeholder {
 .account_form button {
     background: #febd17;
     border: 0;
-    color: #222222;
+    color: #1a1a1a;
     display: inline-block;
     font-size: 12px;
     font-weight: 600;
@@ -9703,7 +9703,7 @@ textarea:-ms-input-placeholder {
 }
 
 .account_form button:hover {
-    background: #222222;
+    background: #1a1a1a;
     color: #fff
 }
 
@@ -9841,7 +9841,7 @@ textarea:-ms-input-placeholder {
     text-align: right;
     font-size: 14px;
     font-weight: 600;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .card-header.card_accor button.btn-link.collapsed {
@@ -9849,7 +9849,7 @@ textarea:-ms-input-placeholder {
     border: 1px solid #ebebeb;
     width: 100%;
     text-align: right;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .card-header.card_accor button.btn-link i.fa-plus {
@@ -9904,7 +9904,7 @@ textarea:-ms-input-placeholder {
     color: #ffffff;
     font-weight: 600;
     text-transform: capitalize;
-    background: #222222;
+    background: #1a1a1a;
     border-radius: 3px;
 }
 
@@ -9935,7 +9935,7 @@ textarea:-ms-input-placeholder {
 .login_form_container button {
     font-weight: 600;
     border: 0;
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
     height: 30px;
     line-height: 30px;
@@ -10013,7 +10013,7 @@ textarea:-ms-input-placeholder {
     margin-bottom: 20px;
     width: 100%;
     padding: 0 20px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .account_login_form form > div > input {
@@ -10023,7 +10023,7 @@ textarea:-ms-input-placeholder {
     margin-bottom: 20px;
     width: 100%;
     padding: 0 20px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .account_login_form form span.custom_checkbox {
@@ -10436,13 +10436,13 @@ textarea:-ms-input-placeholder {
 }
 
 .panel-heading .panel-title a[aria-expanded="true"]::before {
-    background: #222222;
+    background: #1a1a1a;
     color: #febd17;
 }
 
 .faq-style-wrap .panel-title a[aria-expanded="true"] {
     border-radius: 3px 3px 0 0;
-    color: #222222;
+    color: #1a1a1a;
     background: #febd17;
 }
 
@@ -10786,7 +10786,7 @@ textarea:-ms-input-placeholder {
 }
 
 .readmore_button a:hover {
-    background: #222222;
+    background: #1a1a1a;
 }
 
 @media only screen and (max-width: 767px) {
@@ -10850,7 +10850,7 @@ textarea:-ms-input-placeholder {
     height: 35px;
     border: 1px solid #ebebeb;
     background: #fff;
-    color: #222222;
+    color: #1a1a1a;
     width: 100%;
     margin-bottom: 20px;
     padding: 0 15px;
@@ -11431,7 +11431,7 @@ textarea:-ms-input-placeholder {
     padding: 2px 10px;
     border-radius: 3px;
     color: #fff;
-    background: #222222;
+    background: #1a1a1a;
     display: block;
     font-size: 13px;
 }
@@ -11494,7 +11494,7 @@ textarea:-ms-input-placeholder {
 .comments_form form button {
     border: 0;
     line-height: 36px;
-    background: #222222;
+    background: #1a1a1a;
     font-weight: 600;
 }
 
@@ -11574,7 +11574,7 @@ textarea:-ms-input-placeholder {
 }
 
 .related_content h4 a {
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .related_content h4 a:hover {
@@ -11743,7 +11743,7 @@ textarea:-ms-input-placeholder {
 }
 
 .modal_price span.old_price {
-    color: #222222;
+    color: #1a1a1a;
     font-size: 14px;
     font-weight: 400;
     text-decoration: line-through;
@@ -11803,7 +11803,7 @@ textarea:-ms-input-placeholder {
 
 .modal_add_to_cart form button {
     background: none;
-    border: 1px solid #222222;
+    border: 1px solid #1a1a1a;
     margin-right: 10px;
     font-size: 12px;
     font-weight: 700;
@@ -11811,7 +11811,7 @@ textarea:-ms-input-placeholder {
     width: 230px;
     line-height: 18px;
     padding: 10px 15px;
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
     -webkit-transition: 0.3s;
     transition: 0.3s;
@@ -12007,7 +12007,7 @@ textarea:-ms-input-placeholder {
     left: 0;
     height: 100%;
     width: 110px;
-    background: #222222;
+    background: #1a1a1a;
     cursor: pointer;
     color: #ffffff;
     font-size: 12px;
@@ -12059,7 +12059,7 @@ textarea:-ms-input-placeholder {
     font-size: 13px;
     text-transform: capitalize;
     padding: 6px 12px;
-    background: #222222;
+    background: #1a1a1a;
     font-weight: 600;
     line-height: 17px;
     color: #ffffff;
@@ -12156,7 +12156,7 @@ textarea:-ms-input-placeholder {
     padding: 0 30px 0 60px;
     background: #f8f8f8;
     border: 1px solid #ddd;
-    color: #222222;
+    color: #1a1a1a;
     height: 40px;
     width: 100%;
     border-radius: 3px;
@@ -12202,7 +12202,7 @@ textarea:-ms-input-placeholder {
 }
 
 .error_form a:hover {
-    background: #222222;
+    background: #1a1a1a;
 }
 
 /*404 page css end*/
@@ -12324,11 +12324,11 @@ textarea:-ms-input-placeholder {
     width: 170px;
     padding: 10px 6px;
     transition: all 0.7s;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .compare-table .table tbody tr td.pro-addtocart .add-to-cart:hover {
-    background: #222222;
+    background: #1a1a1a;
     color: #fff;
 }
 
@@ -12365,7 +12365,7 @@ textarea:-ms-input-placeholder {
 
 .compare-table .table tbody tr td.pro-ratting a {
     font-size: 14px;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .compare-table .table tbody tr td.pro-ratting a:hover {
@@ -12625,7 +12625,7 @@ textarea:-ms-input-placeholder {
     font-size: 14px;
     font-weight: 600;
     background: inherit;
-    color: #222222;
+    color: #1a1a1a;
 }
 
 .coming_soon_newsletter .subscribe_form form button:hover {
@@ -12697,12 +12697,12 @@ textarea:-ms-input-placeholder {
     padding: 0 50px;
     display: inline-block;
     background: #febd17;
-    color: #222222;
+    color: #1a1a1a;
     border-radius: 5px;
 }
 
 .coming_soon_link ul li a:hover {
-    background: #222222;
+    background: #1a1a1a;
     color: #ffffff;
 }
 
@@ -12726,7 +12726,7 @@ textarea:-ms-input-placeholder {
   font-size: 13px;
   font-weight: 600;
   background: #febd17;
-  color: #222222;
+  color: #1a1a1a;
 }
 
 .action_links ul li.add_to_cart button:hover {
