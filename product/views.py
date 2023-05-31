@@ -18,7 +18,7 @@ class ProductDetailView(View):
     def get(self, request, pk):
         product = get_object_or_404(Product, id=pk)
         spec_list = product.specifications
-        comments = Comment.objects.all()
+        comments = Comment.objects.filter(product=product)
         fields_with_values = []
         for field in spec_list._meta.fields[2:]:
             value = getattr(spec_list, field.name)
