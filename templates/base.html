@@ -108,7 +108,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4">
                         <div class="logo">
-                            <a href="index.html"><img src="{% static "img/logo/logo.png" %}" alt=""></a>
+                            <a href="{% url "home:home" %}"><img src="{% static "img/logo/logo.png" %}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-6 col-sm-6 col-6">
@@ -140,16 +140,18 @@
                                 </div>
 
                                 <div class="mini_cart_wrapper">
-                                    <a href="javascript:void(0)">
-                                        <i class="icon-shopping-bag2"></i>
-                                        <span class="cart_price">152.00 تومان <i
-                                                class="ion-ios-arrow-down"></i></span>
+                                    {% if cart.len %}
+                                        <a href="javascript:void(0)">
+                                            <i class="icon-shopping-bag2"></i>
+                                            <span class="cart_price">{{ cart.get_total }}<i
+                                                    class="ion-ios-arrow-down"></i></span>
 
 
-                                        <span class="cart_count">0</span>
+                                            <span class="cart_count">{{ cart.len }}</span>
 
 
-                                    </a>
+                                        </a>
+                                    {% endif %}
                                     <!--mini cart-->
                                     <div class="mini_cart">
                                         <div class="mini_cart_inner">
@@ -170,7 +172,8 @@
                                                     </div>
                                                     <div class="cart_info">
                                                         <a href="#">{{ item.title }}</a>
-                                                        <p> تعداد: {{ item.quantity }} عدد <span> {{ item.price }} </span></p>
+                                                        <p> تعداد: {{ item.quantity }} عدد
+                                                            <span> {{ item.formatted_total }} </span></p>
                                                     </div>
                                                     <div class="cart_remove">
                                                         <a href="{% url 'payment:cart-del' item.id %}"><i
@@ -222,27 +225,23 @@
                                 <h2 class="categori_toggle">همه دسته بندی ها</h2>
                             </div>
                             <div class="categories_menu_toggle">
-
                                 <ul>
                                     {% for category in categories %}
-                                        {% if category.parent == None %}
+                                        {% if not category.parent %}
                                             <li class="menu_item_children"><a href="#">{{ category.title }}<i
                                                     class="fa fa-angle-left"></i></a>
-                                                {% for child in category.children.all %}
-                                                    <ul class="categories_mega_menu">
-                                                        <li class="menu_item_children"><a
-                                                                href="#">{{ category.title }}</a>
-                                                            <ul class="categorie_sub_menu">
-                                                                <li><a href="#">{{ child.title }}</a></li>
-                                                            </ul>
-                                                        </li>
+                                                <ul class="categories_mega_menu">
+                                                    <ul class="categorie_sub_menu">
+                                                        {% for child in category.children.all %}
+                                                            <li><a href="#">{{ child.title }}</a></li>
+                                                        {% endfor %}
                                                     </ul>
-                                                {% endfor %}
+                                            </li>
+                                            </ul>
                                             </li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
-
                             </div>
                         </div>
                     </div>

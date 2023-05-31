@@ -35,14 +35,14 @@
                                                 <td class="product_thumb"><a
                                                         href="{% url 'product:product-detail' item.product.id %}"><img
                                                         src="{{ item.product.pictures.first }}" alt=""></a></td>
-                                                <td class="product_name"><a href="#">{{ item.title }}</a></td>
-                                                <td class="product-price">{{ item.price }}</td>
+                                                <td class="product_name"><a href="{% url "product:product-detail" item.product.id %}">{{ item.title }} - {{ item.id }}</a></td>
+                                                <td class="product-price">{{ item.formatted_price }}</td>
                                                 <td class="product_quantity"><label>تعداد</label> <input min="1"
                                                                                                          max="100"
                                                                                                          value="{{ item.quantity }}"
                                                                                                          type="number">
                                                 </td>
-                                                <td class="product_total">{{ item.total }}</td>
+                                                <td class="product_total">{{ item.formatted_total }}</td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
