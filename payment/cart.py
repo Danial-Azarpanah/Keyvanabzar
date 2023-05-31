@@ -48,6 +48,9 @@ class Cart:
         total = self.total()
         return "{:,.0f} تومان ".format(total)
 
+    def len(self):
+        return len(self.cart)
+
     def delete(self, pk):
         if pk in self.cart:
             del self.cart[pk]

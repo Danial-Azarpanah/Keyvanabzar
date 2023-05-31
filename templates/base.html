@@ -142,11 +142,11 @@
                                 <div class="mini_cart_wrapper">
                                     <a href="javascript:void(0)">
                                         <i class="icon-shopping-bag2"></i>
-                                        <span class="cart_price">152.00 تومان <i
+                                        <span class="cart_price">{{ cart.get_total }}<i
                                                 class="ion-ios-arrow-down"></i></span>
 
 
-                                        <span class="cart_count">0</span>
+                                        <span class="cart_count">{{ cart.len }}</span>
 
 
                                     </a>
@@ -170,7 +170,7 @@
                                                     </div>
                                                     <div class="cart_info">
                                                         <a href="#">{{ item.title }}</a>
-                                                        <p> تعداد: {{ item.quantity }} عدد <span> {{ item.price }} </span></p>
+                                                        <p> تعداد: {{ item.quantity }} عدد <span> {{ item.formatted_total }} </span></p>
                                                     </div>
                                                     <div class="cart_remove">
                                                         <a href="{% url 'payment:cart-del' item.id %}"><i
