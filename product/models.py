@@ -30,7 +30,7 @@ class Product(models.Model):
     country = models.CharField("کشور", max_length=50)
     description = models.TextField('توضیحات')
     price = models.PositiveIntegerField('قیمت (ریال)', default=0)
-    discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
+    discount = models.PositiveIntegerField('درصد تخفیف', default=0)
     weight = models.CharField("وزن", max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
 
