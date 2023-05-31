@@ -2645,7 +2645,7 @@ textarea:-ms-input-placeholder {
 .categories_menu_toggle > ul > li ul.categories_mega_menu {
     position: absolute;
     right: 120%;
-    width: 720px;
+    width: 250px;
     border: 1px solid #ebebeb;
     background: #fff;
     padding: 25px 20px 23px;
