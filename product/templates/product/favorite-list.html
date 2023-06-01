@@ -27,10 +27,13 @@
                                             <tr>
                                                 <td class="product_remove"><a
                                                         href="{% url 'product:add-favorite' item.id %}">X</a></td>
-                                                <td class="product_thumb"><a href="#"><img
+                                                <td class="product_thumb"><a
+                                                        href="{% url "product:product-detail" item.id %}"><img
                                                         src="{{ item.pictures.first }}" alt=""></a>
                                                 </td>
-                                                <td class="product_name"><a href="#">{{ item.title }}</a></td>
+                                                <td class="product_name"><a
+                                                        href="{% url "product:product-detail" item.id %}">{{ item.title }}</a>
+                                                </td>
                                                 {% if item.discount > 0 %}
                                                     <td class="product-price">{{ item.get_discounted_price }}</td>
                                                 {% else %}

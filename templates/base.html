@@ -228,12 +228,15 @@
                                 <ul>
                                     {% for category in categories %}
                                         {% if not category.parent %}
-                                            <li class="menu_item_children"><a href="#">{{ category.title }}<i
+                                            <li class="menu_item_children"><a
+                                                    href="{% url "product:category-detail" category.slug %}">{{ category.title }}<i
                                                     class="fa fa-angle-left"></i></a>
                                                 <ul class="categories_mega_menu">
                                                     <ul class="categorie_sub_menu">
                                                         {% for child in category.children.all %}
-                                                            <li><a href="#">{{ child.title }}</a></li>
+                                                            <li>
+                                                                <a href="{% url "product:category-detail" child.slug %}">{{ child.title }}</a>
+                                                            </li>
                                                         {% endfor %}
                                                     </ul>
                                             </li>
