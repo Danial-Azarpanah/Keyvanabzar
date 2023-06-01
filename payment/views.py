@@ -72,7 +72,7 @@ class ApplyDiscountCodeView(View):
 
 
 # ZARIN PAL INFORMATION
-MERCHANT = "20d2618a-785f-4d2c-ae9a-2e726d1f3c3d"
+MERCHANT = ""
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
 ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
@@ -87,10 +87,11 @@ CallbackURL = "http://127.0.0.1:8000/payment/order/verify/"
 class SendRequestView(View):
     def post(self, request, pk):
         order = get_object_or_404(Order, id=pk)
+        total_price = order.total_price * 10
         request.session['order_id'] = str(order.id)
         req_data = {
             "merchant_id": MERCHANT,
-            "amount": order.total_price,
+            "amount": total_price,
             "callback_url": CallbackURL,
             "description": description,
             "metadata": {"mobile": request.user.phone_number}
