@@ -9455,6 +9455,7 @@ textarea:-ms-input-placeholder {
 
 .table_desc.wishlist table tbody tr td.product_total a:hover {
     background: #1a1a1a;
+    color: white;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
