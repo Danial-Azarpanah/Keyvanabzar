@@ -65,7 +65,7 @@ class FavoriteListView(RequiredLoginMixin, View):
 class SearchView(ListView):
     template_name = 'product/search-result.html'
     model = Product
-    paginate_by = 24
+    paginate_by = 1
 
     def get_queryset(self):
         q = self.request.GET.get('q')

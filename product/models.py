@@ -184,8 +184,15 @@ class Comment(models.Model):
 
     def get_jalali_date(self):
         return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
-      
-      
+
+    def __str__(self):
+        return f' نظر {self.body[:30]}  توسط کاربر  {self.user.phone_number}'
+
+    class Meta:
+        verbose_name = 'نظر'
+        verbose_name_plural = 'نظرات'
+
+
 class DiscountCode(models.Model):
     name = models.CharField('نام کد تخفیف', max_length=30, )
     percent = models.PositiveIntegerField('درصد', default=0)
