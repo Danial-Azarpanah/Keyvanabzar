@@ -14,6 +14,9 @@ class Order(models.Model):
     def __str__(self):
         return f'{self.user}'
 
+    def get_total_price(self):
+        return "{:,.0f} تومان ".format(self.total_price)
+
     def get_jalali_date(self):
         return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
 

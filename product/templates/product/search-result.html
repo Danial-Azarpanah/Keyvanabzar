@@ -124,24 +124,31 @@
                                 <ul>
 
                                     {% if page_obj.has_previous %}
-                                        <li class="next"><a href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                        <li class="next"><a href="?page=
+
+                                                {{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
 
                                     {% for i in paginator.page_range %}
                                         {% if page_obj.number == i %}
-                                            <a href="?page={{ i }}">
+                                            <a href="?page=
+                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
                                                 <li class="current">{{ i }}</li>
                                             </a>
                                         {% else %}
-                                            <a href="?page={{ i }}">
+                                            <a href="?page=
+                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
                                         {% endif %}
                                     {% endfor %}
 
                                     {% if page_obj.has_next %}
-                                        <li class="next"><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                                        <li class="next">
+                                            <a href="?page=
+                                                    {{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">بعدی</a>
+                                        </li>
                                     {% endif %}
 
                                 </ul>

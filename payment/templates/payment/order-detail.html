@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>بررسی</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--Checkout page section-->
+    <div class="checkout_page_bg">
+        <div class="container">
+            <div class="Checkout_section" id="accordion">
+                <div class="checkout_form">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mx-auto">
+                            <div class="checkout_form_right">
+
+                                <h3> سفارش شما</h3>
+                                <div class="order_table table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>محصول</th>
+                                            <th>مجموع</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for item in order.items.all %}
+                                            <tr>
+
+                                                <td> {{ item.product.title }} </td>
+
+                                                {% if item.product.discount %}
+                                                    <td>{{ item.product.get_discounted_price }}</td>
+                                                {% else %}
+                                                    <td>{{ item.product.get_price }}</td>
+                                                {% endif %}
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                        <tfoot>
+
+
+                                        <tr>
+                                            <th>هزینه ارسال</th>
+                                            <td><strong>5.00 تومان</strong></td>
+                                        </tr>
+
+                                        {% if order.total_price %}
+                                            <tr class="order_total">
+                                                <th>مجموع کل سبد خرید</th>
+                                                <td>{{ order.get_total_price }}</td>
+                                            </tr>
+                                        {% endif %}
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="payment_method">
+
+                                    {% for error in messages %}
+                                        <p class=''>{{ error }}</p>
+                                    {% endfor %}
+
+                                    <div class="mb-4">
+
+                                        <form action="{% url 'payment:apply-discount-code' order.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input placeholder="کد تخفیف" type="text" style="width: 50%"
+                                                   name="discount_code">
+                                            <button type="submit" class="btn btn-dark">اعمال کد تخفیف</button>
+                                        </form>
+
+                                    </div>
+
+                                    <div class="order_button">
+                                        <button type="submit">پرداخت صورت حساب</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Checkout page section end-->
+{% endblock %}

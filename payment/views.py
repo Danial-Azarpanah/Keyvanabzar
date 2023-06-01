@@ -1,8 +1,9 @@
-from product.models import Product
+from django.contrib import messages
 from django.views.generic import *
 from django.shortcuts import *
 from .cart import Cart
 from .models import *
+from .messages import *
 
 
 # Create your views here.
@@ -40,4 +41,27 @@ class OrderCreationView(View):
         for item in cart:
             OrderItems.objects.create(order=order, product=item['product'], price=item['price'])
         cart.del_cart()
-        return redirect('payment:cart-detail')
+        return redirect('payment:order-detail', order.id)
+
+
+class OrderDetailView(DetailView):
+    template_name = 'payment/order-detail.html'
+    model = Order
+
+
+class ApplyDiscountCodeView(View):
+    def post(self, request, pk):
+        code = request.POST.get('discount_code')
+        order = get_object_or_404(Order, id=pk)
+        discount_code = get_object_or_404(DiscountCode, name=code)
+        if discount_code.quantity == 0:
+            messages.error(request, CODE_NOT_EXISTS, 'danger')
+            return redirect('payment:order-detail', order.id)
+
+        # Apply discount code process
+        order.total_price -= order.total_price * discount_code.percent / 100
+        order.save()
+        discount_code.quantity -= 1
+        discount_code.save()
+        messages.error(request, f' کد تخفیف {discount_code.percent} درصدی با موفقیت روی سفارش شما اعمال شد ')
+        return redirect('payment:order-detail', order.id)
