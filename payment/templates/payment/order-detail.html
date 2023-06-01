@@ -74,10 +74,22 @@
                                     </table>
                                 </div>
                                 <div class="payment_method">
+
+                                    {% for error in messages %}
+                                        <p class=''>{{ error }}</p>
+                                    {% endfor %}
+
                                     <div class="mb-4">
-                                        <input placeholder="کد تخفیف" type="text" style="width: 50%">
-                                        <button type="submit" class="btn btn-dark">اعمال کد تخفیف</button>
+
+                                        <form action="{% url 'payment:apply-discount-code' order.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input placeholder="کد تخفیف" type="text" style="width: 50%"
+                                                   name="discount_code">
+                                            <button type="submit" class="btn btn-dark">اعمال کد تخفیف</button>
+                                        </form>
+
                                     </div>
+
                                     <div class="order_button">
                                         <button type="submit">پرداخت صورت حساب</button>
                                     </div>
