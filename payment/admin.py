@@ -11,6 +11,7 @@ class OrderItemAdmin(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'is_paid', 'get_jalali_date')
+    list_display = ('user', 'is_paid', 'get_jalali_date', 'tracking_code')
     list_filter = ('is_paid',)
     inlines = (OrderItemAdmin,)
+    search_fields = ('tracking_code',)

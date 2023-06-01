@@ -10,6 +10,7 @@ class Order(models.Model):
     is_paid = models.BooleanField('پرداخت', default=False)
     total_price = models.PositiveIntegerField('قیمت کل')
     created_at = models.DateTimeField('تاریخ ثبت سفارش در', auto_now_add=True)
+    tracking_code = models.IntegerField('کد رهگیری', editable=False)
 
     def __str__(self):
         return f'{self.user}'
@@ -24,7 +25,7 @@ class Order(models.Model):
 
     class Meta:
         verbose_name = 'سفارش'
-        verbose_name_plural = 'سفارش ها'
+        verbose_name_plural = 'سفارشات'
         ordering = ('-created_at',)
 
 

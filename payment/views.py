@@ -4,6 +4,7 @@ from django.shortcuts import *
 from .cart import Cart
 from .models import *
 from .messages import *
+from random import randint
 
 
 # Create your views here.
@@ -36,8 +37,9 @@ class CartDeleteView(View):
 
 class OrderCreationView(View):
     def get(self, request):
+        tracking_code = randint(100000, 999999)
         cart = Cart(request)
-        order = Order.objects.create(user=request.user, total_price=cart.total())
+        order = Order.objects.create(user=request.user, total_price=cart.total(), tracking_code=tracking_code)
         for item in cart:
             OrderItems.objects.create(order=order, product=item['product'], price=item['price'])
         cart.del_cart()
