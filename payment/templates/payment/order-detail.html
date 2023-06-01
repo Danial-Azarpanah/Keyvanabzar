@@ -90,12 +90,22 @@
 
                                     </div>
 
-                                    <form action="{% url 'payment:send-request' order.pk %}" method="post">
-                                        {% csrf_token %}
+                                    {% if not request.user.addresses.all %}
+
                                         <div class="order_button">
-                                            <button type="submit">پرداخت صورت حساب</button>
+                                            <button type="submit">لطفا یک آدرس برای سفارش خود ثبت کنید</button>
                                         </div>
-                                    </form>
+
+                                    {% else %}
+
+                                        <form action="{% url 'payment:send-request' order.pk %}" method="post">
+                                            {% csrf_token %}
+                                            <div class="order_button">
+                                                <button type="submit">پرداخت صورت حساب</button>
+                                            </div>
+                                        </form>
+
+                                    {% endif %}
 
                                 </div>
 

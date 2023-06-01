@@ -10,8 +10,6 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractBaseUser):
     phone_number = models.CharField("شماره موبایل", max_length=11, unique=True)
     fullname = models.CharField('نام و نام خوانوادگی', max_length=100)
-    address = models.TextField("آدرس", null=True, blank=True)
-    postal_code = models.CharField("کد پستی", null=True, blank=True, max_length=20)
     date_joined = models.DateTimeField("تاریخ عضویت", auto_now_add=True)
 
     is_active = models.BooleanField('وضعیت کاربر', default=True)
@@ -73,3 +71,19 @@ class EditedUser(Otp):
     class Meta:
         verbose_name = "کد تایید ویرایش پروفایل"
         verbose_name_plural = "کدهای تایید ویرایش پروفایل"
+
+
+class Address(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses', verbose_name='کاربر')
+    city = models.CharField('شهر', max_length=55)
+    address = models.CharField('آدرس', max_length=300)
+    postal_code = models.CharField('کد پستی', null=True, blank=True, max_length=20)
+    fullname = models.CharField('نام و نام خانوادگی', max_length=55)
+    phone_number = models.CharField('شماره تماس', max_length=11)
+
+    def __str__(self):
+        return f"{self.address}  - - - {self.user.fullname}"
+
+    class Meta:
+        verbose_name = 'آدرس'
+        verbose_name_plural = 'آدرس ها'
