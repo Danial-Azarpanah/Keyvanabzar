@@ -90,9 +90,13 @@
 
                                     </div>
 
-                                    <div class="order_button">
-                                        <button type="submit">پرداخت صورت حساب</button>
-                                    </div>
+                                    <form action="{% url 'payment:send-request' order.pk %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="order_button">
+                                            <button type="submit">پرداخت صورت حساب</button>
+                                        </div>
+                                    </form>
+
                                 </div>
 
                             </div>
