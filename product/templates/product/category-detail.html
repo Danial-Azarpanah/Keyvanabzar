@@ -51,7 +51,7 @@
                     </div>
                     <!--shop toolbar end-->
                     <div class="row shop_wrapper">
-                        {% for product in product_list %}
+                        {% for product in products %}
                             <div class="col-lg-3 col-md-4 col-12 ">
                                 <article class="single_product">
                                     <figure>
@@ -70,8 +70,7 @@
                                         <div class="product_content grid_content">
                                             <div class="product_content_inner">
                                                 <p class="manufacture_product"><a
-                                                        href="{% url "product:category-detail" product.category.first.slug %}">{{ product.category.first }}</a>
-                                                </p>
+                                                        href="#">{{ product.category.first }}</a></p>
                                                 <h4 class="product_name"><a
                                                         href="{% url "product:product-detail" product.id %}">
                                                     {{ product.title }} - {{ product.id }}
@@ -98,9 +97,8 @@
                                                                    name="quantity" hidden>
                                                             <button class="button" type="submit"
                                                                     style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد
-                                                                خرید
-                                                            </button>
+                                                                title="افزودن به سبد خرید">افزودن به سبد
+                                                            خرید</button>
                                                         </form>
                                                     </li>
                                                     <li class="wishlist"><a
@@ -157,18 +155,18 @@
                         <div class="widget_list widget_categories">
                             <h3>دسته بندی ها</h3>
                             <ul>
-                                {% for category in categories %}
-                                    {% if not category.parent %}
-                                        <li class="widget_sub_categories"><a
-                                                href="javascript:void(0)">{{ category.title }}</a>
-                                            <ul class="widget_dropdown_categories">
-                                                {% for child in category.children.all %}
-                                                    <li><a href="{% url "product:category-detail" child.slug %}">{{ child.title }}</a></li>
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
+                                <li><a href="#">دوربین‌ها و دوربین‌های فیلم‌برداری</a></li>
+                                <li class="widget_sub_categories"><a href="javascript:void(0)">کامپیوتر و شبکه</a>
+                                    <ul class="widget_dropdown_categories">
+                                        <li><a href="#">کامپیوتر</a></li>
+                                        <li><a href="#">شبکه کردن</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">بازی و کنسول</a></li>
+                                <li><a href="#">هدفون و بلندگو</a></li>
+                                <li><a href="#">فیلم‌ها و بازی‌های ویدیویی</a></li>
+                                <li><a href="#">تلفن هوشمند</a></li>
+                                <li><a href="#">دسته بندی نشده</a></li>
                             </ul>
                         </div>
                         <div class="widget_list widget_filter">

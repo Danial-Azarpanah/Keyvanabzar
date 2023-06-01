@@ -1,16 +1,26 @@
-from django.views.generic import *
-from django.shortcuts import *
-from accounts.mixins import *
 from product.models import *
+from accounts.mixins import *
+from django.shortcuts import *
 from django.db.models import Q
+from django.views.generic import *
+from django.core.paginator import Paginator
 
 
-# Create your views here.
+class ProductListView(View):
+    """
+    View for showing all products
+    """
+    def get(self, request):
+        categories = Category.objects.all()
+        products = Product.objects.all()
 
-class ProductListView(ListView):
-    template_name = 'product/product-list.html'
-    model = Product
-    paginate_by = 24
+        # pagination
+        page_number = request.GET.get('page')
+        paginator = Paginator(products, 24)
+        objects_list = paginator.get_page(page_number)
+
+        context = {"products": objects_list, "categories": categories}
+        return render(request, 'product/product-list.html', context)
 
 
 class ProductDetailView(View):
@@ -70,3 +80,23 @@ class SearchView(ListView):
     def get_queryset(self):
         q = self.request.GET.get('q')
         return Product.objects.filter(Q(title__icontains=q) | Q(id__icontains=q))
+
+
+class CategoryDetailView(View):
+    """
+    View for returning products
+    based on their category
+    """
+
+    def get(self, request, pk):
+        category = get_object_or_404(Category, slug=pk)
+        products = Product.objects.filter(category__title=category)
+
+        # pagination
+        page_number = request.GET.get('page')
+        paginator = Paginator(products, 24)
+        objects_list = paginator.get_page(page_number)
+
+        context = {"products": objects_list, "category": category}
+        return render(request, 'product/category-detail.html', context)
+
