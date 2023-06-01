@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="">خانه</a></li>
+                            <li>بررسی</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--Checkout page section-->
+    <div class="checkout_page_bg">
+        <div class="container">
+            <div class="Checkout_section" id="accordion">
+                <div class="checkout_form">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mx-auto">
+                            <div class="checkout_form_left">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <h3>اضافه کردن آدرس جدید</h3>
+
+                                    <div class="row">
+                                        <div class="col-12 mb-20">
+                                            <label> نام و نام خانوادگی <span>*</span></label>
+                                            {{ form.fullname }}
+                                        </div>
+
+                                        <div class="col-12 mb-20">
+                                            <label> آدرس <span>*</span></label>
+                                            {{ form.address }}
+                                        </div>
+
+                                        <div class="col-12 mb-20">
+                                            <label> کد پستی <span>*</span></label>
+                                            {{ form.postal_code }}
+                                        </div>
+
+                                        <div class="col-lg-6 mb-20">
+                                            <label> شماره تماس <span>*</span></label>
+                                            {{ form.phone_number }}
+
+                                        </div>
+                                        <div class="col-lg-6 mb-20">
+                                            <label> آدرس ایمیل </label>
+                                            {{ form.email }}
+                                        </div>
+
+                                        <div class="order_button">
+                                            <button type="submit"> ثبت آدرس</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Checkout page section end-->
+
+{% endblock %}

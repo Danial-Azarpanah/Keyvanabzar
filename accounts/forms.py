@@ -176,3 +176,9 @@ class ResetPasswordOtpForm(CheckOtpForm):
             raise ValidationError("گذرواژه‌ها یکسان نیستند! دوباره سعی نمائید")
         if len(password) < 8:
             raise ValidationError("طول گذرواژه باید حداقل ۸ کاراکتر باشد!")
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        exclude = ('user',)

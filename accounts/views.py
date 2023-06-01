@@ -216,3 +216,19 @@ class ResetPasswordOtpView(FormView):
         otp = Otp.objects.get(token=token)
         context["user"] = User.objects.get(phone_number=otp.phone_number)
         return context
+
+
+class AddAddressView(FormView):
+    template_name = 'accounts/add-address.html'
+    form_class = AddressForm
+
+    def post(self, *args, **kwargs):
+        form = self.form_class(self.request.POST)
+        next_url = self.request.GET.get('return_to')
+        if form.is_valid():
+            address = form.save(commit=False)
+            address.user = self.request.user
+            address.save()
+            if next_url:
+                return redirect(next_url)
+        return render(self.request, self.template_name, {'form': form})

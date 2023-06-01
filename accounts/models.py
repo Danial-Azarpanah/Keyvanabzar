@@ -75,11 +75,11 @@ class EditedUser(Otp):
 
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses', verbose_name='کاربر')
-    city = models.CharField('شهر', max_length=55)
     address = models.CharField('آدرس', max_length=300)
     postal_code = models.CharField('کد پستی', null=True, blank=True, max_length=20)
     fullname = models.CharField('نام و نام خانوادگی', max_length=55)
     phone_number = models.CharField('شماره تماس', max_length=11)
+    email = models.EmailField('ایمیل', null=True, blank=True)
 
     def __str__(self):
         return f"{self.address}  - - - {self.user.fullname}"
