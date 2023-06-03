@@ -13,6 +13,6 @@ urlpatterns = [
 
     path('apply/<int:pk>', ApplyDiscountCodeView.as_view(), name='apply-discount-code'),
 
-
     path('request_to/<int:pk>', SendRequestView.as_view(), name='send-request'),
+    path('order/verify/', VerifyView.as_view(), name='verify'),
 ]
