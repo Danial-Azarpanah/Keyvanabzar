@@ -58,7 +58,7 @@
                                         <div class="product_content grid_content">
                                             <div class="product_content_inner">
                                                 <p class="manufacture_product"><a
-                                                        href="{% url "product:product-list" %}?category={{ product.category.first.slug }}">{{ product.category.first }}</a>
+                                                        href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category }}</a>
                                                 </p>
                                                 <h4 class="product_name"><a
                                                         href="{% url "product:product-detail" product.id %}">

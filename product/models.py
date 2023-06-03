@@ -26,7 +26,8 @@ class Category(MPTTModel):
 class Product(models.Model):
     id = models.CharField("کد محصول", max_length=30, unique=True, primary_key=True)
     title = models.CharField('عنوان محصول', max_length=100)
-    category = models.ManyToManyField(Category, related_name='categories', verbose_name='دسته بندی')
+    category = models.ForeignKey(Category, related_name='categories', verbose_name='دسته بندی',
+                                 on_delete=models.CASCADE, null=True, blank=True)
     country = models.CharField("کشور", max_length=50)
     description = models.TextField('توضیحات')
     price = models.PositiveIntegerField('قیمت (تومان)', default=0)

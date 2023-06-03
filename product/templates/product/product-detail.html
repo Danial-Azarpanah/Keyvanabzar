@@ -99,11 +99,8 @@
                                         <p>
                                             <br>
                                         <h4>دسته بندی ‌ها:</h4>
-                                        {% for category in product.category.all %}
-                                            * <a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a>
+                                            * <a href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
                                             <br>
-                                        {% endfor %}
-
                                     </li>
                                 </ul>
                             </div>
