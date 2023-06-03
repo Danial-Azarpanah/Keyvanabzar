@@ -48,9 +48,10 @@
 
                     </div>
                     <div class="search_container">
-                        <form action="#">
+                        <form action="{% url "product:product-list" %}">
                             <div class="search_box">
-                                <input placeholder="جستجوی محصول ..." type="text">
+                                <input placeholder="جستجوی محصول ..." type="text" name="q"
+                                       value="{{ request.GET.q }}">
                                 <button type="submit">
                                     <i class="icon-search"></i>
                                 </button>
@@ -116,7 +117,7 @@
                             <div class="search_container">
 
 
-                                <form action="{% url 'product:search' %}">
+                                <form action="{% url 'product:product-list' %}">
                                     <div class="search_box">
                                         <input placeholder="جستجوی محصول ..." type="search" name="q"
                                                value="{{ request.GET.q }}">
@@ -229,13 +230,13 @@
                                     {% for category in categories %}
                                         {% if not category.parent %}
                                             <li class="menu_item_children"><a
-                                                    href="{% url "product:category-detail" category.slug %}">{{ category.title }}<i
+                                                    href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}<i
                                                     class="fa fa-angle-left"></i></a>
-                                                <ul class="categories_mega_menu">
-                                                    <ul class="categorie_sub_menu">
+                                                <ul class="categories_mega_menu rounded">
+                                                    <ul class="categorie_sub_menu rounded">
                                                         {% for child in category.children.all %}
                                                             <li>
-                                                                <a href="{% url "product:category-detail" child.slug %}">{{ child.title }}</a>
+                                                                <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
                                                             </li>
                                                         {% endfor %}
                                                     </ul>

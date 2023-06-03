@@ -14,7 +14,10 @@ class Cart:
 
     def add(self, product, quantity):
         product_id = product.id
-        price = str(product.price - (int(product.discount * 0.01 * product.price)))
+        if product.discount:
+            price = str(product.price - (int(product.discount * 0.01 * product.price)))
+        else:
+            price = product.price
         if product_id not in self.cart:
             self.cart[product_id] = {'id': str(product.id), 'title': product.title,
                                      'price': price,

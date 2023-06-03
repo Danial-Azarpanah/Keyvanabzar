@@ -100,7 +100,7 @@
                                             <br>
                                         <h4>دسته بندی ‌ها:</h4>
                                         {% for category in product.category.all %}
-                                            * <a href="{% url "product:category-detail" category.slug %}">{{ category.title }}</a>
+                                            * <a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a>
                                             <br>
                                         {% endfor %}
 
