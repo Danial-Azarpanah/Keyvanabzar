@@ -33,26 +33,14 @@
                             <button data-role="grid_3" type="button" class=" btn-grid-3" data-bs-toggle="tooltip"
                                     title="3"></button>
                         </div>
-                        <div class=" niceselect_option">
-                            <form class="select_option" action="#">
-                                <select name="orderby" id="short">
-                                    <option selected value="1">مرتب سازی بر اساس میانگین رتبه</option>
-                                    <option value="2">مرتب سازی بر اساس محبوبیت</option>
-                                    <option value="3">مرتب سازی بر اساس جدید بودن</option>
-                                    <option value="4">مرتب سازی بر اساس قیمت : نزولی</option>
-                                    <option value="5">مرتب سازی بر اساس قیمت : صعودی</option>
-                                    <option value="6">مرتب سازی بر اساس نام : نزولی</option>
-                                </select>
-                            </form>
-                        </div>
                         <div class="page_amount">
-                            <p>نمایش 1 تا 9 از 21 نتیجه</p>
+                            <p>{{ products_count }} نتیجه</p>
                         </div>
                     </div>
                     <!--shop toolbar end-->
                     <div class="row shop_wrapper">
                         {% for product in products %}
-                            <div class="col-lg-3 col-md-4 col-12 ">
+                            <div class="col-lg-3 col-md-4 col-12">
                                 <article class="single_product">
                                     <figure>
                                         <div class="product_thumb">
@@ -70,7 +58,7 @@
                                         <div class="product_content grid_content">
                                             <div class="product_content_inner">
                                                 <p class="manufacture_product"><a
-                                                        href="{% url "product:category-detail" product.category.first.slug %}">{{ product.category.first }}</a>
+                                                        href="{% url "product:product-list" %}?category={{ product.category.first.slug }}">{{ product.category.first }}</a>
                                                 </p>
                                                 <h4 class="product_name"><a
                                                         href="{% url "product:product-detail" product.id %}">
@@ -118,30 +106,30 @@
                         {% endfor %}
                     </div>
 
-                    {% if page_obj.has_other_pages %}
+                    {% if products.has_other_pages %}
                         <div class="shop_toolbar t_bottom">
                             <div class="pagination">
                                 <ul>
 
-                                    {% if page_obj.has_previous %}
-                                        <li class="next"><a href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                    {% if products.has_previous %}
+                                        <li class="next"><a href="?page={{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
 
-                                    {% for i in paginator.page_range %}
-                                        {% if page_obj.number == i %}
-                                            <a href="?page={{ i }}">
+                                    {% for i in products.paginator.page_range %}
+                                        {% if products.number == i %}
+                                            <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="current">{{ i }}</li>
                                             </a>
                                         {% else %}
-                                            <a href="?page={{ i }}">
+                                            <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% if page_obj.has_next %}
-                                        <li class="next"><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                                    {% if products.has_next %}
+                                        <li class="next"><a href="?page={{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">بعدی</a></li>
                                     {% endif %}
 
                                 </ul>
@@ -155,6 +143,30 @@
                     <!--sidebar widget start-->
                     <aside class="sidebar_widget">
                         <div class="widget_list widget_categories">
+                            <h3>مرتب سازی بر اساس</h3>
+                            <ul>
+                                <li class="widget_sub_categories">
+                                    <ul>
+                                        <li>
+                                            <a href="?filter=most-selling{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">پرفروش
+                                                ترین‌ها</a>
+                                        </li>
+                                        <li>
+                                            <a href="?filter=most-recent{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">جدیدترین‌ها</a>
+                                        </li>
+                                        <li>
+                                            <a href="?filter=cheapest{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">ارزان
+                                                ترین‌ها</a>
+                                        </li>
+                                        <li>
+                                            <a href="?filter=most-expensive{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">گران
+                                                ترین‌ها</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_categories">
                             <h3>دسته بندی ها</h3>
                             <ul>
                                 {% for category in categories %}
@@ -163,7 +175,9 @@
                                                 href="javascript:void(0)">{{ category.title }}</a>
                                             <ul class="widget_dropdown_categories">
                                                 {% for child in category.children.all %}
-                                                    <li><a href="{% url "product:category-detail" child.slug %}">{{ child.title }}</a></li>
+                                                    <li>
+                                                        <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                    </li>
                                                 {% endfor %}
                                             </ul>
                                         </li>
@@ -173,11 +187,10 @@
                         </div>
                         <div class="widget_list widget_filter">
                             <h3>قیمت</h3>
-                            <form action="#">
+                            <form id="price-form" action="#">
                                 <div id="slider-range"></div>
                                 <button type="submit">فیلتر</button>
-                                <input type="text" name="text" id="amount"/>
-
+                                <input type="text" name="price" id="amount"/>
                             </form>
                         </div>
                     </aside>
@@ -187,4 +200,24 @@
         </div>
     </div>
     <!--shop  area end-->
+    <script>
+        // Get a reference to the form and input elements
+        const form = document.getElementById('price-form');
+        const input = document.getElementById('amount');
+
+        // Add a listener for the form submission event
+        form.addEventListener('submit', (event) => {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Get the current URL and parse it into its parts
+            const url = new URL(window.location.href);
+
+            // Set the value of the "text" parameter to the input value
+            url.searchParams.set('price', input.value);
+
+            // Redirect to the new URL
+            window.location.href = url.toString();
+        });
+    </script>
 {% endblock %}

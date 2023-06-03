@@ -30,18 +30,47 @@ class Product(models.Model):
     country = models.CharField("کشور", max_length=50)
     description = models.TextField('توضیحات')
     price = models.PositiveIntegerField('قیمت (تومان)', default=0)
-    discount = models.PositiveIntegerField('درصد تخفیف', default=0)
+    discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
+    discounted_price = models.PositiveIntegerField('قیمت تخفیف خورده (تومان)', null=True, blank=True)
     weight = models.CharField("وزن", max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
+    sale_count = models.IntegerField("تعداد فروش", default=0)
 
     def __str__(self):
         return F" محصول : {self.id} - {self.title}"
+
+    # Discount related processes
+    def save(self, *args, **kwargs):
+        discount, discounted_price = None, None
+
+        try:
+            discounted_price = self.price - (self.price * self.discount / 100)
+            print(discounted_price, 1)
+        except:
+            pass
+
+        try:
+            discount = ((self.price - self.discounted_price) / self.price) * 100
+            print(discount, 2)
+        except:
+            pass
+            
+        if discounted_price and discount:
+            self.discounted_price = discounted_price
+        elif discounted_price and not discount:
+            self.discounted_price = discounted_price
+            self.discount = self.discount
+        elif discount and not discounted_price:
+            self.discount = discount
+            self.discounted_price = self.discounted_price
+
+        super().save(*args, **kwargs)
 
     def get_jalali_date(self):
         return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
 
     def get_discounted_price(self):
-        price = self.price - ((self.discount * 0.01) * self.price)
+        price = self.discounted_price
         return "{:,.0f} تومان ".format(price)
 
     def get_price(self):
