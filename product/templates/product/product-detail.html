@@ -107,10 +107,11 @@
                             </div>
 
                             <div class="product_variant quantity">
-                                <form method="post" action="{% url 'payment:cart-add' product.id %}">
+                                <form id="cart-detail-form" method="post"
+                                      action="{% url 'payment:cart-add' product.id %}">
                                     {% csrf_token %}
                                     <label>تعداد</label>
-                                    <input min="1" max="100" value="1" type="number" name="quantity">
+                                    <input min="1" max="100" value="1" type="number" id="quantity">
                                     <button class="cart_button" type="submit">افزودن به سبد خرید</button>
                                 </form>
                             </div>
@@ -587,7 +588,31 @@
                 })
             })
         }
+
+
+        $(document).on('submit', '#cart-detail-form', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'payment:cart-add' product.id %}',
+                data: {
+                    quantity: $('#quantity').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function () {
+                    Swal.fire({
+                        text: 'این محصول به سبد خرید شما اضافه شد',
+                        icon: 'success',
+                        confirmButtonText: 'باشه',
+                        confirmButtonColor: '#112031',
+                    }).then(function () {
+                        location.reload()
+                    })
+                }
+            })
+        })
     </script>
+
 {% endblock %}
 
 
