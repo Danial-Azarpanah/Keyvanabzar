@@ -99,8 +99,9 @@
                                         <p>
                                             <br>
                                         <h4>دسته بندی ‌ها:</h4>
-                                            * <a href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                            <br>
+                                        * <a
+                                            href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
+                                        <br>
                                     </li>
                                 </ul>
                             </div>
@@ -161,10 +162,10 @@
                                     <form action="#">
                                         <table>
                                             <tbody>
-                                            {% for spec in specs %}
+                                            {% for spec in product.specifications.all %}
                                                 <tr>
-                                                    <td class="first_child">{{ spec.0 }}</td>
-                                                    <td>{{ spec.1 }}</td>
+                                                    <td class="first_child">{{ spec.title }}</td>
+                                                    <td>{{ spec.value }}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>

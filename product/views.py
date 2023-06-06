@@ -30,7 +30,7 @@ class ProductListView(View):
             price_range = price_range.replace("تومان", "").replace(" ", "").replace(",", "")
             min_price, max_price = price_range.split("-")
             products = products.filter((Q(price__gte=min_price) & Q(price__lte=max_price)) | (
-                        Q(discounted_price__gte=min_price) & Q(discounted_price__lte=max_price)))
+                    Q(discounted_price__gte=min_price) & Q(discounted_price__lte=max_price)))
 
         if filter:
             if filter == "most-recent":
@@ -56,7 +56,6 @@ class ProductListView(View):
         else:
             products = products.order_by("-sale_count")
 
-
         # pagination
         products_count = products.count()
         page_number = request.GET.get('page')
@@ -72,19 +71,8 @@ class ProductDetailView(View):
 
     def get(self, request, pk):
         product = get_object_or_404(Product, id=pk)
-        spec_list = product.specifications
         comments = Comment.objects.filter(product=product)
-        fields_with_values = []
-        for field in spec_list._meta.fields[2:]:
-            value = getattr(spec_list, field.name)
-            if value:
-                if value == True:
-                    fields_with_values.append((field.verbose_name, "دارد"))
-                else:
-                    fields_with_values.append((field.verbose_name, value))
-        print(fields_with_values)
         return render(request, "product/product-detail.html", {"product": product,
-                                                               "specs": fields_with_values,
                                                                "comments": comments})
 
     def post(self, request, pk):
