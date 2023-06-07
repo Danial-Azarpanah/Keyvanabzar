@@ -179,7 +179,7 @@
                                                             <span> {{ item.formatted_total }} </span></p>
                                                     </div>
                                                     <div class="cart_remove">
-                                                        <a href="{% url 'payment:cart-del' item.id %}"><i
+                                                        <a onclick="CartDel('{{ item.id }}')"><i
                                                                 class="ion-android-close"></i></a>
                                                     </div>
                                                 </div>
@@ -242,8 +242,8 @@
                                                             </li>
                                                         {% endfor %}
                                                     </ul>
-                                            </li>
-                                            </ul>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         {% endif %}
                                     {% endfor %}
@@ -262,7 +262,8 @@
                                                 <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
                                                 <li><a href="">سفارش‌ها</a></li>
                                                 <li><a href="{% url 'payment:cart-detail' %}">سبد خرید</a></li>
-                                                <li><a href="{% url 'product:comparison-list' %}">مقایسه محصولات</a></li>
+                                                <li><a href="{% url 'product:comparison-list' %}">مقایسه محصولات</a>
+                                                </li>
                                                 <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
                                             {% else %}
                                                 <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
@@ -537,6 +538,42 @@
 
 <!-- Main JS -->
 <script src="{% static "js/main.js" %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+
+    function CartDel(id) {
+        Swal.fire({
+            title: 'هشدار!!',
+            text: 'آیااز حذف اطمینان دارید؟',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#FEBD17',
+            cancelButtonColor: '#1A1A1A',
+            cancelButtonText: 'خیر',
+            confirmButtonText: 'بله',
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get(`/cart-del/${id}`).then(response => {
+                    Swal.fire({
+                        text: 'عملیات با موفقیت انجام شد',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function () {
+                        location.reload();
+                    })
+
+                })
+            }
+
+        })
+    }
+
+</script>
 
 
 </body>

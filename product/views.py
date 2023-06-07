@@ -1,3 +1,5 @@
+from django.http import JsonResponse
+
 from product.models import *
 from accounts.mixins import *
 from django.shortcuts import *
@@ -60,7 +62,7 @@ class ProductListView(View):
         # pagination
         products_count = products.count()
         page_number = request.GET.get('page')
-        paginator = Paginator(products, 1)
+        paginator = Paginator(products, 10)
         objects_list = paginator.get_page(page_number)
 
         context = {"products": objects_list, "categories": categories,
@@ -93,6 +95,7 @@ class AddFavoriteView(RequiredLoginMixin, View):
         try:
             fav = Favorite.objects.get(product_id=pk, user_id=req.user.id)
             fav.delete()
+            return JsonResponse({'status': 'ok'})
         except:
             Favorite.objects.create(product_id=pk, user_id=req.user.id)
         return redirect('product:favorite-list')
@@ -102,6 +105,7 @@ class AddCompareView(RequiredLoginMixin, View):
     """
     View for adding a product for comparison
     """
+
     def get(self, req, pk):
         product = Product.objects.get(id=pk)
 
