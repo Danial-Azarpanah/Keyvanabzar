@@ -121,7 +121,7 @@
                         <div class=" product_d_action">
                             <ul>
                                 <li>
-                                    <a onclick="favorite('{{ product.id }}')"
+                                    <a onclick="AddFavorite('{{ product.id }}')"
                                        title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
                                         ها
                                     </a>
@@ -578,16 +578,29 @@
 
 
     <script>
-        function favorite(id) {
+
+
+        function AddFavorite(id) {
             $.get(`/add-favorite/${id}`).then(response => {
-                Swal.fire({
-                    position: 'top-end-right',
-                    icon: 'success',
-                    text: 'این محصول به علاقه مندی های شما اضافه شد',
-                    showConfirmButton: false,
-                    confirmButtonColor: '#112031',
-                    timer: 1500
-                })
+                if (response['response'] === 'exists') {
+                    Swal.fire({
+                        position: 'top-end-right',
+                        icon: 'warning',
+                        text: 'این محصول داخل لیست علاقه مندی های شما وجود دارد',
+                        showConfirmButton: false,
+                        confirmButtonColor: '#112031',
+                        timer: 1500
+                    })
+                } else {
+                    Swal.fire({
+                        position: 'top-end-right',
+                        icon: 'success',
+                        text: 'این محصول به علاقه مندی های شما اضافه شد',
+                        showConfirmButton: false,
+                        confirmButtonColor: '#112031',
+                        timer: 1500
+                    })
+                }
             })
         }
 
