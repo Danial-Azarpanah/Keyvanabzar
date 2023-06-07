@@ -64,6 +64,8 @@ class Product(models.Model):
         elif discount and not discounted_price:
             self.discount = discount
             self.discounted_price = self.discounted_price
+        else:
+            self.discounted_price = self.price
 
         super().save(*args, **kwargs)
 
@@ -134,6 +136,23 @@ class Favorite(models.Model):
     class Meta:
         verbose_name = 'علاقه مندی'
         verbose_name_plural = 'علاقه مندی ها'
+
+
+class Comparison(models.Model):
+    """
+    Model to save the products user wants to compare
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                related_name="comparison", verbose_name="کاربر")
+    product1 = models.ForeignKey(Product, on_delete=models.SET_NULL,
+                                 related_name="productcompare1", verbose_name="کالای اول",
+                                 null=True, blank=True)
+    product2 = models.ForeignKey(Product, on_delete=models.SET_NULL,
+                                 related_name="productcompare2", verbose_name="کالای دوم",
+                                 null=True, blank=True)
+
+    def __str__(self):
+        return self.user.fullname
 
 
 class Comment(models.Model):

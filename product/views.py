@@ -2,6 +2,7 @@ from product.models import *
 from accounts.mixins import *
 from django.shortcuts import *
 from django.views.generic import *
+from django.contrib import messages as msg
 from django.core.paginator import Paginator
 from django.db.models import Q, PositiveIntegerField, Case, When
 
@@ -97,9 +98,99 @@ class AddFavoriteView(RequiredLoginMixin, View):
         return redirect('product:favorite-list')
 
 
+class AddCompareView(RequiredLoginMixin, View):
+    """
+    View for adding a product for comparison
+    """
+    def get(self, req, pk):
+        product = Product.objects.get(id=pk)
+
+        try:
+            comparison = Comparison.objects.get(user=req.user)
+        except:
+            comparison = Comparison.objects.create(user=req.user)
+
+        if not (comparison.product1 or comparison.product2):
+            comparison.product1 = product
+            comparison.save()
+            return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+        elif comparison.product1 and not comparison.product2:
+            if comparison.product1.category.title != product.category.title:
+                msg.error(req, "کالای منتخب باید با کالای موجود در لیست مقایسه شما، دسته بندی یکسان داشته باشد")
+                return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+            elif comparison.product1.id == pk:
+                msg.error(req, "نمی‌توانید دو کالای یکسان در سبد مقایسه خود داشته باشید")
+                return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+            comparison.product2_id = pk
+            comparison.save()
+            return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+        else:
+            msg.error(req, "حداکثر ۲ محصول می‌توانید در سبد مقایسه خود داشته باشید")
+        return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+
+
 class FavoriteListView(RequiredLoginMixin, View):
     template_name = "product/favorite-list.html"
 
     def get(self, req, **kwargs):
         favorites = Product.objects.filter(favorites__user=req.user)
         return render(req, self.template_name, {"favorites": favorites})
+
+
+class CompareListView(RequiredLoginMixin, View):
+    """
+    View for showing the comparison list
+    """
+
+    def get(self, req):
+        try:
+            comparison = Comparison.objects.get(user=req.user)
+        except:
+            return render(req, "product/comparison-list.html", {})
+
+        product1 = comparison.product1
+        product2 = comparison.product2
+        fields = []
+
+        if product1 and product2:
+            for spec in product1.specifications.all():
+                fields.append([spec.title, spec.value, None])
+            for spec in product2.specifications.all():
+                if [spec.title, spec.value, None] in fields:
+                    index = fields.index([spec.title, spec.value, None])
+                    fields[index][2] = spec.value
+                else:
+                    fields.append([spec.title, None, spec.value])
+            context = {"product1": product1, "product2": product2, "fields": fields}
+
+        elif product1 and not product2:
+            for spec in product1.specifications.all():
+                fields.append([spec.title, spec.value, None])
+            context = {"product1": product1, "fields": fields}
+
+        elif product2 and not product1:
+            for spec in product2.specifications.all():
+                fields.append([spec.title, spec.value, None])
+            context = {"product1": product2, "fields": fields}
+
+        else:
+            context = {}
+
+        return render(req, "product/comparison-list.html", context)
+
+
+class RemoveComparisonView(RequiredLoginMixin, View):
+    """
+    View for removing a product
+    from the comparison object
+    """
+
+    def get(self, req, pk):
+        comparison = Comparison.objects.get(user=req.user)
+        if comparison.product1.id == pk:
+            comparison.product1 = None
+        elif comparison.product2.id == pk:
+            comparison.product2 = None
+        comparison.save()
+
+        return CompareListView.as_view()(req)

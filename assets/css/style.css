@@ -9975,10 +9975,6 @@ textarea:-ms-input-placeholder {
     min-width: 150px;
 }
 
-.table-responsive table tbody tr td:last-child a {
-    color: #febd17;
-}
-
 .table-responsive table tbody tr td:last-child {
     border-left: 1px solid #ebebeb;
 }
@@ -12320,7 +12316,7 @@ textarea:-ms-input-placeholder {
 .compare-table .table tbody tr td.pro-addtocart .add-to-cart {
     position: relative;
     background: #febd17;
-    border-radius: 4px;
+    border-radius: 8px;
     display: inline-block;
     width: 170px;
     padding: 10px 6px;
