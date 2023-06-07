@@ -9,4 +9,8 @@ urlpatterns = [
 
     path('add-favorite/<str:pk>', views.AddFavoriteView.as_view(), name='add-favorite'),
     path('favorite-list/', views.FavoriteListView.as_view(), name='favorite-list'),
+
+    path('add-comparison/<str:pk>', views.AddCompareView.as_view(), name='add-comparison'),
+    path('remove-comparison/<str:pk>', views.RemoveComparisonView.as_view(), name='remove-comparison'),
+    path('comparison-list/', views.CompareListView.as_view(), name='comparison-list'),
 ]

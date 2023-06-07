@@ -50,7 +50,9 @@
                     <div class="col-lg-7 col-md-6">
                         <div class="product_d_right">
 
-
+                            {% for message in messages %}
+                                <li class="alert alert-danger p-1">{{ message }}</li>
+                            {% endfor %}
                             <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
                             <div class="product_rating">
                                 <ul>
@@ -123,7 +125,8 @@
                                         ها
                                     </a>
                                 </li>
-                                <li><a href="#" title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a></li>
+                                <li><a href="{% url "product:add-comparison" product.id %}"
+                                       title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a></li>
                             </ul>
                         </div>
                         </form>
