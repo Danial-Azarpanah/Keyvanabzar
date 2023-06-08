@@ -105,6 +105,19 @@
                                             href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
                                         <br>
                                     </li>
+                                    {% if product.proper_tools.all %}
+                                        <li>
+                                            <p>
+                                                <br>
+                                            <h4>ابزار قابل استفاده با این محصول:</h4>
+                                            {% for product in product.proper_tools.all %}
+                                                * <a
+                                                    href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                - {{ product.id }}</a>
+                                                <br>
+                                            {% endfor %}
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </div>
 

@@ -6440,10 +6440,6 @@ textarea:-ms-input-placeholder {
     color: #ffffff;
 }
 
-.footer_social ul li a:hover {
-    background: #febd17;
-}
-
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .footer_social ul li a {
         width: 37px;
@@ -6461,52 +6457,35 @@ textarea:-ms-input-placeholder {
     }
 }
 
-.footer_social ul li a.facebook {
-    background: #3c5b9b;
+.instagram2 i.fa-instagram {
+  font-size: 24px; /* Replace with desired size */
 }
 
-.footer_social ul li a.facebook:hover {
-    background: #febd17;
+.instagram2 i.fa-instagram:hover {
+  color: #febd17; /* Replace with desired size */
 }
 
-.footer_social ul li a.twitter {
-    background: #40c1df;
+.youtube i.fa-youtube-play {
+  font-size: 24px; /* Replace with desired size */
 }
 
-.footer_social ul li a.twitter:hover {
-    background: #febd17;
+.youtube i.fa-youtube-play:hover {
+  color: #febd17; /* Replace with desired size */
 }
 
-.footer_social ul li a.rss {
-    background: #eb8314;
+.twitter i.fa-twitter {
+  font-size: 24px; /* Replace with desired size */
 }
 
-.footer_social ul li a.rss:hover {
-    background: #febd17;
+.twitter i.fa-twitter:hover {
+  color: #febd17 ; /* Replace with desired size */
 }
 
-.footer_social ul li a.youtube {
-    background: #db2d29;
-}
-
-.footer_social ul li a.youtube:hover {
-    background: #febd17;
-}
-
-.footer_social ul li a.google {
-    background: #ed3c32;
-}
-
-.footer_social ul li a.google:hover {
-    background: #febd17;
-}
-
-.footer_social ul li a.instagram2 {
-    background: #c619b8;
-}
-
-.footer_social ul li a.instagram2:hover {
-    background: #febd17;
+.search-modified {
+    font-size: 24px; /* Adjust the value to your preferred size */
+    font-weight: bolder;
+    line-height: 1; /* Set the line height to remove any extra spacing */
+    margin-top: 4px;
 }
 
 .footer_contact_inner {
@@ -8077,6 +8056,9 @@ textarea:-ms-input-placeholder {
     border-bottom: 1px solid #ebebeb;
     padding-bottom: 15px;
     margin-bottom: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (max-width: 767px) {
@@ -12714,61 +12696,62 @@ textarea:-ms-input-placeholder {
 .block {
     margin: 1%;
 }
+
 .action_links ul li.add_to_cart button {
-  padding: 0 26px;
-  height: 40px;
-  line-height: 40px;
-  width: auto;
-  border-radius: 3px;
-  font-size: 13px;
-  font-weight: 600;
-  background: #febd17;
-  color: #1a1a1a;
+    padding: 0 26px;
+    height: 40px;
+    line-height: 40px;
+    width: auto;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #febd17;
+    color: #1a1a1a;
 }
 
 .action_links ul li.add_to_cart button:hover {
-  background: #999;
-  color: #ffffff;
+    background: #999;
+    color: #ffffff;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
-  .action_links ul li.add_to_cart button {
-    padding: 0 16px;
-  }
+    .action_links ul li.add_to_cart button {
+        padding: 0 16px;
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .action_links ul li.add_to_cart button {
-    padding: 0 20px;
-  }
+    .action_links ul li.add_to_cart button {
+        padding: 0 20px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .action_links ul li.add_to_cart button {
-    padding: 0 20px;
-  }
+    .action_links ul li.add_to_cart button {
+        padding: 0 20px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
-  .action_links ul li.add_to_cart button {
-    padding: 0 10px;
-  }
+    .action_links ul li.add_to_cart button {
+        padding: 0 10px;
+    }
 }
 
 @media only screen and (max-width: 479px) {
-  .action_links ul li.add_to_cart button {
-    padding: 0 26px;
-  }
+    .action_links ul li.add_to_cart button {
+        padding: 0 26px;
+    }
 }
 
 .action_links ul li button {
-  font-size: 18px;
-  line-height: 40px;
-  text-align: center;
-  background: #ffffff;
-  display: block;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    background: #ffffff;
+    display: block;
 }
 
 .action_links ul li button:hover {
-  color: #febd17;
+    color: #febd17;
 }
