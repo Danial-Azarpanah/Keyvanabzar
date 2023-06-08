@@ -26,7 +26,7 @@
                                         {% for item in favorites %}
                                             <tr>
                                                 <td class="product_remove"><a
-                                                        href="{% url 'product:add-favorite' item.id %}">X</a></td>
+                                                        href="{% url 'product:add-favorite' item.id %}"><i class="fa fa-close" style="color: red"></i></a></td>
                                                 <td class="product_thumb"><a
                                                         href="{% url "product:product-detail" item.id %}"><img
                                                         src="{{ item.pictures.first }}" alt=""></a>
