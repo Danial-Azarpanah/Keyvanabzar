@@ -27,7 +27,7 @@ class ProductListView(View):
         price_range = request.GET.get("price")
 
         if category:
-            products = products.filter(category__slug=category)
+            products = products.filter(Q(category__slug=category) | Q(category__parent__slug = category))
 
         if price_range:
             price_range = price_range.replace("تومان", "").replace(" ", "").replace(",", "")

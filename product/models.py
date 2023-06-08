@@ -8,6 +8,8 @@ from django.db import models
 
 class Category(MPTTModel):
     title = models.CharField('عنوان دسته بندی', max_length=30)
+    image = models.ImageField("تصویر دسته بندی", upload_to="categories/img/",
+                              null=True, blank=True)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
                             related_name='children',
                             verbose_name='زیردسته')

@@ -12,7 +12,8 @@
                             <div class="slider_content">
                                 <h1>تخفیف بزرگ <span>لوازم جانبی Fidanza</span></h1>
                                 <p>پیشنهاد انحصاری -30% تخفیف این هفته</p>
-                                <a class="button" href="shop.html">اکنون خرید کنید <i class="fa fa-angle-double-left"
+                                <a class="button" href="{% url "product:product-list" %}">اکنون خرید کنید <i
+                                        class="fa fa-angle-double-left"
                                         aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -27,7 +28,7 @@
                                 <h1>لوازم جانبی <span>انواع تریلر تراکتور</span></h1>
                                 <p>پیشنهاد انحصاری -30% تخفیف این هفته</p>
                                 <a class="button" href="shop.html">اکنون خرید کنید <i class="fa fa-angle-double-left"
-                                        aria-hidden="true"></i></a>
+                                                                                      aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -38,10 +39,10 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider_content">
-                                <h1>بالاترین <span>داخل خودرو جدید</span> </h1>
+                                <h1>بالاترین <span>داخل خودرو جدید</span></h1>
                                 <p>پیشنهاد انحصاری -20% تخفیف این هفته</p>
                                 <a class="button" href="shop.html">اکنون خرید کنید <i class="fa fa-angle-double-left"
-                                        aria-hidden="true"></i></a>
+                                                                                      aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -57,33 +58,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="welcome_title">
-                        <h3>به مزلی خوش آمدید</h3>
-                        <h2>خرید <span>آنلاین فروشگاه سفارشی</span></h2>
-                        <p> لوازم جانبی طراح. به صورت محلی طراحی شده است. در سطح جهانی ساخته شده است.</p>
+                        <h3>به دیوالت لند خوش آمدید</h3>
+                        <h2>خرید با کیفیت ترین ابزار آلات برند<span> Dewalt</span></h2>
+                        <p>کیفیت تضمین شده، همراه ۲۰ سال سابقه فروش</p>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <figure class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="shop.html"><img src="{% static "img/bg/banner1.jpg" %}" alt=""></a>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <figure class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="shop.html"><img src="{% static "img/bg/banner2.jpg" %}" alt=""></a>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <figure class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="shop.html"><img src="{% static "img/bg/banner3.jpg" %}" alt=""></a>
-                        </div>
-                    </figure>
                 </div>
             </div>
         </div>
@@ -96,70 +74,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="categories_product_inner categories_column7 owl-carousel">
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category1.jpg" %}" alt=""></a>
+                        {% for category in categories %}
+                            <div class="single_categories_product">
+                                <div class="categories_product_thumb">
+                                    <a href="{% url "product:product-list" %}?category={{ category.slug }}"><img src="{{ category.image.url }}"
+                                                             alt=""></a>
+                                </div>
+                                <div class="categories_product_content">
+                                    <h4><a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a></h4>
+                                </div>
                             </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> اجزای بدنه</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category2.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> موتور خودرو</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category3.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> فضای داخلی</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category4.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> روشنایی و لامپ</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category5.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> تعمیر قطعات</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category6.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> دستگاه های هوشمند</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category7.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> چرخ و لاستیک</a></h4>
-                            </div>
-                        </div>
-                        <div class="single_categories_product">
-                            <div class="categories_product_thumb">
-                                <a href="shop.html"><img src="{% static "img/s-product/category3.jpg" %}" alt=""></a>
-                            </div>
-                            <div class="categories_product_content">
-                                <h4><a href="shop.html"> دستگاه های هوشمند</a></h4>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -184,15 +109,15 @@
                             <ul class="nav" role="tablist" id="nav-tab">
                                 <li>
                                     <a class="active" data-bs-toggle="tab" href="#Sellers" role="tab"
-                                        aria-controls="Sellers" aria-selected="true">بهترین فروشندگان</a>
+                                       aria-controls="Sellers" aria-selected="true">بهترین فروشندگان</a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="tab" href="#Featured" role="tab" aria-controls="Featured"
-                                        aria-selected="false">محصولات ویژه</a>
+                                       aria-selected="false">محصولات ویژه</a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="tab" href="#Arrivals" role="tab" aria-controls="Arrivals"
-                                        aria-selected="false">تازه رسیده ها</a>
+                                       aria-selected="false">تازه رسیده ها</a>
                                 </li>
                             </ul>
                         </div>
@@ -216,30 +141,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 1</a></h4>
+                                                            محصول شماره 1</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -251,13 +176,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -275,30 +201,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 2</a></h4>
+                                                            محصول شماره 2</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -310,13 +236,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -338,30 +265,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">لورم
-                                                                ایپسوم</a></h4>
+                                                            ایپسوم</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -373,13 +300,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -397,30 +325,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 3</a></h4>
+                                                            محصول شماره 3</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -432,13 +360,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -461,30 +390,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول<a></h4>
+                                                            محصول<a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -496,13 +425,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -520,30 +450,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 2</a></h4>
+                                                            محصول شماره 2</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -555,13 +485,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -583,30 +514,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 4</a></h4>
+                                                            محصول شماره 4</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -618,13 +549,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -642,30 +574,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 5</a></h4>
+                                                            محصول شماره 5</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -677,13 +609,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -705,30 +638,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 6</a></h4>
+                                                            محصول شماره 6</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -740,13 +673,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -765,30 +699,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 7</a></h4>
+                                                            محصول شماره 7</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -800,13 +734,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -828,30 +763,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 1</a></h4>
+                                                            محصول شماره 1</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -863,13 +798,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -887,30 +823,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 5</a></h4>
+                                                            محصول شماره 5</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -922,13 +858,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -957,30 +894,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول<a></h4>
+                                                            محصول<a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -992,13 +929,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1016,30 +954,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 2</a></h4>
+                                                            محصول شماره 2</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1051,13 +989,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1079,30 +1018,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 4</a></h4>
+                                                            محصول شماره 4</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1114,13 +1053,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1138,30 +1078,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 5</a></h4>
+                                                            محصول شماره 5</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1173,13 +1113,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1201,30 +1142,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 1</a></h4>
+                                                            محصول شماره 1</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1236,13 +1177,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1260,30 +1202,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 2</a></h4>
+                                                            محصول شماره 2</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1295,13 +1237,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1323,30 +1266,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">لورم
-                                                                ایپسوم</a></h4>
+                                                            ایپسوم</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1358,13 +1301,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1382,30 +1326,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 3</a></h4>
+                                                            محصول شماره 3</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1417,13 +1361,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1445,30 +1390,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 6</a></h4>
+                                                            محصول شماره 6</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1480,13 +1425,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1505,30 +1451,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 7</a></h4>
+                                                            محصول شماره 7</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1540,13 +1486,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1568,30 +1515,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 1</a></h4>
+                                                            محصول شماره 1</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1603,13 +1550,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1627,30 +1575,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 5</a></h4>
+                                                            محصول شماره 5</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1662,13 +1610,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1696,30 +1645,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 1</a></h4>
+                                                            محصول شماره 1</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1731,13 +1680,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1755,30 +1705,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 5</a></h4>
+                                                            محصول شماره 5</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1790,13 +1740,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1818,30 +1769,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">لورم
-                                                                ایپسوم</a></h4>
+                                                            ایپسوم</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1853,13 +1804,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1877,30 +1829,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 3</a></h4>
+                                                            محصول شماره 3</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1912,13 +1864,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1941,30 +1894,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول<a></h4>
+                                                            محصول<a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1976,13 +1929,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2000,30 +1954,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 2</a></h4>
+                                                            محصول شماره 2</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2035,13 +1989,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2063,30 +2018,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 4</a></h4>
+                                                            محصول شماره 4</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2098,13 +2053,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2122,30 +2078,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 5</a></h4>
+                                                            محصول شماره 5</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2157,13 +2113,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2185,30 +2142,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 1</a></h4>
+                                                            محصول شماره 1</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2220,13 +2177,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2244,30 +2202,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 2</a></h4>
+                                                            محصول شماره 2</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2279,13 +2237,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2307,30 +2266,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 6</a></h4>
+                                                            محصول شماره 6</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2342,13 +2301,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -2367,30 +2327,30 @@
                                                     </div>
                                                     <div class="quick_button">
                                                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"
-                                                            title="نمایش سریع"><i class="icon-eye"></i></a>
+                                                           title="نمایش سریع"><i class="icon-eye"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_content_inner">
                                                         <p class="manufacture_product"><a href="#">قطعات</a></p>
                                                         <h4 class="product_name"><a href="product-details.html">عنوان
-                                                                محصول شماره 7</a></h4>
+                                                            محصول شماره 7</a></h4>
                                                         <div class="product_rating">
                                                             <ul>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
-                                                                            class="ion-android-star-outline"></i></a>
+                                                                        class="ion-android-star-outline"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -2402,13 +2362,14 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart"><a href="cart.html"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید</a>
+                                                                                       title="افزودن به سبد خرید">افزودن
+                                                                به سبد خرید</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"
-                                                                    title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
+                                                                                    title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a></li>
                                                             <li class="compare"><a href="compare.html" title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                    class="icon-rotate-cw"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
