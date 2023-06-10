@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo/dewalt.jpeg" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- CSS
@@ -54,7 +55,7 @@
                                 <input placeholder="جستجوی محصول ..." type="text" name="q"
                                        value="{{ request.GET.q }}">
                                 <button type="submit">
-                                    <i class="icon-search"></i>
+                                    <i class="fa fa-search" style="font-size: 20px"></i>
                                 </button>
                             </div>
                         </form>
@@ -124,7 +125,7 @@
                                         <input placeholder="جستجوی محصول ..." type="search" name="q"
                                                value="{{ request.GET.q }}">
                                         <button type="submit">
-                                            <i class="icon-search" style="font-size: larger"></i>
+                                            <i class="fa fa-search" style="font-size: 24px"></i>
                                         </button>
                                     </div>
                                 </form>
@@ -255,7 +256,7 @@
                         <div class="main_menu menu_position text-left">
                             <nav>
                                 <ul>
-                                    <li><a href="">خانه</a></li>
+                                    <li><a href="{% url "home:home" %}">خانه</a></li>
                                     <li><a class="active" href="">حساب کاربری<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu">
                                             {% if request.user.is_authenticated %}
@@ -386,10 +387,10 @@
                                 </div>
                             </div>
                             <div class="footer_social">
-                                <ul>
-                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
-                                    <li><a class="instagram2" href="#"><i class="icon-instagram"></i></a></li>
+                                <ul class="text-center">
+                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                    <li><a class="instagram2" href="#"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>

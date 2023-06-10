@@ -8,6 +8,8 @@ from django.db import models
 
 class Category(MPTTModel):
     title = models.CharField('عنوان دسته بندی', max_length=30)
+    image = models.ImageField("تصویر دسته بندی", upload_to="categories/img/",
+                              null=True, blank=True)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True,
                             related_name='children',
                             verbose_name='زیردسته')
@@ -28,6 +30,8 @@ class Product(models.Model):
     title = models.CharField('عنوان محصول', max_length=100)
     category = models.ForeignKey(Category, related_name='categories', verbose_name='دسته بندی',
                                  on_delete=models.CASCADE, null=True, blank=True)
+    proper_tools = models.ManyToManyField("self", related_name="proper_tools",
+                                          verbose_name="ابزارهای مناسب", null=True, blank=True)
     country = models.CharField("کشور", max_length=50)
     description = models.TextField('توضیحات')
     price = models.PositiveIntegerField('قیمت (تومان)', default=0)
@@ -75,6 +79,11 @@ class Product(models.Model):
     def get_discounted_price(self):
         price = self.discounted_price
         return "{:,.0f} تومان ".format(price)
+
+    def get_discounted_price_admin(self):
+        if self.discount and self.discount > 0:
+            return self.get_discounted_price()
+        return "-"
 
     def get_price(self):
         price = self.price
