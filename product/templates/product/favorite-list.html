@@ -12,50 +12,55 @@
                         <div class="col-12">
                             <div class="table_desc wishlist">
                                 <div class="cart_page">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th class="product_remove">حذف</th>
-                                            <th class="product_thumb">عکس</th>
-                                            <th class="product_name">محصول</th>
-                                            <th class="product-price">قیمت</th>
-                                            <th class="product_total">افزودن به سبد خرید</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for item in favorites %}
+                                    {% if favorites %}
+                                        <table>
+                                            <thead>
                                             <tr>
-                                                <td class="product_remove"><a
-                                                        href="{% url 'product:remove-favorite' item.id %}">X</a></td>
-                                                <td class="product_thumb"><a
-                                                        href="{% url "product:product-detail" item.id %}"><img
-                                                        src="{{ item.pictures.first }}" alt=""></a>
-                                                </td>
-                                                <td class="product_name"><a
-                                                        href="{% url "product:product-detail" item.id %}">{{ item.title }}</a>
-                                                </td>
-                                                {% if item.discount > 0 %}
-                                                    <td class="product-price">{{ item.get_discounted_price }}</td>
-                                                {% else %}
-                                                    <td class="product-price">{{ item.get_price }}</td>
-                                                {% endif %}
-                                                <td class="product_total">
-                                                    <form method="post"
-                                                          action="{% url "payment:cart-add" item.id %}">
-                                                        {% csrf_token %}
-                                                        <input min="1" max="100" value="1" type="number"
-                                                               name="quantity" hidden>
-                                                        <button class="button" type="submit"
-                                                                style="border-radius: 8px; border-width: 0px"
-                                                                title="افزودن به سبد خرید">افزودن به سبد
-                                                            خرید
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                <th class="product_remove">حذف</th>
+                                                <th class="product_thumb">عکس</th>
+                                                <th class="product_name">محصول</th>
+                                                <th class="product-price">قیمت</th>
+                                                <th class="product_total">افزودن به سبد خرید</th>
                                             </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            {% for item in favorites %}
+                                                <tr>
+                                                    <td class="product_remove"><a
+                                                            href="{% url 'product:remove-favorite' item.id %}">X</a>
+                                                    </td>
+                                                    <td class="product_thumb"><a
+                                                            href="{% url "product:product-detail" item.id %}"><img
+                                                            src="{{ item.pictures.first }}" alt=""></a>
+                                                    </td>
+                                                    <td class="product_name"><a
+                                                            href="{% url "product:product-detail" item.id %}">{{ item.title }}</a>
+                                                    </td>
+                                                    {% if item.discount > 0 %}
+                                                        <td class="product-price">{{ item.get_discounted_price }}</td>
+                                                    {% else %}
+                                                        <td class="product-price">{{ item.get_price }}</td>
+                                                    {% endif %}
+                                                    <td class="product_total">
+                                                        <form method="post"
+                                                              action="{% url "payment:cart-add" item.id %}">
+                                                            {% csrf_token %}
+                                                            <input min="1" max="100" value="1" type="number"
+                                                                   name="quantity" hidden>
+                                                            <button class="button" type="submit"
+                                                                    style="border-radius: 8px; border-width: 0px"
+                                                                    title="افزودن به سبد خرید">افزودن به سبد
+                                                                خرید
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <p> لیست علاقه مندی های شما خالی میباشد </p>
+                                    {% endif %}
                                 </div>
 
                             </div>

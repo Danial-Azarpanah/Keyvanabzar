@@ -12,7 +12,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo/dewalt.jpeg" %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- CSS
     ========================= -->
 
@@ -539,10 +539,33 @@
 <!-- Main JS -->
 <script src="{% static "js/main.js" %}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 <script>
+
+
+    function AddFavorite(id) {
+        $.get(`/add-favorite/${id}`).then(response => {
+            if (response['response'] === 'exists') {
+                Swal.fire({
+                    position: 'top-end-right',
+                    icon: 'warning',
+                    text: 'این محصول داخل لیست علاقه مندی های شما وجود دارد',
+                    showConfirmButton: false,
+                    confirmButtonColor: '#112031',
+                    timer: 1500
+                })
+            } else {
+                Swal.fire({
+                    position: 'top-end-right',
+                    icon: 'success',
+                    text: 'این محصول به علاقه مندی های شما اضافه شد',
+                    showConfirmButton: false,
+                    confirmButtonColor: '#112031',
+                    timer: 1500
+                })
+            }
+        })
+    }
 
     function CartDel(id) {
         Swal.fire({
@@ -572,6 +595,7 @@
 
         })
     }
+
 
 </script>
 

@@ -576,29 +576,6 @@
 
     <script>
 
-        function AddFavorite(id) {
-            $.get(`/add-favorite/${id}`).then(response => {
-                if (response['response'] === 'exists') {
-                    Swal.fire({
-                        position: 'top-end-right',
-                        icon: 'warning',
-                        text: 'این محصول داخل لیست علاقه مندی های شما وجود دارد',
-                        showConfirmButton: false,
-                        confirmButtonColor: '#112031',
-                        timer: 1500
-                    })
-                } else {
-                    Swal.fire({
-                        position: 'top-end-right',
-                        icon: 'success',
-                        text: 'این محصول به علاقه مندی های شما اضافه شد',
-                        showConfirmButton: false,
-                        confirmButtonColor: '#112031',
-                        timer: 1500
-                    })
-                }
-            })
-        }
 
         $(document).on('submit', '#cart-detail-form', function (e) {
             e.preventDefault();

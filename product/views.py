@@ -103,7 +103,7 @@ class RemoveFavoriteView(View):
     def get(self, req, pk):
         favorite_obj = Favorite.objects.get(product_id=pk)
         favorite_obj.delete()
-        return redirect('home:home')
+        return redirect('product:favorite-list')
 
 
 class AddCompareView(RequiredLoginMixin, View):
