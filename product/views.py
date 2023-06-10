@@ -99,6 +99,13 @@ class AddFavoriteView(RequiredLoginMixin, View):
             return JsonResponse({'response': 'created'})
 
 
+class RemoveFavoriteView(View):
+    def get(self, req, pk):
+        favorite_obj = Favorite.objects.get(product_id=pk)
+        favorite_obj.delete()
+        return redirect('product:favorite-list')
+
+
 class AddCompareView(RequiredLoginMixin, View):
     """
     View for adding a product for comparison

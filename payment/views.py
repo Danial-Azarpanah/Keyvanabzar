@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import JsonResponse
 from django.views.generic import *
 from django.shortcuts import *
 from random import randint
@@ -58,17 +59,18 @@ class ApplyDiscountCodeView(View):
         code = request.POST.get('discount_code')
         order = get_object_or_404(Order, id=pk)
         discount_code = get_object_or_404(DiscountCode, name=code)
-        if discount_code.quantity == 0:
-            messages.error(request, CODE_NOT_EXISTS, 'danger')
-            return redirect('payment:order-detail', order.id)
+        if discount_code.is_not_expired():
+            if discount_code.quantity == 0:
+                return JsonResponse({'error': CODE_NOT_EXISTS})
 
-        # Apply discount code process
-        order.total_price -= order.total_price * discount_code.percent / 100
-        order.save()
-        discount_code.quantity -= 1
-        discount_code.save()
-        messages.error(request, f' کد تخفیف {discount_code.percent} درصدی با موفقیت روی سفارش شما اعمال شد ')
-        return redirect('payment:order-detail', order.id)
+            # Apply discount code process
+            order.total_price -= order.total_price * discount_code.percent / 100
+            order.save()
+            discount_code.quantity -= 1
+            discount_code.save()
+            return JsonResponse(
+                {'success': f' کد تخفیف {discount_code.percent} درصدی با موفقیت روی سفارش شما اعمال شد '})
+        return JsonResponse({'error': CODE_EXPIRES})
 
 
 # ZARIN PAL INFORMATION

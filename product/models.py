@@ -190,7 +190,13 @@ class DiscountCode(models.Model):
     name = models.CharField('نام کد تخفیف', max_length=30, )
     percent = models.PositiveIntegerField('درصد', default=0)
     quantity = models.PositiveIntegerField('تعداد', default=1)
-    created_at = models.DateTimeField('تاریخ ایجاد', auto_now_add=True)
+    expiration = models.DateTimeField('تاریخ انقضا', null=True, blank=True)
+
+    def is_not_expired(self):
+        if self.expiration >= timezone.localtime(timezone.now()):
+            return True
+        else:
+            return False
 
     def __str__(self):
         return f'{self.name} - {self.quantity}'

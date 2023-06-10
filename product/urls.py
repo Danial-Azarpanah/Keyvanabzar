@@ -8,6 +8,7 @@ urlpatterns = [
     path('product/<str:pk>', views.ProductDetailView.as_view(), name='product-detail'),
 
     path('add-favorite/<str:pk>', views.AddFavoriteView.as_view(), name='add-favorite'),
+    path('remove-fav/<int:pk>', views.RemoveFavoriteView.as_view(), name='remove-favorite'),
     path('favorite-list/', views.FavoriteListView.as_view(), name='favorite-list'),
 
     path('add-comparison/<str:pk>', views.AddCompareView.as_view(), name='add-comparison'),

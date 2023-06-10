@@ -71,3 +71,4 @@ class OtpAdmin(admin.ModelAdmin):
 
 admin.site.register(EditedUser)
 admin.site.register(Address)
+admin.site.register(Info)

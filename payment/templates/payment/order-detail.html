@@ -92,7 +92,9 @@
                                                 </select>
 
 
-                                                <li><a href="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}"> + آدرس جدید </a></li>
+                                                <li>
+                                                    <a href="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}">
+                                                        + آدرس جدید </a></li>
 
 
                                             </div>
@@ -103,10 +105,10 @@
 
                                     <div class="mb-4">
 
-                                        <form action="{% url 'payment:apply-discount-code' order.id %}" method="post">
+                                        <form id="apply-discount-code-form" method="post">
                                             {% csrf_token %}
                                             <input placeholder="کد تخفیف" type="text" style="width: 50%"
-                                                   name="discount_code">
+                                                   id="discount_code">
                                             <button type="submit" class="btn btn-dark">اعمال کد تخفیف</button>
                                         </form>
 
@@ -143,6 +145,42 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        $(document).on('submit', '#apply-discount-code-form', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'payment:apply-discount-code' order.id %}',
+                data: {
+                    discount_code: $('#discount_code').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function (json) {
+                    if (json['error']) {
+                        Swal.fire({
+                            title: 'هشدار!!',
+                            text: json['error'],
+                            icon: 'warning',
+                            confirmButtonText: 'باشه',
+                            confirmButtonColor: '#112031',
+                        })
+                    } else {
+                        Swal.fire({
+                            title: 'عملیات با موفقیت انجام شد',
+                            text: json['success'],
+                            icon: 'success',
+                            confirmButtonText: 'باشه',
+                            confirmButtonColor: '#112031',
+                        }).then(function () {
+                            location.reload()
+                        })
+                    }
+                }
+            })
+        })
+    </script>
 
     <!--Checkout page section end-->
 {% endblock %}
