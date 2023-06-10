@@ -574,11 +574,7 @@
         }
     </script>
 
-
-
-
     <script>
-
 
         function AddFavorite(id) {
             $.get(`/add-favorite/${id}`).then(response => {
@@ -604,7 +600,6 @@
             })
         }
 
-
         $(document).on('submit', '#cart-detail-form', function (e) {
             e.preventDefault();
             $.ajax({
@@ -626,6 +621,7 @@
                 }
             })
         })
+
     </script>
 
 {% endblock %}

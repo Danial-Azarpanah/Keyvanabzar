@@ -87,3 +87,15 @@ class Address(models.Model):
     class Meta:
         verbose_name = 'آدرس'
         verbose_name_plural = 'آدرس ها'
+
+
+class Info(models.Model):
+    phone_number = models.CharField('شماره تماس', max_length=11)
+    email = models.EmailField('ایمیل')
+    address = models.CharField('آدرس مغازه', max_length=100)
+    instagram = models.URLField('اینستاگرام')
+    youtube = models.URLField('یوتوب')
+
+    class Meta:
+        verbose_name = 'اطلاعات تماس'
+        verbose_name_plural = 'اطلاعات تماس'
