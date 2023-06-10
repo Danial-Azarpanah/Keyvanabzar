@@ -99,3 +99,5 @@ class Info(models.Model):
     class Meta:
         verbose_name = 'اطلاعات تماس'
         verbose_name_plural = 'اطلاعات تماس'
+
+
