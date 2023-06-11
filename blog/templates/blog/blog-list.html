@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>وبلاگ با نوار کناری</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <div class="blog_bg_area">
+        <div class="container">
+            <!--blog area start-->
+            <div class="blog_page_section blog_reverse">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12">
+                        <div class="blog_sidebar_widget">
+                            <div class="widget_list widget_search">
+                                <div class="widget_title">
+                                    <h3>محصول</h3>
+                                </div>
+                                <form action="#">
+                                    <input placeholder="جستجو..." type="text">
+                                    <button type="submit">محصول</button>
+                                </form>
+                            </div>
+                            <div class="widget_list comments">
+                                <div class="widget_title">
+                                    <h3>نظرات اخیر</h3>
+                                </div>
+                                <div class="post_wrapper">
+                                    <div class="post_thumb">
+                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
+                                                        alt=""></a>
+                                    </div>
+                                    <div class="post_info">
+                                        <span> <a href="#">پیش نمایش</a> می گوید:</span>
+                                        <a href="">لورم ایپسوم متن ساختگی</a>
+                                    </div>
+                                </div>
+                                <div class="post_wrapper">
+                                    <div class="post_thumb">
+                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
+                                                        alt=""></a>
+                                    </div>
+                                    <div class="post_info">
+                                        <span><a href="#">مدیر سایت</a> می گوید:</span>
+                                        <a href="">لورم ایپسوم متن ساختگی...</a>
+                                    </div>
+                                </div>
+                                <div class="post_wrapper">
+                                    <div class="post_thumb">
+                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
+                                                        alt=""></a>
+                                    </div>
+                                    <div class="post_info">
+                                        <span><a href="#">پیش نمایش</a> می گوید:</span>
+                                        <a href="">لورم ایپسوم متن ساختگی</a>
+                                    </div>
+                                </div>
+                                <div class="post_wrapper">
+                                    <div class="post_thumb">
+                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
+                                                        alt=""></a>
+                                    </div>
+                                    <div class="post_info">
+                                        <span><a href="#">مدیر سایت</a> می گوید:</span>
+                                        <a href="">لورم ایپسوم متن ساختگی</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget_list widget_post">
+                                <div class="widget_title">
+                                    <h3>پست های اخیر</h3>
+                                </div>
+                                {% for article in articles %}
+                                    <div class="post_wrapper">
+                                        <div class="post_thumb">
+                                            <a href=""><img src="{{ article.image.url }}" alt=""></a>
+                                        </div>
+                                        <div class="post_info">
+                                            <h4><a href="">{{ article.title }}</a></h4>
+                                            <span>{{ article.get_jalali_date }}</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="widget_list widget_tag">
+                                <div class="widget_title">
+                                    <h3>تگ محصولات</h3>
+                                </div>
+                                <div class="tag_widget">
+                                    <ul>
+                                        {% for tag in tags %}
+                                            <li><a href="#">{{ tag.title }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="blog_wrapper mb-30">
+                            <div class="blog_header">
+                                <h1>وبلاگ</h1>
+                            </div>
+                            <div class="blog_wrapper_inner">
+                                {% for article in articles %}
+                                    <article class="single_blog">
+                                        <figure>
+                                            <div class="blog_thumb">
+                                                <a href=""><img src="{{ article.image.url }}"
+                                                                                 alt=""></a>
+                                            </div>
+                                            <figcaption class="blog_content">
+                                                <h4 class="post_title"><a href="">{{ article.title }}</a>
+                                                </h4>
+                                                <div class="blog_meta">
+                                                    <span class="meta_date">ارسال شده در:
+                                                        <a href="#">
+                                                            {{ article.get_jalali_date }}
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                                <div class="blog_desc">
+                                                    <p>
+                                                        {{ article.short_content }}
+                                                    </p>
+                                                </div>
+                                                <footer class="btn_more">
+                                                    <a href="blog-details.html"> بیشتر بخوانید</a>
+                                                </footer>
+                                            </figcaption>
+                                        </figure>
+                                    </article>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!--blog pagination area start-->
+                        <div class="blog_pagination">
+                            <div class="pagination">
+                                <ul>
+                                    <li class="current">1</li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li class="next"><a href="#">بعدی</a></li>
+                                    <li><a href="#">>></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--blog pagination area end-->
+                    </div>
+                </div>
+            </div>
+            <!--blog area end-->
+        </div>
+    </div>
+{% endblock %}
