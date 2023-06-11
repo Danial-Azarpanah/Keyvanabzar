@@ -80,6 +80,7 @@
                                                 <ul>
                                                     <li class="add_to_cart">
                                                         <form method="post"
+                                                              id="add-to-cart"
                                                               action="{% url "payment:cart-add" product.id %}">
                                                             {% csrf_token %}
                                                             <input min="1" max="100" value="1" type="number"
@@ -94,9 +95,7 @@
                                                     <li class="wishlist"><a
                                                             onclick="AddFavorite('{{ product.id }}')"
                                                             title="افزودن به لیست علاقمندی ها"><i
-                                                            class="icon-heart"></i></a></li>
-                                                    <li class="compare"><a href="#" title="مقایسه"><i
-                                                            class="icon-rotate-cw"></i></a></li>
+                                                            class="icon-bookmark"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
