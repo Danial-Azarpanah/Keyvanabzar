@@ -173,16 +173,27 @@
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart"><a href="cart.html"
-                                                                                           title="افزودن به سبد خرید">افزودن
-                                                                    به سبد خرید</a>
+                                                                <li class="add_to_cart">
+                                                                    <form method="post"
+                                                                          id="add-to-cart"
+                                                                          action="{% url "payment:cart-add" product.id %}">
+                                                                        {% csrf_token %}
+                                                                        <input min="1" max="100" value="1" type="number"
+                                                                               name="quantity" hidden>
+                                                                        <button class="button" type="submit"
+                                                                                style="border-radius: 8px; border-width: 0px"
+                                                                                title="افزودن به سبد خرید">افزودن به سبد
+                                                                            خرید
+                                                                        </button>
+                                                                    </form>
                                                                 </li>
-                                                                <li class="wishlist"><a href=""
-                                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
-                                                                <li class="compare"><a href=""
-                                                                                       title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                <li class="wishlist">
+                                                                    <a
+                                                                            onclick="AddFavorite('{{ product.id }}')"
+                                                                            title="افزودن به لیست علاقمندی ها">
+                                                                        <i class="icon-bookmark"></i>
+                                                                    </a>
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
