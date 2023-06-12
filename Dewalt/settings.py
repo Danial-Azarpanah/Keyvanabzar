@@ -32,8 +32,10 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "product.apps.ProductConfig",
     "payment.apps.PaymentConfig",
+    "blog.apps.BlogConfig",
 
     # Libraries
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,10 @@ TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messag
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.User"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}

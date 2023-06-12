@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>جزئیات وبلاگ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--blog body area start-->
+    <div class="blog_bg_area blog_details_bg">
+        <div class="container">
+            <div class="blog_page_section">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12">
+                        <!--blog grid area start-->
+                        <div class="blog_wrapper blog_details">
+                            <article class="single_blog">
+                                <figure>
+                                    <div class="post_header">
+                                        <h3 class="post_title">{{ article.title }} </h3>
+                                        <div class="blog_meta">
+                                            <span class="meta_date">در تاریخ : <a
+                                                    href="#">{{ article.get_jalali_date }}</a></span>
+                                            <span class="post_category">  دسته: <a href="#"></a></span>
+                                        </div>
+                                    </div>
+                                    <div class="blog_thumb">
+                                        <img src="{{ article.image.url }}" alt="">
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        {{ article.text|safe }}
+                                        <div class="entry_content">
+
+                                            <div class="social_sharing">
+                                                <p>این پست را به اشتراک بگذارید:</p>
+                                                <ul>
+                                                    <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a>
+                                                    </li>
+                                                    <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a>
+                                                    </li>
+                                                    <li><a href="#" title="pinterest"><i
+                                                            class="fa fa-pinterest"></i></a></li>
+                                                    <li><a href="#" title="google+"><i
+                                                            class="fa fa-google-plus"></i></a></li>
+                                                    <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            {% if suggested_articles.count > 1 %}
+                                <div class="related_posts">
+                                    <h3>مطالب مرتبط</h3>
+                                    <div class="row">
+                                        {% for suggested_article in suggested_articles %}
+                                            {% if suggested_article.slug != article.slug %}
+                                                <div class="col-lg-4 col-md-6">
+                                                    <article class="single_related">
+                                                        <figure>
+                                                            <div class="related_thumb">
+                                                                <img src="{{ suggested_article.image.url }}" alt="">
+                                                            </div>
+                                                            <figcaption class="related_content">
+                                                                <h4>
+                                                                    <a href="{% url "blog:detail" suggested_article.slug %}">{{ suggested_article.title }}</a>
+                                                                </h4>
+                                                                <div class="blog_meta">
+                                                                    <span class="meta_date"> {{ suggested_article.get_jalali_date }}	</span>
+                                                                </div>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </article>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <hr>
+                            {% endif %}
+                            <div class="comments_form mb-3">
+                                <h3 id="scroll-point">بازخورد شما </h3>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="review_comment">نظر</label>
+                                            <input type="text" id="parent-id" name="parent-id" hidden>
+                                            <textarea name="comment" id="review_comment"
+                                                      placeholder="بازخورد خود را بنویسید"></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="button" type="submit">ارسال نظر</button>
+                                </form>
+                            </div>
+                            <div class="comments_box">
+                                <h3>{{ article.blog_comments.count }} نظر </h3>
+                                {% for comment in article.blog_comments.all %}
+                                    {% if not comment.parent %}
+                                        <div class="comment_list">
+                                            <div class="comment_content">
+                                                <div class="comment_meta">
+                                                    <h5><a>{{ comment.user.fullname }}</a></h5>
+                                                    <span>{{ comment.get_jalali_date }}</span>
+                                                </div>
+                                                <p>
+                                                    {{ comment.body }}
+                                                </p>
+                                                <div class="comment_reply">
+                                                    <a style="color: white" onclick="reply('{{ comment.id }}')">پاسخ</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        {% for reply in comment.replies.all %}
+                                            <div class="comment_list list_two">
+                                                <div class="comment_content">
+                                                    <div class="comment_meta">
+                                                        <h5><a href="#">{{ reply.user.fullname }}</a></h5>
+                                                        <span>{{ reply.get_jalali_date }}</span>
+                                                    </div>
+                                                    <p>
+                                                        {{ reply.body }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                        <!--blog grid area start-->
+                    </div>
+                    <div class="col-lg-3 col-md-12">
+                        <div class="blog_sidebar_widget">
+                            <div class="widget_list widget_search">
+                                <div class="widget_title">
+                                    <h3>محصول</h3>
+                                </div>
+                                <form action="{% url "blog:list" %}">
+                                    <input placeholder="جستجو..." type="text" name="s"
+                                           value="{{ request.GET.s }}">
+                                    <button type="submit">جست و جو</button>
+                                </form>
+                            </div>
+                            {% if comments %}
+                                <div class="widget_list comments">
+                                    <div class="widget_title">
+                                        <h3>نظرات اخیر</h3>
+                                    </div>
+                                    {% for comment in comments %}
+                                        {% if not comment.parent %}
+                                            <div class="post_wrapper">
+                                                <div class="post_info">
+                                                    <span> <a href="#">{{ comment.user.fullname }}</a> می گوید:</span>
+                                                    <a href="blog-details.html">{{ comment.body }}</a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <div class="widget_list widget_post">
+                                <div class="widget_title">
+                                    <h3>پست های اخیر</h3>
+                                </div>
+                                {% for article in articles %}
+                                    <div class="post_wrapper">
+                                        <div class="post_thumb">
+                                            <a href="{% url "blog:detail" article.slug %}"><img
+                                                    src="{{ article.image.url }}" alt=""></a>
+                                        </div>
+                                        <div class="post_info">
+                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }}</a>
+                                            </h4>
+                                            <span>{{ article.get_jalali_date }}</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="widget_list widget_categories">
+                                <div class="widget_title">
+                                    <h3>دسته بندی ها</h3>
+                                </div>
+                                <ul>
+                                    {% for category in blog_categories %}
+                                        <li>
+                                            <a href="{% url "blog:list" %}?category={{ category.slug }}">{{ category.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--blog section area end-->
+    <script>
+        function reply(id) {
+            document.getElementById("parent-id").value = id;
+            document.getElementById("review_comment").placeholder = "پاسخ خود را بنویسید"
+            document.getElementById("scroll-point").scrollIntoView();
+        }
+    </script>
+{% endblock %}
