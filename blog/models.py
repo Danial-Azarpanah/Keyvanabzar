@@ -1,13 +1,16 @@
 from django.db import models
-
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.html import format_html, strip_tags
-from mptt.models import MPTTModel
+
 from persiantools.jdatetime import JalaliDate
+from ckeditor_uploader.fields import RichTextUploadingField
+
 from accounts.models import User
 
 
 class Category(models.Model):
+    """
+    Category of blog articles
+    """
     title = models.CharField('عنوان دسته بندی', max_length=30)
     slug = models.SlugField('اسلاگ', allow_unicode=True, blank=True, null=True, unique=True)
     created_at = models.DateTimeField('تاریخ ایجاد دسته بندی', auto_now_add=True, null=True)
@@ -21,6 +24,9 @@ class Category(models.Model):
 
 
 class Blog(models.Model):
+    """
+    Blog articles
+    """
     title = models.CharField("عنوان", max_length=30)
     slug = models.SlugField('اسلاگ', unique=True, null=True, blank=True, allow_unicode=True)
     text = RichTextUploadingField(verbose_name="متن")
@@ -55,8 +61,8 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     """
-        Model to save user comments and replies
-        """
+    Model to save user comments and replies on blog articles
+    """
     article = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_comments',
                                 verbose_name='مقاله مربوطه')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_comments', verbose_name='کاربر')

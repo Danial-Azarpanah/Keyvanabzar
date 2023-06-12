@@ -154,26 +154,29 @@
                                 <div class="widget_title">
                                     <h3>محصول</h3>
                                 </div>
-                                <form action="#">
-                                    <input placeholder="جستجو..." type="text">
-                                    <button type="submit">محصول</button>
+                                <form action="{% url "blog:list" %}">
+                                    <input placeholder="جستجو..." type="text" name="s"
+                                           value="{{ request.GET.s }}">
+                                    <button type="submit">جست و جو</button>
                                 </form>
                             </div>
-                            <div class="widget_list comments">
-                                <div class="widget_title">
-                                    <h3>نظرات اخیر</h3>
-                                </div>
-                                {% for comment in comments %}
-                                    {% if not comment.parent %}
-                                        <div class="post_wrapper">
-                                            <div class="post_info">
-                                                <span> <a href="#">{{ comment.user.fullname }}</a> می گوید:</span>
-                                                <a href="blog-details.html">{{ comment.body }}</a>
+                            {% if comments %}
+                                <div class="widget_list comments">
+                                    <div class="widget_title">
+                                        <h3>نظرات اخیر</h3>
+                                    </div>
+                                    {% for comment in comments %}
+                                        {% if not comment.parent %}
+                                            <div class="post_wrapper">
+                                                <div class="post_info">
+                                                    <span> <a href="#">{{ comment.user.fullname }}</a> می گوید:</span>
+                                                    <a href="blog-details.html">{{ comment.body }}</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                             <div class="widget_list widget_post">
                                 <div class="widget_title">
                                     <h3>پست های اخیر</h3>
@@ -181,10 +184,12 @@
                                 {% for article in articles %}
                                     <div class="post_wrapper">
                                         <div class="post_thumb">
-                                            <a href="{% url "blog:detail" article.slug %}"><img src="{{ article.image.url }}" alt=""></a>
+                                            <a href="{% url "blog:detail" article.slug %}"><img
+                                                    src="{{ article.image.url }}" alt=""></a>
                                         </div>
                                         <div class="post_info">
-                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }}</a></h4>
+                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }}</a>
+                                            </h4>
                                             <span>{{ article.get_jalali_date }}</span>
                                         </div>
                                     </div>
@@ -195,12 +200,11 @@
                                     <h3>دسته بندی ها</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="#">صدا</a></li>
-                                    <li><a href="#">شرکت</a></li>
-                                    <li><a href="#">گالری</a></li>
-                                    <li><a href="#">عکس</a></li>
-                                    <li><a href="#">سایر موارد</a></li>
-                                    <li><a href="#">سفر</a></li>
+                                    {% for category in blog_categories %}
+                                        <li>
+                                            <a href="{% url "blog:list" %}?category={{ category.slug }}">{{ category.title }}</a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
