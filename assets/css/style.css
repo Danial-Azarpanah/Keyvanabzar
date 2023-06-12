@@ -145,7 +145,7 @@ body {
 
 body {
     line-height: 24px;
-    font-size: 14px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     visibility: visible;
@@ -668,7 +668,7 @@ textarea:-ms-input-placeholder {
     height: 45px;
     line-height: 45px;
     padding: 0 22px;
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 3px;
 }
 
@@ -761,7 +761,7 @@ textarea:-ms-input-placeholder {
 }
 
 .offcanvas_main_menu li a {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     text-transform: capitalize;
     display: block;
@@ -785,7 +785,7 @@ textarea:-ms-input-placeholder {
 }
 
 .offcanvas_footer span a {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .offcanvas_footer span a:hover {
@@ -812,7 +812,7 @@ textarea:-ms-input-placeholder {
     text-align: center;
     line-height: 30px;
     border-radius: 50%;
-    font-size: 13px;
+    font-size: 14px;
     color: #ffffff;
 }
 
@@ -859,7 +859,7 @@ textarea:-ms-input-placeholder {
 .slinky-theme-default a:not(.back) {
     padding: 10px 0;
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 400;
 }
 
@@ -875,7 +875,7 @@ textarea:-ms-input-placeholder {
 }
 
 .canvas_close a {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     width: 32px;
     height: 32px;
@@ -907,7 +907,7 @@ textarea:-ms-input-placeholder {
 }
 
 .canvas_open a {
-    font-size: 30px;
+    font-size: 31px;
     color: #ffffff;
     width: 43px;
     height: 41px;
@@ -923,7 +923,7 @@ textarea:-ms-input-placeholder {
         width: 35px;
         height: 34px;
         line-height: 34px;
-        font-size: 24px;
+        font-size: 25px;
     }
 }
 
@@ -1053,7 +1053,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .sticky_header_right .main_menu nav > ul > li > a {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -1159,7 +1159,7 @@ textarea:-ms-input-placeholder {
 
 .header_account > ul > li > a {
     line-height: 45px;
-    font-size: 12px;
+    font-size: 13px;
     display: inline-block;
     font-weight: 400;
     color: #ffffff;
@@ -1180,7 +1180,7 @@ textarea:-ms-input-placeholder {
 }
 
 .header_account > ul > li > a i {
-    font-size: 10px;
+    font-size: 11px;
     margin-right: 3px;
 }
 
@@ -1232,7 +1232,7 @@ textarea:-ms-input-placeholder {
 .dropdown_links li a {
     text-transform: capitalize;
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     white-space: nowrap;
     padding: 8px 20px 8px 8px;
     line-height: 20px;
@@ -1313,7 +1313,7 @@ textarea:-ms-input-placeholder {
 
 .header_top_links ul li a {
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .header_top_links ul li a:hover {
@@ -1432,7 +1432,7 @@ textarea:-ms-input-placeholder {
 
 .main_menu nav > ul > li > a {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 50px;
     font-weight: 600;
     position: relative;
@@ -1441,7 +1441,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .main_menu nav > ul > li > a {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -1471,12 +1471,12 @@ textarea:-ms-input-placeholder {
 }
 
 .main_menu nav > ul > li ul.sub_menu li a {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     display: block;
     line-height: 32px;
     text-transform: capitalize;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .main_menu nav > ul > li ul.sub_menu li a:hover {
@@ -1514,7 +1514,7 @@ textarea:-ms-input-placeholder {
 }
 
 .mega_menu_inner > li > a {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     text-transform: capitalize;
     font-weight: 600;
@@ -1531,7 +1531,7 @@ textarea:-ms-input-placeholder {
 }
 
 .mega_menu_inner > li ul li a {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     display: block;
     line-height: 28px;
@@ -1628,7 +1628,7 @@ textarea:-ms-input-placeholder {
 }
 
 .header_wishlist a i {
-    font-size: 20px;
+    font-size: 21px;
     line-height: 50px;
 }
 
@@ -1640,14 +1640,14 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header_wishlist a i {
-        font-size: 18px;
+        font-size: 19px;
         line-height: 40px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .header_wishlist a i {
-        font-size: 18px;
+        font-size: 19px;
         line-height: 40px;
     }
 }
@@ -1686,7 +1686,7 @@ textarea:-ms-input-placeholder {
 .header_wishlist a span.wishlist_count {
     background: #ffffff;
     color: #1a1a1a;
-    font-size: 13px;
+    font-size: 14px;
     height: 25px;
     right: -9px;
     line-height: 25px;
@@ -1702,7 +1702,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header_wishlist a span.wishlist_count {
-        font-size: 12px;
+        font-size: 13px;
         height: 20px;
         width: 20px;
         line-height: 20px;
@@ -1711,7 +1711,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .header_wishlist a span.wishlist_count {
-        font-size: 12px;
+        font-size: 13px;
         height: 20px;
         width: 20px;
         line-height: 20px;
@@ -1771,20 +1771,20 @@ textarea:-ms-input-placeholder {
 }
 
 .mini_cart_wrapper > a i.icon-shopping-bag2 {
-    font-size: 20px;
+    font-size: 21px;
     vertical-align: middle;
 }
 
 @media only screen and (max-width: 575px) {
     .mini_cart_wrapper > a i.icon-shopping-bag2 {
-        font-size: 16px;
+        font-size: 17px;
     }
 }
 
 .mini_cart_wrapper > a span.cart_count {
     background: #ffffff;
     color: #1a1a1a;
-    font-size: 13px;
+    font-size: 14px;
     height: 25px;
     right: -9px;
     line-height: 25px;
@@ -1800,7 +1800,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .mini_cart_wrapper > a span.cart_count {
-        font-size: 12px;
+        font-size: 13px;
         height: 20px;
         line-height: 20px;
         width: 20px;
@@ -1809,7 +1809,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .mini_cart_wrapper > a span.cart_count {
-        font-size: 12px;
+        font-size: 13px;
         height: 20px;
         line-height: 20px;
         width: 20px;
@@ -1817,7 +1817,7 @@ textarea:-ms-input-placeholder {
 }
 
 .mini_cart_wrapper > a span.cart_price {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     margin-right: 7px;
     padding-right: 7px;
@@ -1826,13 +1826,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .mini_cart_wrapper > a span.cart_price {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .mini_cart_wrapper > a span.cart_price {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -1851,14 +1851,14 @@ textarea:-ms-input-placeholder {
 }
 
 .cart_text h3 {
-    font-size: 18px;
+    font-size: 19px;
     text-transform: capitalize;
     font-weight: 400;
     margin-bottom: 0;
 }
 
 .mini_cart_close > a {
-    font-size: 25px;
+    font-size: 26px;
 }
 
 .mini_cart_close > a:hover {
@@ -1915,7 +1915,7 @@ textarea:-ms-input-placeholder {
 
 .cart_info a {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     display: block;
     margin-bottom: 6px;
@@ -1923,13 +1923,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .cart_info a {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .cart_info a {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -1938,11 +1938,11 @@ textarea:-ms-input-placeholder {
 }
 
 .cart_info p {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .cart_info p span {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     color: #febd17;
     display: block;
@@ -1950,7 +1950,7 @@ textarea:-ms-input-placeholder {
 }
 
 .cart_remove a {
-    font-size: 15px;
+    font-size: 16px;
     border: 1px solid #ebebeb;
     width: 20px;
     height: 20px;
@@ -1984,7 +1984,7 @@ textarea:-ms-input-placeholder {
 }
 
 .cart_total span {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -1994,13 +1994,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .cart_total span {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .cart_total span {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -2010,7 +2010,7 @@ textarea:-ms-input-placeholder {
 
 .cart_button a {
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     background: #eef0f1;
     border: 1px solid #ebebeb;
@@ -2053,7 +2053,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .mean-container .mean-bar::after {
         left: 22px;
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -2148,7 +2148,7 @@ textarea:-ms-input-placeholder {
     line-height: 50px;
     padding-right: 15px;
     padding-left: 17px;
-    font-size: 13px;
+    font-size: 14px;
     min-width: 185px;
     border-radius: 0 4px 4px 0;
 }
@@ -2165,7 +2165,7 @@ textarea:-ms-input-placeholder {
     .hover_category .select_option {
         height: 34px;
         line-height: 35px;
-        font-size: 13px;
+        font-size: 14px;
         padding-right: 41px;
         padding-left: 50px;
         border: 1px solid #ebebeb;
@@ -2176,7 +2176,7 @@ textarea:-ms-input-placeholder {
     .hover_category .select_option {
         height: 34px;
         line-height: 35px;
-        font-size: 13px;
+        font-size: 14px;
         padding-right: 41px;
         padding-left: 50px;
         border: 1px solid #ebebeb;
@@ -2324,7 +2324,7 @@ textarea:-ms-input-placeholder {
     width: 100%;
     height: 50px;
     color: #1a1a1a;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     padding: 0 20px 0 145px;
     opacity: 0.7;
@@ -2332,7 +2332,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .search_box input {
-        font-size: 12px;
+        font-size: 13px;
         padding: 0 10px 0 92px;
         width: 100%;
         height: 34px;
@@ -2341,7 +2341,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .search_box input {
-        font-size: 12px;
+        font-size: 13px;
         padding: 0 10px 0 92px;
         width: 100%;
         height: 34px;
@@ -2349,7 +2349,7 @@ textarea:-ms-input-placeholder {
 }
 
 .search_box button {
-    font-size: 14px;
+    font-size: 15px;
     text-transform: capitalize;
     border: 0;
     position: absolute;
@@ -2410,7 +2410,7 @@ textarea:-ms-input-placeholder {
 
 .call_support p {
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2430,20 +2430,20 @@ textarea:-ms-input-placeholder {
 }
 
 .call_support p i {
-    font-size: 24px;
+    font-size: 25px;
     vertical-align: middle;
     margin-left: 7px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .call_support p i {
-        font-size: 20px;
+        font-size: 21px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .call_support p i {
-        font-size: 20px;
+        font-size: 21px;
     }
 }
 
@@ -2486,7 +2486,7 @@ textarea:-ms-input-placeholder {
     display: inline-block;
     font-family: Ionicons;
     position: absolute;
-    font-size: 22px;
+    font-size: 23px;
     line-height: 0px;
     right: 20px;
     top: 50%;
@@ -2508,7 +2508,7 @@ textarea:-ms-input-placeholder {
 }
 
 .categories_title h2 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     line-height: 26px;
     color: #1a1a1a;
@@ -2519,13 +2519,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .categories_title h2 {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .categories_title h2 {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 22px;
     }
 }
@@ -2567,7 +2567,7 @@ textarea:-ms-input-placeholder {
 }
 
 .categories_menu_toggle > ul > li > a {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 43px;
     text-transform: capitalize;
     font-weight: 400;
@@ -2598,7 +2598,7 @@ textarea:-ms-input-placeholder {
 
 .categories_menu_toggle > ul > li > a i.fa-angle-left {
     float: left;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 35px;
     transition: .3s;
     -webkit-transition: .3s;
@@ -2727,7 +2727,7 @@ textarea:-ms-input-placeholder {
 
 .categories_menu_toggle > ul > li ul.categories_mega_menu > li > a {
     line-height: 30px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     display: block;
     margin-bottom: 10px;
@@ -2762,7 +2762,7 @@ textarea:-ms-input-placeholder {
         left: 15px;
         top: 50%;
         transform: translatey(-50%);
-        font-size: 20px;
+        font-size: 21px;
     }
 }
 
@@ -2777,7 +2777,7 @@ textarea:-ms-input-placeholder {
         left: 15px;
         top: 50%;
         transform: translatey(-50%);
-        font-size: 20px;
+        font-size: 21px;
     }
 }
 
@@ -2792,7 +2792,7 @@ textarea:-ms-input-placeholder {
         left: 15px;
         top: 50%;
         transform: translatey(-50%);
-        font-size: 30px;
+        font-size: 31px;
     }
 }
 
@@ -2807,7 +2807,7 @@ textarea:-ms-input-placeholder {
         left: 15px;
         top: 50%;
         transform: translatey(-50%);
-        font-size: 30px;
+        font-size: 31px;
     }
 }
 
@@ -2829,7 +2829,7 @@ textarea:-ms-input-placeholder {
     color: #1a1a1a;
     text-transform: capitalize;
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 30px;
 }
@@ -2960,7 +2960,7 @@ textarea:-ms-input-placeholder {
     font-family: FontAwesome;
     top: 0;
     right: 20px;
-    font-size: 18px;
+    font-size: 19px;
     pointer-events: none;
 }
 
@@ -2970,7 +2970,7 @@ textarea:-ms-input-placeholder {
 
 .categories_menu_toggle ul li.has-sub ul.categorie_sub li a {
     text-transform: capitalize;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     padding-bottom: 16px;
     padding-left: 30px;
@@ -3032,7 +3032,7 @@ textarea:-ms-input-placeholder {
 }
 
 .tags_content ul li span {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     text-transform: capitalize;
     margin-left: 12px;
@@ -3048,7 +3048,7 @@ textarea:-ms-input-placeholder {
 }
 
 .tags_content ul li a {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     text-transform: capitalize;
     margin-left: 10px;
@@ -3428,7 +3428,7 @@ textarea:-ms-input-placeholder {
 }
 
 .slider_content h1 {
-    font-size: 60px;
+    font-size: 61px;
     line-height: 52px;
     font-weight: 300;
     margin-bottom: 0;
@@ -3437,21 +3437,21 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .slider_content h1 {
-        font-size: 30px;
+        font-size: 31px;
         line-height: 32px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider_content h1 {
-        font-size: 30px;
+        font-size: 31px;
         line-height: 32px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .slider_content h1 {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 20px;
     }
 }
@@ -3463,7 +3463,7 @@ textarea:-ms-input-placeholder {
 
 .slider_content p {
     margin: 47px 0 52px;
-    font-size: 24px;
+    font-size: 25px;
     line-height: 25px;
     text-transform: capitalize;
     color: #ffffff;
@@ -3471,7 +3471,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .slider_content p {
-        font-size: 15px;
+        font-size: 16px;
         line-height: 22px;
         margin: 20px 0 26px;
     }
@@ -3480,7 +3480,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider_content p {
         margin: 18px 0 23px;
-        font-size: 15px;
+        font-size: 16px;
         line-height: 20px;
     }
 }
@@ -3488,14 +3488,14 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .slider_content p {
         margin: 17px 0 22px;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 20px;
         max-width: 100%;
     }
 }
 
 .slider_content a {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     padding: 0 22px;
     display: inline-block;
@@ -3525,13 +3525,13 @@ textarea:-ms-input-placeholder {
         padding: 0 15px;
         height: 43px;
         line-height: 41px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .slider_content a {
-        font-size: 11px;
+        font-size: 12px;
         height: 35px;
         line-height: 35px;
         padding: 0 13px;
@@ -3548,7 +3548,7 @@ textarea:-ms-input-placeholder {
     height: 100%;
     text-align: center;
     line-height: 48px;
-    font-size: 18px;
+    font-size: 19px;
     border-radius: 4px 0 0 4px;
     color: #1a1a1a;
 }
@@ -3738,41 +3738,41 @@ textarea:-ms-input-placeholder {
 
 .slider_c_three h1 {
     color: #1a1a1a;
-    font-size: 48px;
+    font-size: 49px;
     line-height: 43px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .slider_c_three h1 {
-        font-size: 44px;
+        font-size: 45px;
         line-height: 41px;
     }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1300px) {
     .slider_c_three h1 {
-        font-size: 40px;
+        font-size: 41px;
         line-height: 40px;
     }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .slider_c_three h1 {
-        font-size: 30px;
+        font-size: 31px;
         line-height: 32px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider_c_three h1 {
-        font-size: 30px;
+        font-size: 31px;
         line-height: 32px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .slider_c_three h1 {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 20px;
     }
 }
@@ -3848,7 +3848,7 @@ textarea:-ms-input-placeholder {
 }
 
 .welcome_title h3 {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 14px;
     margin: 0;
     font-weight: 600;
@@ -3856,12 +3856,12 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .welcome_title h3 {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 .welcome_title h2 {
-    font-size: 30px;
+    font-size: 31px;
     line-height: 30px;
     margin: 3px 0 0;
     font-weight: 600;
@@ -3873,13 +3873,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .welcome_title h2 {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 20px;
     }
 }
 
 .welcome_title p {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 20px;
     margin: 22px 0 0;
 }
@@ -3892,7 +3892,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .welcome_title p {
-        font-size: 14px;
+        font-size: 15px;
         margin: 16px 0 0;
     }
 }
@@ -4081,7 +4081,7 @@ textarea:-ms-input-placeholder {
 }
 
 .categories_product_content h4 {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 13px;
     font-weight: 600;
     margin-bottom: 0;
@@ -4090,7 +4090,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .categories_product_content h4 {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
@@ -4099,7 +4099,7 @@ textarea:-ms-input-placeholder {
 }
 
 .categories_product_content p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 23px;
 }
 
@@ -4119,7 +4119,7 @@ textarea:-ms-input-placeholder {
 }
 
 .section_title h2 {
-    font-size: 30px;
+    font-size: 31px;
     line-height: 30px;
     font-weight: 300;
     display: inline-block;
@@ -4128,21 +4128,21 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .section_title h2 {
-        font-size: 28px;
+        font-size: 29px;
         line-height: 28px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .section_title h2 {
-        font-size: 25px;
+        font-size: 26px;
         line-height: 25px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .section_title h2 {
-        font-size: 20px;
+        font-size: 21px;
         line-height: 20px;
     }
 }
@@ -4152,7 +4152,7 @@ textarea:-ms-input-placeholder {
 }
 
 .section_title p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     max-width: 660px;
     margin: 18px auto 0;
@@ -4205,7 +4205,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_tab_btn ul li a {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     display: inline-block;
     font-weight: 600;
@@ -4243,13 +4243,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .product_tab_btn ul li a {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .product_tab_btn ul li a {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 24px;
     }
 }
@@ -4327,7 +4327,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_content h4 {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 14px;
     font-weight: 400;
     text-transform: capitalize;
@@ -4341,7 +4341,7 @@ textarea:-ms-input-placeholder {
 
 .product_content p.manufacture_product {
     margin-bottom: 7px;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     text-transform: capitalize;
 }
@@ -4363,12 +4363,12 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .price_box span.old_price {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 .price_box span.current_price {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     color: #febd17;
 }
@@ -4386,7 +4386,7 @@ textarea:-ms-input-placeholder {
 }
 
 .quick_button a {
-    font-size: 18px;
+    font-size: 19px;
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -4451,7 +4451,7 @@ textarea:-ms-input-placeholder {
     line-height: 40px;
     width: auto;
     border-radius: 3px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     background: #febd17;
     color: #1a1a1a;
@@ -4493,7 +4493,7 @@ textarea:-ms-input-placeholder {
 }
 
 .action_links ul li a {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 40px;
     text-align: center;
     background: #ffffff;
@@ -4518,7 +4518,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_rating ul li a {
-    font-size: 20px;
+    font-size: 21px;
     color: #ffc600;
 }
 
@@ -4532,7 +4532,7 @@ textarea:-ms-input-placeholder {
     text-transform: capitalize;
     color: #ffffff;
     background: #C70909;
-    font-size: 10px;
+    font-size: 11px;
     padding: 0 10px 0 8px;
     height: 21px;
     line-height: 23px;
@@ -4567,7 +4567,7 @@ textarea:-ms-input-placeholder {
     text-transform: capitalize;
     color: #ffffff;
     background: #1560b2;
-    font-size: 10px;
+    font-size: 11px;
     padding: 0 10px 0 8px;
     height: 21px;
     line-height: 23px;
@@ -4636,7 +4636,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_carousel .owl-nav div {
-    font-size: 20px;
+    font-size: 21px;
     transition: .3s;
 }
 
@@ -4670,7 +4670,7 @@ textarea:-ms-input-placeholder {
     padding: 0 13px;
     height: 35px;
     line-height: 35px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -4784,13 +4784,13 @@ textarea:-ms-input-placeholder {
 
 .title_style2 h2 {
     float: right;
-    font-size: 24px;
+    font-size: 25px;
     line-height: 24px;
 }
 
 @media only screen and (max-width: 767px) {
     .title_style2 h2 {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 15px;
         margin-bottom: 9px;
         float: none;
@@ -4803,7 +4803,7 @@ textarea:-ms-input-placeholder {
     margin: 0;
     float: right;
     width: auto;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     margin-right: 10px;
 }
@@ -4879,7 +4879,7 @@ textarea:-ms-input-placeholder {
 }
 
 .countdown_text p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     font-weight: 600;
 }
@@ -4923,12 +4923,12 @@ textarea:-ms-input-placeholder {
 }
 
 .countdown_title {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 17px;
 }
 
 .countdown_number {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     line-height: 25px;
     padding-top: 8px;
@@ -4936,7 +4936,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .countdown_number {
-        font-size: 15px;
+        font-size: 16px;
         line-height: 21px;
         padding-top: 7px;
     }
@@ -5117,7 +5117,7 @@ textarea:-ms-input-placeholder {
 }
 
 .small_product_list .title_style2 h2 {
-    font-size: 24px;
+    font-size: 25px;
     line-height: 24px;
     font-weight: 600;
     background: #F8F8F8;
@@ -5127,7 +5127,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .small_product_list .title_style2 h2 {
-        font-size: 20px;
+        font-size: 21px;
     }
 }
 
@@ -5320,7 +5320,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .deals_product_column1 .countdown_number {
-        font-size: 15px;
+        font-size: 16px;
         line-height: 22px;
         padding-top: 8px;
     }
@@ -5328,7 +5328,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .deals_product_column1 .countdown_title {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
 
@@ -5403,7 +5403,7 @@ textarea:-ms-input-placeholder {
     left: 22px;
     border: 0;
     background: #F8F8F8;
-    font-size: 21px;
+    font-size: 22px;
     z-index: 9;
     transition: .3s;
 }
@@ -5449,12 +5449,12 @@ textarea:-ms-input-placeholder {
     background: #F8F8F8;
     position: relative;
     padding-left: 15px;
-    font-size: 22px;
+    font-size: 23px;
 }
 
 @media only screen and (max-width: 767px) {
     .small_product_sidebar .title_style2 h2 {
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
@@ -5716,7 +5716,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_container .owl-nav div {
-    font-size: 20px;
+    font-size: 21px;
     transition: .3s;
 }
 
@@ -5750,7 +5750,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_content h4 {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 22px;
     font-weight: 600;
     margin-bottom: 5px;
@@ -5759,7 +5759,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .blog_content h4 {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -5769,7 +5769,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_content .post_meta p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
 }
 
@@ -5786,7 +5786,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_content .post_desc p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     text-align: justify;
 }
@@ -5835,7 +5835,7 @@ textarea:-ms-input-placeholder {
 }
 
 .newsletter_container h3 {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 18px;
     font-weight: 600;
     margin-bottom: 18px;
@@ -5843,13 +5843,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .newsletter_container h3 {
-        font-size: 16px;
+        font-size: 17px;
         margin-bottom: 10px;
     }
 }
 
 .newsletter_container p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     margin-bottom: 21px;
     max-width: 80%;
@@ -5857,7 +5857,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .newsletter_container p {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 19px;
         margin-bottom: 14px;
         max-width: 95%;
@@ -5903,7 +5903,7 @@ textarea:-ms-input-placeholder {
     background: none;
     padding: 0 15px 0 142px;
     height: 50px;
-    font-size: 13px;
+    font-size: 14px;
     color: #666;
     border-radius: 4px;
 }
@@ -5917,7 +5917,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .subscribe_form form input {
         height: 40px;
-        font-size: 12px;
+        font-size: 13px;
         padding: 0 15px 0 106px;
     }
 }
@@ -5930,7 +5930,7 @@ textarea:-ms-input-placeholder {
     width: 80px;
     background: #febd17;
     color: #1a1a1a;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     height: 100%;
     border: 0;
@@ -5953,7 +5953,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .subscribe_form form button {
-        font-size: 12px;
+        font-size: 13px;
         padding: 0 8px;
         width: 94px;
     }
@@ -6118,7 +6118,7 @@ textarea:-ms-input-placeholder {
 }
 
 .shipping_content h4 {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 18px;
     text-transform: capitalize;
     font-weight: 600;
@@ -6128,31 +6128,31 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .shipping_content h4 {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .shipping_content h4 {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .shipping_content h4 {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 .shipping_content p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 22px;
     color: #999999;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .shipping_content p {
-        font-size: 12px;
+        font-size: 13px;
         line-height: 20px;
     }
 }
@@ -6316,7 +6316,7 @@ textarea:-ms-input-placeholder {
 }
 
 .widgets_container h3 {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 16px;
     margin-bottom: 30px;
     font-weight: 600;
@@ -6326,14 +6326,14 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .widgets_container h3 {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .widgets_container h3 {
         margin-bottom: 22px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -6344,7 +6344,7 @@ textarea:-ms-input-placeholder {
 }
 
 .footer_contact > p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 25px;
     color: #ffffff;
 }
@@ -6382,7 +6382,7 @@ textarea:-ms-input-placeholder {
 .footer_menu ul li a {
     display: block;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     color: #999999;
 }
@@ -6393,7 +6393,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .footer_menu ul li a {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 18px;
     }
 }
@@ -6435,7 +6435,7 @@ textarea:-ms-input-placeholder {
     line-height: 41px;
     display: block;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     border-radius: 4px;
     color: #ffffff;
 }
@@ -6453,12 +6453,12 @@ textarea:-ms-input-placeholder {
         width: 35px;
         height: 35px;
         line-height: 35px;
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
 .instagram2 i.fa-instagram {
-  font-size: 24px; /* Replace with desired size */
+  font-size: 25px; /* Replace with desired size */
 }
 
 .instagram2 i.fa-instagram:hover {
@@ -6466,7 +6466,7 @@ textarea:-ms-input-placeholder {
 }
 
 .youtube i.fa-youtube-play {
-  font-size: 24px; /* Replace with desired size */
+  font-size: 25px; /* Replace with desired size */
 }
 
 .youtube i.fa-youtube-play:hover {
@@ -6474,7 +6474,7 @@ textarea:-ms-input-placeholder {
 }
 
 .twitter i.fa-twitter {
-  font-size: 24px; /* Replace with desired size */
+  font-size: 25px; /* Replace with desired size */
 }
 
 .twitter i.fa-twitter:hover {
@@ -6482,7 +6482,7 @@ textarea:-ms-input-placeholder {
 }
 
 .search-modified {
-    font-size: 24px; /* Adjust the value to your preferred size */
+    font-size: 25px; /* Adjust the value to your preferred size */
     font-weight: bolder;
     line-height: 1; /* Set the line height to remove any extra spacing */
     margin-top: 4px;
@@ -6498,7 +6498,7 @@ textarea:-ms-input-placeholder {
 }
 
 .contact_text p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 25px;
     color: #ffffff;
 }
@@ -6521,13 +6521,13 @@ textarea:-ms-input-placeholder {
 .copyright_area p {
     text-transform: capitalize;
     line-height: 25px;
-    font-size: 14px;
+    font-size: 15px;
     color: #ffffff;
 }
 
 @media only screen and (max-width: 767px) {
     .copyright_area p {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -6564,7 +6564,7 @@ textarea:-ms-input-placeholder {
 }
 
 .footer_payment p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 23px;
     text-transform: capitalize;
     font-style: italic;
@@ -6608,7 +6608,7 @@ textarea:-ms-input-placeholder {
 .breadcrumb_content ul li {
     display: inline-block;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 15px;
     margin-left: 20px;
     padding-left: 20px;
     position: relative;
@@ -6681,7 +6681,7 @@ textarea:-ms-input-placeholder {
 }
 
 .widget_list h3 {
-    font-size: 16px;
+    font-size: 17px;
     margin-bottom: 18px;
     padding-bottom: 8px;
     line-height: 18px;
@@ -6691,7 +6691,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .widget_list h3 {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -6713,7 +6713,7 @@ textarea:-ms-input-placeholder {
 }
 
 .widget_list > ul > li > a {
-    font-size: 14px;
+    font-size: 15px;
     display: block;
     line-height: 25px;
 }
@@ -6730,7 +6730,7 @@ textarea:-ms-input-placeholder {
     content: '\f107';
     cursor: pointer;
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     position: absolute;
     left: 0;
     top: 50%;
@@ -6741,7 +6741,7 @@ textarea:-ms-input-placeholder {
     content: '\f106';
     cursor: pointer;
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     position: absolute;
     left: 0;
     top: 50%;
@@ -6785,7 +6785,7 @@ textarea:-ms-input-placeholder {
 }
 
 .widget_list > ul > li > label {
-    font-size: 14px;
+    font-size: 15px;
     display: block;
     line-height: 27px;
     margin-right: 30px;
@@ -6866,7 +6866,7 @@ textarea:-ms-input-placeholder {
 .widget_list.widget_filter form input {
     background: none;
     border: none;
-    font-size: 12px;
+    font-size: 13px;
     float: left;
     text-align: left;
     line-height: 31px;
@@ -7309,7 +7309,7 @@ textarea:-ms-input-placeholder {
 }
 
 .right_caption p {
-    font-size: 14px;
+    font-size: 15px;
     text-transform: capitalize;
     margin-bottom: 16px;
 }
@@ -7348,7 +7348,7 @@ textarea:-ms-input-placeholder {
     height: 40px;
     line-height: 40px;
     border-radius: 3px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     background: #febd17;
     color: #1a1a1a;
@@ -7387,14 +7387,14 @@ textarea:-ms-input-placeholder {
     color: #1a1a1a;
     border-radius: 0;
     text-align: right;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 27px;
     text-transform: capitalize;
 }
 
 .right_caption .action_links ul li a i {
     margin-left: 7px;
-    font-size: 18px;
+    font-size: 19px;
     vertical-align: middle;
 }
 
@@ -7640,21 +7640,21 @@ textarea:-ms-input-placeholder {
 .product_d_right h3 {
     text-transform: capitalize;
     line-height: 20px;
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 400;
     margin-bottom: 22px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .product_d_right h3 {
-        font-size: 19px;
+        font-size: 20px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .product_d_right h3 {
         margin-bottom: 17px;
-        font-size: 18px;
+        font-size: 19px;
     }
 }
 
@@ -7675,7 +7675,7 @@ textarea:-ms-input-placeholder {
 .product_d_right .product_rating ul li.review a {
     color: #1a1a1a;
     margin-right: 10px;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .product_d_right .product_rating ul li.review a:hover {
@@ -7693,23 +7693,23 @@ textarea:-ms-input-placeholder {
 }
 
 .product_d_right .price_box span.current_price {
-    font-size: 23px;
+    font-size: 24px;
 }
 
 @media only screen and (max-width: 767px) {
     .product_d_right .price_box span.current_price {
-        font-size: 18px;
+        font-size: 19px;
     }
 }
 
 .product_d_right .price_box span.old_price {
-    font-size: 20px;
+    font-size: 21px;
     margin-left: 10px;
 }
 
 @media only screen and (max-width: 767px) {
     .product_d_right .price_box span.old_price {
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
@@ -7731,7 +7731,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_d_right .product_desc p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 26px;
     text-align: justify;
 }
@@ -7759,7 +7759,7 @@ textarea:-ms-input-placeholder {
 
 .product_d_right .priduct_social ul li a {
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 24px;
     padding: 0 8px;
     border-radius: 3px;
@@ -7770,7 +7770,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .product_d_right .priduct_social ul li a {
         padding: 0 3px;
-        font-size: 11px;
+        font-size: 12px;
     }
 }
 
@@ -7841,7 +7841,7 @@ textarea:-ms-input-placeholder {
     border-radius: 3px;
     color: #ffffff;
     display: block;
-    font-size: 15px;
+    font-size: 16px;
     height: 30px;
     width: 30px;
     line-height: 28px;
@@ -7869,7 +7869,7 @@ textarea:-ms-input-placeholder {
 .product_variant.quantity label {
     font-weight: 600;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 0;
 }
 
@@ -7904,7 +7904,7 @@ textarea:-ms-input-placeholder {
 
 .product_variant.quantity button {
     border: 0;
-    font-size: 16px;
+    font-size: 17px;
     margin-right: 20px;
     background: #febd17;
     height: 42px;
@@ -7931,7 +7931,7 @@ textarea:-ms-input-placeholder {
         min-width: inherit;
         margin-right: 10px;
         padding: 0 12px;
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -7953,13 +7953,13 @@ textarea:-ms-input-placeholder {
 .product_variant.color h3 {
     font-weight: 600;
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: 19px;
     margin-bottom: 0;
     margin-left: 40px;
 }
 
 .product_variant.color label {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
 }
@@ -8006,7 +8006,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_variant.size label {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
 }
@@ -8021,7 +8021,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_d_action ul li a {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 28px;
 }
 
@@ -8075,7 +8075,7 @@ textarea:-ms-input-placeholder {
     display: block;
     float: right;
     text-transform: capitalize;
-    font-size: 20px;
+    font-size: 21px;
     color: #555;
     font-weight: 600;
     margin-left: 35px;
@@ -8086,7 +8086,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .product_info_button ul li a {
         margin-left: 25px;
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
@@ -8114,7 +8114,7 @@ textarea:-ms-input-placeholder {
     cursor: pointer;
     margin-top: 20px;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .product_review_form button:hover {
@@ -8183,14 +8183,14 @@ textarea:-ms-input-placeholder {
 }
 
 .reviews_wrapper h2 {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     text-transform: capitalize;
 }
 
 @media only screen and (max-width: 767px) {
     .reviews_wrapper h2 {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -8199,7 +8199,7 @@ textarea:-ms-input-placeholder {
 }
 
 .reviews_wrapper .product_rating h3 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     text-transform: capitalize;
 }
@@ -8260,7 +8260,7 @@ textarea:-ms-input-placeholder {
 }
 
 .reviews_meta p {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 15px;
 }
 
@@ -8296,7 +8296,7 @@ textarea:-ms-input-placeholder {
     text-align: center;
     line-height: 32px;
     left: -7px;
-    font-size: 18px;
+    font-size: 19px;
     -webkit-transition: 0.3s;
     transition: 0.3s;
     opacity: 0;
@@ -8418,7 +8418,7 @@ textarea:-ms-input-placeholder {
 .grouped_form table tbody tr td.grouped-product-list.label {
     min-width: 188px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .grouped_form table tbody tr td.grouped-product-list.label a:hover {
@@ -8426,13 +8426,13 @@ textarea:-ms-input-placeholder {
 }
 
 .grouped_form table tbody tr td.grouped-product-list.price {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     min-width: 190px;
 }
 
 .grouped_form table tbody tr td.grouped-product-list.price p {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     position: relative;
 }
@@ -8479,7 +8479,7 @@ textarea:-ms-input-placeholder {
     display: block;
     line-height: 18px;
     margin-bottom: 17px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -8583,15 +8583,15 @@ textarea:-ms-input-placeholder {
 }
 
 .product_sidebar .price_box span.current_price {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .product_sidebar .price_box span.old_price {
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .product_sidebar .price_box span.regular_price {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1300px) {
@@ -8662,7 +8662,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .product_right_sidebar .product_d_right h3 {
-        font-size: 18px;
+        font-size: 19px;
     }
 }
 
@@ -8723,7 +8723,7 @@ textarea:-ms-input-placeholder {
 .table_desc .cart_page table thead tr th {
     border-bottom: 3px solid #febd17;
     border-right: 1px solid #ebebeb;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     text-transform: capitalize;
     padding: 10px;
@@ -8756,7 +8756,7 @@ textarea:-ms-input-placeholder {
 }
 
 .table_desc .cart_page table tbody tr td.product_remove a {
-    font-size: 20px;
+    font-size: 21px;
     font-family: "Rubik", sans-serif;
     color: #1a1a1a;
 }
@@ -8786,7 +8786,7 @@ textarea:-ms-input-placeholder {
 .table_desc .cart_page table tbody tr td.product_name a {
     color: #1a1a1a;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -8797,7 +8797,7 @@ textarea:-ms-input-placeholder {
 .table_desc .cart_page table tbody tr td.product-price {
     min-width: 130px;
     color: #1a1a1a;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 
@@ -8843,7 +8843,7 @@ textarea:-ms-input-placeholder {
     border: 0;
     color: #ffffff;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     height: 38px;
     line-height: 18px;
@@ -8869,7 +8869,7 @@ textarea:-ms-input-placeholder {
 }
 
 .coupon_inner p {
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 20px;
 }
 
@@ -8878,7 +8878,7 @@ textarea:-ms-input-placeholder {
     border: 0;
     color: #ffffff;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     height: 38px;
     line-height: 18px;
@@ -8899,7 +8899,7 @@ textarea:-ms-input-placeholder {
     background: none;
     padding: 0 20px;
     margin-left: 20px;
-    font-size: 12px;
+    font-size: 13px;
     color: #1a1a1a;
 }
 
@@ -8920,7 +8920,7 @@ textarea:-ms-input-placeholder {
 .coupon_inner a {
     display: block;
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     margin-bottom: 20px;
     border-bottom: 1px solid #ebebeb;
@@ -8947,7 +8947,7 @@ textarea:-ms-input-placeholder {
     line-height: 36px;
     padding: 5px 15px;
     background: #1a1a1a;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 
@@ -8955,7 +8955,7 @@ textarea:-ms-input-placeholder {
     .coupon_code h3 {
         line-height: 28px;
         padding: 5px 15px;
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -8970,23 +8970,23 @@ textarea:-ms-input-placeholder {
 
 .cart_subtotal p {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 @media only screen and (max-width: 767px) {
     .cart_subtotal p {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 .cart_subtotal p.cart_amount {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
 }
 
 @media only screen and (max-width: 767px) {
     .cart_subtotal p.cart_amount {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -9007,7 +9007,7 @@ textarea:-ms-input-placeholder {
 .checkout_btn a {
     background: #febd17;
     color: #1a1a1a;
-    font-size: 15px;
+    font-size: 16px;
     padding: 3px 14px;
     line-height: 30px;
     font-weight: 600;
@@ -9078,7 +9078,7 @@ textarea:-ms-input-placeholder {
 }
 
 .user-actions h3 {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     background: #ffffff;
     padding: 15px 10px;
@@ -9112,7 +9112,7 @@ textarea:-ms-input-placeholder {
 }
 
 .form_group label {
-    font-size: 14px;
+    font-size: 15px;
     display: block;
     line-height: 18px;
     margin-bottom: 10px;
@@ -9139,7 +9139,7 @@ textarea:-ms-input-placeholder {
     border: 0;
     color: #ffffff;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     -webkit-transition: 0.3s;
     transition: 0.3s;
     margin-right: 20px;
@@ -9185,7 +9185,7 @@ textarea:-ms-input-placeholder {
     border: 1px solid #ebebeb;
     width: 200px;
     height: 45px;
-    font-size: 12px;
+    font-size: 13px;
     padding: 0 20px;
     color: #1a1a1a;
 }
@@ -9195,7 +9195,7 @@ textarea:-ms-input-placeholder {
     background: #1a1a1a;
     color: #ffffff;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     -webkit-transition: 0.3s;
     transition: 0.3s;
@@ -9221,7 +9221,7 @@ textarea:-ms-input-placeholder {
 }
 
 .checkout_form h3 {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 30px;
     padding: 5px 10px;
     color: #ffffff;
@@ -9263,7 +9263,7 @@ textarea:-ms-input-placeholder {
 
 .checkout_form label.righ_0 {
     cursor: pointer;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 27px;
     padding: 5px 10px;
     text-transform: capitalize;
@@ -9278,7 +9278,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .checkout_form label.righ_0 {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 25px;
         padding: 3px 10px;
     }
@@ -9298,7 +9298,7 @@ textarea:-ms-input-placeholder {
 
 .order_button button {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 30px;
     padding: 5px 10px;
     text-transform: capitalize;
@@ -9313,7 +9313,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .order_button button {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -9328,7 +9328,7 @@ textarea:-ms-input-placeholder {
     max-width: 100%;
     padding: 0 30px 0 20px;
     background: none;
-    font-size: 13px;
+    font-size: 14px;
     resize: none;
     line-height: 45px;
     width: 100%;
@@ -9426,7 +9426,7 @@ textarea:-ms-input-placeholder {
 
 .table_desc.wishlist table tbody tr td.product_total a {
     background: #febd17;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     height: 38px;
     line-height: 18px;
@@ -9472,7 +9472,7 @@ textarea:-ms-input-placeholder {
 }
 
 .wishlist_share h4 {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     text-transform: capitalize;
 }
@@ -9503,7 +9503,7 @@ textarea:-ms-input-placeholder {
 }
 
 .contact_message h3 {
-    font-size: 21px;
+    font-size: 22px;
     text-transform: capitalize;
     font-weight: 600;
     line-height: 20px;
@@ -9518,13 +9518,13 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .contact_message h3 {
-        font-size: 20px;
+        font-size: 21px;
         margin-bottom: 20px;
     }
 }
 
 .contact_message p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     margin-bottom: 20px;
     text-align: justify;
@@ -9626,7 +9626,7 @@ textarea:-ms-input-placeholder {
 }
 
 .account_form h2 {
-    font-size: 28px;
+    font-size: 29px;
     text-transform: capitalize;
     font-weight: 600;
     line-height: 22px;
@@ -9635,7 +9635,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .account_form h2 {
-        font-size: 24px;
+        font-size: 25px;
         margin-bottom: 20px;
     }
 }
@@ -9648,7 +9648,7 @@ textarea:-ms-input-placeholder {
 }
 
 .account_form label {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     cursor: pointer;
     line-height: 12px;
@@ -9673,7 +9673,7 @@ textarea:-ms-input-placeholder {
     border: 0;
     color: #1a1a1a;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     height: 34px;
     line-height: 21px;
@@ -9713,7 +9713,7 @@ textarea:-ms-input-placeholder {
 }
 
 .login_submit a {
-    font-size: 13px;
+    font-size: 14px;
     float: right;
     line-height: 39px;
 }
@@ -9822,7 +9822,7 @@ textarea:-ms-input-placeholder {
     border: 1px solid #febd17;
     width: 100%;
     text-align: right;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: #1a1a1a;
 }
@@ -9852,7 +9852,7 @@ textarea:-ms-input-placeholder {
 }
 
 .faq_content_wrapper h4 {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     margin-bottom: 15px;
     line-height: 18px;
@@ -9860,7 +9860,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .faq_content_wrapper h4 {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 24px;
     }
 }
@@ -9883,7 +9883,7 @@ textarea:-ms-input-placeholder {
 }
 
 .dashboard_tab_button ul li a {
-    font-size: 14px;
+    font-size: 15px;
     color: #ffffff;
     font-weight: 600;
     text-transform: capitalize;
@@ -9901,14 +9901,14 @@ textarea:-ms-input-placeholder {
 }
 
 .dashboard_content h3 {
-    font-size: 22px;
+    font-size: 23px;
     text-transform: capitalize;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
 .dashboard_content h4 {
-    font-size: 20px;
+    font-size: 21px;
     text-transform: capitalize;
     font-weight: 600;
     margin-bottom: 10px;
@@ -9952,7 +9952,7 @@ textarea:-ms-input-placeholder {
     border-right: 2px solid #ebebeb;
     font-weight: 600;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 15px;
     text-align: center;
     min-width: 150px;
 }
@@ -10042,7 +10042,7 @@ textarea:-ms-input-placeholder {
 
 .about_content h1 {
     display: inline-block;
-    font-size: 24px;
+    font-size: 25px;
     line-height: 24px;
     text-transform: capitalize;
     font-weight: 600;
@@ -10051,34 +10051,34 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .about_content h1 {
-        font-size: 22px;
+        font-size: 23px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .about_content h1 {
-        font-size: 18px;
+        font-size: 19px;
         margin-bottom: 14px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .about_content h1 {
-        font-size: 16px;
+        font-size: 17px;
         line-height: 25px;
         margin-bottom: 13px;
     }
 }
 
 .about_content p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 26px;
     max-width: 890px;
     margin: 0 auto;
 }
 
 .chose_content h3 {
-    font-size: 18px;
+    font-size: 19px;
     text-transform: capitalize;
     font-weight: 600;
     line-height: 24px;
@@ -10087,14 +10087,14 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .chose_content h3 {
-        font-size: 16px;
+        font-size: 17px;
         argin-bottom: 13px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .chose_content h3 {
-        font-size: 16px;
+        font-size: 17px;
         line-height: 20px;
         margin-bottom: 11px;
     }
@@ -10196,7 +10196,7 @@ textarea:-ms-input-placeholder {
 }
 
 .about_gallery_content h3 {
-    font-size: 18px;
+    font-size: 19px;
     text-transform: capitalize;
     font-weight: 600;
     line-height: 24px;
@@ -10205,7 +10205,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .about_gallery_content h3 {
-        font-size: 16px;
+        font-size: 17px;
         margin-bottom: 7px;
     }
 }
@@ -10265,7 +10265,7 @@ textarea:-ms-input-placeholder {
 }
 
 .team_content h3 {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 24px;
     font-weight: 600;
     margin-bottom: 5px;
@@ -10282,12 +10282,12 @@ textarea:-ms-input-placeholder {
     .team_content h3 {
         line-height: 18px;
         margin-bottom: 4px;
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
 .team_content h5 {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 17px;
     margin-bottom: 12px;
     padding-bottom: 14px;
@@ -10321,7 +10321,7 @@ textarea:-ms-input-placeholder {
 }
 
 .team_content p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 25px;
 }
 
@@ -10338,7 +10338,7 @@ textarea:-ms-input-placeholder {
 }
 
 .faq-client_title h2 {
-    font-size: 24px;
+    font-size: 25px;
     line-height: 28px;
     font-weight: 600;
     display: inline-block;
@@ -10350,7 +10350,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .faq-client_title h2 {
-        font-size: 19px;
+        font-size: 20px;
         line-height: 22px;
     }
 }
@@ -10387,7 +10387,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .panel-heading .panel-title a {
         padding: 14px 15px 14px 38px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -10396,7 +10396,7 @@ textarea:-ms-input-placeholder {
     content: "\f0d7";
     font-family: 'FontAwesome';
     color: #333;
-    font-size: 20px;
+    font-size: 21px;
     width: 22px;
     height: 22px;
     text-align: center;
@@ -10548,7 +10548,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_header h1 {
-    font-size: 32px;
+    font-size: 33px;
     line-height: 28px;
     margin-bottom: 0;
     font-weight: 600;
@@ -10556,7 +10556,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .blog_header h1 {
-        font-size: 28px;
+        font-size: 29px;
         line-height: 28px;
     }
 }
@@ -10653,21 +10653,21 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_wrapper .blog_content h4 {
-    font-size: 20px;
+    font-size: 21px;
     text-transform: capitalize;
     font-weight: 600;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .blog_wrapper .blog_content h4 {
-        font-size: 19px;
+        font-size: 20px;
         margin-bottom: 11px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .blog_wrapper .blog_content h4 {
-        font-size: 17px;
+        font-size: 18px;
         margin-bottom: 9px;
     }
 }
@@ -10693,7 +10693,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_wrapper .blog_meta span {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 24px;
 }
 
@@ -10724,7 +10724,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_wrapper .blog_desc p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     margin-bottom: 0;
     text-align: justify;
@@ -10732,7 +10732,7 @@ textarea:-ms-input-placeholder {
 
 .blog_wrapper .btn_more a {
     color: #febd17;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 20px;
     display: inline-block;
@@ -10757,7 +10757,7 @@ textarea:-ms-input-placeholder {
     display: block;
     text-align: center;
     padding: 0 20px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     font-style: normal;
     border-radius: 3px;
@@ -10799,7 +10799,7 @@ textarea:-ms-input-placeholder {
 
 .blog_sidebar_widget .widget_title h3 {
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 25px;
     padding-top: 0;
     font-weight: 600;
@@ -10843,7 +10843,7 @@ textarea:-ms-input-placeholder {
     padding: 0 20px;
     height: 34px;
     line-height: 35px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     -webkit-transition: .3s;
@@ -10862,7 +10862,7 @@ textarea:-ms-input-placeholder {
 .tag_widget ul li a {
     margin: 0 0px 0 6px;
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     border: 1px solid #ebebeb;
     background: #fff;
@@ -10902,7 +10902,7 @@ textarea:-ms-input-placeholder {
 }
 
 .post_info h4 {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     text-transform: capitalize;
     line-height: 14px;
@@ -10914,7 +10914,7 @@ textarea:-ms-input-placeholder {
 }
 
 .post_info span {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .blog_categories ul li {
@@ -11011,7 +11011,7 @@ textarea:-ms-input-placeholder {
     width: 30px;
     height: 30px;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 21px;
     color: #fff;
     text-align: center;
     border-radius: 50%;
@@ -11116,7 +11116,7 @@ textarea:-ms-input-placeholder {
 }
 
 .post_header h3 {
-    font-size: 30px;
+    font-size: 31px;
     line-height: 35px;
     font-weight: 600;
     margin-bottom: 7px;
@@ -11124,21 +11124,21 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .post_header h3 {
-        font-size: 26px;
+        font-size: 27px;
         line-height: 30px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .post_header h3 {
-        font-size: 25px;
+        font-size: 26px;
         line-height: 25px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .post_header h3 {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 24px;
     }
 }
@@ -11196,13 +11196,13 @@ textarea:-ms-input-placeholder {
 .blog_details .post_content > p {
     line-height: 24px;
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 16px;
     text-align: justify;
 }
 
 @media only screen and (max-width: 767px) {
     .blog_details .post_content > p {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -11217,12 +11217,12 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_details .post_content blockquote p {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 @media only screen and (max-width: 767px) {
     .blog_details .post_content blockquote p {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -11239,7 +11239,7 @@ textarea:-ms-input-placeholder {
 }
 
 .blog_details .social_sharing p {
-    font-size: 13px;
+    font-size: 14px;
     text-transform: capitalize;
     margin-left: 20px;
     margin-bottom: 0;
@@ -11249,7 +11249,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .blog_details .social_sharing p {
-        font-size: 13px;
+        font-size: 14px;
         margin-left: 10px;
     }
 }
@@ -11262,7 +11262,7 @@ textarea:-ms-input-placeholder {
     background: #e6e6e6;
     border-radius: 100%;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     height: 26px;
     line-height: 26px;
     margin-left: 5px;
@@ -11278,7 +11278,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .blog_details .social_sharing ul li a {
         margin-left: 0;
-        font-size: 11px;
+        font-size: 12px;
         height: 24px;
         line-height: 24px;
         width: 24px;
@@ -11318,7 +11318,7 @@ textarea:-ms-input-placeholder {
 
 .entry_content .post_meta span {
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .entry_content .post_meta span a:hover {
@@ -11330,7 +11330,7 @@ textarea:-ms-input-placeholder {
 }
 
 .comments_box h3 {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0 0 20px;
     font-weight: 600;
     line-height: 18px;
@@ -11371,7 +11371,7 @@ textarea:-ms-input-placeholder {
 }
 
 .comment_list .comment_content h5 {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     margin-bottom: 5px;
 }
@@ -11383,14 +11383,14 @@ textarea:-ms-input-placeholder {
 .comment_list .comment_content span {
     line-height: 18px;
     margin-bottom: 8px;
-    font-size: 13px;
+    font-size: 14px;
     font-style: italic;
     display: inline-block;
 }
 
 .comment_list .comment_content p {
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 15px;
     text-align: justify;
 }
 
@@ -11412,13 +11412,13 @@ textarea:-ms-input-placeholder {
     color: #fff;
     background: #1a1a1a;
     display: block;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 @media only screen and (max-width: 767px) {
     .comment_reply a {
         line-height: 20px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -11427,14 +11427,14 @@ textarea:-ms-input-placeholder {
 }
 
 .comments_form h3 {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0 0 20px;
     font-weight: 600;
     line-height: 18px;
 }
 
 .comments_form p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 17px;
     margin-bottom: 12px;
 }
@@ -11446,7 +11446,7 @@ textarea:-ms-input-placeholder {
 }
 
 .comments_form form label {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -11523,7 +11523,7 @@ textarea:-ms-input-placeholder {
 }
 
 .related_posts h3 {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0 0 20px;
     font-weight: 600;
     line-height: 18px;
@@ -11546,7 +11546,7 @@ textarea:-ms-input-placeholder {
 }
 
 .related_content h4 {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 13px;
     margin-bottom: 2px;
@@ -11561,7 +11561,7 @@ textarea:-ms-input-placeholder {
 }
 
 .related_content span {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 17px;
 }
 
@@ -11575,7 +11575,7 @@ textarea:-ms-input-placeholder {
 }
 
 .related_content .blog_meta span {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 22px;
 }
 
@@ -11641,14 +11641,14 @@ textarea:-ms-input-placeholder {
 }
 
 .modal_title h2 {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     margin-bottom: 14px;
     line-height: 26px;
 }
 
 .modal_social h2 {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     margin-bottom: 15px;
     line-height: 20px;
@@ -11666,7 +11666,7 @@ textarea:-ms-input-placeholder {
     text-align: center;
     line-height: 38px;
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 16px;
     color: #ffffff;
     font-weight: 400;
 }
@@ -11718,12 +11718,12 @@ textarea:-ms-input-placeholder {
 .modal_price span {
     font-weight: 600;
     color: #febd17;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .modal_price span.old_price {
     color: #1a1a1a;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     text-decoration: line-through;
     margin-right: 5px;
@@ -11731,14 +11731,14 @@ textarea:-ms-input-placeholder {
 
 .modal_description p {
     line-height: 24px;
-    font-size: 15px;
+    font-size: 16px;
     margin: 0;
     text-align: justify;
 }
 
 .variants_size h2,
 .variants_color h2 {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 7px;
     line-height: 20px;
@@ -11784,7 +11784,7 @@ textarea:-ms-input-placeholder {
     background: none;
     border: 1px solid #1a1a1a;
     margin-right: 10px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     height: 45px;
     width: 230px;
@@ -11840,7 +11840,7 @@ textarea:-ms-input-placeholder {
     top: 10px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 21px;
     z-index: 9;
 }
 
@@ -11888,7 +11888,7 @@ textarea:-ms-input-placeholder {
     text-align: center;
     line-height: 32px;
     left: -7px;
-    font-size: 18px;
+    font-size: 19px;
     -webkit-transition: 0.3s;
     transition: 0.3s;
     opacity: 0;
@@ -11925,20 +11925,20 @@ textarea:-ms-input-placeholder {
 }
 
 #boxes .newletter-title h2 {
-    font-size: 30px;
+    font-size: 31px;
     margin: 0 0 30px;
 }
 
 @media only screen and (max-width: 767px) {
     #boxes .newletter-title h2 {
-        font-size: 22px;
+        font-size: 23px;
         margin: 0 0 10px;
     }
 }
 
 #boxes .box-content label {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 #boxes .box-content .newletter-label {
@@ -11989,7 +11989,7 @@ textarea:-ms-input-placeholder {
     background: #1a1a1a;
     cursor: pointer;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     -webkit-transition: 0.3s;
     transition: 0.3s;
@@ -12012,7 +12012,7 @@ textarea:-ms-input-placeholder {
 
 #boxes .box-content .subscribe-bottom label {
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 #boxes .box-content .subscribe-bottom #newsletter_popup_dont_show_again {
@@ -12035,7 +12035,7 @@ textarea:-ms-input-placeholder {
     top: 1px;
     text-align: center;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: capitalize;
     padding: 6px 12px;
     background: #1a1a1a;
@@ -12098,14 +12098,14 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .error_form h2 {
-        font-size: 18px;
+        font-size: 19px;
         line-height: 22px;
         margin-bottom: 14px;
     }
 }
 
 .error_form p {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 26px;
     margin-bottom: 30px;
@@ -12113,7 +12113,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .error_form p {
-        font-size: 15px;
+        font-size: 16px;
         margin-bottom: 22px;
         line-height: 21px;
     }
@@ -12147,7 +12147,7 @@ textarea:-ms-input-placeholder {
     height: 100%;
     border: none;
     background: no-repeat;
-    font-size: 20px;
+    font-size: 21px;
     cursor: pointer;
     -webkit-transition: .3s;
     transition: .3s;
@@ -12164,7 +12164,7 @@ textarea:-ms-input-placeholder {
     color: #fff;
     display: inline-block;
     background: #febd17;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     height: 40px;
     line-height: 42px;
@@ -12217,7 +12217,7 @@ textarea:-ms-input-placeholder {
 
 .compare-table .table tbody tr td.first-column {
     min-width: 180px;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     margin: 0;
     line-height: 1;
@@ -12226,7 +12226,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .compare-table .table tbody tr td.first-column {
         min-width: 150px;
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -12255,7 +12255,7 @@ textarea:-ms-input-placeholder {
     clear: both;
     color: #454545;
     float: right;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 15px;
     margin-bottom: 7px;
     margin-top: 15px;
@@ -12265,7 +12265,7 @@ textarea:-ms-input-placeholder {
 .compare-table .table tbody tr td.product-image-title .title {
     float: right;
     clear: both;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 20px;
     margin-bottom: 10px;
@@ -12281,17 +12281,17 @@ textarea:-ms-input-placeholder {
 }
 
 .compare-table .table tbody tr td.pro-price {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 }
 
 .compare-table .table tbody tr td.pro-color {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 }
 
 .compare-table .table tbody tr td.pro-stock {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -12320,7 +12320,7 @@ textarea:-ms-input-placeholder {
 
 .compare-table .table tbody tr td.pro-addtocart .add-to-cart span {
     transition: .3s;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 21px;
     overflow: hidden;
@@ -12335,7 +12335,7 @@ textarea:-ms-input-placeholder {
 }
 
 .compare-table .table tbody tr td.pro-remove button i {
-    font-size: 20px;
+    font-size: 21px;
 }
 
 .compare-table .table tbody tr td.pro-remove button:hover {
@@ -12343,7 +12343,7 @@ textarea:-ms-input-placeholder {
 }
 
 .compare-table .table tbody tr td.pro-ratting a {
-    font-size: 14px;
+    font-size: 15px;
     color: #1a1a1a;
 }
 
@@ -12365,7 +12365,7 @@ textarea:-ms-input-placeholder {
 }
 
 .privacy_content h2 {
-    font-size: 22px;
+    font-size: 23px;
     line-height: 22px;
     font-weight: 600;
     margin-bottom: 7px;
@@ -12373,12 +12373,12 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .privacy_content h2 {
-        font-size: 18px;
+        font-size: 19px;
     }
 }
 
 .privacy_content h3 {
-    font-size: 22px;
+    font-size: 23px;
     line-height: 22px;
     font-weight: 600;
     margin-bottom: 7px;
@@ -12386,12 +12386,12 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .privacy_content h3 {
-        font-size: 18px;
+        font-size: 19px;
     }
 }
 
 .privacy_content p {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 25px;
     margin-bottom: 19px;
     text-align: justify;
@@ -12399,7 +12399,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .privacy_content p {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -12465,7 +12465,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .coming_soon_title h2 {
-        font-size: 22px;
+        font-size: 23px;
         line-height: 22px;
         margin-bottom: 11px;
     }
@@ -12473,7 +12473,7 @@ textarea:-ms-input-placeholder {
 
 .coming_soon_title p {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 16px;
     max-width: 730px;
     margin: 0 auto;
     line-height: 24px;
@@ -12516,7 +12516,7 @@ textarea:-ms-input-placeholder {
 }
 
 .coming_soon_timing .countdown_number {
-    font-size: 26px;
+    font-size: 27px;
     font-weight: 600;
     line-height: 1;
     color: #ffffff;
@@ -12532,12 +12532,12 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 479px) {
     .coming_soon_timing .countdown_number {
         width: 55px;
-        font-size: 20px;
+        font-size: 21px;
     }
 }
 
 .coming_soon_timing .countdown_title {
-    font-size: 13px;
+    font-size: 14px;
     text-transform: capitalize;
     color: #ffffff;
 }
@@ -12586,7 +12586,7 @@ textarea:-ms-input-placeholder {
 
 .coming_soon_newsletter .subscribe_form form input {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 15px;
     padding: 0 28px 0 120px;
     background: inherit;
     height: 48px;
@@ -12601,7 +12601,7 @@ textarea:-ms-input-placeholder {
 }
 
 .coming_soon_newsletter .subscribe_form form button {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     background: inherit;
     color: #1a1a1a;
@@ -12623,12 +12623,12 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .coming_soon_newsletter .subscribe_form form button {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 .coming_soon_newsletter h3 {
-    font-size: 16px;
+    font-size: 17px;
     color: #ffffff;
     font-weight: 700;
     margin-bottom: 15px;
@@ -12669,7 +12669,7 @@ textarea:-ms-input-placeholder {
 }
 
 .coming_soon_link ul li a {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     height: 40px;
     line-height: 40px;
@@ -12703,7 +12703,7 @@ textarea:-ms-input-placeholder {
     line-height: 40px;
     width: auto;
     border-radius: 3px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     background: #febd17;
     color: #1a1a1a;
@@ -12745,7 +12745,7 @@ textarea:-ms-input-placeholder {
 }
 
 .action_links ul li button {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 40px;
     text-align: center;
     background: #ffffff;
