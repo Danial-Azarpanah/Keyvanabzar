@@ -28,85 +28,57 @@
                         <div class="blog_sidebar_widget">
                             <div class="widget_list widget_search">
                                 <div class="widget_title">
-                                    <h3>محصول</h3>
+                                    <h3>مقاله</h3>
                                 </div>
                                 <form action="#">
                                     <input placeholder="جستجو..." type="text">
-                                    <button type="submit">محصول</button>
+                                    <button type="submit">جست و جو</button>
                                 </form>
                             </div>
                             <div class="widget_list comments">
-                                <div class="widget_title">
-                                    <h3>نظرات اخیر</h3>
-                                </div>
-                                <div class="post_wrapper">
-                                    <div class="post_thumb">
-                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
-                                                        alt=""></a>
+                                {% if comments %}
+                                    <div class="widget_title">
+                                        <h3>نظرات اخیر</h3>
                                     </div>
-                                    <div class="post_info">
-                                        <span> <a href="#">پیش نمایش</a> می گوید:</span>
-                                        <a href="">لورم ایپسوم متن ساختگی</a>
-                                    </div>
-                                </div>
-                                <div class="post_wrapper">
-                                    <div class="post_thumb">
-                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
-                                                        alt=""></a>
-                                    </div>
-                                    <div class="post_info">
-                                        <span><a href="#">مدیر سایت</a> می گوید:</span>
-                                        <a href="">لورم ایپسوم متن ساختگی...</a>
-                                    </div>
-                                </div>
-                                <div class="post_wrapper">
-                                    <div class="post_thumb">
-                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
-                                                        alt=""></a>
-                                    </div>
-                                    <div class="post_info">
-                                        <span><a href="#">پیش نمایش</a> می گوید:</span>
-                                        <a href="">لورم ایپسوم متن ساختگی</a>
-                                    </div>
-                                </div>
-                                <div class="post_wrapper">
-                                    <div class="post_thumb">
-                                        <a href=""><img src="{% static "img/blog/comment2.png.jpg" %}"
-                                                        alt=""></a>
-                                    </div>
-                                    <div class="post_info">
-                                        <span><a href="#">مدیر سایت</a> می گوید:</span>
-                                        <a href="">لورم ایپسوم متن ساختگی</a>
-                                    </div>
-                                </div>
+                                    {% for comment in comments %}
+                                        {% if not comment.parent %}
+                                            <div class="post_wrapper">
+                                                <div class="post_info">
+                                                    <span> <a href="#">{{ comment.user.fullname }}</a> می گوید:</span>
+                                                    <a href="blog-details.html">{{ comment.body }}</a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                             <div class="widget_list widget_post">
                                 <div class="widget_title">
                                     <h3>پست های اخیر</h3>
                                 </div>
-                                {% for article in articles %}
+                                {% for article in all_articles %}
                                     <div class="post_wrapper">
                                         <div class="post_thumb">
-                                            <a href=""><img src="{{ article.image.url }}" alt=""></a>
+                                            <a href="{% url "blog:detail" article.slug %}"><img
+                                                    src="{{ article.image.url }}" alt=""></a>
                                         </div>
                                         <div class="post_info">
-                                            <h4><a href="">{{ article.title }}</a></h4>
+                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }}</a>
+                                            </h4>
                                             <span>{{ article.get_jalali_date }}</span>
                                         </div>
                                     </div>
                                 {% endfor %}
                             </div>
-                            <div class="widget_list widget_tag">
+                            <div class="widget_list widget_categories">
                                 <div class="widget_title">
-                                    <h3>تگ محصولات</h3>
+                                    <h3>دسته بندی ها</h3>
                                 </div>
-                                <div class="tag_widget">
-                                    <ul>
-                                        {% for tag in tags %}
-                                            <li><a href="#">{{ tag.title }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                                <ul>
+                                    {% for category in blog_categories %}
+                                        <li><a href="#">{{ category.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -120,15 +92,19 @@
                                     <article class="single_blog">
                                         <figure>
                                             <div class="blog_thumb">
-                                                <a href=""><img src="{{ article.image.url }}"
-                                                                                 alt=""></a>
+                                                <a href="{% url "blog:detail" article.slug %}"><img
+                                                        src="{{ article.image.url }}"
+                                                        alt=""></a>
                                             </div>
                                             <figcaption class="blog_content">
-                                                <h4 class="post_title"><a href="">{{ article.title }}</a>
+                                                <h4 class="post_title"><a
+                                                        href="{% url "blog:detail" article.slug %}">{{ article.title }}</a>
                                                 </h4>
                                                 <div class="blog_meta">
+                                                    <span class="author">دسته بندی: <a
+                                                            href="#">{{ article.category.title }}</a> / </span>
                                                     <span class="meta_date">ارسال شده در:
-                                                        <a href="#">
+                                                        <a>
                                                             {{ article.get_jalali_date }}
                                                         </a>
                                                     </span>
@@ -139,7 +115,7 @@
                                                     </p>
                                                 </div>
                                                 <footer class="btn_more">
-                                                    <a href="blog-details.html"> بیشتر بخوانید</a>
+                                                    <a href="{% url "blog:detail" article.slug %}"> بیشتر بخوانید</a>
                                                 </footer>
                                             </figcaption>
                                         </figure>
@@ -148,17 +124,41 @@
                             </div>
                         </div>
                         <!--blog pagination area start-->
-                        <div class="blog_pagination">
-                            <div class="pagination">
-                                <ul>
-                                    <li class="current">1</li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li class="next"><a href="#">بعدی</a></li>
-                                    <li><a href="#">>></a></li>
-                                </ul>
+                        {% if articles.has_other_pages %}
+                            <div class="blog_pagination">
+                                <div class="pagination">
+                                    <ul>
+                                        {% if articles.has_previous %}
+                                            <li><a href="?page=
+
+                                                    {{ articles.previous_page_number }}{% if request.GET.s %}&s={{ request.GET.s }}{% endif %}">قبلی</a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% for i in articles.paginator.page_range %}
+                                            {% if articles.number == i %}
+                                                <a href="?page=
+                                                        {{ i }}{% if request.GET.s %}&s={{ request.GET.s }}{% endif %}">
+                                                    <li class="current">{{ i }}</li>
+                                                </a>
+                                            {% else %}
+                                                <a href="?page=
+                                                        {{ i }}{% if request.GET.s %}&s={{ request.GET.s }}{% endif %}">
+                                                    <li>{{ i }}</li>
+                                                </a>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% if articles.has_next %}
+                                            <li class="next"><a href="?page=
+
+                                                    {{ articles.next_page_number }}{% if request.GET.s %}&s={{ request.GET.s }}{% endif %}">بعدی</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                         <!--blog pagination area end-->
                     </div>
                 </div>

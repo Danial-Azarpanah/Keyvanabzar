@@ -88,7 +88,7 @@
                                 <a href="{% url "product:product-list" %}">لیست محصولات</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="about.html">وبلاگ</a>
+                                <a href="{% url "blog:list" %}">وبلاگ</a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="contact.html"> درباره ما</a>
@@ -275,7 +275,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="{% url 'product:product-list' %}">لیست محصولات</a></li>
-                                    <li><a href="">وبلاگ</a></li>
+                                    <li><a href="{% url "blog:list" %}">وبلاگ</a></li>
                                     <li><a href="">درباره ما</a></li>
                                     <li><a href=""> تماس با ما</a></li>
                                 </ul>

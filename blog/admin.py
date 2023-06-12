@@ -1,17 +1,22 @@
 from django.contrib import admin
-from .models import Tag, Blog
+from .models import Category, Blog, Comment
 
 
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    list_display = ("title",)
-    search_fields = ("title",)
-    prepopulated_fields = {"slug": ("title",)}
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title',)
 
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ("show_image", "title", "get_jalali_date")
-    search_fields = ("title", "text", "tag__title")
-    list_filter = ("tag__title",)
+    search_fields = ("title", "text", "category__title")
+    list_filter = ("category__title",)
     prepopulated_fields = {"slug": ("title",)}
+
+
+admin.site.register(Comment)
+
+
