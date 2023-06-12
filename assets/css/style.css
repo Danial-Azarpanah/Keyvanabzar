@@ -6465,6 +6465,14 @@ textarea:-ms-input-placeholder {
   color: #febd17; /* Replace with desired size */
 }
 
+.telegram i.fa-telegram {
+  font-size: 25px; /* Replace with desired size */
+}
+
+.telegram i.fa-telegram:hover {
+  color: #febd17; /* Replace with desired size */
+}
+
 .youtube i.fa-youtube-play {
   font-size: 25px; /* Replace with desired size */
 }

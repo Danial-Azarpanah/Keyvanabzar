@@ -95,6 +95,8 @@ class Info(models.Model):
     address = models.CharField('آدرس مغازه', max_length=100)
     instagram = models.URLField('اینستاگرام')
     youtube = models.URLField('یوتوب')
+    twitter = models.URLField("توییتر")
+    telegram = models.URLField("تلگرام")
 
     class Meta:
         verbose_name = 'اطلاعات تماس'
