@@ -32,7 +32,7 @@ class Product(models.Model):
                                  on_delete=models.CASCADE, null=True, blank=True)
     proper_tools = models.ManyToManyField("self", related_name="proper_tools",
                                           verbose_name="ابزارهای مناسب", null=True, blank=True)
-    country = models.CharField("کشور", max_length=50)
+    country = models.CharField("کشور مونتاژ کننده", max_length=50)
     description = models.TextField('توضیحات')
     price = models.PositiveIntegerField('قیمت (تومان)', default=0)
     discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)

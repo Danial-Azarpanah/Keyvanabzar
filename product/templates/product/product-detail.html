@@ -54,11 +54,13 @@
                                 <li class="alert alert-danger p-1">{{ message }}</li>
                             {% endfor %}
                             <h3><a href="#">{{ product.title }} - {{ product.id }}</a></h3>
-                            <div class="product_rating">
-                                <ul>
-                                    <li class="review"><a href="#">({{ comments.all.count }} نظر مشتری )</a></li>
-                                </ul>
-                            </div>
+                            {% if product.comments.all.count %}
+                                <div class="product_rating">
+                                    <ul>
+                                        <li class="review"><a href="#">({{ comments.all.count }} نظر مشتری )</a></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
                             <div class="price_box">
                                 {% if product.discount > 0 %}
                                     <span class="old_price">{{ product.get_price }}</span>
@@ -79,7 +81,7 @@
                                 <ul>
                                     <li>
                                         <p>
-                                            - محصول کشور {{ product.country }}
+                                            - مونتاژ کشور {{ product.country }}
                                         </p>
                                     </li>
                                     <li>
