@@ -11,6 +11,7 @@ class Order(models.Model):
     total_price = models.PositiveIntegerField('قیمت کل')
     created_at = models.DateTimeField('تاریخ ثبت سفارش در', auto_now_add=True)
     tracking_code = models.IntegerField('کد رهگیری', editable=False)
+    discount_applied = models.BooleanField("تخفیف اعمال شده", default=False)
 
     def __str__(self):
         return f'{self.user}'
@@ -32,7 +33,15 @@ class Order(models.Model):
 class OrderItems(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name='سفارش')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='items', verbose_name='محصول')
+    quantity = models.PositiveIntegerField(null=True, blank=True)
     price = models.PositiveIntegerField('قیمت')
+
+    def get_price(self):
+        return "{:,.0f} تومان ".format(self.price)
+
+    def get_product_total(self):
+        price = self.price * self.quantity
+        return "{:,.0f} تومان ".format(price)
 
     def __str__(self):
         return f'{self.order} - - - {self.product.title}'

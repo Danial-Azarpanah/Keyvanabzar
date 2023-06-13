@@ -80,7 +80,7 @@
                                                 <a href="?page={{ i }}{% if request.GET.s %}&s={{ request.GET.s }}{% endif %}">
                                                     <li class="current">{{ i }}</li>
                                                 </a>
-                                            {% else %}
+                                            {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
                                                 <a href="?page={{ i }}{% if request.GET.s %}&s={{ request.GET.s }}{% endif %}">
                                                     <li>{{ i }}</li>
                                                 </a>
