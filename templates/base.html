@@ -229,22 +229,20 @@
                             <div class="categories_title">
                                 <h2 class="categori_toggle">همه دسته بندی ها</h2>
                             </div>
-                            <div class="categories_menu_toggle">
+                            <div class="categories_menu_toggle rounded-bottom">
                                 <ul>
                                     {% for category in categories %}
                                         {% if not category.parent %}
-                                            <li class="menu_item_children"><a
-                                                    href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}<i
+                                            <li class="menu_item_children"><a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }} <i
                                                     class="fa fa-angle-left"></i></a>
-                                                <ul class="categories_mega_menu rounded">
-                                                    <ul class="categorie_sub_menu rounded">
-                                                        {% for child in category.children.all %}
-                                                            <li>
+                                                <ul class="categories_mega_menu rounded-3">
+                                                    {% for child in category.children.all %}
+                                                        <div class="mb-1">
+                                                            <li class="">
                                                                 <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
                                                             </li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                    </li>
+                                                        </div>
+                                                    {% endfor %}
                                                 </ul>
                                             </li>
                                         {% endif %}
@@ -259,7 +257,7 @@
                                 <ul>
                                     <li><a href="{% url "home:home" %}">خانه</a></li>
                                     <li><a class="active" href="">حساب کاربری<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu">
+                                        <ul class="sub_menu rounded-bottom">
                                             {% if request.user.is_authenticated %}
                                                 <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
                                                 <li><a href="">سفارش‌ها</a></li>
