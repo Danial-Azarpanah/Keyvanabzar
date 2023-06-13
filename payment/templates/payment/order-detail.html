@@ -35,6 +35,8 @@
                                         <thead>
                                         <tr>
                                             <th>محصول</th>
+                                            <th>قیمت</th>
+                                            <th>تعداد</th>
                                             <th>مجموع</th>
                                         </tr>
                                         </thead>
@@ -44,12 +46,11 @@
                                             <tr>
 
                                                 <td> {{ item.product.title }} </td>
+                                                <td>{{ item.get_price }}</td>
 
-                                                {% if item.product.discount %}
-                                                    <td>{{ item.product.get_discounted_price }}</td>
-                                                {% else %}
-                                                    <td>{{ item.product.get_price }}</td>
-                                                {% endif %}
+                                                <td> {{ item.quantity }} </td>
+                                                <td> {{ item.get_product_total }} </td>
+
 
                                             </tr>
                                         {% endfor %}
@@ -57,18 +58,22 @@
                                         </tbody>
                                         <tfoot>
 
+                                        {% if order.total_price %}
+                                            <tr class="order_total bg-grey">
+                                                <th>مجموع کل سبد خرید</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td><strong>{{ order.get_total_price }}</strong></td>
+                                            </tr>
+                                        {% endif %}
+
 
                                         <tr>
                                             <th>هزینه ارسال</th>
+                                            <td></td>
+                                            <td></td>
                                             <td><strong>5.00 تومان</strong></td>
                                         </tr>
-
-                                        {% if order.total_price %}
-                                            <tr class="order_total">
-                                                <th>مجموع کل سبد خرید</th>
-                                                <td>{{ order.get_total_price }}</td>
-                                            </tr>
-                                        {% endif %}
 
                                         </tfoot>
                                     </table>
