@@ -437,118 +437,36 @@
                         <div class="section_title title_style2">
                             <div class="title_content">
                                 <h2><span>آخرین</span> پست های وبلاگ</h2>
-                                <p>محصولات مزلی با بالاترین تخفیف</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="blog_container blog_column4 owl-carousel">
-                        <div class="col-lg-3">
-                            <article class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="{% static "img/blog/blog1.jpg" %}" alt=""></a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4><a href="blog-details.html">عنوان مطلب خبری </a></h4>
-                                        <div class="post_meta">
-                                            <p><a href="#">تجارت الکترونیک</a> / 17 مهر</p>
+                        {% for article in articles %}
+                            <div class="col-lg-3">
+                                <article class="single_blog">
+                                    <figure>
+                                        <div class="blog_thumb">
+                                            <a href="{% url "blog:detail" article.slug %}"><img src="{{ article.image.url }}"
+                                                                             alt=""></a>
                                         </div>
-                                        <div class="post_desc">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و ...</p>
-                                        </div>
-                                        <footer class="post_readmore">
-                                            <a href="blog-details.html">ادامه خواندن</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="{% static "img/blog/blog2.jpg" %}" alt=""></a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4><a href="blog-details.html">عنوان خبر</a></h4></h4>
-                                        <div class="post_meta">
-                                            <p><a href="#">تجارت الکترونیک</a> / 17 مهر</p>
-                                        </div>
-                                        <div class="post_desc">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و ...</p>
-                                        </div>
-                                        <footer class="post_readmore">
-                                            <a href="blog-details.html">ادامه خواندن</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="{% static "img/blog/blog3.jpg" %}" alt=""></a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4><a href="blog-details.html">عنوان خبر</a></h4>
-                                        <div class="post_meta">
-                                            <p><a href="#">تجارت الکترونیک</a> / 17 مهر</p>
-                                        </div>
-                                        <div class="post_desc">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و ...</p>
-                                        </div>
-                                        <footer class="post_readmore">
-                                            <a href="blog-details.html">ادامه خواندن</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="{% static "img/blog/blog4.jpg" %}" alt=""></a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4><a href="blog-details.html">عنوان مطلب خبری </a></h4>
-                                        <div class="post_meta">
-                                            <p><a href="#">تجارت الکترونیک</a> / 17 مهر</p>
-                                        </div>
-                                        <div class="post_desc">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و ...</p>
-                                        </div>
-                                        <footer class="post_readmore">
-                                            <a href="blog-details.html">ادامه خواندن</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div class="col-lg-3">
-                            <article class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="{% static "img/blog/blog2.jpg" %}" alt=""></a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4><a href="blog-details.html">عنوان خبر</a></h4></h4>
-                                        <div class="post_meta">
-                                            <p><a href="#">تجارت الکترونیک</a> / 17 مهر</p>
-                                        </div>
-                                        <div class="post_desc">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و ...</p>
-                                        </div>
-                                        <footer class="post_readmore">
-                                            <a href="blog-details.html">ادامه خواندن</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
+                                        <figcaption class="blog_content">
+                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a></h4>
+                                            <div class="post_meta">
+                                                <p><a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a> / {{ article.get_jalali_date }}</p>
+                                            </div>
+                                            <div class="post_desc">
+                                                <p>{{ article.short_content }}</p>
+                                            </div>
+                                            <footer class="post_readmore">
+                                                <a href="{% url "blog:detail" article.slug %}">ادامه خواندن</a>
+                                            </footer>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
