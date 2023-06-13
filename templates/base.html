@@ -145,18 +145,14 @@
                                 </div>
 
                                 <div class="mini_cart_wrapper">
-                                    {% if cart.len %}
-                                        <a href="javascript:void(0)">
-                                            <i class="icon-shopping-bag2"></i>
+                                    <a href="javascript:void(0)">
+                                        <i class="icon-shopping-bag2"></i>
+                                        {% if cart.get_total != "0 تومان " %}
                                             <span class="cart_price">{{ cart.get_total }}<i
                                                     class="ion-ios-arrow-down"></i></span>
-
-
-                                            <span class="cart_count">{{ cart.len }}</span>
-
-
-                                        </a>
-                                    {% endif %}
+                                        {% endif %}
+                                        <span class="cart_count">{{ cart.len }}</span>
+                                    </a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
                                         <div class="mini_cart_inner">
@@ -233,8 +229,10 @@
                                 <ul>
                                     {% for category in categories %}
                                         {% if not category.parent %}
-                                            <li class="menu_item_children"><a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }} <i
-                                                    class="fa fa-angle-left"></i></a>
+                                            <li class="menu_item_children"><a
+                                                    href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}
+                                                <i
+                                                        class="fa fa-angle-left"></i></a>
                                                 <ul class="categories_mega_menu rounded-3">
                                                     {% for child in category.children.all %}
                                                         <div class="mb-1">
