@@ -78,20 +78,22 @@
                                             </div>
                                             <div class="action_links">
                                                 <ul>
+
                                                     <li class="add_to_cart">
                                                         <form method="post"
-                                                              id="add-to-cart"
-                                                              action="{% url "payment:cart-add" product.id %}">
+                                                              id="add-to-cart-form" action="{% url "payment:cart-add" product.id %}">
                                                             {% csrf_token %}
                                                             <input min="1" max="100" value="1" type="number"
-                                                                   name="quantity" hidden>
-                                                            <button class="button" type="submit"
-                                                                    style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد
-                                                                خرید
+                                                                   id="quantity" hidden>
+                                                            <button class="button" type="submit" style="border-radius: 8px; border-width: 0px"
+                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید
                                                             </button>
                                                         </form>
+                                                        <div id="product-id"
+                                                             data-product-id="{{ product.id }}"
+                                                             hidden></div>
                                                     </li>
+
                                                     <li class="wishlist"><a
                                                             onclick="AddFavorite('{{ product.id }}')"
                                                             title="افزودن به لیست علاقمندی ها"><i
@@ -111,24 +113,41 @@
                                 <ul>
 
                                     {% if products.has_previous %}
-                                        <li class="next"><a href="?page={{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
+                                        <li class="next"><a href="?page=
+
+
+
+                                                {{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
 
                                     {% for i in products.paginator.page_range %}
                                         {% if products.number == i %}
-                                            <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
+                                            <a href="?page=
+
+
+
+                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="current">{{ i }}</li>
                                             </a>
                                         {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
-                                            <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
+                                            <a href="?page=
+
+
+
+                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
                                         {% endif %}
                                     {% endfor %}
 
                                     {% if products.has_next %}
-                                        <li class="next"><a href="?page={{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">بعدی</a></li>
+                                        <li class="next"><a href="?page=
+
+
+
+                                                {{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">بعدی</a>
+                                        </li>
                                     {% endif %}
 
                                 </ul>
@@ -175,7 +194,11 @@
                                             <ul class="widget_dropdown_categories">
                                                 {% for child in category.children.all %}
                                                     <li>
-                                                        <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                        <a href="?category=
+
+
+
+                                                                {{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
