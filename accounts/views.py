@@ -232,3 +232,11 @@ class AddAddressView(FormView):
             if next_url:
                 return redirect(next_url)
         return render(self.request, self.template_name, {'form': form})
+
+
+class ContactUsView(View):
+    template_name = 'accounts/contact-us.html'
+
+    def get(self, request):
+        info = Info.objects.all()
+        return render(self.request, self.template_name, {'info': info})

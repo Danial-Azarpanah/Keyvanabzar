@@ -18,4 +18,6 @@ urlpatterns = [
     path('verify-code/', ResetPasswordOtpView.as_view(), name='reset-password-otp'),
 
     path('add-address/', AddAddressView.as_view(), name='add-address'),
+
+    path('contact-us/', ContactUsView.as_view(), name='contact-us'),
 ]
