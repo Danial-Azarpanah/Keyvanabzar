@@ -38,7 +38,7 @@ class Product(models.Model):
     discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
     discounted_price = models.PositiveIntegerField('قیمت تخفیف خورده (تومان)', null=True, blank=True)
     weight = models.CharField("وزن", max_length=30)
-    total_weight = models.IntegerField("وزن کل", max_length=30)
+    total_weight = models.FloatField("وزن همراه جعبه (کیلوگرم)", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     sale_count = models.IntegerField("تعداد فروش", default=0)
 
