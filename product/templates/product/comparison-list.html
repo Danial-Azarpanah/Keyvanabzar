@@ -89,25 +89,38 @@
                                 <tr>
                                     <td class="first-column">افزودن به سبد خرید</td>
                                     {% if product1 %}
+
                                         <td class="pro-addtocart">
-                                            <form method="post" action="{% url "payment:cart-add" product1.id %}">
+                                            <form method="post" id="add-to-cart-form">
                                                 {% csrf_token %}
                                                 <input min="1" max="100" value="1" type="number"
-                                                       name="quantity" hidden>
-                                                <button class="add-to-cart"
-                                                        tabindex="0"><span>افزودن به سبد خرید</span></button>
+                                                       id="quantity" hidden>
+                                                <button class="button" type="submit"
+                                                        style="border-radius: 8px; border-width: 0px"
+                                                        title="افزودن به سبد خرید">افزودن به سبد خرید
+                                                </button>
                                             </form>
+                                            <div id="product-id"
+                                                 data-product-id="{{ product1.id }}"
+                                                 hidden></div>
                                         </td>
+
+
                                     {% endif %}
                                     {% if product2 %}
                                         <td class="pro-addtocart">
-                                            <form method="post" action="{% url "payment:cart-add" product2.id %}">
+                                            <form method="post" id="add-to-cart-form">
                                                 {% csrf_token %}
                                                 <input min="1" max="100" value="1" type="number"
-                                                       name="quantity" hidden>
-                                                <button class="add-to-cart"
-                                                        tabindex="0"><span>افزودن به سبد خرید</span></button>
+                                                       id="quantity" hidden>
+                                                <button class="button" type="submit"
+                                                        style="border-radius: 8px; border-width: 0px"
+                                                        title="افزودن به سبد خرید">افزودن به سبد خرید
+                                                </button>
                                             </form>
+                                            <div id="product-id"
+                                                 data-product-id="{{ product2.id }}"
+                                                 hidden></div>
                                         </td>
                                     {% endif %}
                                 </tr>
