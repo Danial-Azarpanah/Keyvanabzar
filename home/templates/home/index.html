@@ -395,15 +395,36 @@
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart"><a href="cart.html"
-                                                                                           title="افزودن به سبد خرید">افزودن
-                                                                    به سبد خرید</a>
+
+                                                                <li class="add_to_cart">
+                                                                    <form method="post"
+                                                                          id="add-to-cart-form"
+                                                                          action="{% url "payment:cart-add" product.id %}">
+                                                                        {% csrf_token %}
+                                                                        <input min="1" max="100" value="1" type="number"
+                                                                               id="quantity" hidden>
+                                                                        <button id="view-product" class="button"
+                                                                                type="submit"
+                                                                                style="border-radius: 8px; border-width: 0px"
+                                                                                title="افزودن به سبد خرید">افزودن به سبد
+                                                                            خرید
+                                                                        </button>
+                                                                    </form>
+
+                                                                    <div id="product-id"
+                                                                         data-product-id="{{ product.id }}"
+                                                                         hidden></div>
+
                                                                 </li>
-                                                                <li class="wishlist"><a href=""
-                                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
-                                                                <li class="compare"><a href=""
-                                                                                       title="مقایسه"><i
+
+                                                                <li class="wishlist"><a
+                                                                        onclick="AddFavorite('{{ product.id }}')"
+                                                                        title="افزودن به لیست علاقمندی ها"><i
+                                                                        class="icon-bookmark"></i></a></li>
+
+                                                                <li class="compare"><a
+                                                                        onclick="AddCompare('{{ product.id }}')"
+                                                                        title="مقایسه"><i
                                                                         class="icon-rotate-cw"></i></a></li>
                                                             </ul>
                                                         </div>
@@ -467,7 +488,7 @@
                                                     / {{ article.get_jalali_date }}</p>
                                             </div>
                                             <div class="post_desc">
-                                                <p>{{ article.short_content }}</p>
+                                                <p>{{ article.short_content|safe }}</p>
                                             </div>
                                             <footer class="post_readmore">
                                                 <a href="{% url "blog:detail" article.slug %}">ادامه خواندن</a>
@@ -484,6 +505,5 @@
         <!--blog area end-->
     </div>
     <!--home section bg area end-->
-
 
 {% endblock %}
