@@ -171,17 +171,23 @@
                                                             <ul>
                                                                 <li class="add_to_cart">
                                                                     <form method="post"
-                                                                          id="add-to-cart"
+                                                                          id="add-to-cart-form"
                                                                           action="{% url "payment:cart-add" product.id %}">
                                                                         {% csrf_token %}
                                                                         <input min="1" max="100" value="1" type="number"
-                                                                               name="quantity" hidden>
-                                                                        <button class="button" type="submit"
+                                                                               id="quantity" hidden>
+                                                                        <button id="view-product" class="button"
+                                                                                type="submit"
                                                                                 style="border-radius: 8px; border-width: 0px"
                                                                                 title="افزودن به سبد خرید">افزودن به سبد
                                                                             خرید
                                                                         </button>
                                                                     </form>
+
+                                                                    <div id="product-id"
+                                                                         data-product-id="{{ product.id }}"
+                                                                         hidden></div>
+
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     <a
@@ -448,13 +454,17 @@
                                 <article class="single_blog">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="{% url "blog:detail" article.slug %}"><img src="{{ article.image.url }}"
-                                                                             alt=""></a>
+                                            <a href="{% url "blog:detail" article.slug %}"><img
+                                                    src="{{ article.image.url }}"
+                                                    alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a></h4>
+                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a>
+                                            </h4>
                                             <div class="post_meta">
-                                                <p><a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a> / {{ article.get_jalali_date }}</p>
+                                                <p>
+                                                    <a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a>
+                                                    / {{ article.get_jalali_date }}</p>
                                             </div>
                                             <div class="post_desc">
                                                 <p>{{ article.short_content }}</p>
@@ -474,4 +484,32 @@
         <!--blog area end-->
     </div>
     <!--home section bg area end-->
+
+    <script>
+        $(document).on('submit', '#add-to-cart-form', function (e) {
+            e.preventDefault();
+            var product_id = $('#product-id').data('product-id');
+            $.ajax({
+                url: `/cart-add/${product_id}`,
+                type: 'POST',
+                data: {
+                    quantity: $('#quantity').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function () {
+                    Swal.fire({
+                        text: 'این محصول به سبد خرید شما اضافه شد',
+                        icon: 'success',
+                        confirmButtonText: 'باشه',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function () {
+                        location.reload()
+                    })
+                }
+
+            });
+        })
+    </script>
+
 {% endblock %}
