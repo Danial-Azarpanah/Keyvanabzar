@@ -1,8 +1,9 @@
-from django.contrib import messages
 from django.http import JsonResponse
 from django.views.generic import *
 from django.shortcuts import *
 from random import randint
+
+from accounts.mixins import RequiredLoginMixin
 from .messages import *
 from .cart import Cart
 from .models import *
@@ -38,13 +39,24 @@ class CartDeleteView(View):
         return redirect('payment:cart-detail')
 
 
-class OrderCreationView(View):
-    def get(self, request):
+class OrderCreationView(RequiredLoginMixin, View):
+
+    def post(self, request):
         tracking_code = randint(100000, 999999)
         cart = Cart(request)
-        order = Order.objects.create(user=request.user, total_price=cart.total(), tracking_code=tracking_code)
+
+        delivery_method = request.POST.get("delivery-selection")
+
+        if delivery_method == "post":
+            post_price = cart.get_post_price()[1]
+        else:
+            post_price = 0
+
+        order = Order.objects.create(user=request.user, total_price=cart.total(), tracking_code=tracking_code,
+                                     post_price=post_price, delivery_method=delivery_method)
         for item in cart:
-            OrderItems.objects.create(order=order, product=item['product'], quantity=item['quantity'], price=item['price'])
+            OrderItems.objects.create(order=order, product=item['product'], quantity=item['quantity'],
+                                      price=item['price'])
         cart.del_cart()
         return redirect('payment:order-detail', order.id)
 
@@ -96,10 +108,11 @@ class SendRequestView(View):
     def post(self, request, pk):
         order = get_object_or_404(Order, id=pk)
         total_price = order.total_price * 10
+        post_price = order.post_price * 10
         request.session['order_id'] = str(order.id)
         req_data = {
             "merchant_id": MERCHANT,
-            "amount": total_price,
+            "amount": total_price + post_price,
             "callback_url": CallbackURL,
             "description": description,
             "metadata": {"mobile": request.user.phone_number}
