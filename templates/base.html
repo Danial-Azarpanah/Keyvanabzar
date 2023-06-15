@@ -414,6 +414,31 @@
 <script>
 
 
+    function AddCompare(id) {
+        $.get(`/add-comparison/${id}`).then(response => {
+            if (response['error']) {
+                Swal.fire({
+                    position: 'top-end-right',
+                    icon: 'warning',
+                    text: response['error'],
+                    showConfirmButton: false,
+                    confirmButtonColor: '#112031',
+                    timer: 1500
+                })
+            } else {
+                Swal.fire({
+                    position: 'top-end-right',
+                    icon: 'success',
+                    text: 'این محصول به لیست مقایسه اضافه شد',
+                    showConfirmButton: false,
+                    confirmButtonColor: '#112031',
+                    timer: 1500
+                })
+            }
+        })
+    }
+
+
     function AddFavorite(id) {
         $.get(`/add-favorite/${id}`).then(response => {
             if (response['response'] === 'exists') {

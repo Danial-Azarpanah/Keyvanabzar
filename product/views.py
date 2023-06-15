@@ -27,7 +27,7 @@ class ProductListView(View):
         price_range = request.GET.get("price")
 
         if category:
-            products = products.filter(Q(category__slug=category) | Q(category__parent__slug = category))
+            products = products.filter(Q(category__slug=category) | Q(category__parent__slug=category))
 
         if price_range:
             price_range = price_range.replace("تومان", "").replace(" ", "").replace(",", "")
@@ -125,17 +125,15 @@ class AddCompareView(RequiredLoginMixin, View):
             return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
         elif comparison.product1 and not comparison.product2:
             if comparison.product1.category.title != product.category.title:
-                msg.error(req, "کالای منتخب باید با کالای موجود در لیست مقایسه شما، دسته بندی یکسان داشته باشد")
-                return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+                return JsonResponse(
+                    {'error': "کالای منتخب باید با کالای موجود در لیست مقایسه شما، دسته بندی یکسان داشته باشد"})
             elif comparison.product1.id == pk:
-                msg.error(req, "نمی‌توانید دو کالای یکسان در سبد مقایسه خود داشته باشید")
-                return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+                return JsonResponse({'error': 'نمی‌توانید دو کالای یکسان در سبد مقایسه خود داشته باشید'})
             comparison.product2_id = pk
             comparison.save()
             return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
         else:
-            msg.error(req, "حداکثر ۲ محصول می‌توانید در سبد مقایسه خود داشته باشید")
-        return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+            return JsonResponse({'error': 'حداکثر ۲ محصول می‌توانید در سبد مقایسه خود داشته باشید'})
 
 
 class FavoriteListView(RequiredLoginMixin, View):
