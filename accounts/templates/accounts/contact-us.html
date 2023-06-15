@@ -37,40 +37,44 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="contact_message content">
-
-                            <h3>با ما تماس بگیرید</h3>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-                                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-                                می </p>
-                            <ul>
-                                <li><i class="fa fa-fax"></i> آدرس : آدرس شما در این قسمت قرار می گیرد.</li>
-                                <li><i class="fa fa-phone"></i> <a href="#">demo@example.com</a></li>
-                                <li><i class="fa fa-envelope-o"></i> 02198765432</li>
-                            </ul>
+                            {% for i in info %}
+                                <h3>با ما تماس بگیرید</h3>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
+                                    گرافیک
+                                    است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
+                                    شرایط
+                                    فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                                    کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
+                                    می </p>
+                                <ul>
+                                    <li><i class="fa fa-fax"></i> آدرس : {{ i.address }}</li>
+                                    <li><i class="fa fa-phone"></i> <a href="#">{{ i.phone_number }}</a></li>
+                                    <li><i class="fa fa-envelope-o"></i> {{ i.email }} </li>
+                                </ul>
+                            {% endfor %}
                         </div>
 
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="contact_message form">
                             <h3>پروژه خود را به ما بگویید</h3>
-                            <form id="contact-form" method="POST" action="#">
+                            <form method="POST" action="">
+                                {% csrf_token %}
                                 <p>
                                     <label> نام و نام خانوادگی شما (اجباری)</label>
-                                    <input name="name" placeholder="نام و نام خانوادگی *" type="text">
+                                    {{ form.fullname }}
                                 </p>
                                 <p>
                                     <label> ایمیل شما (اجباری)</label>
-                                    <input name="email" placeholder="ایمیل *" type="email">
+                                    {{ form.email }}
                                 </p>
                                 <p>
                                     <label> موضوع</label>
-                                    <input name="subject" placeholder="موضوع *" type="text">
+                                    {{ form.subject }}
                                 </p>
                                 <div class="contact_textarea">
                                     <label> پیغام شما</label>
-                                    <textarea placeholder="پیغام *" name="message" class="form-control2"></textarea>
+                                    {{ form.message }}
                                 </div>
                                 <button type="submit"> ارسال</button>
                                 <p class="form-messege"></p>
