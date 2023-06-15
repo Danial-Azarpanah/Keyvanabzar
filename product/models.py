@@ -38,6 +38,7 @@ class Product(models.Model):
     discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
     discounted_price = models.PositiveIntegerField('قیمت تخفیف خورده (تومان)', null=True, blank=True)
     weight = models.CharField("وزن", max_length=30)
+    total_weight = models.IntegerField("وزن کل", max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     sale_count = models.IntegerField("تعداد فروش", default=0)
 
@@ -84,6 +85,7 @@ class Product(models.Model):
         if self.discount and self.discount > 0:
             return self.get_discounted_price()
         return "-"
+
     get_discounted_price_admin.short_description = "قیمت تخفیف خورده"
 
     def get_price(self):
