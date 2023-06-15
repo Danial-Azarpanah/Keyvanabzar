@@ -9,12 +9,19 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders', verbose_name='کاربر')
     is_paid = models.BooleanField('پرداخت', default=False)
     total_price = models.PositiveIntegerField('قیمت کل')
+    post_price = models.PositiveIntegerField("قیمت پست", null=True, blank=True)
     created_at = models.DateTimeField('تاریخ ثبت سفارش در', auto_now_add=True)
     tracking_code = models.IntegerField('کد رهگیری', editable=False)
     discount_applied = models.BooleanField("تخفیف اعمال شده", default=False)
+    address = models.TextField("آدرس", null=True, blank=True)
+    delivery_method = models.CharField("نحوه ارسال", max_length=20,
+                                       null=True, blank=True)
 
     def __str__(self):
         return f'{self.user}'
+
+    def get_post_price(self):
+        return "{:,.0f} تومان ".format(self.post_price)
 
     def get_total_price(self):
         return "{:,.0f} تومان ".format(self.total_price)
