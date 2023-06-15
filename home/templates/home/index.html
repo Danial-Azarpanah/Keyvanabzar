@@ -171,17 +171,23 @@
                                                             <ul>
                                                                 <li class="add_to_cart">
                                                                     <form method="post"
-                                                                          id="add-to-cart"
+                                                                          id="add-to-cart-form"
                                                                           action="{% url "payment:cart-add" product.id %}">
                                                                         {% csrf_token %}
                                                                         <input min="1" max="100" value="1" type="number"
-                                                                               name="quantity" hidden>
-                                                                        <button class="button" type="submit"
+                                                                               id="quantity" hidden>
+                                                                        <button id="view-product" class="button"
+                                                                                type="submit"
                                                                                 style="border-radius: 8px; border-width: 0px"
                                                                                 title="افزودن به سبد خرید">افزودن به سبد
                                                                             خرید
                                                                         </button>
                                                                     </form>
+
+                                                                    <div id="product-id"
+                                                                         data-product-id="{{ product.id }}"
+                                                                         hidden></div>
+
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     <a
@@ -389,15 +395,36 @@
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart"><a href="cart.html"
-                                                                                           title="افزودن به سبد خرید">افزودن
-                                                                    به سبد خرید</a>
+
+                                                                <li class="add_to_cart">
+                                                                    <form method="post"
+                                                                          id="add-to-cart-form"
+                                                                          action="{% url "payment:cart-add" product.id %}">
+                                                                        {% csrf_token %}
+                                                                        <input min="1" max="100" value="1" type="number"
+                                                                               id="quantity" hidden>
+                                                                        <button id="view-product" class="button"
+                                                                                type="submit"
+                                                                                style="border-radius: 8px; border-width: 0px"
+                                                                                title="افزودن به سبد خرید">افزودن به سبد
+                                                                            خرید
+                                                                        </button>
+                                                                    </form>
+
+                                                                    <div id="product-id"
+                                                                         data-product-id="{{ product.id }}"
+                                                                         hidden></div>
+
                                                                 </li>
-                                                                <li class="wishlist"><a href=""
-                                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
-                                                                <li class="compare"><a href=""
-                                                                                       title="مقایسه"><i
+
+                                                                <li class="wishlist"><a
+                                                                        onclick="AddFavorite('{{ product.id }}')"
+                                                                        title="افزودن به لیست علاقمندی ها"><i
+                                                                        class="icon-bookmark"></i></a></li>
+
+                                                                <li class="compare"><a
+                                                                        onclick="AddCompare('{{ product.id }}')"
+                                                                        title="مقایسه"><i
                                                                         class="icon-rotate-cw"></i></a></li>
                                                             </ul>
                                                         </div>
@@ -448,16 +475,20 @@
                                 <article class="single_blog">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="{% url "blog:detail" article.slug %}"><img src="{{ article.image.url }}"
-                                                                             alt=""></a>
+                                            <a href="{% url "blog:detail" article.slug %}"><img
+                                                    src="{{ article.image.url }}"
+                                                    alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a></h4>
+                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a>
+                                            </h4>
                                             <div class="post_meta">
-                                                <p><a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a> / {{ article.get_jalali_date }}</p>
+                                                <p>
+                                                    <a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a>
+                                                    / {{ article.get_jalali_date }}</p>
                                             </div>
                                             <div class="post_desc">
-                                                <p>{{ article.short_content }}</p>
+                                                <p>{{ article.short_content|safe }}</p>
                                             </div>
                                             <footer class="post_readmore">
                                                 <a href="{% url "blog:detail" article.slug %}">ادامه خواندن</a>
@@ -474,4 +505,5 @@
         <!--blog area end-->
     </div>
     <!--home section bg area end-->
+
 {% endblock %}

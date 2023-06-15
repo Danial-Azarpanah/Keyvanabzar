@@ -44,19 +44,23 @@
                                                     {% else %}
                                                         <td class="product-price">{{ item.get_price }}</td>
                                                     {% endif %}
+                                                
                                                     <td class="product_total">
-                                                        <form method="post"
+                                                        <form method="post" id="add-to-cart-form"
                                                               action="{% url "payment:cart-add" item.id %}">
                                                             {% csrf_token %}
                                                             <input min="1" max="100" value="1" type="number"
-                                                                   name="quantity" hidden>
+                                                                   id="quantity" hidden>
                                                             <button class="button" type="submit"
                                                                     style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد
-                                                                خرید
+                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید
                                                             </button>
                                                         </form>
+                                                        <div id="product-id"
+                                                             data-product-id="{{ item.id }}"
+                                                             hidden></div>
                                                     </td>
+
                                                 </tr>
                                             {% endfor %}
                                             </tbody>

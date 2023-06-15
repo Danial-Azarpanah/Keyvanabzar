@@ -85,6 +85,7 @@ class Product(models.Model):
         if self.discount and self.discount > 0:
             return self.get_discounted_price()
         return "-"
+
     get_discounted_price_admin.short_description = "قیمت تخفیف خورده"
 
     def get_price(self):
