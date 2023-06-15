@@ -68,12 +68,14 @@
                                         {% endif %}
 
 
-                                        <tr>
-                                            <th>هزینه ارسال</th>
-                                            <td></td>
-                                            <td></td>
-                                            <td><strong>5.00 تومان</strong></td>
-                                        </tr>
+                                        {% if order.delivery_method == "post" %}
+                                            <tr>
+                                                <th>هزینه ارسال</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td><strong> {{ order.get_post_price }}</strong></td>
+                                            </tr>
+                                        {% endif %}
 
                                         </tfoot>
                                     </table>
@@ -86,26 +88,28 @@
 
 
                                     {% if request.user.addresses.all %}
-                                        <div class="row">
-                                            <div class="col-12 mb-20">
-                                                <label for="country">آدرس سفارش</label>
+                                        {% if order.delivery_method != "in-person" %}
+                                            <div class="row">
+                                                <div class="col-12 mb-20">
+                                                    <label for="country">آدرس سفارش</label>
 
-                                                <select class="niceselect_option" name="cuntry" id="country">
-                                                    {% for address in request.user.addresses.all %}
-                                                        <option value="1">{{ address.address }}</option>
-                                                    {% endfor %}
-                                                </select>
+                                                    <select class="niceselect_option" name="cuntry" id="country">
+                                                        {% for address in request.user.addresses.all %}
+                                                            <option value="1">{{ address.address }}</option>
+                                                        {% endfor %}
+                                                    </select>
 
 
-                                                <li>
-                                                    <a href="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}">
-                                                        + آدرس جدید </a></li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}">
+                                                            + آدرس جدید </a></li>
+
+
+                                                </div>
 
 
                                             </div>
-
-
-                                        </div>
+                                        {% endif %}
                                     {% endif %}
 
                                     <div class="mb-4">
