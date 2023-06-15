@@ -182,3 +182,18 @@ class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
         exclude = ('user',)
+
+
+class ContactForm(forms.ModelForm):
+    fullname = forms.CharField(
+        widget=forms.TextInput({'id': 'fullname'}))
+    email = forms.EmailField(
+        widget=forms.TextInput({'id': 'email'}))
+    subject = forms.CharField(
+        required=False, widget=forms.TextInput({'id': 'subject'}))
+    message = forms.CharField(
+        widget=forms.Textarea({'class': 'form-control2', 'rows': 4, 'id': 'message'}))
+
+    class Meta:
+        model = ContactUs
+        fields = '__all__'

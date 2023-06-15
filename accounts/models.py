@@ -93,8 +93,8 @@ class Info(models.Model):
     phone_number = models.CharField('شماره تماس', max_length=11)
     email = models.EmailField('ایمیل')
     address = models.CharField('آدرس مغازه', max_length=100)
-    instagram = models.URLField('اینستاگرام')
-    youtube = models.URLField('یوتوب')
+    instagram = models.URLField('اینستاگرام', null=True, blank=True)
+    youtube = models.URLField('یوتوب', null=True, blank=True)
     twitter = models.URLField("توییتر", null=True, blank=True)
     telegram = models.URLField("تلگرام", null=True, blank=True)
 
@@ -103,3 +103,19 @@ class Info(models.Model):
         verbose_name_plural = 'اطلاعات تماس'
 
 
+class ContactUs(models.Model):
+    fullname = models.CharField('نام و نام خانوادگی', max_length=55)
+    email = models.EmailField('ایمیل')
+    subject = models.CharField('موضوع', max_length=100)
+    message = models.TextField('پیغام', max_length=100)
+    created_at = models.DateTimeField('تاریخ ارسال پیام در', auto_now_add=True)
+
+    def __str__(self):
+        return self.message[:30]
+
+    def get_jalali_date(self):
+        return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
+
+    class Meta:
+        verbose_name = 'پیام'
+        verbose_name_plural = 'پیام ها'

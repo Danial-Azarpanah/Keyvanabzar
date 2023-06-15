@@ -232,3 +232,14 @@ class AddAddressView(FormView):
             if next_url:
                 return redirect(next_url)
         return render(self.request, self.template_name, {'form': form})
+
+
+class ContactUsView(CreateView):
+    template_name = 'accounts/contact-us.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('accounts:contact-us')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["info"] = Info.objects.all()
+        return context

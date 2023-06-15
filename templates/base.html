@@ -91,10 +91,10 @@
                                 <a href="{% url "blog:list" %}">وبلاگ</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="contact.html"> درباره ما</a>
+                                <a href=""> درباره ما</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="contact.html"> تماس با ما</a>
+                                <a href="{% url 'accounts:contact-us' %}"> تماس با ما</a>
                             </li>
                         </ul>
                     </div>
@@ -523,6 +523,37 @@
 
         })
     }
+</script>
+
+
+<script>
+
+    $(document).on('submit', '#contact-form', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'accounts:contact-us' %}',
+            data: {
+                fullname: $('#fullname').val(),
+                email: $('#email').val(),
+                subject: $('#subject').val(),
+                message: $('#message').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function () {
+                Swal.fire({
+                    title: 'عملیات با موفقیت انجام شد',
+                    text: 'پیام شما با موفقیت ارسال گردید',
+                    icon: 'success',
+                    confirmButtonText: 'باشه',
+                    confirmButtonColor: '#FEBD17',
+                }).then(function () {
+                    location.href = "{% url 'home:home' %}";
+                })
+            }
+
+        })
+    })
 </script>
 
 
