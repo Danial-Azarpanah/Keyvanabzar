@@ -440,6 +440,34 @@
 
 
 <script>
+    $(document).on('submit', '#cart-update-form', function (e) {
+        e.preventDefault();
+        var product_id = $('#product-id').data('product-id');
+        $.ajax({
+            url: `/cart-update/${product_id}`,
+            type: 'POST',
+            data: {
+                quantity: $('#quantity').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function () {
+                Swal.fire({
+                    text: 'عملیات با موفقیت انجام شد',
+                    icon: 'success',
+                    confirmButtonText: 'باشه',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(function () {
+                    location.reload()
+                })
+            }
+
+        });
+    })
+</script>
+
+
+<script>
 
     function AddCompare(id) {
         $.get(`/add-comparison/${id}`).then(response => {

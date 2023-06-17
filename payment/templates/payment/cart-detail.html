@@ -9,11 +9,12 @@
     <div class="cart_page_bg">
         <div class="container">
             <div class="shopping_cart_area">
-                <form method="post" action="{% url 'payment:order-creation' %}?return_to={% url 'payment:cart-detail' %}">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="table_desc">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <form action="" method="post" id="cart-update-form">
+                                {% csrf_token %}
                                 <div class="cart_page">
                                     <table>
                                         <thead>
@@ -43,10 +44,15 @@
                                                 <td class="product_quantity"><label>تعداد</label> <input min="1"
                                                                                                          max="100"
                                                                                                          value="{{ item.quantity }}"
-                                                                                                         type="number">
+                                                                                                         type="number"
+                                                                                                         id="quantity">
                                                 </td>
                                                 <td class="product_total">{{ item.formatted_total }}</td>
                                             </tr>
+
+                                            <div id="product-id"
+                                                 data-product-id="{{ item.product.id }}"
+                                                 hidden></div>
                                         {% endfor %}
                                         </tbody>
                                     </table>
@@ -54,15 +60,21 @@
                                 <div class="cart_submit">
                                     <button type="submit">به روز رسانی سبد خرید</button>
                                 </div>
-                            </div>
+
+
+                            </form>
                         </div>
                     </div>
-                    <!--coupon code area start-->
-                    <div class="coupon_area">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 mx-auto">
-                                <div class="coupon_code right">
-                                    <h3>مجموع سبد خرید</h3>
+                </div>
+                <!--coupon code area start-->
+                <div class="coupon_area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mx-auto">
+                            <div class="coupon_code right">
+                                <h3>مجموع سبد خرید</h3>
+                                <form method="post"
+                                      action="{% url 'payment:order-creation' %}?return_to={% url 'payment:cart-detail' %}">
+                                    {% csrf_token %}
                                     <div class="coupon_inner">
 
                                         {% if cart.total %}
@@ -90,7 +102,8 @@
                                                         <option value="delivery-motor">پیک با پرداخت حین تحویل (تبریز)
                                                         </option>
                                                     </select>
-                                                    <input value="post" id="delivery-selection" name="delivery-selection" type="text" hidden>
+                                                    <input value="post" id="delivery-selection"
+                                                           name="delivery-selection" type="text" hidden>
                                                 </div>
                                                 <div class="cart_subtotal" id="delivery-cost">
                                                     <p>هزینه ارسال</p>
@@ -134,12 +147,13 @@
                                         {% endif %}
 
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <!--coupon code area end-->
-                </form>
+                </div>
+                <!--coupon code area end-->
+
             </div>
         </div>
     </div>

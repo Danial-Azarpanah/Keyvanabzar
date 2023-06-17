@@ -39,6 +39,15 @@ class CartDeleteView(View):
         return redirect('payment:cart-detail')
 
 
+class CartUpdateView(View):
+    def post(self, request, pk):
+        cart = Cart(request)
+        product = get_object_or_404(Product, id=pk)
+        quantity = request.POST.get('quantity')
+        cart.update(product, quantity)
+        return redirect('payment:cart-detail')
+
+
 class OrderCreationView(RequiredLoginMixin, View):
 
     def post(self, request):
