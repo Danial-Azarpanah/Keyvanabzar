@@ -43,6 +43,12 @@ class Cart:
             item['formatted_total'] = "{:,.0f} تومان ".format(item['total'])
             yield item
 
+    def update(self, product, quantity):
+        product_id = product.id
+        if product_id in self.cart:
+            self.cart[product_id]['quantity'] = int(quantity)
+        self.save()
+
     def total(self):
         cart = self.cart.values()
         total = 0
