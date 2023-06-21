@@ -3,6 +3,22 @@
 
 
 {% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{% url "home:home" %}">خانه</a></li>
+                            <li><a href="{% url "product:favorite-list" %}">لیست مقایسه</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
     <!--wishlist area start -->
     <div class="wishlist_page_bg">
         <div class="container">
@@ -44,7 +60,7 @@
                                                     {% else %}
                                                         <td class="product-price">{{ item.get_price }}</td>
                                                     {% endif %}
-                                                
+
                                                     <td class="product_total">
                                                         <form method="post" id="add-to-cart-form"
                                                               action="{% url "payment:cart-add" item.id %}">
