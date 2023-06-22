@@ -47,7 +47,7 @@
                     </div>
                     <div class="call_support">
                         <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما : <a
-                                href="tel:02198765432">02198765432</a></span></p>
+                                href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a></span></p>
 
                     </div>
                     <div class="search_container">
@@ -281,7 +281,7 @@
                     <div class="col-lg-3">
                         <div class="call_support text-right">
                             <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما: <a
-                                    href="tel:02198765432">02198765432</a></span></p>
+                                    href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a></span></p>
                         </div>
                     </div>
                 </div>
@@ -299,10 +299,6 @@
 <!--footer area start-->
 <footer class="footer_widgets">
     <!--shipping area start-->
-    <div class="shipping_area">
-        <div class="container">
-        </div>
-    </div>
     <!--shipping area end-->
     <div class="footer_top">
         <div class="container">
@@ -316,39 +312,25 @@
                                     <img src="{% static "img/icon/icon-phone2.png" %}" alt="">
                                 </div>
                                 <div class="contact_text">
-                                    <p>تلفن: </br> <strong><a href="tel:02198765432">02198765432</a> </strong></p>
+                                    <p>تلفن: </br> <strong><a
+                                            href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a> </strong></p>
+                                    <p>ایمیل: </br> <strong><a
+                                            href="{{ info.email }}">{{ info.email }}</a> </strong></p>
                                 </div>
                             </div>
-                            <p>ما تیمی از طراحان و توسعه دهندگان هستیم که قالب HTML با کیفیت بالا ایجاد می کنیم.</p>
-                            <p>مکان آدرس ایمیل شما ... <br> demo@example.com</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="footer_col_container">
                         <div class="widgets_container widget_menu">
-                            <h3>اطلاعات</h3>
+                            <h3>صفحات</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="about.html">درباره ما</a></li>
-                                    <li><a href="#">اطلاعات تحویل</a></li>
-                                    <li><a href="#">محصولات جدید</a></li>
-                                    <li><a href="#">بهترین فروشها</a></li>
-                                    <li><a href="my-account.html">حساب من</a></li>
-                                    <li><a href="#">تاریخچه سفارش</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widgets_container widget_menu">
-                            <h3>سرویس های مشتری</h3>
-                            <div class="footer_menu">
-                                <ul>
-                                    <li><a href="my-account.html">حساب من</a></li>
-                                    <li><a href="cart.html">سبد خرید</a></li>
-                                    <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                    <li><a href="#">کاهش قیمت ها</a></li>
-                                    <li><a href="#">تاریخچه سفارش</a></li>
-                                    <li><a href="#">سفارشات بین المللی</a></li>
+                                    <li><a href="{% url "product:product-list" %}">لیست محصولات</a></li>
+                                    <li><a href="{% url "blog:list" %}">لیست مقالات</a></li>
+                                    <li><a href="">درباره ما</a></li>
+                                    <li><a href="{% url "accounts:contact-us" %}">تماس با ما</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -356,19 +338,22 @@
                             <h3>حساب من</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="#">نقشه سایت</a></li>
-                                    <li><a href="my-account.html">حساب من</a></li>
-                                    <li><a href="#">اطلاعات تحویل</a></li>
-                                    <li><a href="#">تاریخچه سفارش</a></li>
-                                    <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                    <li><a href="#">محصولات ویژه</a></li>
+                                    {% if request.user.is_authenticated %}
+                                        <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
+                                        <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
+                                        <li><a href="{% url "payment:cart-detail" %}">سبد خرید</a></li>
+                                        <li><a href="{% url "payment:cart-detail" %}">تاریخچه سفارشات</a></li>
+                                    {% else %}
+                                        <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
+                                        <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
+                                        <li><a href="{% url "payment:cart-detail" %}">سبد خرید</a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
-                        <div class="widgets_container widget_menu" style="width: 300px">
+                        <div class="widgets_container widget_menu" style="width: 370px">
                             <div class="newsletter_container" style="color: white">
                                 <h3>خبرنامه</h3>
-                                <p>به بیش از 60000 مشترک بپیوندید و هر چهارشنبه یک کوپن تخفیف جدید دریافت کنید.</p>
                                 <div class="subscribe_form">
                                     <form id="mc-form" class="mc-form footer-newsletter">
                                         <input id="mc-email" type="email" autocomplete="off"
@@ -385,10 +370,14 @@
                             </div>
                             <div class="footer_social">
                                 <ul class="text-center">
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                    <li><a class="instagram2" href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a class="telegram" href="#"><i class="fa fa-telegram"></i></a></li>
+                                    <li><a class="twitter" href="{{ info.twitter }}"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li><a class="youtube" href="{{ info.youtube }}"><i class="fa fa-youtube-play"></i></a>
+                                    </li>
+                                    <li><a class="instagram2" href="{{ info.instagram }}"><i
+                                            class="fa fa-instagram"></i></a></li>
+                                    <li><a class="telegram" href="{{ info.telegram }}"><i
+                                            class="fa fa-telegram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -439,9 +428,8 @@
 {#</script>#}
 
 
-
 <script>
-    function AddToCart(id){
+    function AddToCart(id) {
         $.ajax({
             url: `/cart-add/${id}`,
             type: 'POST',
@@ -464,9 +452,6 @@
         });
     }
 </script>
-
-
-
 
 
 {#<script>#}
