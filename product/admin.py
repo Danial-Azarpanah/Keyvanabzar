@@ -29,6 +29,11 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+    list_display = ("title", "show_image")
+
+
 admin.site.register(Favorite)
 admin.site.register(Comment)
 admin.site.register(DiscountCode)

@@ -1,3 +1,4 @@
+from django.utils.html import format_html
 from mptt.models import MPTTModel, TreeForeignKey
 from accounts.models import *
 from django.db import models
@@ -207,3 +208,23 @@ class DiscountCode(models.Model):
     class Meta:
         verbose_name = 'کد تخفیف'
         verbose_name_plural = 'کد های تخفیف'
+
+
+class Slider(models.Model):
+    title = models.CharField("عنوان", max_length=20)
+    text = models.CharField("توضیح کوتاه", max_length=30)
+    image = models.ImageField("عکس اسلایدر (۱۹۲۰ * ۵۰۰)", upload_to="sliders/images/")
+    url = models.URLField("آدرس برای هدایت کاربر", null=True)
+    button_text = models.CharField("متن دکمه آدرس", max_length=20, default="اکنون خرید کنید")
+
+    def __str__(self):
+        return self.title
+
+    def show_image(self):
+        return format_html(f'<img src="{self.image.url}" width="60px" height="50px">')
+
+    show_image.short_description = "عکس اسلایدر"
+
+    class Meta:
+        verbose_name = "اسلایدر"
+        verbose_name_plural = "اسلایدرها"

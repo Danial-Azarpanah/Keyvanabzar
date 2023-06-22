@@ -5,49 +5,23 @@
     <!--slider area start-->
     <section class="slider_section mb-80">
         <div class="slider_area slider_carousel owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="{% static "img/slider/slider1.jpg" %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h1>تخفیف بزرگ <span>لوازم جانبی Fidanza</span></h1>
-                                <p>پیشنهاد انحصاری -30% تخفیف این هفته</p>
-                                <a class="button" href="{% url "product:product-list" %}">اکنون خرید کنید <i
-                                        class="fa fa-angle-double-left"
-                                        aria-hidden="true"></i></a>
+            {% for slider in sliders %}
+                <div class="single_slider d-flex align-items-center" data-bgimg="{{ slider.image.url }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="slider_content">
+                                    <h1><span>{{ slider.title }}</span></h1>
+                                    <p>{{ slider.text }}</p>
+                                    <a class="button" href="{{ slider.url }}">{{ slider.button_text }} <i
+                                            class="fa fa-angle-double-left"
+                                            aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{% static "img/slider/slider2.jpg" %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content center">
-                                <h1>لوازم جانبی <span>انواع تریلر تراکتور</span></h1>
-                                <p>پیشنهاد انحصاری -30% تخفیف این هفته</p>
-                                <a class="button" href="shop.html">اکنون خرید کنید <i class="fa fa-angle-double-left"
-                                                                                      aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{% static "img/slider/slider3.jpg" %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h1>بالاترین <span>داخل خودرو جدید</span></h1>
-                                <p>پیشنهاد انحصاری -20% تخفیف این هفته</p>
-                                <a class="button" href="shop.html">اکنون خرید کنید <i class="fa fa-angle-double-left"
-                                                                                      aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!--slider area end-->
@@ -189,11 +163,15 @@
 
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a
-                                                                            onclick="AddFavorite('{{ product.id }}')"
-                                                                            title="افزودن به لیست علاقمندی ها">
-                                                                        <i class="icon-bookmark"></i>
-                                                                    </a>
+                                                                    {% if request.user.is_authenticated %}
+                                                                        <a onclick="AddFavorite('{{ product.id }}')"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% else %}
+                                                                        <a href="{% url "accounts:sign-in" %}"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% endif %}
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -248,16 +226,36 @@
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart"><a href="cart.html"
-                                                                                           title="افزودن به سبد خرید">افزودن
-                                                                    به سبد خرید</a>
+                                                                <li class="add_to_cart">
+
+                                                                    <form method="post">
+                                                                        {% csrf_token %}
+
+                                                                        <input min="1" max="100" value="1" type="number"
+                                                                               id="quantity" hidden>
+
+                                                                        <button onclick="AddToCart('{{ product.id }}')"
+                                                                                class="button"
+                                                                                type="button"
+                                                                                style="border-radius: 8px; border-width: 0px"
+                                                                                title="افزودن به سبد خرید">افزودن به سبد
+                                                                            خرید
+                                                                        </button>
+
+                                                                    </form>
+
                                                                 </li>
-                                                                <li class="wishlist"><a href=""
-                                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
-                                                                <li class="compare"><a href=""
-                                                                                       title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                <li class="wishlist">
+                                                                    {% if request.user.is_authenticated %}
+                                                                        <a onclick="AddFavorite('{{ product.id }}')"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% else %}
+                                                                        <a href="{% url "accounts:sign-in" %}"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% endif %}
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -311,16 +309,36 @@
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart"><a href="cart.html"
-                                                                                           title="افزودن به سبد خرید">افزودن
-                                                                    به سبد خرید</a>
+                                                                <li class="add_to_cart">
+
+                                                                    <form method="post">
+                                                                        {% csrf_token %}
+
+                                                                        <input min="1" max="100" value="1" type="number"
+                                                                               id="quantity" hidden>
+
+                                                                        <button onclick="AddToCart('{{ product.id }}')"
+                                                                                class="button"
+                                                                                type="button"
+                                                                                style="border-radius: 8px; border-width: 0px"
+                                                                                title="افزودن به سبد خرید">افزودن به سبد
+                                                                            خرید
+                                                                        </button>
+
+                                                                    </form>
+
                                                                 </li>
-                                                                <li class="wishlist"><a href=""
-                                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-heart"></i></a></li>
-                                                                <li class="compare"><a href=""
-                                                                                       title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                <li class="wishlist">
+                                                                    {% if request.user.is_authenticated %}
+                                                                        <a onclick="AddFavorite('{{ product.id }}')"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% else %}
+                                                                        <a href="{% url "accounts:sign-in" %}"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% endif %}
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -414,16 +432,17 @@
                                                                     </form>
 
                                                                 </li>
-
-                                                                <li class="wishlist"><a
-                                                                        onclick="AddFavorite('{{ product.id }}')"
-                                                                        title="افزودن به لیست علاقمندی ها"><i
-                                                                        class="icon-bookmark"></i></a></li>
-
-                                                                <li class="compare"><a
-                                                                        onclick="AddCompare('{{ product.id }}')"
-                                                                        title="مقایسه"><i
-                                                                        class="icon-rotate-cw"></i></a></li>
+                                                                <li class="wishlist">
+                                                                    {% if request.user.is_authenticated %}
+                                                                        <a onclick="AddFavorite('{{ product.id }}')"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% else %}
+                                                                        <a href="{% url "accounts:sign-in" %}"
+                                                                           title="افزودن به لیست علاقمندی ها"><i
+                                                                                class="icon-heart"></i></a>
+                                                                    {% endif %}
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
