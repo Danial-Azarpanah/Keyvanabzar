@@ -80,18 +80,21 @@
                                                 <ul>
 
                                                     <li class="add_to_cart">
-                                                        <form method="post"
-                                                              id="add-to-cart-form" action="{% url "payment:cart-add" product.id %}">
+                                                        <form method="post">
                                                             {% csrf_token %}
+
                                                             <input min="1" max="100" value="1" type="number"
                                                                    id="quantity" hidden>
-                                                            <button class="button" type="submit" style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید
+
+                                                            <button onclick="AddToCart('{{ product.id }}')"
+                                                                    class="button"
+                                                                    type="button"
+                                                                    style="border-radius: 8px; border-width: 0px"
+                                                                    title="افزودن به سبد خرید">افزودن به سبد
+                                                                خرید
                                                             </button>
+
                                                         </form>
-                                                        <div id="product-id"
-                                                             data-product-id="{{ product.id }}"
-                                                             hidden></div>
                                                     </li>
 
                                                     <li class="wishlist"><a
@@ -117,6 +120,7 @@
 
 
 
+
                                                 {{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
@@ -124,6 +128,7 @@
                                     {% for i in products.paginator.page_range %}
                                         {% if products.number == i %}
                                             <a href="?page=
+
 
 
 
@@ -135,6 +140,7 @@
 
 
 
+
                                                     {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
@@ -143,6 +149,7 @@
 
                                     {% if products.has_next %}
                                         <li class="next"><a href="?page=
+
 
 
 
@@ -195,6 +202,7 @@
                                                 {% for child in category.children.all %}
                                                     <li>
                                                         <a href="?category=
+
 
 
 
