@@ -170,23 +170,22 @@
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart">
-                                                                    <form method="post"
-                                                                          id="add-to-cart-form"
-                                                                          action="{% url "payment:cart-add" product.id %}">
+
+                                                                    <form method="post">
                                                                         {% csrf_token %}
+
                                                                         <input min="1" max="100" value="1" type="number"
                                                                                id="quantity" hidden>
-                                                                        <button id="view-product" class="button"
-                                                                                type="submit"
+
+                                                                        <button onclick="AddToCart('{{ product.id }}')"
+                                                                                class="button"
+                                                                                type="button"
                                                                                 style="border-radius: 8px; border-width: 0px"
                                                                                 title="افزودن به سبد خرید">افزودن به سبد
                                                                             خرید
                                                                         </button>
-                                                                    </form>
 
-                                                                    <div id="product-id"
-                                                                         data-product-id="{{ product.id }}"
-                                                                         hidden></div>
+                                                                    </form>
 
                                                                 </li>
                                                                 <li class="wishlist">
@@ -397,23 +396,22 @@
                                                             <ul>
 
                                                                 <li class="add_to_cart">
-                                                                    <form method="post"
-                                                                          id="add-to-cart-form"
-                                                                          action="{% url "payment:cart-add" product.id %}">
+
+                                                                    <form method="post">
                                                                         {% csrf_token %}
+
                                                                         <input min="1" max="100" value="1" type="number"
                                                                                id="quantity" hidden>
-                                                                        <button id="view-product" class="button"
-                                                                                type="submit"
+
+                                                                        <button onclick="AddToCart('{{ product.id }}')"
+                                                                                class="button"
+                                                                                type="button"
                                                                                 style="border-radius: 8px; border-width: 0px"
                                                                                 title="افزودن به سبد خرید">افزودن به سبد
                                                                             خرید
                                                                         </button>
-                                                                    </form>
 
-                                                                    <div id="product-id"
-                                                                         data-product-id="{{ product.id }}"
-                                                                         hidden></div>
+                                                                    </form>
 
                                                                 </li>
 

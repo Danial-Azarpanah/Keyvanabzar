@@ -411,12 +411,39 @@
 <script src="{% static "js/main.js" %}"></script>
 
 
+{#<script>#}
+{#    $(document).on('submit', '#add-to-cart-form', function (e) {#}
+{#        e.preventDefault();#}
+{#        var product_id = $('#product-id').data('product-id');#}
+{#        $.ajax({#}
+{#            url: `/cart-add/${product_id}`,#}
+{#            type: 'POST',#}
+{#            data: {#}
+{#                quantity: $('#quantity').val(),#}
+{#                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),#}
+{#            },#}
+{#            success: function () {#}
+{#                Swal.fire({#}
+{#                    text: 'این محصول به سبد خرید شما اضافه شد',#}
+{#                    icon: 'success',#}
+{#                    confirmButtonText: 'باشه',#}
+{#                    showConfirmButton: false,#}
+{#                    timer: 1500#}
+{#                }).then(function () {#}
+{#                    location.reload()#}
+{#                })#}
+{#            }#}
+{##}
+{#        });#}
+{#    })#}
+{#</script>#}
+
+
+
 <script>
-    $(document).on('submit', '#add-to-cart-form', function (e) {
-        e.preventDefault();
-        var product_id = $('#product-id').data('product-id');
+    function AddToCart(id){
         $.ajax({
-            url: `/cart-add/${product_id}`,
+            url: `/cart-add/${id}`,
             type: 'POST',
             data: {
                 quantity: $('#quantity').val(),
@@ -435,36 +462,39 @@
             }
 
         });
-    })
+    }
 </script>
 
 
-<script>
-    $(document).on('submit', '#cart-update-form', function (e) {
-        e.preventDefault();
-        var product_id = $('#product-id').data('product-id');
-        $.ajax({
-            url: `/cart-update/${product_id}`,
-            type: 'POST',
-            data: {
-                quantity: $('#quantity').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-            },
-            success: function () {
-                Swal.fire({
-                    text: 'عملیات با موفقیت انجام شد',
-                    icon: 'success',
-                    confirmButtonText: 'باشه',
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(function () {
-                    location.reload()
-                })
-            }
 
-        });
-    })
-</script>
+
+
+{#<script>#}
+{#    $(document).on('submit', '#cart-update-form', function (e) {#}
+{#        e.preventDefault();#}
+{#        var product_id = $('#product-id').data('product-id');#}
+{#        $.ajax({#}
+{#            url: `/cart-update/${product_id}`,#}
+{#            type: 'POST',#}
+{#            data: {#}
+{#                quantity: $('#quantity').val(),#}
+{#                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),#}
+{#            },#}
+{#            success: function () {#}
+{#                Swal.fire({#}
+{#                    text: 'عملیات با موفقیت انجام شد',#}
+{#                    icon: 'success',#}
+{#                    confirmButtonText: 'باشه',#}
+{#                    showConfirmButton: false,#}
+{#                    timer: 1500#}
+{#                }).then(function () {#}
+{#                    location.reload()#}
+{#                })#}
+{#            }#}
+{##}
+{#        });#}
+{#    })#}
+{#</script>#}
 
 
 <script>
