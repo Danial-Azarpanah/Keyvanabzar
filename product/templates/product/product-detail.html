@@ -138,13 +138,27 @@
                         <div class=" product_d_action">
                             <ul>
                                 <li>
-                                    <a onclick="AddFavorite('{{ product.id }}')"
-                                       title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
-                                        ها
-                                    </a>
+                                    {% if request.user.is_authenticated %}
+                                        <a onclick="AddFavorite('{{ product.id }}')"
+                                           title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
+                                            ها
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                           title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
+                                            ها
+                                        </a>
+                                    {% endif %}
                                 </li>
-                                <li><a onclick="AddCompare('{{ product.id }}')"
-                                       title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a></li>
+                                <li>
+                                    {% if request.user.is_authenticated %}
+                                        <a onclick="AddCompare('{{ product.id }}')"
+                                           title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
+                                    {% else %}
+                                        <a href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                           title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
+                                    {% endif %}
+                                </li>
                             </ul>
                         </div>
                         </form>
