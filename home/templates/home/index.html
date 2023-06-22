@@ -5,49 +5,23 @@
     <!--slider area start-->
     <section class="slider_section mb-80">
         <div class="slider_area slider_carousel owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="{% static "img/slider/slider1.jpg" %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h1>تخفیف بزرگ <span>لوازم جانبی Fidanza</span></h1>
-                                <p>پیشنهاد انحصاری -30% تخفیف این هفته</p>
-                                <a class="button" href="{% url "product:product-list" %}">اکنون خرید کنید <i
-                                        class="fa fa-angle-double-left"
-                                        aria-hidden="true"></i></a>
+            {% for slider in sliders %}
+                <div class="single_slider d-flex align-items-center" data-bgimg="{{ slider.image.url }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="slider_content">
+                                    <h1><span>{{ slider.title }}</span></h1>
+                                    <p>{{ slider.text }}</p>
+                                    <a class="button" href="{{ slider.url }}">{{ slider.button_text }} <i
+                                            class="fa fa-angle-double-left"
+                                            aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{% static "img/slider/slider2.jpg" %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content center">
-                                <h1>لوازم جانبی <span>انواع تریلر تراکتور</span></h1>
-                                <p>پیشنهاد انحصاری -30% تخفیف این هفته</p>
-                                <a class="button" href="{% url "product:product-list" %}">اکنون خرید کنید <i class="fa fa-angle-double-left"
-                                                                                      aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{% static "img/slider/slider3.jpg" %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h1>بالاترین <span>داخل خودرو جدید</span></h1>
-                                <p>پیشنهاد انحصاری -20% تخفیف این هفته</p>
-                                <a class="button" href="{% url "product:product-list" %}">اکنون خرید کنید <i class="fa fa-angle-double-left"
-                                                                                      aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!--slider area end-->

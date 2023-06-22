@@ -17,4 +17,5 @@ class HomeView(TemplateView):
         context["cheapest_products"] = Product.objects.order_by("discounted_price")[:10]
         context["cheapest_products"] = Product.objects.order_by("discounted_price")[:10]
         context["articles"] = Blog.objects.all()[:6]
+        context["sliders"] = Slider.objects.all()
         return context
