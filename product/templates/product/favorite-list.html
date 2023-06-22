@@ -62,19 +62,21 @@
                                                     {% endif %}
 
                                                     <td class="product_total">
-                                                        <form method="post" id="add-to-cart-form"
-                                                              action="{% url "payment:cart-add" item.id %}">
+                                                        <form method="post">
                                                             {% csrf_token %}
+
                                                             <input min="1" max="100" value="1" type="number"
                                                                    id="quantity" hidden>
-                                                            <button class="button" type="submit"
+
+                                                            <button onclick="AddToCart('{{ item.id }}')"
+                                                                    class="button"
+                                                                    type="button"
                                                                     style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد خرید
+                                                                    title="افزودن به سبد خرید">افزودن به سبد
+                                                                خرید
                                                             </button>
+
                                                         </form>
-                                                        <div id="product-id"
-                                                             data-product-id="{{ item.id }}"
-                                                             hidden></div>
                                                     </td>
 
                                                 </tr>

@@ -3,6 +3,7 @@ certifi==2023.5.7
 charset-normalizer==3.1.0
 Django==4.2.1
 django-admin-persian-fonts==0.2
+django-ckeditor==6.5.1
 django-js-asset==2.0.0
 django-mptt==0.14.0
 idna==3.4
