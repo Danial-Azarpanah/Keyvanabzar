@@ -29,56 +29,56 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="table_desc">
-                            <form action="" method="post" id="cart-update-form">
-                                {% csrf_token %}
-                                <div class="cart_page">
-                                    <table>
-                                        <thead>
+                            <div class="cart_page">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th class="product_remove">حذف</th>
+                                        <th class="product_thumb">عکس</th>
+                                        <th class="product_name">محصول</th>
+                                        <th class="product-price">قیمت</th>
+                                        <th class="product_quantity">تعداد</th>
+                                        <th class="product_total">مجموع</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart %}
                                         <tr>
-                                            <th class="product_remove">حذف</th>
-                                            <th class="product_thumb">عکس</th>
-                                            <th class="product_name">محصول</th>
-                                            <th class="product-price">قیمت</th>
-                                            <th class="product_quantity">تعداد</th>
-                                            <th class="product_total">مجموع</th>
+                                            <td class="product_remove"><a
+                                                    href="{% url 'payment:cart-del' item.id %}"><i
+                                                    class="fa fa-trash-o"></i></a>
+                                            </td>
+                                            <td class="product_thumb"><a
+                                                    href="{% url 'product:product-detail' item.product.id %}"><img
+                                                    src="{{ item.product.pictures.first }}" alt=""></a></td>
+                                            <td class="product_name"><a
+                                                    href="{% url "product:product-detail" item.product.id %}">{{ item.title }}
+                                                - {{ item.id }}</a></td>
+                                            <td class="product-price">{{ item.formatted_price }}</td>
+
+
+                                            <form action="{% url 'payment:cart-update' item.product.id %}"
+                                                  method="post">
+                                                {% csrf_token %}
+
+                                                <td class="product_quantity"><label>تعداد</label>
+                                                    <button type="submit" style="border-radius: 8px; border-width: 0px">
+                                                        <input min="1"
+                                                               max="100"
+                                                               value="{{ item.quantity }}"
+                                                               type="number"
+                                                               name="quantity">
+                                                    </button>
+
+                                            </form>
+
+                                            </td>
+                                            <td class="product_total">{{ item.formatted_total }}</td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for item in cart %}
-                                            <tr>
-                                                <td class="product_remove"><a
-                                                        href="{% url 'payment:cart-del' item.id %}"><i
-                                                        class="fa fa-trash-o"></i></a>
-                                                </td>
-                                                <td class="product_thumb"><a
-                                                        href="{% url 'product:product-detail' item.product.id %}"><img
-                                                        src="{{ item.product.pictures.first }}" alt=""></a></td>
-                                                <td class="product_name"><a
-                                                        href="{% url "product:product-detail" item.product.id %}">{{ item.title }}
-                                                    - {{ item.id }}</a></td>
-                                                <td class="product-price">{{ item.formatted_price }}</td>
-                                                <td class="product_quantity"><label>تعداد</label> <input min="1"
-                                                                                                         max="100"
-                                                                                                         value="{{ item.quantity }}"
-                                                                                                         type="number"
-                                                                                                         id="quantity">
-                                                </td>
-                                                <td class="product_total">{{ item.formatted_total }}</td>
-                                            </tr>
-
-                                            <div id="product-id"
-                                                 data-product-id="{{ item.product.id }}"
-                                                 hidden></div>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="cart_submit">
-                                    <button type="submit">به روز رسانی سبد خرید</button>
-                                </div>
-
-
-                            </form>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

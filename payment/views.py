@@ -101,7 +101,7 @@ class ApplyDiscountCodeView(View):
 
 
 # ZARIN PAL INFORMATION
-MERCHANT = ""
+MERCHANT = "f2b1f2ba-6ece-4c2d-9374-e901f03150e4"
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
 ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
