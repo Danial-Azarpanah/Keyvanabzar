@@ -4,6 +4,7 @@ from .views import *
 app_name = 'payment'
 urlpatterns = [
     path('cart-detail', CartDetailView.as_view(), name='cart-detail'),
+    path('order-history', OrderHistoryView.as_view(), name='order-history'),
 
     path('cart-add/<str:pk>', CartAddView.as_view(), name='cart-add'),
     path('cart-del/<str:pk>', CartDeleteView.as_view(), name='cart-del'),

@@ -22,6 +22,14 @@ class CartDetailView(View):
         return render(request, self.template_name, {'cart': cart})
 
 
+class OrderHistoryView(RequiredLoginMixin, View):
+    template_name = 'payment/order-history.html'
+
+    def get(self, request):
+        orders = Order.objects.filter(user=request.user, is_paid=True)
+        return render(request, self.template_name, {'orders': orders})
+
+
 class CartAddView(View):
 
     def post(self, request, pk):
@@ -116,6 +124,10 @@ CallbackURL = "http://127.0.0.1:8000/payment/order/verify/"
 class SendRequestView(View):
     def post(self, request, pk):
         order = get_object_or_404(Order, id=pk)
+        address_id = request.POST.get("cuntry")
+        if address_id:
+            order.address = get_object_or_404(Address, id=address_id)
+        order.save()
         total_price = order.total_price * 10
         post_price = order.post_price * 10
         request.session['order_id'] = str(order.id)

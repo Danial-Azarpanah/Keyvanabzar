@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block main %}
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{% url "home:home" %}">خانه</a></li>
+                            <li><a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+    <!--shopping cart area start -->
+    <div class="cart_page_bg">
+        <div class="container">
+            <div class="shopping_cart_area">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th class="product_remove">وضعیت</th>
+                                        <th class="product_thumb">مبلغ تراکنش</th>
+                                        <th class="product_thumb">کد رهگیری مرسوله (پست)</th>
+                                        <th class="product_name">آدرس</th>
+                                        <th class="product-price">تاریخ تراکنش</th>
+                                        <th class="product_quantity">کد پیگیری تراکنش</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td class="product_remove">
+                                                <p>
+                                                    {% if order.is_sent %}
+                                                        ارسال شده
+                                                    {% else %}
+                                                        در حال پردازش
+                                                    {% endif %}
+                                                </p>
+                                            </td>
+                                            <td class="product_thumb">
+                                                {% if order.delivery_method == "post" %}
+                                                    {{ order.get_post_and_total_price }}
+                                                {% else %}
+                                                    {{ order.get_total_price }}
+                                                {% endif %}
+                                            </td>
+                                            <td class="product_name">
+                                                {% if order.delivery_method == "post" %}
+                                                    {{ order.post_tracking_code }}
+                                                {% else %}
+                                                    عدم ارسال توسط پست
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ order.address }}</td>
+                                            <td>{{ order.get_jalali_date }}</td>
+                                            <td>{{ order.tracking_code }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!--shopping cart area end -->
+    <script>
+        function updateDeliverySelection(value) {
+            document.getElementById('delivery-selection').value = value;
+            if (value !== "post") {
+                document.getElementById('delivery-cost').hidden = true
+                document.getElementById('total-and-post').hidden = true
+                document.getElementById('total').hidden = false
+            } else {
+                document.getElementById('delivery-cost').hidden = false
+                document.getElementById('total-and-post').hidden = false
+                document.getElementById('total').hidden = true
+            }
+        }
+    </script>
+
+{% endblock %}

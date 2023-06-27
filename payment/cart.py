@@ -47,6 +47,7 @@ class Cart:
         product_id = product.id
         if product_id in self.cart:
             self.cart[product_id]['quantity'] = int(quantity)
+            self.cart[product_id]['post_weight'] = int(product.total_weight * int(quantity))
         self.save()
 
     def total(self):
