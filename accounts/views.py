@@ -1,7 +1,6 @@
 from random import randint
 from django.views.generic import *
 from django.shortcuts import render
-from django.urls import reverse_lazy
 from django.contrib import messages as msg
 from django.contrib.auth import authenticate, login
 
@@ -10,6 +9,11 @@ from .mixins import *
 from uuid import uuid4
 from .models import Otp
 from accounts import messages
+
+import ghasedakpack
+
+
+sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
 
 
 class SignInView(AuthenticatedMixin, FormView):
@@ -49,11 +53,8 @@ class SignUpView(AuthenticatedMixin, FormView):
                            phone_number=form.cleaned_data.get('phone_number'),
                            fullname=form.cleaned_data.get('fullname'),
                            password=form.cleaned_data.get('password'))
+        sms.verification({'receptor': f'{form.cleaned_data.get("phone_number")}', 'type': '1', 'template': 'otpcode', 'param1': f'{code}'})
         print(code)
-
-        # SMS.verification(
-        #     {'receptor': form.cleaned_data["phone_number"], 'type': '1', 'templates': 'my-template', 'param1': code}
-        # )
 
         return redirect(reverse_lazy('accounts:check-otp') + f'?token={token}')
 
@@ -101,13 +102,16 @@ class EditProfileView(RequiredLoginMixin, View):
             cd = form.cleaned_data
             new_phone = cd.get("phone_number")
             code = randint(10000, 99999)
-            print(code)
             expiration = timezone.localtime(timezone.now()) + timezone.timedelta(minutes=10)
             if new_phone != old_phone:
                 form.save()
                 user.phone_number = old_phone
                 user.save()
                 token = uuid4().hex
+                sms.verification(
+                    {'receptor': f'{new_phone}', 'type': '1', 'template': 'otpcode',
+                     'param1': f'{code}'})
+                print(code)
                 EditedUser.objects.create(
                     token=token,
                     phone_number=user.phone_number,
@@ -180,11 +184,9 @@ class ResetPasswordView(FormView):
         expiration = timezone.localtime(timezone.now()) + timezone.timedelta(minutes=15)
         Otp.objects.create(token=token, code=code, expiration=expiration,
                            phone_number=form.cleaned_data.get('phone_number'))
+        sms.verification({'receptor': f'{form.cleaned_data.get("phone_number")}', 'type': '1', 'template': 'otpcode',
+                          'param1': f'{code}'})
         print(code)
-
-        # SMS.verification(
-        #     {'receptor': form.cleaned_data["phone_number"], 'type': '1', 'templates': 'randecode', 'param1': code}
-        # )
 
         return redirect(reverse_lazy('accounts:reset-password-otp') + f'?token={token}')
 

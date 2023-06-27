@@ -1,3 +1,5 @@
+from ghasedakpack import ghasedakpack
+
 from accounts.models import *
 from product.models import *
 
@@ -8,14 +10,24 @@ from product.models import *
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders', verbose_name='کاربر')
     is_paid = models.BooleanField('پرداخت', default=False)
+    is_sent = models.BooleanField("ارسال شده", default=False)
     total_price = models.PositiveIntegerField('قیمت کل')
     post_price = models.PositiveIntegerField("قیمت پست", null=True, blank=True)
     created_at = models.DateTimeField('تاریخ ثبت سفارش در', auto_now_add=True)
     tracking_code = models.IntegerField('کد رهگیری', editable=False)
+    post_tracking_code = models.CharField("کد رهگیری پست", null=True, blank=True,
+                                          max_length=100)
     discount_applied = models.BooleanField("تخفیف اعمال شده", default=False)
     address = models.TextField("آدرس", null=True, blank=True)
     delivery_method = models.CharField("نحوه ارسال", max_length=20,
                                        null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.is_sent:
+            sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
+            sms.send({'message': 'این پیام جنبه تستی دارد', 'receptor': f'{self.user.phone_number}',
+                      'linenumber': '10008566'})
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.user}'

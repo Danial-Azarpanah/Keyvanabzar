@@ -165,7 +165,7 @@ class VerifyView(View):
                 if t_status == 100:
                     order.is_paid = True
                     order.save()
-                    return render(request, '')
+                    return render(request, 'payment/payment-successfull.html', {"order": order})
                 elif t_status == 101:
                     return HttpResponse('Transaction submitted : ' + str(
                         req.json()['data']['message']

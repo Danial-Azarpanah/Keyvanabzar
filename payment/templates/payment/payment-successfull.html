@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{% url "home:home" %}">خانه</a></li>
+                            <li>پرداخت موفقیت آمیز</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+    <!--wishlist area start -->
+    <div class="wishlist_page_bg">
+        <div class="container">
+            <div class="wishlist_area">
+                <div class="wishlist_inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table_desc wishlist">
+                                <div class="cart_page" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                    <img class="mt-5" src="{% static "img/icon/success-icon-10.png" %}" width="160px">
+                                    <p class="mx-auto alert alert-success mt-60 mb-5" style="font-size: 20px">پرداخت شما با موفقیت انجام شد! کد پیگیری: {{ order.tracking_code }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
