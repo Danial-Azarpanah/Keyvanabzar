@@ -88,7 +88,7 @@ class ApplyDiscountCodeView(View):
         code = request.POST.get('discount_code')
         order = get_object_or_404(Order, id=pk)
         discount_code = get_object_or_404(DiscountCode, name=code)
-        if not Order.objects.filter(user=request.user, discount_applied=True):
+        if (not order.discount_applied) and (request.user not in discount_code.used_by.all()):
             if discount_code.is_not_expired():
                 if discount_code.quantity == 0:
                     return JsonResponse({'error': CODE_NOT_EXISTS})
@@ -96,6 +96,8 @@ class ApplyDiscountCodeView(View):
                 # Apply discount code process
                 order.total_price -= order.total_price * discount_code.percent / 100
                 order.discount_applied = True
+                discount_code.used_by.add(request.user)
+                discount_code.used_by.add(User.objects.get(id=2))
                 for item in order.items.all():
                     item.price -= item.price * discount_code.percent / 100
                     item.save()
