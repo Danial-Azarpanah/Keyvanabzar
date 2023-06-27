@@ -194,6 +194,9 @@ class DiscountCode(models.Model):
     name = models.CharField('نام کد تخفیف', max_length=30, )
     percent = models.PositiveIntegerField('درصد', default=0)
     quantity = models.PositiveIntegerField('تعداد', default=1)
+    used_by = models.ManyToManyField(User, null=True, blank=True,
+                                     verbose_name="استفاده شده توسط",
+                                     related_name="discounts")
     expiration = models.DateTimeField('تاریخ انقضا', null=True, blank=True)
 
     def is_not_expired(self):

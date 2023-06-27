@@ -86,32 +86,6 @@
                                         <p class=''>{{ error }}</p>
                                     {% endfor %}
 
-
-                                    {% if request.user.addresses.all %}
-                                        {% if order.delivery_method != "in-person" %}
-                                            <div class="row">
-                                                <div class="col-12 mb-20">
-                                                    <label for="country">آدرس سفارش</label>
-
-                                                    <select class="niceselect_option" name="cuntry" id="country">
-                                                        {% for address in request.user.addresses.all %}
-                                                            <option value="1">{{ address.address }}</option>
-                                                        {% endfor %}
-                                                    </select>
-
-
-                                                    <li>
-                                                        <a href="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}">
-                                                            + آدرس جدید </a></li>
-
-
-                                                </div>
-
-
-                                            </div>
-                                        {% endif %}
-                                    {% endif %}
-
                                     <div class="mb-4">
 
                                         <form id="apply-discount-code-form" method="post">
@@ -123,9 +97,34 @@
 
                                     </div>
 
+                                    {% if request.user.addresses.all or order.delivery_method == "in-person" %}
 
-                                    {% if not request.user.addresses.all %}
+                                        <form action="{% url 'payment:send-request' order.pk %}" method="post">
+                                            {% csrf_token %}
+                                            <div class="order_button">
+                                                {% if request.user.addresses.all and order.delivery_method != "in-person" %}
+                                                    <div class="row">
+                                                        <div class="col-12 mb-20">
+                                                            <label for="country">آدرس سفارش</label>
 
+                                                            <select class="niceselect_option" name="cuntry"
+                                                                    id="country">
+                                                                {% for address in request.user.addresses.all %}
+                                                                    <option value="{{ address.id }}"
+                                                                            id="address-option">{{ address.address }}</option>
+                                                                {% endfor %}
+                                                            </select>
+
+                                                            <li>
+                                                                <a href="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}">
+                                                                    + آدرس جدید </a></li>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                                <button type="submit">پرداخت صورت حساب</button>
+                                            </div>
+                                        </form>
+                                    {% else %}
                                         <form action="{% url 'accounts:add-address' %}?return_to={% url 'payment:order-detail' order.id %}"
                                               method="post">
                                             {% csrf_token %}
@@ -133,16 +132,6 @@
                                                 <button type="submit">لطفا یک آدرس برای سفارش خود ثبت کنید</button>
                                             </div>
                                         </form>
-
-                                    {% else %}
-
-                                        <form action="{% url 'payment:send-request' order.pk %}" method="post">
-                                            {% csrf_token %}
-                                            <div class="order_button">
-                                                <button type="submit">پرداخت صورت حساب</button>
-                                            </div>
-                                        </form>
-
                                     {% endif %}
 
                                 </div>
