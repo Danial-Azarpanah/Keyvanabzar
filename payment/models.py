@@ -22,12 +22,22 @@ class Order(models.Model):
     delivery_method = models.CharField("نحوه ارسال", max_length=20,
                                        null=True, blank=True)
 
-    # def save(self, *args, **kwargs):
-    #     if self.is_sent:
-    #         sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
-    #         sms.send({'message': 'این پیام جنبه تستی دارد', 'receptor': f'{self.user.phone_number}',
-    #                   'linenumber': '10008566'})
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if self.is_sent:
+            sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
+            if self.delivery_method == "post" and self.post_tracking_code:
+                message = f"سفارش شما ارسال گردید\nکد رهگیری پست: {self.post_tracking_code}"
+            elif self.delivery_method == "delivery-motor":
+                message = f"سفارش شما با پیک ارسال گردید"
+            elif self.delivery_method == "in-person":
+                message = f"سفارش شما آماده تحویل است، میتوانید با مراجعه به مغازه آن را دریافت نمائید"
+            else:
+                message = f"سفارش شما با باربری ارسال گردید"
+            message += "\n\nفروشگاه دیوالت لند"
+
+            sms.send({'message': f'{message}', 'receptor': f'{self.user.phone_number}',
+                      'linenumber': '30005006008608'})
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.user}'
