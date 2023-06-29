@@ -90,7 +90,8 @@ class Address(models.Model):
 
 
 class Info(models.Model):
-    phone_number = models.CharField('شماره تماس', max_length=11)
+    phone_number = models.CharField('شماره موبایل', max_length=11)
+    telephone = models.CharField('شماره تلفن ثابت', max_length=11)
     email = models.EmailField('ایمیل')
     address = models.CharField('آدرس مغازه', max_length=100)
     instagram = models.URLField('اینستاگرام', null=True, blank=True)

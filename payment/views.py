@@ -128,7 +128,7 @@ class SendRequestView(View):
         order = get_object_or_404(Order, id=pk)
         address_id = request.POST.get("cuntry")
         if address_id:
-            order.address = get_object_or_404(Address, id=address_id)
+            order.address = get_object_or_404(Address, id=address_id).address
         order.save()
         total_price = order.total_price * 10
         post_price = order.post_price * 10
@@ -164,6 +164,9 @@ class VerifyView(View):
         t_authority = request.GET['Authority']
         order_id = request.session['order_id']
         order = Order.objects.get(id=int(order_id))
+        for item in order.items:
+            item.product.sale_count += item.quantity
+            item.product.save()
         total_price = order.total_price * 10
         if request.GET.get('Status') == 'OK':
             req_header = {"accept": "application/json",

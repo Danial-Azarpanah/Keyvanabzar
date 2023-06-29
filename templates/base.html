@@ -47,7 +47,7 @@
                     </div>
                     <div class="call_support">
                         <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما : <a
-                                href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a></span></p>
+                                href="tel:{{ info.phone_number }}">{{ info.telephone }}</a></span></p>
 
                     </div>
                     <div class="search_container">
@@ -155,56 +155,55 @@
                                     </a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
-                                        <div class="mini_cart_inner">
-                                            <div class="cart_close">
-                                                <div class="cart_text">
-                                                    <h3>سبد خرید</h3>
-                                                </div>
-                                                <div class="mini_cart_close">
-                                                    <a href="javascript:void(0)"><i class="icon-x"></i></a>
-                                                </div>
-                                            </div>
-                                            {% for item in cart %}
-                                                <div class="cart_item">
-                                                    <div class="cart_img">
-                                                        <a href="{% url 'product:product-detail' item.product.id %}"><img
-                                                                src="{{ item.product.pictures.first }}"
-                                                                alt=""></a>
+                                        {% if cart.total %}
+                                            <div class="mini_cart_inner">
+                                                <div class="cart_close">
+                                                    <div class="cart_text">
+                                                        <h3>سبد خرید</h3>
                                                     </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">{{ item.title }}</a>
-                                                        <p> تعداد: {{ item.quantity }} عدد
-                                                            <span> {{ item.formatted_total }} </span></p>
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a onclick="CartDel('{{ item.id }}')"><i
-                                                                class="ion-android-close"></i></a>
+                                                    <div class="mini_cart_close">
+                                                        <a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                     </div>
                                                 </div>
-                                            {% endfor %}
+                                                {% for item in cart %}
+                                                    <div class="cart_item">
+                                                        <div class="cart_img">
+                                                            <a href="{% url 'product:product-detail' item.product.id %}"><img
+                                                                    src="{{ item.product.pictures.first }}"
+                                                                    alt=""></a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a href="#">{{ item.title }}</a>
+                                                            <p> تعداد: {{ item.quantity }} عدد
+                                                                <span> {{ item.formatted_total }} </span></p>
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a onclick="CartDel('{{ item.id }}')"><i
+                                                                    class="ion-android-close"></i></a>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
 
 
-                                            <div class="mini_cart_table">
+                                                <div class="mini_cart_table">
 
-                                                <div class="cart_total mt-10">
-                                                    {% if cart.total %}
-                                                        <span>جمع کل:</span>
-                                                        <span class="price">{{ cart.get_total }}</span>
-                                                    {% endif %}
+                                                    <div class="cart_total mt-10">
+                                                        {% if cart.total %}
+                                                            <span>جمع کل:</span>
+                                                            <span class="price">{{ cart.get_total }}</span>
+                                                        {% endif %}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-
-                                        <div class="mini_cart_footer">
-                                            <div class="cart_button">
-                                                <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>
+                                            <div class="mini_cart_footer">
+                                                <div class="cart_button">
+                                                    <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>
+                                                </div>
                                             </div>
-                                            <div class="cart_button">
-                                                <a class="active" href="checkout.html">بررسی</a>
-                                            </div>
-
-                                        </div>
+                                            {% else %}
+                                            <p class="alert alert-info">سبد خرید شما خالیست</p>
+                                        {% endif %}
                                     </div>
                                     <!--mini cart end-->
                                 </div>
@@ -273,7 +272,7 @@
                                     <li><a href="{% url 'product:product-list' %}">لیست محصولات</a></li>
                                     <li><a href="{% url "blog:list" %}">وبلاگ</a></li>
                                     <li><a href="">درباره ما</a></li>
-                                    <li><a href=""> تماس با ما</a></li>
+                                    <li><a href="{% url "accounts:contact-us" %}"> تماس با ما</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -281,7 +280,7 @@
                     <div class="col-lg-3">
                         <div class="call_support text-right">
                             <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما: <a
-                                    href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a></span></p>
+                                    href="tel:{{ info.phone_number }}">{{ info.telephone }}</a></span></p>
                         </div>
                     </div>
                 </div>
@@ -308,14 +307,9 @@
                         <h3>اطلاعات تماس</h3>
                         <div class="footer_contact">
                             <div class="footer_contact_inner">
-                                <div class="contact_icone">
-                                    <img src="{% static "img/icon/icon-phone2.png" %}" alt="">
-                                </div>
                                 <div class="contact_text">
-                                    <p>تلفن: </br> <strong><a
-                                            href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a> </strong></p>
-                                    <p>ایمیل: </br> <strong><a
-                                            href="{{ info.email }}">{{ info.email }}</a> </strong></p>
+                                    <p>آدرس فروشگاه: </br> <strong><a style="font-size: 13px">{{ info.address }}</a> </strong></p>
+                                    <p>ساعات کاری: </br> <strong><a>شنبه تا چهارشنبه: ۹ الی ۱۸:۳۰</a> </strong></br> <strong><a>پنجشنبه: ۹ الی ۱۷</a> </strong></p>
                                 </div>
                             </div>
                         </div>
@@ -352,22 +346,7 @@
                             </div>
                         </div>
                         <div class="widgets_container widget_menu" style="width: 370px">
-                            <div class="newsletter_container" style="color: white">
-                                <h3>خبرنامه</h3>
-                                <div class="subscribe_form">
-                                    <form id="mc-form" class="mc-form footer-newsletter">
-                                        <input id="mc-email" type="email" autocomplete="off"
-                                               placeholder="آدرس ایمیل شما..."/>
-                                        <button id="mc-submit">اشتراک</button>
-                                    </form>
-                                    <!-- mailchimp-alerts Start -->
-                                    <div class="mailchimp-alerts text-centre">
-                                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                                    </div><!-- mailchimp-alerts end -->
-                                </div>
-                            </div>
+
                             <div class="footer_social">
                                 <ul class="text-center">
                                     <li><a class="twitter" href="{{ info.twitter }}"><i class="fa fa-twitter"></i></a>

@@ -24,63 +24,65 @@
     <!--shopping cart area start -->
     <div class="cart_page_bg">
         <div class="container">
-            <div class="shopping_cart_area">
+            {% if orders %}
+                <div class="shopping_cart_area">
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="table_desc">
-                            <div class="cart_page">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th class="product_remove">وضعیت</th>
-                                        <th class="product_thumb">مبلغ تراکنش</th>
-                                        <th class="product_thumb">کد رهگیری مرسوله (پست)</th>
-                                        <th class="product_name">آدرس</th>
-                                        <th class="product-price">تاریخ تراکنش</th>
-                                        <th class="product_quantity">کد پیگیری تراکنش</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for order in orders %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table_desc">
+                                <div class="cart_page">
+                                    <table>
+                                        <thead>
                                         <tr>
-                                            <td class="product_remove">
-                                                <p>
-                                                    {% if order.is_sent %}
-                                                        ارسال شده
-                                                    {% else %}
-                                                        در حال پردازش
-                                                    {% endif %}
-                                                </p>
-                                            </td>
-                                            <td class="product_thumb">
-                                                {% if order.delivery_method == "post" %}
-                                                    {{ order.get_post_and_total_price }}
-                                                {% else %}
-                                                    {{ order.get_total_price }}
-                                                {% endif %}
-                                            </td>
-                                            <td class="product_name">
-                                                {% if order.delivery_method == "post" %}
-                                                    {{ order.post_tracking_code }}
-                                                {% else %}
-                                                    عدم ارسال توسط پست
-                                                {% endif %}
-                                            </td>
-                                            <td>{{ order.address }}</td>
-                                            <td>{{ order.get_jalali_date }}</td>
-                                            <td>{{ order.tracking_code }}</td>
+                                            <th class="product_remove">وضعیت</th>
+                                            <th class="product_thumb">مبلغ تراکنش</th>
+                                            <th class="product_thumb">کد رهگیری مرسوله (پست)</th>
+                                            <th class="product_name">آدرس</th>
+                                            <th class="product-price">تاریخ تراکنش</th>
+                                            <th class="product_quantity">کد پیگیری تراکنش</th>
                                         </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        {% for order in orders %}
+                                            <tr>
+                                                <td class="product_remove">
+                                                    <p>
+                                                        {% if order.is_sent %}
+                                                            ارسال شده
+                                                        {% else %}
+                                                            در حال پردازش
+                                                        {% endif %}
+                                                    </p>
+                                                </td>
+                                                <td class="product_thumb">
+                                                    {% if order.delivery_method == "post" %}
+                                                        {{ order.get_post_and_total_price }}
+                                                    {% else %}
+                                                        {{ order.get_total_price }}
+                                                    {% endif %}
+                                                </td>
+                                                <td class="product_name">
+                                                    {% if order.delivery_method == "post" %}
+                                                        {{ order.post_tracking_code }}
+                                                    {% else %}
+                                                        عدم ارسال توسط پست
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{ order.address }}</td>
+                                                <td>{{ order.get_jalali_date }}</td>
+                                                <td>{{ order.tracking_code }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-            </div>
+            {% else %}
+                <p class="alert alert-info mb-5 mt-60">شما تا کنون سفارشی ثبت نکرده اید</p>
+            {% endif %}
         </div>
     </div>
     <!--shopping cart area end -->

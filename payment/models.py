@@ -25,15 +25,16 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         if self.is_sent:
             sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
+            message = "ممنون از خرید شما"
             if self.delivery_method == "post" and self.post_tracking_code:
-                message = f"سفارش شما ارسال گردید\nکد رهگیری پست: {self.post_tracking_code}"
+                message += f"\nبسته شما ارسال گردید\nکد رهگیری پست: {self.post_tracking_code}"
             elif self.delivery_method == "delivery-motor":
-                message = f"سفارش شما با پیک ارسال گردید"
+                message += f"بسته شما با پیک موتوری ارسال گردید"
             elif self.delivery_method == "in-person":
-                message = f"سفارش شما آماده تحویل است، میتوانید با مراجعه به مغازه آن را دریافت نمائید"
+                message += f"\nبسته شما آماده تحویل است\nلطفا جهت هماهنگی با شماره ۰۴۱۳۵۵۶۸۷۴۱ تماس حاصل نمائید"
             else:
-                message = f"سفارش شما با باربری ارسال گردید"
-            message += "\n\nفروشگاه دیوالت لند"
+                message += f"\nسفارش شما با باربری ارسال گردید"
+            message += f"\nبا احترام - فروشگاه دیوالت لند"
 
             sms.send({'message': f'{message}', 'receptor': f'{self.user.phone_number}',
                       'linenumber': '30005006008608'})
