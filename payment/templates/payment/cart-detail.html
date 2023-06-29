@@ -24,153 +24,159 @@
     <!--shopping cart area start -->
     <div class="cart_page_bg">
         <div class="container">
-            <div class="shopping_cart_area">
+            {% if cart.total %}
+                <div class="shopping_cart_area">
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="table_desc">
-                            <div class="cart_page">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th class="product_remove">حذف</th>
-                                        <th class="product_thumb">عکس</th>
-                                        <th class="product_name">محصول</th>
-                                        <th class="product-price">قیمت</th>
-                                        <th class="product_quantity">تعداد</th>
-                                        <th class="product_total">مجموع</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in cart %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table_desc">
+                                <div class="cart_page">
+                                    <table>
+                                        <thead>
                                         <tr>
-                                            <td class="product_remove"><a
-                                                    href="{% url 'payment:cart-del' item.id %}"><i
-                                                    class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a
-                                                    href="{% url 'product:product-detail' item.product.id %}"><img
-                                                    src="{{ item.product.pictures.first }}" alt=""></a></td>
-                                            <td class="product_name"><a
-                                                    href="{% url "product:product-detail" item.product.id %}">{{ item.title }}
-                                                - {{ item.id }}</a></td>
-                                            <td class="product-price">{{ item.formatted_price }}</td>
-
-
-                                            <form action="{% url 'payment:cart-update' item.product.id %}"
-                                                  method="post">
-                                                {% csrf_token %}
-
-                                                <td class="product_quantity"><label>تعداد</label>
-                                                    <button type="submit" style="border-radius: 8px; border-width: 0px">
-                                                        <input min="1"
-                                                               max="100"
-                                                               value="{{ item.quantity }}"
-                                                               type="number"
-                                                               name="quantity">
-                                                    </button>
-
-                                            </form>
-
-                                            </td>
-                                            <td class="product_total">{{ item.formatted_total }}</td>
+                                            <th class="product_remove">حذف</th>
+                                            <th class="product_thumb">عکس</th>
+                                            <th class="product_name">محصول</th>
+                                            <th class="product-price">قیمت</th>
+                                            <th class="product_quantity">تعداد</th>
+                                            <th class="product_total">مجموع</th>
                                         </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in cart %}
+                                            <tr>
+                                                <td class="product_remove"><a
+                                                        href="{% url 'payment:cart-del' item.id %}"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                                </td>
+                                                <td class="product_thumb"><a
+                                                        href="{% url 'product:product-detail' item.product.id %}"><img
+                                                        src="{{ item.product.pictures.first }}" alt=""></a></td>
+                                                <td class="product_name"><a
+                                                        href="{% url "product:product-detail" item.product.id %}">{{ item.title }}
+                                                    - {{ item.id }}</a></td>
+                                                <td class="product-price">{{ item.formatted_price }}</td>
+
+
+                                                <form action="{% url 'payment:cart-update' item.product.id %}"
+                                                      method="post">
+                                                    {% csrf_token %}
+
+                                                    <td class="product_quantity"><label>تعداد</label>
+                                                        <button type="submit"
+                                                                style="border-radius: 8px; border-width: 0px">
+                                                            <input min="1"
+                                                                   max="100"
+                                                                   value="{{ item.quantity }}"
+                                                                   type="number"
+                                                                   name="quantity">
+                                                        </button>
+
+                                                </form>
+
+                                                </td>
+                                                <td class="product_total">{{ item.formatted_total }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--coupon code area start-->
-                <div class="coupon_area">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 mx-auto">
-                            <div class="coupon_code right">
-                                <h3>مجموع سبد خرید</h3>
-                                <form method="post"
-                                      action="{% url 'payment:order-creation' %}?return_to={% url 'payment:cart-detail' %}">
-                                    {% csrf_token %}
-                                    <div class="coupon_inner">
+                    <!--coupon code area start-->
+                    <div class="coupon_area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 mx-auto">
+                                <div class="coupon_code right">
+                                    <h3>مجموع سبد خرید</h3>
+                                    <form method="post"
+                                          action="{% url 'payment:order-creation' %}?return_to={% url 'payment:cart-detail' %}">
+                                        {% csrf_token %}
+                                        <div class="coupon_inner">
 
-                                        {% if cart.total %}
-                                            <div class="cart_subtotal">
-                                                <p>جمع کل</p>
-                                                <p class="cart_amount">{{ cart.get_total }}</p>
-                                            </div>
-                                        {% else %}
-                                            <div class="cart_subtotal">
-                                                <p>جمع کل سبد</p>
-                                                <p class="cart_amount">0 تومان </p>
-                                            </div>
-                                        {% endif %}
-
-                                        {% if cart.total %}
-                                            {% if cart.get_post_price.1 != 0 %}
+                                            {% if cart.total %}
                                                 <div class="cart_subtotal">
-                                                    <p>نحوه ارسال</p>
-                                                    <select class="form-select mb-3 w-50"
-                                                            aria-label="Default select example"
-                                                            onchange="updateDeliverySelection(this.value)">
-                                                        <option value="post" selected>پست پیشتاز</option>
-                                                        <option value="in-person">تحویل حضوری 12:00 - 14:00 (تبریز)
-                                                        </option>
-                                                        <option value="delivery-motor">پیک با پرداخت حین تحویل (تبریز)
-                                                        </option>
-                                                    </select>
-                                                    <input value="post" id="delivery-selection"
-                                                           name="delivery-selection" type="text" hidden>
-                                                </div>
-                                                <div class="cart_subtotal" id="delivery-cost">
-                                                    <p>هزینه ارسال</p>
-                                                    <p class="cart_amount"> {{ cart.get_post_price.0 }} </p>
+                                                    <p>جمع کل</p>
+                                                    <p class="cart_amount">{{ cart.get_total }}</p>
                                                 </div>
                                             {% else %}
-                                                <div class="cart_subtotal ">
-                                                    <p>هزینه ارسال</p>
-                                                    <p class="cart_amount"> ارسال با باربری به دلیل وزن بالا (پرداخت
-                                                        هزینه باربری حین تحویل) </p>
+                                                <div class="cart_subtotal">
+                                                    <p>جمع کل سبد</p>
+                                                    <p class="cart_amount">0 تومان </p>
                                                 </div>
                                             {% endif %}
-                                        {% else %}
-                                            <div class="cart_subtotal">
-                                                <p>هزینه ارسال</p>
-                                                <p class="cart_amount"> 0 تومان </p>
-                                            </div>
-                                        {% endif %}
 
-                                        {% if cart.total %}
-                                            <div class="cart_subtotal" id="total-and-post">
-                                                <p>جمع کل</p>
-                                                <p class="cart_amount">{{ cart.get_total_and_post }}</p>
-                                            </div>
-                                            <div class="cart_subtotal" id="total" hidden>
-                                                <p>جمع کل</p>
-                                                <p class="cart_amount">{{ cart.get_total }}</p>
-                                            </div>
-                                        {% else %}
-                                            <div class="cart_subtotal">
-                                                <p>جمع کل</p>
-                                                <p class="cart_amount">0 تومان </p>
-                                            </div>
-                                        {% endif %}
+                                            {% if cart.total %}
+                                                {% if cart.get_post_price.1 != 0 %}
+                                                    <div class="cart_subtotal">
+                                                        <p>نحوه ارسال</p>
+                                                        <select class="form-select mb-3 w-50"
+                                                                aria-label="Default select example"
+                                                                onchange="updateDeliverySelection(this.value)">
+                                                            <option value="post" selected>پست پیشتاز</option>
+                                                            <option value="in-person">تحویل حضوری 12:00 - 14:00 (تبریز)
+                                                            </option>
+                                                            <option value="delivery-motor">پیک با پرداخت حین تحویل
+                                                                (تبریز)
+                                                            </option>
+                                                        </select>
+                                                        <input value="post" id="delivery-selection"
+                                                               name="delivery-selection" type="text" hidden>
+                                                    </div>
+                                                    <div class="cart_subtotal" id="delivery-cost">
+                                                        <p>هزینه ارسال</p>
+                                                        <p class="cart_amount"> {{ cart.get_post_price.0 }} </p>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="cart_subtotal ">
+                                                        <p>هزینه ارسال</p>
+                                                        <p class="cart_amount"> ارسال با باربری به دلیل وزن بالا (پرداخت
+                                                            هزینه باربری حین تحویل) </p>
+                                                    </div>
+                                                {% endif %}
+                                            {% else %}
+                                                <div class="cart_subtotal">
+                                                    <p>هزینه ارسال</p>
+                                                    <p class="cart_amount"> 0 تومان </p>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if cart.total %}
+                                                <div class="cart_subtotal" id="total-and-post">
+                                                    <p>جمع کل</p>
+                                                    <p class="cart_amount">{{ cart.get_total_and_post }}</p>
+                                                </div>
+                                                <div class="cart_subtotal" id="total" hidden>
+                                                    <p>جمع کل</p>
+                                                    <p class="cart_amount">{{ cart.get_total }}</p>
+                                                </div>
+                                            {% else %}
+                                                <div class="cart_subtotal">
+                                                    <p>جمع کل</p>
+                                                    <p class="cart_amount">0 تومان </p>
+                                                </div>
+                                            {% endif %}
 
 
-                                        {% if cart.total %}
-                                            <div class="checkout_btn">
-                                                <button type="submit">ثبت سفارش</button>
-                                            </div>
-                                        {% endif %}
+                                            {% if cart.total %}
+                                                <div class="checkout_btn">
+                                                    <button type="submit">ثبت سفارش</button>
+                                                </div>
+                                            {% endif %}
 
-                                    </div>
-                                </form>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--coupon code area end-->
+                    <!--coupon code area end-->
 
-            </div>
+                </div>
+            {% else %}
+                <p class="alert alert-info mb-5 mt-60">سبد خرید شما خالیست</p>
+            {% endif %}
         </div>
     </div>
     <!--shopping cart area end -->

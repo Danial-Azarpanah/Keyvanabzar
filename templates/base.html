@@ -155,56 +155,55 @@
                                     </a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
-                                        <div class="mini_cart_inner">
-                                            <div class="cart_close">
-                                                <div class="cart_text">
-                                                    <h3>سبد خرید</h3>
-                                                </div>
-                                                <div class="mini_cart_close">
-                                                    <a href="javascript:void(0)"><i class="icon-x"></i></a>
-                                                </div>
-                                            </div>
-                                            {% for item in cart %}
-                                                <div class="cart_item">
-                                                    <div class="cart_img">
-                                                        <a href="{% url 'product:product-detail' item.product.id %}"><img
-                                                                src="{{ item.product.pictures.first }}"
-                                                                alt=""></a>
+                                        {% if cart.total %}
+                                            <div class="mini_cart_inner">
+                                                <div class="cart_close">
+                                                    <div class="cart_text">
+                                                        <h3>سبد خرید</h3>
                                                     </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">{{ item.title }}</a>
-                                                        <p> تعداد: {{ item.quantity }} عدد
-                                                            <span> {{ item.formatted_total }} </span></p>
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a onclick="CartDel('{{ item.id }}')"><i
-                                                                class="ion-android-close"></i></a>
+                                                    <div class="mini_cart_close">
+                                                        <a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                     </div>
                                                 </div>
-                                            {% endfor %}
+                                                {% for item in cart %}
+                                                    <div class="cart_item">
+                                                        <div class="cart_img">
+                                                            <a href="{% url 'product:product-detail' item.product.id %}"><img
+                                                                    src="{{ item.product.pictures.first }}"
+                                                                    alt=""></a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a href="#">{{ item.title }}</a>
+                                                            <p> تعداد: {{ item.quantity }} عدد
+                                                                <span> {{ item.formatted_total }} </span></p>
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a onclick="CartDel('{{ item.id }}')"><i
+                                                                    class="ion-android-close"></i></a>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
 
 
-                                            <div class="mini_cart_table">
+                                                <div class="mini_cart_table">
 
-                                                <div class="cart_total mt-10">
-                                                    {% if cart.total %}
-                                                        <span>جمع کل:</span>
-                                                        <span class="price">{{ cart.get_total }}</span>
-                                                    {% endif %}
+                                                    <div class="cart_total mt-10">
+                                                        {% if cart.total %}
+                                                            <span>جمع کل:</span>
+                                                            <span class="price">{{ cart.get_total }}</span>
+                                                        {% endif %}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-
-                                        <div class="mini_cart_footer">
-                                            <div class="cart_button">
-                                                <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>
+                                            <div class="mini_cart_footer">
+                                                <div class="cart_button">
+                                                    <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>
+                                                </div>
                                             </div>
-                                            <div class="cart_button">
-                                                <a class="active" href="checkout.html">بررسی</a>
-                                            </div>
-
-                                        </div>
+                                            {% else %}
+                                            <p class="alert alert-info">سبد خرید شما خالیست</p>
+                                        {% endif %}
                                     </div>
                                     <!--mini cart end-->
                                 </div>
