@@ -128,7 +128,7 @@ class SendRequestView(View):
         order = get_object_or_404(Order, id=pk)
         address_id = request.POST.get("cuntry")
         if address_id:
-            order.address = get_object_or_404(Address, id=address_id)
+            order.address = get_object_or_404(Address, id=address_id).address
         order.save()
         total_price = order.total_price * 10
         post_price = order.post_price * 10
