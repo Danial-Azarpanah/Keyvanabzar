@@ -73,13 +73,11 @@
                                         {% if request.user.is_authenticated %}
                                             <a href="{% url "accounts:edit-profile" %}">اطلاعات من</a>
                                             <a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a>
-                                            <a href="{% url "payment:cart-detail" %}">سبد خرید</a>
                                             <a href="{% url "product:comparison-list" %}">مقایسه محصولات</a>
                                             <a href="{% url "accounts:log-out" %}">خروج از حساب</a>
                                         {% else %}
                                             <a href="{% url "accounts:sign-up" %}">ثبت نام</a>
                                             <a href="{% url "accounts:sign-in" %}">ورود</a>
-                                            <a href="{% url "payment:cart-detail" %}">سبد خرید</a>
                                         {% endif %}
                                     </li>
                                 </ul>
@@ -255,14 +253,12 @@
                                             {% if request.user.is_authenticated %}
                                                 <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
                                                 <li><a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a></li>
-                                                <li><a href="{% url 'payment:cart-detail' %}">سبد خرید</a></li>
                                                 <li><a href="{% url 'product:comparison-list' %}">مقایسه محصولات</a>
                                                 </li>
                                                 <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
                                             {% else %}
                                                 <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
                                                 <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
-                                                <li><a href="{% url 'payment:cart-detail' %}">سبد خرید</a></li>
                                             {% endif %}
                                         </ul>
                                     </li>
@@ -332,12 +328,10 @@
                                     {% if request.user.is_authenticated %}
                                         <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
                                         <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
-                                        <li><a href="{% url "payment:cart-detail" %}">سبد خرید</a></li>
                                         <li><a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a></li>
                                     {% else %}
                                         <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
                                         <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
-                                        <li><a href="{% url "payment:cart-detail" %}">سبد خرید</a></li>
                                     {% endif %}
                                 </ul>
                             </div>
