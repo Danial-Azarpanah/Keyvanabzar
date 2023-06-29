@@ -73,9 +73,7 @@
                                         <span class="current_price">{{ product.get_price }}</span>
                                     {% endif %}
                                 {% else %}
-                                    <div class="mb-3"><span class="current_price">جهت اطلاع از قیمت تماس بگیرید</span>
-                                    </div>
-                                    <span class="current_price">شماره تماس: {{ info.telephone }}</span>
+                                    <div class="mb-3"><span class="call_for_price">جهت اطلاع از قیمت تماس بگیرید</span>
                                 {% endif %}
                             </div>
                             <div class="product_desc">
@@ -333,6 +331,10 @@
                                                     {% else %}
                                                         <span class="current_price">{{ item.get_discounted_price }}</span>
                                                     {% endif %}
+                                                {% else %}
+                                                    <span class="old_price"></span>
+                                                    <br>
+                                                    <span class="call_for_price">تماس  جهت اطلاع از قیمت</span>
                                                 {% endif %}
                                             </div>
                                         </div>

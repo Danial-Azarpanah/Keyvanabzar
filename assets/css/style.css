@@ -4373,6 +4373,12 @@ textarea:-ms-input-placeholder {
     color: #febd17;
 }
 
+.price_box span.call_for_price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #febd17;
+}
+
 .quick_button {
     position: absolute;
     top: 50%;

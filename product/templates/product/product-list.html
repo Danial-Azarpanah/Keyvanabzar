@@ -75,6 +75,10 @@
                                                             <br>
                                                             <span class="current_price">{{ product.get_price }}</span>
                                                         {% endif %}
+                                                    {% else %}
+                                                        <span class="old_price"></span>
+                                                        <br>
+                                                        <span class="call_for_price">تماس  جهت اطلاع از قیمت</span>
                                                     {% endif %}
                                                 </div>
                                             </div>
@@ -100,10 +104,10 @@
                                                         </li>
                                                     {% else %}
                                                         <a href="{% url "product:product-detail" product.id %}"
-                                                                class="button"
-                                                                type="button"
-                                                                style="border-radius: 8px; border-width: 0px"
-                                                                title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                           class="button"
+                                                           type="button"
+                                                           style="border-radius: 8px; border-width: 0px"
+                                                           title="افزودن به سبد خرید">اطلاعات بیشتر
                                                         </a>
                                                     {% endif %}
 
@@ -138,6 +142,8 @@
 
 
 
+
+
                                                 {{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
@@ -145,6 +151,8 @@
                                     {% for i in products.paginator.page_range %}
                                         {% if products.number == i %}
                                             <a href="?page=
+
+
 
 
 
@@ -158,6 +166,8 @@
 
 
 
+
+
                                                     {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
@@ -166,6 +176,8 @@
 
                                     {% if products.has_next %}
                                         <li class="next"><a href="?page=
+
+
 
 
 
@@ -219,6 +231,8 @@
                                                 {% for child in category.children.all %}
                                                     <li>
                                                         <a href="?category=
+
+
 
 
 
