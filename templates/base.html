@@ -47,7 +47,7 @@
                     </div>
                     <div class="call_support">
                         <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما : <a
-                                href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a></span></p>
+                                href="tel:{{ info.phone_number }}">{{ info.telephone }}</a></span></p>
 
                     </div>
                     <div class="search_container">
@@ -280,7 +280,7 @@
                     <div class="col-lg-3">
                         <div class="call_support text-right">
                             <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما: <a
-                                    href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a></span></p>
+                                    href="tel:{{ info.phone_number }}">{{ info.telephone }}</a></span></p>
                         </div>
                     </div>
                 </div>
@@ -307,14 +307,9 @@
                         <h3>اطلاعات تماس</h3>
                         <div class="footer_contact">
                             <div class="footer_contact_inner">
-                                <div class="contact_icone">
-                                    <img src="{% static "img/icon/icon-phone2.png" %}" alt="">
-                                </div>
                                 <div class="contact_text">
-                                    <p>تلفن: </br> <strong><a
-                                            href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a> </strong></p>
-                                    <p>ایمیل: </br> <strong><a
-                                            href="{{ info.email }}">{{ info.email }}</a> </strong></p>
+                                    <p>آدرس فروشگاه: </br> <strong><a style="font-size: 13px">{{ info.address }}</a> </strong></p>
+                                    <p>ساعات کاری: </br> <strong><a>شنبه تا چهارشنبه: ۹ الی ۱۸:۳۰</a> </strong></br> <strong><a>پنجشنبه: ۹ الی ۱۷</a> </strong></p>
                                 </div>
                             </div>
                         </div>
