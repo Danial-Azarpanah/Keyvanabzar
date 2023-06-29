@@ -91,9 +91,6 @@
                                 <a href="{% url "blog:list" %}">وبلاگ</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href=""> درباره ما</a>
-                            </li>
-                            <li class="menu-item-has-children">
                                 <a href="{% url 'accounts:contact-us' %}"> تماس با ما</a>
                             </li>
                         </ul>
@@ -201,7 +198,7 @@
                                                     <a href="{% url 'payment:cart-detail' %}">مشاهده سبد خرید</a>
                                                 </div>
                                             </div>
-                                            {% else %}
+                                        {% else %}
                                             <p class="alert alert-info">سبد خرید شما خالیست</p>
                                         {% endif %}
                                     </div>
@@ -271,7 +268,6 @@
                                     </li>
                                     <li><a href="{% url 'product:product-list' %}">لیست محصولات</a></li>
                                     <li><a href="{% url "blog:list" %}">وبلاگ</a></li>
-                                    <li><a href="">درباره ما</a></li>
                                     <li><a href="{% url "accounts:contact-us" %}"> تماس با ما</a></li>
                                 </ul>
                             </nav>
@@ -308,8 +304,10 @@
                         <div class="footer_contact">
                             <div class="footer_contact_inner">
                                 <div class="contact_text">
-                                    <p>آدرس فروشگاه: </br> <strong><a style="font-size: 13px">{{ info.address }}</a> </strong></p>
-                                    <p>ساعات کاری: </br> <strong><a>شنبه تا چهارشنبه: ۹ الی ۱۸:۳۰</a> </strong></br> <strong><a>پنجشنبه: ۹ الی ۱۷</a> </strong></p>
+                                    <p>آدرس فروشگاه: </br> <strong><a style="font-size: 13px">{{ info.address }}</a>
+                                    </strong></p>
+                                    <p>ساعات کاری: </br> <strong><a>شنبه تا چهارشنبه: ۹ الی ۱۸:۳۰</a> </strong></br>
+                                        <strong><a>پنجشنبه: ۹ الی ۱۷</a> </strong></p>
                                 </div>
                             </div>
                         </div>
@@ -323,7 +321,6 @@
                                 <ul>
                                     <li><a href="{% url "product:product-list" %}">لیست محصولات</a></li>
                                     <li><a href="{% url "blog:list" %}">لیست مقالات</a></li>
-                                    <li><a href="">درباره ما</a></li>
                                     <li><a href="{% url "accounts:contact-us" %}">تماس با ما</a></li>
                                 </ul>
                             </div>
@@ -349,14 +346,24 @@
 
                             <div class="footer_social">
                                 <ul class="text-center">
-                                    <li><a class="twitter" href="{{ info.twitter }}"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li><a class="youtube" href="{{ info.youtube }}"><i class="fa fa-youtube-play"></i></a>
-                                    </li>
-                                    <li><a class="instagram2" href="{{ info.instagram }}"><i
-                                            class="fa fa-instagram"></i></a></li>
-                                    <li><a class="telegram" href="{{ info.telegram }}"><i
-                                            class="fa fa-telegram"></i></a></li>
+                                    {% if info.twitter %}
+                                        <li><a class="twitter" href="{{ info.twitter }}"><i
+                                                class="fa fa-twitter"></i></a>
+                                        </li>
+                                    {% endif %}
+                                    {% if info.youtube %}
+                                        <li><a class="youtube" href="{{ info.youtube }}"><i
+                                                class="fa fa-youtube-play"></i></a>
+                                        </li>
+                                    {% endif %}
+                                    {% if info.instagram %}
+                                        <li><a class="instagram2" href="{{ info.instagram }}"><i
+                                                class="fa fa-instagram"></i></a></li>
+                                    {% endif %}
+                                    {% if info.telegram %}
+                                        <li><a class="telegram" href="{{ info.telegram }}"><i
+                                                class="fa fa-telegram"></i></a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>

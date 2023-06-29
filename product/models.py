@@ -41,7 +41,7 @@ class Product(models.Model):
     discounted_price = models.PositiveIntegerField('قیمت تخفیف خورده (تومان)', null=True, blank=True)
     weight = models.CharField("وزن", max_length=30)
     total_weight = models.FloatField("وزن همراه جعبه (کیلوگرم)", null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField("تاریخ قرارگیری در سایت", auto_now_add=True)
     sale_count = models.IntegerField("تعداد فروش", default=0)
 
     def __str__(self):
@@ -99,7 +99,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
-        ordering = ('-created_at',)
+        ordering = ('discount',)
 
 
 class Picture(models.Model):
