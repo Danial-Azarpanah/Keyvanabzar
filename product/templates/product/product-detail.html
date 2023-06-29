@@ -366,7 +366,7 @@
                                                 {% endif %}
                                                 <li class="wishlist">
                                                     {% if request.user.is_authenticated %}
-                                                        <a onclick="AddFavorite('{{ product.id }}')"
+                                                        <a onclick="AddFavorite('{{ item.id }}')"
                                                            title="افزودن به لیست علاقمندی ها"><i
                                                                 class="icon-heart"></i></a>
                                                     {% else %}

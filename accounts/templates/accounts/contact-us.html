@@ -26,8 +26,7 @@
         <!--contact map start-->
         <div class="contact_map">
             <div class="map-area">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.242596154579!2d51.3731325144335!3d35.74484158017952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e0710d5918403%3A0x74f5290b67841378!2sMilad%20Tower!5e0!3m2!1sen!2sfr!4v1641920396364!5m2!1sen!2sfr"
-                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12563.237586326095!2d46.290107!3d38.0748198!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a05e717e3bd13%3A0xd18cdd10dfead63!2z2KfYqNiy2KfYsSDZvtmI2LHaqduM2YjYp9mGICjYr9uM2YjYp9mE2KrYjCDYqNmI2LQg2Ygg2qnYsdmI2YYp!5e0!3m2!1sen!2s!4v1688049364350!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
         <!--contact map end-->
@@ -39,16 +38,9 @@
                         <div class="contact_message content">
                             {% for i in info %}
                                 <h3>با ما تماس بگیرید</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-                                    گرافیک
-                                    است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-                                    شرایط
-                                    فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-                                    کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-                                    می </p>
                                 <ul>
                                     <li><i class="fa fa-fax"></i> آدرس : {{ i.address }}</li>
-                                    <li><i class="fa fa-phone"></i> <a href="#">{{ i.phone_number }}</a></li>
+                                    <li><i class="fa fa-phone"></i> <a href="#">{{ i.telephone }}</a></li>
                                     <li><i class="fa fa-envelope-o"></i> {{ i.email }} </li>
                                 </ul>
                             {% endfor %}
@@ -57,8 +49,8 @@
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="contact_message form">
-                            <h3>پروژه خود را به ما بگویید</h3>
-                            <form method="POST" id="contact-form" action="">
+                            <h3>پیغام خود را بنویسید</h3>
+                            <form method="POST" id="contact-form">
                                 {% csrf_token %}
                                 <p>
                                     <label> نام و نام خانوادگی شما (اجباری)</label>
@@ -77,7 +69,6 @@
                                     {{ form.message }}
                                 </div>
                                 <button type="submit"> ارسال</button>
-                                <p class="form-messege"></p>
                             </form>
 
                         </div>
