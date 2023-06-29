@@ -119,6 +119,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     path.join(BASE_DIR, "assets")
 ]
+STATIC_ROOT = path.join(BASE_DIR, "static")
 MEDIA_URL = 'media/'
 MEDIA_ROOT = path.join(BASE_DIR, "media")
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
