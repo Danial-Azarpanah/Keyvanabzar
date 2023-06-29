@@ -47,9 +47,9 @@
                                            class="title">{{ product1.title }}</a>
                                     </td>
                                     <td class="product-image-title">
-                                        <a href="#" class="image"><img src="{{ product2.pictures.first }}"></a>
-                                        <a href="#" class="category">{{ product2.category.title }}</a>
-                                        <a href="#" class="title">{{ product2.title }}</a>
+                                        <a href="{% url "product:product-detail" product2.id %}" class="image"><img src="{{ product2.pictures.first }}"></a>
+                                        <a href="{% url "product:product-list" %}?category={{ product1.category.slug }}" class="category">{{ product2.category.title }}</a>
+                                        <a href="{% url "product:product-detail" product1.id %}" class="title">{{ product2.title }}</a>
                                     </td>
                                 </tr>
                                 <tr>

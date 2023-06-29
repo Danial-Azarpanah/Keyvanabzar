@@ -17,8 +17,8 @@ class AdditionalItemAdmin(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'get_price', 'discount', 'get_discounted_price_admin')
-    list_filter = ('created_at',)
-    search_fields = ('title', 'price')
+    list_filter = ('created_at', 'call_before')
+    search_fields = ('title', 'id', 'price')
     inlines = [PictureAdmin, SpecAdmin, AdditionalItemAdmin]
 
 
