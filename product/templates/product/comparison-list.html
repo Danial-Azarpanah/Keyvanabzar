@@ -59,8 +59,20 @@
                                 </tr>
                                 <tr>
                                     <td class="first-column">قیمت</td>
-                                    <td class="pro-price">{{ product1.get_discounted_price }}</td>
-                                    <td class="pro-price">{{ product2.get_discounted_price }}</td>
+                                    <td class="pro-price">
+                                        {% if not product1.call_before %}
+                                            {{ product1.get_discounted_price }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td class="pro-price">
+                                        {% if not product1.call_before %}
+                                            {{ product2.get_discounted_price }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">وزن</td>
@@ -88,7 +100,7 @@
                                 {% endfor %}
                                 <tr>
                                     <td class="first-column">افزودن به سبد خرید</td>
-                                    {% if product1 %}
+                                    {% if product1 and not product1.call_before %}
 
                                         <td class="product_total">
 
@@ -109,10 +121,10 @@
                                             </form>
 
                                         </td>
-
-
+                                    {% else %}
+                                        <td>-</td>
                                     {% endif %}
-                                    {% if product2 %}
+                                    {% if product2 and not product2.call_before %}
                                         <td class="pro-addtocart">
                                             <form method="post">
                                                 {% csrf_token %}
@@ -130,6 +142,8 @@
 
                                             </form>
                                         </td>
+                                    {% else %}
+                                        <td>-</td>
                                     {% endif %}
                                 </tr>
                                 <tr>

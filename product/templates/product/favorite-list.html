@@ -55,28 +55,36 @@
                                                     <td class="product_name"><a
                                                             href="{% url "product:product-detail" item.id %}">{{ item.title }}</a>
                                                     </td>
-                                                    {% if item.discount > 0 %}
-                                                        <td class="product-price">{{ item.get_discounted_price }}</td>
+                                                    {% if not item.call_before %}
+                                                        {% if item.discount > 0 %}
+                                                            <td class="product-price">{{ item.get_discounted_price }}</td>
+                                                        {% else %}
+                                                            <td class="product-price">{{ item.get_price }}</td>
+                                                        {% endif %}
                                                     {% else %}
-                                                        <td class="product-price">{{ item.get_price }}</td>
+                                                        <td class="product-price">تماس با {{ info.telephone }}</td>
                                                     {% endif %}
 
                                                     <td class="product_total">
-                                                        <form method="post">
-                                                            {% csrf_token %}
+                                                        {% if not item.call_before %}
+                                                            <form method="post">
+                                                                {% csrf_token %}
 
-                                                            <input min="1" max="100" value="1" type="number"
-                                                                   id="quantity" hidden>
+                                                                <input min="1" max="100" value="1" type="number"
+                                                                       id="quantity" hidden>
 
-                                                            <button onclick="AddToCart('{{ item.id }}')"
-                                                                    class="button"
-                                                                    type="button"
-                                                                    style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد
-                                                                خرید
-                                                            </button>
+                                                                <button onclick="AddToCart('{{ item.id }}')"
+                                                                        class="button"
+                                                                        type="button"
+                                                                        style="border-radius: 8px; border-width: 0px"
+                                                                        title="افزودن به سبد خرید">افزودن به سبد
+                                                                    خرید
+                                                                </button>
 
-                                                        </form>
+                                                            </form>
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
                                                     </td>
 
                                                 </tr>

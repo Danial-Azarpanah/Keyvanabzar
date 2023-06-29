@@ -35,6 +35,7 @@ class Product(models.Model):
                                           verbose_name="ابزارهای مناسب", null=True, blank=True)
     country = models.CharField("کشور مونتاژ کننده", max_length=50)
     description = models.TextField('توضیحات')
+    call_before = models.BooleanField("تماس قبل از خرید", default=False)
     price = models.PositiveIntegerField('قیمت (تومان)', default=0)
     discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
     discounted_price = models.PositiveIntegerField('قیمت تخفیف خورده (تومان)', null=True, blank=True)

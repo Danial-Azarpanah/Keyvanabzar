@@ -134,34 +134,44 @@
                                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 - {{ product.id }}</a></h4>
                                                             <div class="price_box">
-                                                                {% if product.discount %}
-                                                                    <span class="old_price">{{ product.get_price }}</span>
-                                                                    <span class="current_price">{{ product.get_discounted_price }}</span>
-                                                                {% else %}
-                                                                    <span class="current_price">{{ product.get_price }}</span>
+                                                                {% if not product.call_before %}
+                                                                    {% if product.discount %}
+                                                                        <span class="old_price">{{ product.get_price }}</span>
+                                                                        <span class="current_price">{{ product.get_discounted_price }}</span>
+                                                                    {% else %}
+                                                                        <span class="current_price">{{ product.get_price }}</span>
+                                                                    {% endif %}
                                                                 {% endif %}
                                                             </div>
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart">
+                                                                    {% if not product.call_before %}
+                                                                        <form method="post">
+                                                                            {% csrf_token %}
 
-                                                                    <form method="post">
-                                                                        {% csrf_token %}
+                                                                            <input min="1" max="100" value="1"
+                                                                                   type="number"
+                                                                                   id="quantity" hidden>
 
-                                                                        <input min="1" max="100" value="1" type="number"
-                                                                               id="quantity" hidden>
-
-                                                                        <button onclick="AddToCart('{{ product.id }}')"
-                                                                                class="button"
-                                                                                type="button"
-                                                                                style="border-radius: 8px; border-width: 0px"
-                                                                                title="افزودن به سبد خرید">افزودن به سبد
-                                                                            خرید
-                                                                        </button>
-
-                                                                    </form>
-
+                                                                            <button onclick="AddToCart('{{ product.id }}')"
+                                                                                    class="button"
+                                                                                    type="button"
+                                                                                    style="border-radius: 8px; border-width: 0px"
+                                                                                    title="افزودن به سبد خرید">افزودن به
+                                                                                سبد
+                                                                                خرید
+                                                                            </button>
+                                                                        </form>
+                                                                    {% else %}
+                                                                        <a href="{% url "product:product-detail" product.id %}"
+                                                                           class="button"
+                                                                           type="button"
+                                                                           style="border-radius: 8px; border-width: 0px"
+                                                                           title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                                        </a>
+                                                                    {% endif %}
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     {% if request.user.is_authenticated %}
@@ -217,34 +227,44 @@
                                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 - {{ product.id }}</a></h4>
                                                             <div class="price_box">
-                                                                {% if product.discount %}
-                                                                    <span class="old_price">{{ product.get_price }}</span>
-                                                                    <span class="current_price">{{ product.get_discounted_price }}</span>
-                                                                {% else %}
-                                                                    <span class="current_price">{{ product.get_price }}</span>
+                                                                {% if not product.call_before %}
+                                                                    {% if product.discount %}
+                                                                        <span class="old_price">{{ product.get_price }}</span>
+                                                                        <span class="current_price">{{ product.get_discounted_price }}</span>
+                                                                    {% else %}
+                                                                        <span class="current_price">{{ product.get_price }}</span>
+                                                                    {% endif %}
                                                                 {% endif %}
                                                             </div>
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart">
+                                                                    {% if not product.call_before %}
+                                                                        <form method="post">
+                                                                            {% csrf_token %}
 
-                                                                    <form method="post">
-                                                                        {% csrf_token %}
+                                                                            <input min="1" max="100" value="1"
+                                                                                   type="number"
+                                                                                   id="quantity" hidden>
 
-                                                                        <input min="1" max="100" value="1" type="number"
-                                                                               id="quantity" hidden>
-
-                                                                        <button onclick="AddToCart('{{ product.id }}')"
-                                                                                class="button"
-                                                                                type="button"
-                                                                                style="border-radius: 8px; border-width: 0px"
-                                                                                title="افزودن به سبد خرید">افزودن به سبد
-                                                                            خرید
-                                                                        </button>
-
-                                                                    </form>
-
+                                                                            <button onclick="AddToCart('{{ product.id }}')"
+                                                                                    class="button"
+                                                                                    type="button"
+                                                                                    style="border-radius: 8px; border-width: 0px"
+                                                                                    title="افزودن به سبد خرید">افزودن به
+                                                                                سبد
+                                                                                خرید
+                                                                            </button>
+                                                                        </form>
+                                                                    {% else %}
+                                                                        <a href="{% url "product:product-detail" product.id %}"
+                                                                           class="button"
+                                                                           type="button"
+                                                                           style="border-radius: 8px; border-width: 0px"
+                                                                           title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                                        </a>
+                                                                    {% endif %}
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     {% if request.user.is_authenticated %}
@@ -300,34 +320,44 @@
                                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 - {{ product.id }}</a></h4>
                                                             <div class="price_box">
-                                                                {% if product.discount %}
-                                                                    <span class="old_price">{{ product.get_price }}</span>
-                                                                    <span class="current_price">{{ product.get_discounted_price }}</span>
-                                                                {% else %}
-                                                                    <span class="current_price">{{ product.get_price }}</span>
+                                                                {% if not product.call_before %}
+                                                                    {% if product.discount %}
+                                                                        <span class="old_price">{{ product.get_price }}</span>
+                                                                        <span class="current_price">{{ product.get_discounted_price }}</span>
+                                                                    {% else %}
+                                                                        <span class="current_price">{{ product.get_price }}</span>
+                                                                    {% endif %}
                                                                 {% endif %}
                                                             </div>
                                                         </div>
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart">
+                                                                    {% if not product.call_before %}
+                                                                        <form method="post">
+                                                                            {% csrf_token %}
 
-                                                                    <form method="post">
-                                                                        {% csrf_token %}
+                                                                            <input min="1" max="100" value="1"
+                                                                                   type="number"
+                                                                                   id="quantity" hidden>
 
-                                                                        <input min="1" max="100" value="1" type="number"
-                                                                               id="quantity" hidden>
-
-                                                                        <button onclick="AddToCart('{{ product.id }}')"
-                                                                                class="button"
-                                                                                type="button"
-                                                                                style="border-radius: 8px; border-width: 0px"
-                                                                                title="افزودن به سبد خرید">افزودن به سبد
-                                                                            خرید
-                                                                        </button>
-
-                                                                    </form>
-
+                                                                            <button onclick="AddToCart('{{ product.id }}')"
+                                                                                    class="button"
+                                                                                    type="button"
+                                                                                    style="border-radius: 8px; border-width: 0px"
+                                                                                    title="افزودن به سبد خرید">افزودن به
+                                                                                سبد
+                                                                                خرید
+                                                                            </button>
+                                                                        </form>
+                                                                    {% else %}
+                                                                        <a href="{% url "product:product-detail" product.id %}"
+                                                                           class="button"
+                                                                           type="button"
+                                                                           style="border-radius: 8px; border-width: 0px"
+                                                                           title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                                        </a>
+                                                                    {% endif %}
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     {% if request.user.is_authenticated %}
@@ -354,110 +384,122 @@
                 </div>
             </div>
         </div>
-        <div class="product_area" style="background: #febd17; border-radius: 50px; border: black 1.5px solid">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product_tab_btn">
-                            <ul class="nav" role="tablist" id="nav-tab">
-                                <li>
-                                    <h2>
-                                        <strong>فروش ویژه</strong>
-                                        <img src="{% static "img/icon/percentage-icon.png" %}">
-                                    </h2>
-                                </li>
-                            </ul>
+        {% if discounted_products.all %}
+            <div class="product_area" style="background: #febd17; border-radius: 50px; border: black 1.5px solid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product_tab_btn">
+                                <ul class="nav" role="tablist" id="nav-tab">
+                                    <li>
+                                        <h2>
+                                            <strong>فروش ویژه</strong>
+                                            <img src="{% static "img/icon/percentage-icon.png" %}">
+                                        </h2>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-content">
-                    <div id="most-selling" role="tabpanel">
-                        <div class="row">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                {% for product in discounted_products %}
-                                    <div class="col-lg-3">
-                                        <div class="product_items">
-                                            <article class="single_product">
-                                                <figure>
-                                                    <div class="product_thumb">
-                                                        <a class="primary_img"
-                                                           href="{% url "product:product-detail" product.id %}"><img
-                                                                src="{{ product.pictures.first }}"
-                                                                alt=""></a>
-                                                        <a class="secondary_img"
-                                                           href="{% url "product:product-detail" product.id %}"><img
-                                                                src="{{ product.pictures.all.1 }}"
-                                                                alt=""></a>
-                                                        <div class="label_product">
-                                                            {% if product.discount %}
-                                                                <span class="label_sale">-{{ product.discount }}%</span>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="product_content">
-                                                        <div class="product_content_inner">
-                                                            <p class="manufacture_product"><a
-                                                                    href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                                            </p>
-                                                            <h4 class="product_name"><a
-                                                                    href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                                - {{ product.id }}</a></h4>
-                                                            <div class="price_box">
+                    <div class="tab-content">
+                        <div id="most-selling" role="tabpanel">
+                            <div class="row">
+                                <div class="product_carousel product_column5 owl-carousel">
+                                    {% for product in discounted_products %}
+                                        <div class="col-lg-3">
+                                            <div class="product_items">
+                                                <article class="single_product">
+                                                    <figure>
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img"
+                                                               href="{% url "product:product-detail" product.id %}"><img
+                                                                    src="{{ product.pictures.first }}"
+                                                                    alt=""></a>
+                                                            <a class="secondary_img"
+                                                               href="{% url "product:product-detail" product.id %}"><img
+                                                                    src="{{ product.pictures.all.1 }}"
+                                                                    alt=""></a>
+                                                            <div class="label_product">
                                                                 {% if product.discount %}
-                                                                    <span class="old_price">{{ product.get_price }}</span>
-                                                                    <span class="current_price">{{ product.get_discounted_price }}</span>
-                                                                {% else %}
-                                                                    <span class="current_price">{{ product.get_price }}</span>
+                                                                    <span class="label_sale">-{{ product.discount }}%</span>
                                                                 {% endif %}
                                                             </div>
                                                         </div>
-                                                        <div class="action_links">
-                                                            <ul>
-
-                                                                <li class="add_to_cart">
-
-                                                                    <form method="post">
-                                                                        {% csrf_token %}
-
-                                                                        <input min="1" max="100" value="1" type="number"
-                                                                               id="quantity" hidden>
-
-                                                                        <button onclick="AddToCart('{{ product.id }}')"
-                                                                                class="button"
-                                                                                type="button"
-                                                                                style="border-radius: 8px; border-width: 0px"
-                                                                                title="افزودن به سبد خرید">افزودن به سبد
-                                                                            خرید
-                                                                        </button>
-
-                                                                    </form>
-
-                                                                </li>
-                                                                <li class="wishlist">
-                                                                    {% if request.user.is_authenticated %}
-                                                                        <a onclick="AddFavorite('{{ product.id }}')"
-                                                                           title="افزودن به لیست علاقمندی ها"><i
-                                                                                class="icon-heart"></i></a>
-                                                                    {% else %}
-                                                                        <a href="{% url "accounts:sign-in" %}"
-                                                                           title="افزودن به لیست علاقمندی ها"><i
-                                                                                class="icon-heart"></i></a>
+                                                        <div class="product_content">
+                                                            <div class="product_content_inner">
+                                                                <p class="manufacture_product"><a
+                                                                        href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
+                                                                </p>
+                                                                <h4 class="product_name"><a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                                    - {{ product.id }}</a></h4>
+                                                                <div class="price_box">
+                                                                    {% if not product.call_before %}
+                                                                        {% if product.discount %}
+                                                                            <span class="old_price">{{ product.get_price }}</span>
+                                                                            <span class="current_price">{{ product.get_discounted_price }}</span>
+                                                                        {% else %}
+                                                                            <span class="current_price">{{ product.get_price }}</span>
+                                                                        {% endif %}
                                                                     {% endif %}
-                                                                </li>
-                                                            </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="action_links">
+                                                                <ul>
+                                                                    <li class="add_to_cart">
+                                                                        {% if not product.call_before %}
+                                                                            <form method="post">
+                                                                                {% csrf_token %}
+
+                                                                                <input min="1" max="100" value="1"
+                                                                                       type="number"
+                                                                                       id="quantity" hidden>
+
+                                                                                <button onclick="AddToCart('{{ product.id }}')"
+                                                                                        class="button"
+                                                                                        type="button"
+                                                                                        style="border-radius: 8px; border-width: 0px"
+                                                                                        title="افزودن به سبد خرید">
+                                                                                    افزودن به
+                                                                                    سبد
+                                                                                    خرید
+                                                                                </button>
+                                                                            </form>
+                                                                        {% else %}
+                                                                            <a href="{% url "product:product-detail" product.id %}"
+                                                                               class="button"
+                                                                               type="button"
+                                                                               style="border-radius: 8px; border-width: 0px"
+                                                                               title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                                            </a>
+                                                                        {% endif %}
+                                                                    </li>
+                                                                    <li class="wishlist">
+                                                                        {% if request.user.is_authenticated %}
+                                                                            <a onclick="AddFavorite('{{ product.id }}')"
+                                                                               title="افزودن به لیست علاقمندی ها"><i
+                                                                                    class="icon-heart"></i></a>
+                                                                        {% else %}
+                                                                            <a href="{% url "accounts:sign-in" %}"
+                                                                               title="افزودن به لیست علاقمندی ها"><i
+                                                                                    class="icon-heart"></i></a>
+                                                                        {% endif %}
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </figure>
-                                            </article>
+                                                    </figure>
+                                                </article>
+                                            </div>
                                         </div>
-                                    </div>
-                                {% endfor %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
         <!--product area end-->
 
         <!--banner area start-->

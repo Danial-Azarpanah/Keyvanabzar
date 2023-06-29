@@ -55,7 +55,8 @@
                             {% for message in messages %}
                                 <li class="alert alert-danger p-1">{{ message }}</li>
                             {% endfor %}
-                            <h3><a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }} - {{ product.id }}</a></h3>
+                            <h3><a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }}
+                                - {{ product.id }}</a></h3>
                             {% if product.comments.all.count %}
                                 <div class="product_rating">
                                     <ul>
@@ -64,11 +65,17 @@
                                 </div>
                             {% endif %}
                             <div class="price_box">
-                                {% if product.discount > 0 %}
-                                    <span class="old_price">{{ product.get_price }}</span>
-                                    <span class="current_price">{{ product.get_discounted_price }}</span>
+                                {% if not product.call_before %}
+                                    {% if product.discount > 0 %}
+                                        <span class="old_price">{{ product.get_price }}</span>
+                                        <span class="current_price">{{ product.get_discounted_price }}</span>
+                                    {% else %}
+                                        <span class="current_price">{{ product.get_price }}</span>
+                                    {% endif %}
                                 {% else %}
-                                    <span class="current_price">{{ product.get_price }}</span>
+                                    <div class="mb-3"><span class="current_price">جهت اطلاع از قیمت تماس بگیرید</span>
+                                    </div>
+                                    <span class="current_price">شماره تماس: {{ info.telephone }}</span>
                                 {% endif %}
                             </div>
                             <div class="product_desc">
@@ -106,7 +113,7 @@
                                             <br>
                                         <h4>دسته بندی ‌ها:</h4>
                                         * <a style="font-size: 17px"
-                                            href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
+                                             href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
                                         <br>
                                     </li>
                                     {% if product.proper_tools.all %}
@@ -116,7 +123,7 @@
                                             <h4>ابزار قابل استفاده با این محصول:</h4>
                                             {% for product in product.proper_tools.all %}
                                                 * <a style="font-size: 17px"
-                                                    href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                 - {{ product.id }}</a>
                                                 <br>
                                             {% endfor %}
@@ -125,15 +132,17 @@
                                 </ul>
                             </div>
 
-                            <div class="product_variant quantity">
-                                <form id="cart-detail-form" method="post"
-                                      action="{% url 'payment:cart-add' product.id %}">
-                                    {% csrf_token %}
-                                    <label>تعداد</label>
-                                    <input min="1" max="100" value="1" type="number" id="quantity">
-                                    <button class="cart_button" type="submit">افزودن به سبد خرید</button>
-                                </form>
-                            </div>
+                            {% if not product.call_before %}
+                                <div class="product_variant quantity">
+                                    <form id="cart-detail-form" method="post"
+                                          action="{% url 'payment:cart-add' product.id %}">
+                                        {% csrf_token %}
+                                        <label>تعداد</label>
+                                        <input min="1" max="100" value="1" type="number" id="quantity">
+                                        <button class="cart_button" type="submit">افزودن به سبد خرید</button>
+                                    </form>
+                                </div>
+                            {% endif %}
                         </div>
                         <div class=" product_d_action">
                             <ul>
@@ -144,7 +153,8 @@
                                             ها
                                         </a>
                                     {% else %}
-                                        <a style="font-size: 17px" href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                        <a style="font-size: 17px"
+                                           href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
                                            title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
                                             ها
                                         </a>
@@ -155,7 +165,8 @@
                                         <a style="font-size: 17px" onclick="AddCompare('{{ product.id }}')"
                                            title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
                                     {% else %}
-                                        <a style="font-size: 17px" href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                        <a style="font-size: 17px"
+                                           href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
                                            title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
                                     {% endif %}
                                 </li>
@@ -315,33 +326,44 @@
                                                     href="{% url "product:product-detail" item.id %}">{{ item.title }}
                                                 - {{ item.id }}</a></h4>
                                             <div class="price_box">
-                                                {% if item.discount %}
-                                                    <span class="old_price">{{ item.get_price }}</span>
-                                                    <span class="current_price">{{ item.get_discounted_price }}</span>
-                                                {% else %}
-                                                    <span class="current_price">{{ item.get_discounted_price }}</span>
+                                                {% if not item.call_before %}
+                                                    {% if item.discount %}
+                                                        <span class="old_price">{{ item.get_price }}</span>
+                                                        <span class="current_price">{{ item.get_discounted_price }}</span>
+                                                    {% else %}
+                                                        <span class="current_price">{{ item.get_discounted_price }}</span>
+                                                    {% endif %}
                                                 {% endif %}
                                             </div>
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="add_to_cart">
-                                                    <form method="post">
-                                                        {% csrf_token %}
+                                                {% if not item.call_before %}
+                                                    <li class="add_to_cart">
+                                                        <form method="post">
+                                                            {% csrf_token %}
 
-                                                        <input min="1" max="100" value="1" type="number"
-                                                               id="quantity" hidden>
+                                                            <input min="1" max="100" value="1" type="number"
+                                                                   id="quantity" hidden>
 
-                                                        <button onclick="AddToCart('{{ item.id }}')"
-                                                                class="button"
-                                                                type="button"
-                                                                style="border-radius: 8px; border-width: 0px"
-                                                                title="افزودن به سبد خرید">افزودن به سبد
-                                                            خرید
-                                                        </button>
+                                                            <button onclick="AddToCart('{{ item.id }}')"
+                                                                    class="button"
+                                                                    type="button"
+                                                                    style="border-radius: 8px; border-width: 0px"
+                                                                    title="افزودن به سبد خرید">افزودن به سبد
+                                                                خرید
+                                                            </button>
 
-                                                    </form>
-                                                </li>
+                                                        </form>
+                                                    </li>
+                                                {% else %}
+                                                    <a href="{% url "product:product-detail" item.id %}"
+                                                       class="button"
+                                                       type="button"
+                                                       style="border-radius: 8px; border-width: 0px"
+                                                       title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                    </a>
+                                                {% endif %}
                                                 <li class="wishlist">
                                                     {% if request.user.is_authenticated %}
                                                         <a onclick="AddFavorite('{{ product.id }}')"
