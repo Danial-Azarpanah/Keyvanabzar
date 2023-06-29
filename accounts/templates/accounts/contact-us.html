@@ -39,8 +39,10 @@
                             {% for i in information %}
                                 <h3>با ما تماس بگیرید</h3>
                                 <ul>
-                                    <li><i class="fa fa-fax"></i> آدرس : {{ i.address }}</li>
-                                    <li><i class="fa fa-phone"></i> <a href="#">{{ i.telephone }}</a></li>
+                                    <li><i class="fa fa-location-arrow"></i> آدرس : {{ i.address }}</li>
+                                    <li><i class="fa fa-clock-o"></i> ساعات کاری : شنبه تا چهارشنبه ۹ تا ۱۸:۳۰ - پنجشنبه ۹ تا ۱۷</li>
+                                    <li><i class="fa fa-phone"></i> تلفن تماس (فروشگاه): <a href="tel:{{ info.telephone }}">{{ i.telephone }}</a></li>
+                                    <li><i class="fa fa-mobile-phone"></i> تلفن همراه: <a href="tel:{{ info.phone_number }}">{{ i.phone_number }}</a></li>
                                     <li><i class="fa fa-envelope-o"></i> {{ i.email }} </li>
                                 </ul>
                             {% endfor %}
