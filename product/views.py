@@ -62,7 +62,7 @@ class ProductListView(View):
         # pagination
         products_count = products.count()
         page_number = request.GET.get('page')
-        paginator = Paginator(products, 10)
+        paginator = Paginator(products, 24)
         objects_list = paginator.get_page(page_number)
 
         context = {"products": objects_list, "categories": categories,
