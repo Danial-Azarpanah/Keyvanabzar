@@ -24,7 +24,7 @@ class BlogListView(View):
             articles = articles.filter(Q(category__slug=category))
 
         page = request.GET.get("page")
-        paginator = Paginator(articles, 1)
+        paginator = Paginator(articles, 10)
         object_list = paginator.get_page(page)
 
         categories = Category.objects.all()

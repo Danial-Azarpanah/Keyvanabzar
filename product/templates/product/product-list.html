@@ -137,52 +137,24 @@
                                 <ul>
 
                                     {% if products.has_previous %}
-                                        <li class="next"><a href="?page=
-
-
-
-
-
-
-                                                {{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
+                                        <li class="next"><a href="?page={{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
 
                                     {% for i in products.paginator.page_range %}
                                         {% if products.number == i %}
-                                            <a href="?page=
-
-
-
-
-
-
-                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
+                                            <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="current">{{ i }}</li>
                                             </a>
                                         {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
-                                            <a href="?page=
-
-
-
-
-
-
-                                                    {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
+                                            <a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
                                         {% endif %}
                                     {% endfor %}
 
                                     {% if products.has_next %}
-                                        <li class="next"><a href="?page=
-
-
-
-
-
-
-                                                {{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">بعدی</a>
+                                        <li class="next"><a href="?page={{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">بعدی</a>
                                         </li>
                                     {% endif %}
 
@@ -230,20 +202,7 @@
                                             <ul class="widget_dropdown_categories">
                                                 {% for child in category.children.all %}
                                                     <li>
-                                                        <a href="?category=
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                {{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                        <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>

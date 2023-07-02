@@ -75,320 +75,323 @@
                                 {% else %}
                                     <div class="mb-3"><span class="call_for_price">جهت اطلاع از قیمت تماس بگیرید</span>
                                 {% endif %}
-                            </div>
-                            <div class="product_desc">
-                                <p>
-                                    {{ product.description }}
-                                </p>
-                            </div>
-                            <div class="product_variant color">
-                                <h3>مشخصات کلی</h3>
+                                </div>
+                                <div class="product_desc">
+                                    <p>
+                                        {{ product.description }}
+                                    </p>
+                                </div>
+                                <div class="product_variant color">
+                                    <h3>مشخصات کلی</h3>
+                                </div>
+                                <div class=" product_d_action">
+                                    <ul>
+                                        <li>
+                                            <p style="font-size: 17px">
+                                                - مونتاژ کشور {{ product.country }}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p style="font-size: 17px">
+                                                - {{ product.weight }} وزن
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <br>
+                                            <h4>اقلام همراه:</h4>
+                                            {% for item in product.additional_items.all %}
+                                                <span style="font-size: 17px">* {{ item.item }}</span>
+                                                <br>
+                                            {% endfor %}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <br>
+                                            <h4>دسته بندی ‌ها:</h4>
+                                            * <a style="font-size: 17px"
+                                                 href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
+                                            <br>
+                                        </li>
+                                        {% if product.proper_tools.all %}
+                                            <li>
+                                                <p>
+                                                    <br>
+                                                <h4>ابزار قابل استفاده با این محصول:</h4>
+                                                {% for product in product.proper_tools.all %}
+                                                    * <a style="font-size: 17px"
+                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                    - {{ product.id }}</a>
+                                                    <br>
+                                                {% endfor %}
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+
+                                {% if not product.call_before %}
+                                    <div class="product_variant quantity">
+                                        <form id="cart-detail-form" method="post"
+                                              action="{% url 'payment:cart-add' product.id %}">
+                                            {% csrf_token %}
+                                            <label>تعداد</label>
+                                            <input min="1" max="100" value="1" type="number" id="quantity">
+                                            <button class="cart_button" type="submit">افزودن به سبد خرید</button>
+                                        </form>
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class=" product_d_action">
                                 <ul>
                                     <li>
-                                        <p style="font-size: 17px">
-                                            - مونتاژ کشور {{ product.country }}
-                                        </p>
+                                        {% if request.user.is_authenticated %}
+                                            <a onclick="AddFavorite('{{ product.id }}')" style="font-size: 17px"
+                                               title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
+                                                ها
+                                            </a>
+                                        {% else %}
+                                            <a style="font-size: 17px"
+                                               href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                               title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
+                                                ها
+                                            </a>
+                                        {% endif %}
                                     </li>
                                     <li>
-                                        <p style="font-size: 17px">
-                                            - {{ product.weight }} وزن
-                                        </p>
+                                        {% if request.user.is_authenticated %}
+                                            <a style="font-size: 17px" onclick="AddCompare('{{ product.id }}')"
+                                               title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
+                                        {% else %}
+                                            <a style="font-size: 17px"
+                                               href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                               title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
+                                        {% endif %}
                                     </li>
-                                    <li>
-                                        <p>
-                                            <br>
-                                        <h4>اقلام همراه:</h4>
-                                        {% for item in product.additional_items.all %}
-                                            <span style="font-size: 17px">* {{ item.item }}</span>
-                                            <br>
-                                        {% endfor %}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <br>
-                                        <h4>دسته بندی ‌ها:</h4>
-                                        * <a style="font-size: 17px"
-                                             href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                        <br>
-                                    </li>
-                                    {% if product.proper_tools.all %}
-                                        <li>
-                                            <p>
-                                                <br>
-                                            <h4>ابزار قابل استفاده با این محصول:</h4>
-                                            {% for product in product.proper_tools.all %}
-                                                * <a style="font-size: 17px"
-                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                - {{ product.id }}</a>
-                                                <br>
-                                            {% endfor %}
-                                        </li>
-                                    {% endif %}
                                 </ul>
                             </div>
-
-                            {% if not product.call_before %}
-                                <div class="product_variant quantity">
-                                    <form id="cart-detail-form" method="post"
-                                          action="{% url 'payment:cart-add' product.id %}">
-                                        {% csrf_token %}
-                                        <label>تعداد</label>
-                                        <input min="1" max="100" value="1" type="number" id="quantity">
-                                        <button class="cart_button" type="submit">افزودن به سبد خرید</button>
-                                    </form>
-                                </div>
-                            {% endif %}
+                            </form>
                         </div>
-                        <div class=" product_d_action">
-                            <ul>
-                                <li>
-                                    {% if request.user.is_authenticated %}
-                                        <a onclick="AddFavorite('{{ product.id }}')" style="font-size: 17px"
-                                           title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
-                                            ها
-                                        </a>
-                                    {% else %}
-                                        <a style="font-size: 17px"
-                                           href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
-                                           title="افزودن به لیست علاقمندی ها">+ افزودن به لیست علاقمندی
-                                            ها
-                                        </a>
-                                    {% endif %}
-                                </li>
-                                <li>
-                                    {% if request.user.is_authenticated %}
-                                        <a style="font-size: 17px" onclick="AddCompare('{{ product.id }}')"
-                                           title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
-                                    {% else %}
-                                        <a style="font-size: 17px"
-                                           href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
-                                           title="افزودن به لیست مقایسه">+ افزودن به لیست مقایسه</a>
-                                    {% endif %}
-                                </li>
-                            </ul>
-                        </div>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--product details end-->
+            <!--product details end-->
 
-        <!--product info start-->
-        <div class="product_d_info">
-            <div class="row">
-                <div class="col-12">
-                    <div class="product_d_inner">
-                        <div class="product_info_button">
-                            <ul class="nav" role="tablist" id="nav-tab">
-                                <li>
-                                    <a class="active" data-bs-toggle="tab" href="#info" role="tab"
-                                       aria-controls="info" aria-selected="false">توضیحات</a>
-                                </li>
-                                <li>
-                                    <a data-bs-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
-                                       aria-selected="false">مشخصات</a>
-                                </li>
-                                <li>
-                                    <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                       aria-selected="false"> نظرات ({{ comments.all.count }})</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="info" role="tabpanel">
-                                <div class="product_info_content">
-                                    <p>{{ product.description }}</p>
-                                </div>
+            <!--product info start-->
+            <div class="product_d_info">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product_d_inner">
+                            <div class="product_info_button">
+                                <ul class="nav" role="tablist" id="nav-tab">
+                                    <li>
+                                        <a class="active" data-bs-toggle="tab" href="#info" role="tab"
+                                           aria-controls="info" aria-selected="false">توضیحات</a>
+                                    </li>
+                                    <li>
+                                        <a data-bs-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
+                                           aria-selected="false">مشخصات</a>
+                                    </li>
+                                    <li>
+                                        <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+                                           aria-selected="false"> نظرات ({{ comments.all.count }})</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="tab-pane fade" id="sheet" role="tabpanel">
-                                <div class="product_d_table">
-                                    <form action="#">
-                                        <table>
-                                            <tbody>
-                                            {% for spec in product.specifications.all %}
-                                                <tr>
-                                                    <td class="first_child">{{ spec.title }}</td>
-                                                    <td>{{ spec.value }}</td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </form>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="info" role="tabpanel">
+                                    <div class="product_info_content">
+                                        <p>{{ product.description }}</p>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="tab-pane fade" id="sheet" role="tabpanel">
+                                    <div class="product_d_table">
+                                        <form action="#">
+                                            <table>
+                                                <tbody>
+                                                {% for spec in product.specifications.all %}
+                                                    <tr>
+                                                        <td class="first_child">{{ spec.title }}</td>
+                                                        <td>{{ spec.value }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
 
-                            <div class="tab-pane fade" id="reviews" role="tabpanel">
-                                <div class="reviews_wrapper">
-                                    <div class="comment_title">
-                                        <h2>افزودن نظر</h2>
-                                    </div>
-                                    <div class="product_review_form mb-4">
-                                        {% if request.user.is_authenticated %}
-                                            <form method="post">
-                                                {% csrf_token %}
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <label for="review_comment">نظر شما </label>
-                                                        <input type="text" id="parent-id" name="parent-id" value=""
-                                                               hidden>
-                                                        <textarea name="comment" id="review_comment"
-                                                                  minlength="3"
-                                                                  placeholder="نظر خود را بنویسید"></textarea>
+                                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                    <div class="reviews_wrapper">
+                                        <div class="comment_title">
+                                            <h2>افزودن نظر</h2>
+                                        </div>
+                                        <div class="product_review_form mb-4">
+                                            {% if request.user.is_authenticated %}
+                                                <form method="post">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <label for="review_comment">نظر شما </label>
+                                                            <input type="text" id="parent-id" name="parent-id" value=""
+                                                                   hidden>
+                                                            <textarea name="comment" id="review_comment"
+                                                                      minlength="3"
+                                                                      placeholder="نظر خود را بنویسید"></textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <button type="submit">ارسال</button>
-                                            </form>
-                                        {% else %}
-                                            <label for="review_comment">
-                                                برای ثبت نظر ابتدا باید <a href="{% url "accounts:sign-in" %}">وارد
-                                                حساب کاربری خود شوید</a>
-                                            </label>
-                                        {% endif %}
-                                    </div>
-                                    {% for comment in comments %}
-                                        {% if not comment.parent %}
-                                            <div class="reviews_comment_box w-100">
-                                                <div class="comment_text">
-                                                    <div class="reviews_meta mb-2">
-                                                        <p><strong>{{ comment.user.fullname }}</strong>
-                                                            - {{ comment.get_jalali_date }}</p>
-                                                        <span>{{ comment.body }}</span>
-                                                    </div>
-                                                    {% if request.user.is_authenticated %}
-                                                        <button class="btn-dark rounded-pill mb-2"
-                                                                onclick="reply('{{ comment.id }}')">پاسخ
-                                                        </button>
-                                                    {% endif %}
-                                                    {% for reply in comment.replies.all %}
-                                                        <div class="reviews_comment_box w-100">
-                                                            <div class="comment_text bg-grey">
-                                                                <div class="reviews_meta">
-                                                                    <p><strong>{{ reply.user.fullname }}</strong>
-                                                                        - {{ reply.get_jalali_date }}</p>
-                                                                    <span>{{ reply.body }}</span>
+                                                    <button type="submit">ارسال</button>
+                                                </form>
+                                            {% else %}
+                                                <label for="review_comment">
+                                                    برای ثبت نظر ابتدا باید <a
+                                                        href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}">وارد
+                                                    حساب کاربری خود شوید</a>
+                                                </label>
+                                            {% endif %}
+                                        </div>
+                                        {% for comment in comments %}
+                                            {% if not comment.parent %}
+                                                <div class="reviews_comment_box w-100">
+                                                    <div class="comment_text">
+                                                        <div class="reviews_meta mb-2">
+                                                            <p><strong>{{ comment.user.fullname }}</strong>
+                                                                - {{ comment.get_jalali_date }}</p>
+                                                            <span>{{ comment.body }}</span>
+                                                        </div>
+                                                        {% if request.user.is_authenticated %}
+                                                            <button class="btn-dark rounded-pill mb-2"
+                                                                    onclick="reply('{{ comment.id }}')">پاسخ
+                                                            </button>
+                                                        {% endif %}
+                                                        {% for reply in comment.replies.all %}
+                                                            <div class="reviews_comment_box w-100">
+                                                                <div class="comment_text bg-grey">
+                                                                    <div class="reviews_meta">
+                                                                        <p><strong>{{ reply.user.fullname }}</strong>
+                                                                            - {{ reply.get_jalali_date }}</p>
+                                                                        <span>{{ reply.body }}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    {% endfor %}
+                                                        {% endfor %}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--product info end-->
+            <!--product info end-->
 
-        <!--product area start-->
-        <section class="product_area related_products">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section_title title_style2">
-                        <div class="title_content">
-                            <h2>محصولات <span>مرتبط</span></h2>
+            <!--product area start-->
+            <section class="product_area related_products">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section_title title_style2">
+                            <div class="title_content">
+                                <h2>محصولات <span>مرتبط</span></h2>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="product_carousel product_details_column5 owl-carousel">
-                    {% for item in related_products %}
-                        <div class="col-lg-3">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="{% url "product:product-detail" item.id %}"><img
-                                                src="{{ item.pictures.first }}" alt=""></a>
-                                        <a class="secondary_img" href="{% url "product:product-detail" item.id %}"><img
-                                                src="{{ item.pictures.all.1 }}" alt=""></a>
-                                        {% if item.discount %}
-                                            <div class="label_product">
-                                                <span class="label_sale">-{{ item.discount }}%</span>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_content_inner">
-                                            <p class="manufacture_product"><a
-                                                    href="{% url "product:product-list" %}?category={{ item.category.slug }}">{{ item.category.title }}</a>
-                                            </p>
-                                            <h4 class="product_name"><a
-                                                    href="{% url "product:product-detail" item.id %}">{{ item.title }}
-                                                - {{ item.id }}</a></h4>
-                                            <div class="price_box">
-                                                {% if not item.call_before %}
-                                                    {% if item.discount %}
-                                                        <span class="old_price">{{ item.get_price }}</span>
-                                                        <span class="current_price">{{ item.get_discounted_price }}</span>
-                                                    {% else %}
-                                                        <span class="current_price">{{ item.get_discounted_price }}</span>
-                                                    {% endif %}
-                                                {% else %}
-                                                    <span class="old_price"></span>
-                                                    <br>
-                                                    <span class="call_for_price">تماس  جهت اطلاع از قیمت</span>
-                                                {% endif %}
-                                            </div>
+                <div class="row">
+                    <div class="product_carousel product_details_column5 owl-carousel">
+                        {% for item in related_products %}
+                            <div class="col-lg-3">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img"
+                                               href="{% url "product:product-detail" item.id %}"><img
+                                                    src="{{ item.pictures.first }}" alt=""></a>
+                                            <a class="secondary_img"
+                                               href="{% url "product:product-detail" item.id %}"><img
+                                                    src="{{ item.pictures.all.1 }}" alt=""></a>
+                                            {% if item.discount %}
+                                                <div class="label_product">
+                                                    <span class="label_sale">-{{ item.discount }}%</span>
+                                                </div>
+                                            {% endif %}
                                         </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                {% if not item.call_before %}
-                                                    <li class="add_to_cart">
-                                                        <form method="post">
-                                                            {% csrf_token %}
+                                        <div class="product_content">
+                                            <div class="product_content_inner">
+                                                <p class="manufacture_product"><a
+                                                        href="{% url "product:product-list" %}?category={{ item.category.slug }}">{{ item.category.title }}</a>
+                                                </p>
+                                                <h4 class="product_name"><a
+                                                        href="{% url "product:product-detail" item.id %}">{{ item.title }}
+                                                    - {{ item.id }}</a></h4>
+                                                <div class="price_box">
+                                                    {% if not item.call_before %}
+                                                        {% if item.discount %}
+                                                            <span class="old_price">{{ item.get_price }}</span>
+                                                            <span class="current_price">{{ item.get_discounted_price }}</span>
+                                                        {% else %}
+                                                            <span class="current_price">{{ item.get_discounted_price }}</span>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        <span class="old_price"></span>
+                                                        <br>
+                                                        <span class="call_for_price">تماس  جهت اطلاع از قیمت</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    {% if not item.call_before %}
+                                                        <li class="add_to_cart">
+                                                            <form method="post">
+                                                                {% csrf_token %}
 
-                                                            <input min="1" max="100" value="1" type="number"
-                                                                   id="quantity" hidden>
+                                                                <input min="1" max="100" value="1" type="number"
+                                                                       id="quantity" hidden>
 
-                                                            <button onclick="AddToCart('{{ item.id }}')"
-                                                                    class="button"
-                                                                    type="button"
-                                                                    style="border-radius: 8px; border-width: 0px"
-                                                                    title="افزودن به سبد خرید">افزودن به سبد
-                                                                خرید
-                                                            </button>
+                                                                <button onclick="AddToCart('{{ item.id }}')"
+                                                                        class="button"
+                                                                        type="button"
+                                                                        style="border-radius: 8px; border-width: 0px"
+                                                                        title="افزودن به سبد خرید">افزودن به سبد
+                                                                    خرید
+                                                                </button>
 
-                                                        </form>
+                                                            </form>
+                                                        </li>
+                                                    {% else %}
+                                                        <a href="{% url "product:product-detail" item.id %}"
+                                                           class="button"
+                                                           type="button"
+                                                           style="border-radius: 8px; border-width: 0px"
+                                                           title="افزودن به سبد خرید">اطلاعات بیشتر
+                                                        </a>
+                                                    {% endif %}
+                                                    <li class="wishlist">
+                                                        {% if request.user.is_authenticated %}
+                                                            <a onclick="AddFavorite('{{ item.id }}')"
+                                                               title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a>
+                                                        {% else %}
+                                                            <a href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                                               title="افزودن به لیست علاقمندی ها"><i
+                                                                    class="icon-heart"></i></a>
+                                                        {% endif %}
                                                     </li>
-                                                {% else %}
-                                                    <a href="{% url "product:product-detail" item.id %}"
-                                                       class="button"
-                                                       type="button"
-                                                       style="border-radius: 8px; border-width: 0px"
-                                                       title="افزودن به سبد خرید">اطلاعات بیشتر
-                                                    </a>
-                                                {% endif %}
-                                                <li class="wishlist">
-                                                    {% if request.user.is_authenticated %}
-                                                        <a onclick="AddFavorite('{{ item.id }}')"
-                                                           title="افزودن به لیست علاقمندی ها"><i
-                                                                class="icon-heart"></i></a>
-                                                    {% else %}
-                                                        <a href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
-                                                           title="افزودن به لیست علاقمندی ها"><i
-                                                                class="icon-heart"></i></a>
-                                                    {% endif %}
-                                                </li>
-                                            </ul>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </figure>
-                            </article>
-                        </div>
-                    {% endfor %}
+                                    </figure>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!--product area end-->
-    </div>
+            </section>
+            <!--product area end-->
+        </div>
     </div>
     <script>
         function reply(id) {
