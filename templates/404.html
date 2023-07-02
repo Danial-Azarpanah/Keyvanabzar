@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <!--error section area start-->
+    <div class="error_page_bg">
+        <div class="container">
+            <div class="error_section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="error_form">
+                            <h1>404</h1>
+                            <h2>واااای ! صفحه پیدا نشد</h2>
+                            <p>با عرض پوزش، اما صفحه ای که به دنبال آن هستید وجود ندارد، <br> حذف شده است، نام تغییر
+                                کرده یا به طور موقت در دسترس نیست.</p>
+                            <a href="{% url "home:home" %}">بازگشت به صفحه اصلی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--error section area end-->
+{% endblock %}
