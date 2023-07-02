@@ -78,7 +78,10 @@
                                 </div>
                                 <div class="product_desc">
                                     <p>
-                                        {{ product.description }}
+                                        {% for feature in product.features.all %}
+                                            <span><i class="fa fa-check"></i> {{ feature.text }}</span>
+                                            <br>
+                                        {% endfor %}
                                     </p>
                                 </div>
                                 <div class="product_variant color">
