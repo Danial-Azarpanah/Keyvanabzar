@@ -4,6 +4,8 @@ from django.views.generic import View
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 
+from urllib.parse import unquote, unquote_plus
+
 from .models import Blog, Comment, Category
 
 
@@ -41,6 +43,7 @@ class BlogDetailView(View):
     """
 
     def get(self, request, slug):
+        slug = unquote(slug)
         article = get_object_or_404(Blog, slug=slug)
         articles = Blog.objects.all()[:5]
         categories = Category.objects.all()
