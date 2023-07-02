@@ -231,11 +231,13 @@
                                                         class="fa fa-angle-left"></i></a>
                                                 <ul class="categories_mega_menu rounded-3">
                                                     {% for child in category.children.all %}
-                                                        <div class="mb-1">
-                                                            <li class="">
-                                                                <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
-                                                            </li>
-                                                        </div>
+                                                        {% if child.categories.all %}
+                                                            <div class="mb-1">
+                                                                <li class="">
+                                                                    <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
+                                                                </li>
+                                                            </div>
+                                                        {% endif %}
                                                     {% endfor %}
                                                 </ul>
                                             </li>
