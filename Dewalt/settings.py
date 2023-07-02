@@ -131,8 +131,11 @@ STATICFILES_DIRS = [
     path.join(BASE_DIR, "assets")
 ]
 STATIC_ROOT = "/home/dewaltla/public_html/static"
+# STATIC_ROOT = path.join(BASE_DIR, "static")
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = "/home/dewaltla/public_html/media"
+# MEDIA_ROOT = path.join(BASE_DIR, "media")
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 
 # Default primary key field type

@@ -50,18 +50,20 @@
                 <div class="col-12">
                     <div class="categories_product_inner categories_column7 owl-carousel">
                         {% for category in categories %}
-                            <div class="single_categories_product">
-                                <div class="categories_product_thumb">
-                                    <a href="{% url "product:product-list" %}?category={{ category.slug }}"><img
-                                            src="{{ category.image.url }}"
-                                            alt=""></a>
+                            {% if category.image %}
+                                <div class="single_categories_product">
+                                    <div class="categories_product_thumb">
+                                        <a href="{% url "product:product-list" %}?category={{ category.slug }}"><img
+                                                src="{{ category.image.url }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="categories_product_content">
+                                        <h4>
+                                            <a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a>
+                                        </h4>
+                                    </div>
                                 </div>
-                                <div class="categories_product_content">
-                                    <h4>
-                                        <a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a>
-                                    </h4>
-                                </div>
-                            </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
