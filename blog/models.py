@@ -78,5 +78,5 @@ class Comment(models.Model):
         return f' نظر {self.body[:30]}  توسط کاربر  {self.user.phone_number}'
 
     class Meta:
-        verbose_name = 'بازخورت مقاله'
+        verbose_name = 'بازخورد مقاله'
         verbose_name_plural = 'بازخورد مقالات'
