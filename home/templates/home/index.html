@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+    دیوالت لند
+{% endblock %}
+
 {% block main %}
     <!--slider area start-->
     <section class="slider_section mb-80">
@@ -34,7 +38,7 @@
                     <div class="welcome_title">
                         <h3>به دیوالت لند خوش آمدید</h3>
                         <br>
-                        <h2>خرید با کیفیت ترین ابزار آلات برند<span> Dewalt</span></h2>
+                        <h2>خرید با کیفیت ترین ابزار آلات برند<span> دیوالت</span></h2>
                         <p>کیفیت تضمین شده، همراه ۲۰ سال سابقه فروش</p>
                     </div>
                 </div>
@@ -50,18 +54,20 @@
                 <div class="col-12">
                     <div class="categories_product_inner categories_column7 owl-carousel">
                         {% for category in categories %}
-                            <div class="single_categories_product">
-                                <div class="categories_product_thumb">
-                                    <a href="{% url "product:product-list" %}?category={{ category.slug }}"><img
-                                            src="{{ category.image.url }}"
-                                            alt=""></a>
+                            {% if category.image %}
+                                <div class="single_categories_product">
+                                    <div class="categories_product_thumb">
+                                        <a href="{% url "product:product-list" %}?category={{ category.slug }}"><img
+                                                src="{{ category.image.url }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="categories_product_content">
+                                        <h4>
+                                            <a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a>
+                                        </h4>
+                                    </div>
                                 </div>
-                                <div class="categories_product_content">
-                                    <h4>
-                                        <a href="{% url "product:product-list" %}?category={{ category.slug }}">{{ category.title }}</a>
-                                    </h4>
-                                </div>
-                            </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -127,9 +133,6 @@
                                                     </div>
                                                     <div class="product_content">
                                                         <div class="product_content_inner">
-                                                            <p class="manufacture_product"><a
-                                                                    href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                                            </p>
                                                             <h4 class="product_name"><a
                                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 - {{ product.id }}</a></h4>
@@ -224,9 +227,6 @@
                                                     </div>
                                                     <div class="product_content">
                                                         <div class="product_content_inner">
-                                                            <p class="manufacture_product"><a
-                                                                    href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                                            </p>
                                                             <h4 class="product_name"><a
                                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 - {{ product.id }}</a></h4>
@@ -321,9 +321,6 @@
                                                     </div>
                                                     <div class="product_content">
                                                         <div class="product_content_inner">
-                                                            <p class="manufacture_product"><a
-                                                                    href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                                            </p>
                                                             <h4 class="product_name"><a
                                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 - {{ product.id }}</a></h4>
@@ -439,9 +436,6 @@
                                                         </div>
                                                         <div class="product_content">
                                                             <div class="product_content_inner">
-                                                                <p class="manufacture_product"><a
-                                                                        href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                                                </p>
                                                                 <h4 class="product_name"><a
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                     - {{ product.id }}</a></h4>

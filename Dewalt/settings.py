@@ -13,8 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+# ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
 
     # Libraries
     "ckeditor",
+    "django_social_share",
 ]
 
 MIDDLEWARE = [
@@ -132,8 +134,12 @@ STATICFILES_DIRS = [
     path.join(BASE_DIR, "assets")
 ]
 STATIC_ROOT = "/home/dewaltla/public_html/static"
+# STATIC_ROOT = path.join(BASE_DIR, "static")
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = "/home/dewaltla/public_html/media"
+# MEDIA_ROOT = path.join(BASE_DIR, "media")
+TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

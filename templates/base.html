@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>دیوالت لند</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -160,24 +160,26 @@
                                                         <a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                     </div>
                                                 </div>
-                                                {% for item in cart %}
-                                                    <div class="cart_item">
-                                                        <div class="cart_img">
-                                                            <a href="{% url 'product:product-detail' item.product.id %}"><img
-                                                                    src="{{ item.product.pictures.first }}"
-                                                                    alt=""></a>
+                                                {% if cart %}
+                                                    {% for item in cart %}
+                                                        <div class="cart_item">
+                                                            <div class="cart_img">
+                                                                <a href="{% url 'product:product-detail' item.product.id %}"><img
+                                                                        src="{{ item.product.pictures.first }}"
+                                                                        alt=""></a>
+                                                            </div>
+                                                            <div class="cart_info">
+                                                                <a href="#">{{ item.title }}</a>
+                                                                <p> تعداد: {{ item.quantity }} عدد
+                                                                    <span> {{ item.formatted_total }} </span></p>
+                                                            </div>
+                                                            <div class="cart_remove">
+                                                                <a onclick="CartDel('{{ item.id }}')"><i
+                                                                        class="ion-android-close"></i></a>
+                                                            </div>
                                                         </div>
-                                                        <div class="cart_info">
-                                                            <a href="#">{{ item.title }}</a>
-                                                            <p> تعداد: {{ item.quantity }} عدد
-                                                                <span> {{ item.formatted_total }} </span></p>
-                                                        </div>
-                                                        <div class="cart_remove">
-                                                            <a onclick="CartDel('{{ item.id }}')"><i
-                                                                    class="ion-android-close"></i></a>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
+                                                    {% endfor %}
+                                                {% endif %}
 
 
                                                 <div class="mini_cart_table">
@@ -229,11 +231,13 @@
                                                         class="fa fa-angle-left"></i></a>
                                                 <ul class="categories_mega_menu rounded-3">
                                                     {% for child in category.children.all %}
-                                                        <div class="mb-1">
-                                                            <li class="">
-                                                                <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
-                                                            </li>
-                                                        </div>
+                                                        {% if child.categories.all %}
+                                                            <div class="mb-2">
+                                                                <li class="">
+                                                                    <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
+                                                                </li>
+                                                            </div>
+                                                        {% endif %}
                                                     {% endfor %}
                                                 </ul>
                                             </li>

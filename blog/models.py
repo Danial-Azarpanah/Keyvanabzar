@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.html import format_html, strip_tags
 
 from persiantools.jdatetime import JalaliDate
@@ -36,6 +37,9 @@ class Blog(models.Model):
     category = models.ForeignKey(Category, verbose_name="دسته بندی",
                                  on_delete=models.SET_NULL,
                                  null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse("blog:detail", args=[self.slug])
 
     def get_jalali_date(self):
         return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
@@ -78,5 +82,5 @@ class Comment(models.Model):
         return f' نظر {self.body[:30]}  توسط کاربر  {self.user.phone_number}'
 
     class Meta:
-        verbose_name = 'بازخورت مقاله'
+        verbose_name = 'بازخورد مقاله'
         verbose_name_plural = 'بازخورد مقالات'

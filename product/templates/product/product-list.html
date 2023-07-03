@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+     لیست محصولات - دیوالت لند
+{% endblock %}
+
 {% block main %}
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
@@ -48,7 +52,7 @@
                                                     src="{{ product.pictures.first }}" alt=""></a>
                                             <a class="secondary_img"
                                                href="{% url "product:product-detail" product.id %}"><img
-                                                    src="{{ product.pictures.first }}" alt=""></a>
+                                                    src="{{ product.pictures.all.1 }}" alt=""></a>
                                             <div class="label_product">
                                                 {% if product.discount > 0 %}
                                                     <span class="label_sale">-{{ product.discount }}%</span>
@@ -57,9 +61,6 @@
                                         </div>
                                         <div class="product_content grid_content">
                                             <div class="product_content_inner">
-                                                <p class="manufacture_product"><a
-                                                        href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category }}</a>
-                                                </p>
                                                 <h4 class="product_name"><a
                                                         href="{% url "product:product-detail" product.id %}">
                                                     {{ product.title }} - {{ product.id }}
@@ -198,8 +199,8 @@
                                 {% for category in categories %}
                                     {% if not category.parent %}
                                         <li class="widget_sub_categories"><a
-                                                href="javascript:void(0)">{{ category.title }}</a>
-                                            <ul class="widget_dropdown_categories">
+                                                href="#" class="category-toggle">{{ category.title }}</a>
+                                            <ul class="widget_dropdown_categories" style="display: none">
                                                 {% for child in category.children.all %}
                                                     <li>
                                                         <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>

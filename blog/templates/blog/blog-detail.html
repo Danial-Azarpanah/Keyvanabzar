@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load social_share %}
 
+{% block title %}
+    {{ article.title }} - دیوالت لند
+{% endblock %}
 
 {% block main %}
     <!--breadcrumbs area start-->
@@ -49,15 +53,17 @@
                                             <div class="social_sharing">
                                                 <p>این پست را به اشتراک بگذارید:</p>
                                                 <ul>
-                                                    <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a>
+                                                    <li>
+                                                        {% post_to_whatsapp article.get_absolute_url "<i class='fa fa-whatsapp'></i>" %}
                                                     </li>
-                                                    <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a>
+                                                    <li>
+                                                        {% post_to_telegram "" article.get_absolute_url "<i class='fa fa-telegram'></i>" %}
                                                     </li>
-                                                    <li><a href="#" title="pinterest"><i
-                                                            class="fa fa-pinterest"></i></a></li>
-                                                    <li><a href="#" title="google+"><i
-                                                            class="fa fa-google-plus"></i></a></li>
-                                                    <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a>
+                                                    <li>
+                                                        {% post_to_twitter "" article.get_absolute_url "<i class='fa fa-twitter'></i>" %}
+                                                    </li>
+                                                    <li>
+                                                        {% post_to_facebook article.get_absolute_url "<i class='fa fa-facebook'></i>" %}
                                                     </li>
                                                 </ul>
                                             </div>
