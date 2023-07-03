@@ -12771,18 +12771,18 @@ textarea:-ms-input-placeholder {
 .product-info {
     display: flex;
     flex-wrap: wrap;
-}
+  }
 
-.product-info > div {
-    flex: 1;
-}
+  .product-info > div {
+    flex: 0 0 auto;
+  }
 
-@media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 767px) {
     .product-info > div {
-        flex-basis: 100%;
+      flex-basis: 100%;
     }
 
     .product-info .product-id {
-        margin-top: 15px;
+      margin-top: 15px;
     }
-}
+  }
