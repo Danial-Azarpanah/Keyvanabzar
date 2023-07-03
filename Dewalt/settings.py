@@ -12,10 +12,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
 
 # Application definition
 
@@ -78,23 +78,23 @@ WSGI_APPLICATION = 'Dewalt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "dewaltla_dewalt-land",
-        "USER": "dewaltla_admin",
-        "PASSWORD": "daniel8203",
-        "HOST": "127.0.0.1",
-        "PORT": "3306"
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "dewaltla_dewalt-land",
+#         "USER": "dewaltla_admin",
+#         "PASSWORD": "daniel8203",
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306"
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -132,12 +132,12 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     path.join(BASE_DIR, "assets")
 ]
-STATIC_ROOT = "/home/dewaltla/public_html/static"
-# STATIC_ROOT = path.join(BASE_DIR, "static")
+# STATIC_ROOT = "/home/dewaltla/public_html/static"
+STATIC_ROOT = path.join(BASE_DIR, "static")
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = "/home/dewaltla/public_html/media"
-# MEDIA_ROOT = path.join(BASE_DIR, "media")
+# MEDIA_ROOT = "/home/dewaltla/public_html/media"
+MEDIA_ROOT = path.join(BASE_DIR, "media")
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 
 # Default primary key field type

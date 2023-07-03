@@ -395,7 +395,7 @@ textarea:-ms-input-placeholder {
 -----------------------------------------*/
 #scrollUp {
     background: #febd17 none repeat scroll 0 0;
-    bottom: 85px;
+    bottom: 12px;
     color: #1a1a1a;
     cursor: pointer;
     display: none;
@@ -6726,6 +6726,7 @@ textarea:-ms-input-placeholder {
 
 .widget_list > ul > li > a {
     font-size: 15px;
+    font-weight: bold;
     display: block;
     line-height: 25px;
 }
