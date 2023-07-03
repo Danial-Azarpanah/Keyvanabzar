@@ -1,3 +1,4 @@
+import os.path
 from os import path
 from pathlib import Path
 from decouple import config
@@ -140,6 +141,8 @@ MEDIA_ROOT = "/home/dewaltla/public_html/media"
 # MEDIA_ROOT = path.join(BASE_DIR, "media")
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 
+TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

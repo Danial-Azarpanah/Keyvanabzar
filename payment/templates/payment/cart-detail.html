@@ -41,6 +41,7 @@
                                             <th class="product_name">محصول</th>
                                             <th class="product-price">قیمت</th>
                                             <th class="product_quantity">تعداد</th>
+                                            <th class="product_total">بروزرسانی</th>
                                             <th class="product_total">مجموع</th>
                                         </tr>
                                         </thead>
@@ -65,24 +66,29 @@
                                                     {% csrf_token %}
 
                                                     <td class="product_quantity"><label>تعداد</label>
-                                                        <button type="submit"
-                                                                style="border-radius: 8px; border-width: 0px">
-                                                            <input min="1"
-                                                                   max="100"
-                                                                   value="{{ item.quantity }}"
-                                                                   type="number"
-                                                                   name="quantity">
-                                                        </button>
+
+                                                        <input min="1"
+                                                               max="100"
+                                                               value="{{ item.quantity }}"
+                                                               type="number"
+                                                               name="quantity">
+                                                    <td>
+                                                        <div class="cart_submit">
+                                                            <button type="submit">اعمال تغییرات</button>
+                                                        </div>
+                                                    </td>
 
                                                 </form>
 
                                                 </td>
+
                                                 <td class="product_total">{{ item.formatted_total }}</td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
                     </div>
