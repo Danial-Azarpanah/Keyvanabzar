@@ -1472,11 +1472,11 @@ textarea:-ms-input-placeholder {
 
 .main_menu nav > ul > li ul.sub_menu li a {
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     display: block;
     line-height: 32px;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .main_menu nav > ul > li ul.sub_menu li a:hover {
@@ -2570,7 +2570,7 @@ textarea:-ms-input-placeholder {
     font-size: 15px;
     line-height: 43px;
     text-transform: capitalize;
-    font-weight: 400;
+    font-weight: 600;
     display: block;
     cursor: pointer;
     padding: 0 30px 0 20px;
