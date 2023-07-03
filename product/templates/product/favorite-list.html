@@ -22,13 +22,14 @@
     <!--wishlist area start -->
     <div class="wishlist_page_bg">
         <div class="container">
-            <div class="wishlist_area">
-                <div class="wishlist_inner">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="table_desc wishlist">
-                                <div class="cart_page">
-                                    {% if favorites %}
+            {% if favorites %}
+                <div class="wishlist_area">
+                    <div class="wishlist_inner">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table_desc wishlist">
+                                    <div class="cart_page">
+
                                         <table>
                                             <thead>
                                             <tr>
@@ -91,16 +92,18 @@
                                             {% endfor %}
                                             </tbody>
                                         </table>
-                                    {% else %}
-                                        <p> لیست علاقه مندی های شما خالی میباشد </p>
-                                    {% endif %}
-                                </div>
 
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% else %}
+                <p class="alert alert-info mb-5 mt-60"> لیست علاقه مندی های شما خالی میباشد </p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
