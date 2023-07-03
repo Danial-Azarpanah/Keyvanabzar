@@ -116,58 +116,6 @@
                                             {% endif %}
 
                                             {% if cart.total %}
-                                                {% if cart.get_post_price.1 != 0 %}
-                                                    <div class="cart_subtotal">
-                                                        <p>نحوه ارسال</p>
-                                                        <select class="form-select mb-3 w-50"
-                                                                aria-label="Default select example"
-                                                                onchange="updateDeliverySelection(this.value)">
-                                                            <option value="post" selected>پست پیشتاز</option>
-                                                            <option value="in-person">تحویل حضوری 12:00 - 14:00 (تبریز)
-                                                            </option>
-                                                            <option value="delivery-motor">پیک با پرداخت حین تحویل
-                                                                (تبریز)
-                                                            </option>
-                                                        </select>
-                                                        <input value="post" id="delivery-selection"
-                                                               name="delivery-selection" type="text" hidden>
-                                                    </div>
-                                                    <div class="cart_subtotal" id="delivery-cost">
-                                                        <p>هزینه ارسال</p>
-                                                        <p class="cart_amount"> {{ cart.get_post_price.0 }} </p>
-                                                    </div>
-                                                {% else %}
-                                                    <div class="cart_subtotal ">
-                                                        <p>هزینه ارسال</p>
-                                                        <p class="cart_amount"> ارسال با باربری به دلیل وزن بالا (پرداخت
-                                                            هزینه باربری حین تحویل) </p>
-                                                    </div>
-                                                {% endif %}
-                                            {% else %}
-                                                <div class="cart_subtotal">
-                                                    <p>هزینه ارسال</p>
-                                                    <p class="cart_amount"> 0 تومان </p>
-                                                </div>
-                                            {% endif %}
-
-                                            {% if cart.total %}
-                                                <div class="cart_subtotal" id="total-and-post">
-                                                    <p>جمع کل</p>
-                                                    <p class="cart_amount">{{ cart.get_total_and_post }}</p>
-                                                </div>
-                                                <div class="cart_subtotal" id="total" hidden>
-                                                    <p>جمع کل</p>
-                                                    <p class="cart_amount">{{ cart.get_total }}</p>
-                                                </div>
-                                            {% else %}
-                                                <div class="cart_subtotal">
-                                                    <p>جمع کل</p>
-                                                    <p class="cart_amount">0 تومان </p>
-                                                </div>
-                                            {% endif %}
-
-
-                                            {% if cart.total %}
                                                 <div class="checkout_btn">
                                                     <button type="submit">ثبت سفارش</button>
                                                 </div>
@@ -188,19 +136,4 @@
         </div>
     </div>
     <!--shopping cart area end -->
-    <script>
-        function updateDeliverySelection(value) {
-            document.getElementById('delivery-selection').value = value;
-            if (value !== "post") {
-                document.getElementById('delivery-cost').hidden = true
-                document.getElementById('total-and-post').hidden = true
-                document.getElementById('total').hidden = false
-            } else {
-                document.getElementById('delivery-cost').hidden = false
-                document.getElementById('total-and-post').hidden = false
-                document.getElementById('total').hidden = true
-            }
-        }
-    </script>
-
 {% endblock %}

@@ -70,16 +70,6 @@
                                             </tr>
                                         {% endif %}
 
-
-                                        {% if order.delivery_method == "post" %}
-                                            <tr>
-                                                <th>هزینه ارسال</th>
-                                                <td></td>
-                                                <td></td>
-                                                <td><strong> {{ order.get_post_price }}</strong></td>
-                                            </tr>
-                                        {% endif %}
-
                                         </tfoot>
                                     </table>
                                 </div>
@@ -100,12 +90,11 @@
 
                                     </div>
 
-                                    {% if request.user.addresses.all or order.delivery_method == "in-person" %}
+                                    {% if request.user.addresses.all %}
 
                                         <form action="{% url 'payment:send-request' order.pk %}" method="post">
                                             {% csrf_token %}
                                             <div class="order_button">
-                                                {% if request.user.addresses.all and order.delivery_method != "in-person" %}
                                                     <div class="row">
                                                         <div class="col-12 mb-20">
                                                             <label for="country">آدرس سفارش</label>
@@ -123,7 +112,6 @@
                                                                     + آدرس جدید </a></li>
                                                         </div>
                                                     </div>
-                                                {% endif %}
                                                 <button type="submit">پرداخت صورت حساب</button>
                                             </div>
                                         </form>

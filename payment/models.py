@@ -10,47 +10,29 @@ from product.models import *
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders', verbose_name='کاربر')
     is_paid = models.BooleanField('پرداخت', default=False)
-    is_sent = models.BooleanField("ارسال شده", default=False)
     total_price = models.PositiveIntegerField('قیمت کل')
-    post_price = models.PositiveIntegerField("قیمت پست", null=True, blank=True)
     created_at = models.DateTimeField('تاریخ ثبت سفارش در', auto_now_add=True)
     tracking_code = models.IntegerField('کد رهگیری', editable=False)
-    post_tracking_code = models.CharField("کد رهگیری پست", null=True, blank=True,
-                                          max_length=100)
     discount_applied = models.BooleanField("تخفیف اعمال شده", default=False)
     address = models.TextField("آدرس", null=True, blank=True)
-    delivery_method = models.CharField("نحوه ارسال", max_length=20,
-                                       null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if self.is_sent:
+        if self.is_paid:
             sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
-            message = "ممنون از خرید شما"
-            if self.delivery_method == "post" and self.post_tracking_code:
-                message += f"\nبسته شما ارسال گردید\nکد رهگیری پست: {self.post_tracking_code}"
-            elif self.delivery_method == "delivery-motor":
-                message += f"بسته شما با پیک موتوری ارسال گردید"
-            elif self.delivery_method == "in-person":
-                message += f"\nبسته شما آماده تحویل است\nلطفا جهت هماهنگی با شماره ۰۴۱۳۵۵۶۸۷۴۱ تماس حاصل نمائید"
-            else:
-                message += f"\nسفارش شما با باربری ارسال گردید"
-            message += f"\nبا احترام - فروشگاه دیوالت لند"
+            intro = "ممنون از خرید شما"
+            code = f"کد رهگیری سفارش: {self.tracking_code}"
+            prompt = "جهت هماهنگی بیشتر برای ارسال بسته، با شما تماس گرفته خواهد شد"
+            respect = "با احترام، فروشگاه دیوالت لند"
 
-            sms.send({'message': f'{message}', 'receptor': f'{self.user.phone_number}',
+            sms.send({'message': f'{intro}\n{code}\n{prompt}\n{respect}', 'receptor': f'{self.user.phone_number}',
                       'linenumber': '30005006008608'})
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.user}'
 
-    def get_post_price(self):
-        return "{:,.0f} تومان ".format(self.post_price)
-
     def get_total_price(self):
         return "{:,.0f} تومان ".format(self.total_price)
-
-    def get_post_and_total_price(self):
-        return "{:,.0f} تومان ".format(self.total_price + self.post_price)
 
     def get_jalali_date(self):
         return JalaliDate(self.created_at, locale=('fa')).strftime('%c')
