@@ -55,8 +55,14 @@
                             {% for message in messages %}
                                 <li class="alert alert-danger p-1">{{ message }}</li>
                             {% endfor %}
-                            <h3><a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }}
-                                - {{ product.id }}</a></h3>
+                            <h3 class="product-info">
+                                <div class="product-title">
+                                    <a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }}</a>
+                                </div>
+                                <div class="product-id">
+                                    <a href="#" style="font-size: 25px; font-weight: bolder">کد محصول: {{ product.id }}</a>
+                                </div>
+                            </h3>
                             {% if product.comments.all.count %}
                                 <div class="product_rating">
                                     <ul>
@@ -323,9 +329,6 @@
                                         </div>
                                         <div class="product_content">
                                             <div class="product_content_inner">
-                                                <p class="manufacture_product"><a
-                                                        href="{% url "product:product-list" %}?category={{ item.category.slug }}">{{ item.category.title }}</a>
-                                                </p>
                                                 <h4 class="product_name"><a
                                                         href="{% url "product:product-detail" item.id %}">{{ item.title }}
                                                     - {{ item.id }}</a></h4>

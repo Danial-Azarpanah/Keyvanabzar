@@ -1472,7 +1472,6 @@ textarea:-ms-input-placeholder {
 
 .main_menu nav > ul > li ul.sub_menu li a {
     font-size: 14px;
-    font-weight: 600;
     display: block;
     line-height: 32px;
     text-transform: capitalize;
@@ -2570,7 +2569,6 @@ textarea:-ms-input-placeholder {
     font-size: 15px;
     line-height: 43px;
     text-transform: capitalize;
-    font-weight: 600;
     display: block;
     cursor: pointer;
     padding: 0 30px 0 20px;
@@ -6464,35 +6462,35 @@ textarea:-ms-input-placeholder {
 }
 
 .instagram2 i.fa-instagram {
-  font-size: 25px; /* Replace with desired size */
+    font-size: 25px; /* Replace with desired size */
 }
 
 .instagram2 i.fa-instagram:hover {
-  color: #febd17; /* Replace with desired size */
+    color: #febd17; /* Replace with desired size */
 }
 
 .telegram i.fa-telegram {
-  font-size: 25px; /* Replace with desired size */
+    font-size: 25px; /* Replace with desired size */
 }
 
 .telegram i.fa-telegram:hover {
-  color: #febd17; /* Replace with desired size */
+    color: #febd17; /* Replace with desired size */
 }
 
 .youtube i.fa-youtube-play {
-  font-size: 25px; /* Replace with desired size */
+    font-size: 25px; /* Replace with desired size */
 }
 
 .youtube i.fa-youtube-play:hover {
-  color: #febd17; /* Replace with desired size */
+    color: #febd17; /* Replace with desired size */
 }
 
 .twitter i.fa-twitter {
-  font-size: 25px; /* Replace with desired size */
+    font-size: 25px; /* Replace with desired size */
 }
 
 .twitter i.fa-twitter:hover {
-  color: #febd17 ; /* Replace with desired size */
+    color: #febd17; /* Replace with desired size */
 }
 
 .search-modified {
@@ -12768,4 +12766,23 @@ textarea:-ms-input-placeholder {
 
 .action_links ul li button:hover {
     color: #febd17;
+}
+
+.product-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-info > div {
+    flex: 1;
+}
+
+@media only screen and (max-width: 767px) {
+    .product-info > div {
+        flex-basis: 100%;
+    }
+
+    .product-info .product-id {
+        margin-top: 15px;
+    }
 }

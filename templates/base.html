@@ -234,8 +234,7 @@
                                                         {% if child.categories.all %}
                                                             <div class="mb-2">
                                                                 <li class="">
-                                                                    <a href="{% url "product:product-list" %}?category={{ child.slug }}"
-                                                                    style="font-weight: 600; font-size: 15px">{{ child.title }}</a>
+                                                                    <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
                                                                 </li>
                                                             </div>
                                                         {% endif %}
@@ -256,14 +255,14 @@
                                     <li><a class="active" href="">حساب کاربری<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu rounded-bottom">
                                             {% if request.user.is_authenticated %}
-                                                <li><a class="account_dropdown" href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
-                                                <li><a class="account_dropdown" href="{% url "payment:order-history" %}">تاریخچه سفارشات</a></li>
-                                                <li><a class="account_dropdown" href="{% url 'product:comparison-list' %}">مقایسه محصولات</a>
+                                                <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
+                                                <li><a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a></li>
+                                                <li><a href="{% url 'product:comparison-list' %}">مقایسه محصولات</a>
                                                 </li>
-                                                <li><a class="account_dropdown" href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
+                                                <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
                                             {% else %}
-                                                <li><a class="account_dropdown" href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
-                                                <li><a class="account_dropdown" href="{% url "accounts:sign-in" %}">ورود</a></li>
+                                                <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
+                                                <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
                                             {% endif %}
                                         </ul>
                                     </li>
