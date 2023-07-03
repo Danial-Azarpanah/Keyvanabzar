@@ -112,6 +112,7 @@ class Picture(models.Model):
     class Meta:
         verbose_name = 'تصویر محصول'
         verbose_name_plural = 'تصویر محصول'
+        ordering = ("id",)
 
 
 class Features(models.Model):
