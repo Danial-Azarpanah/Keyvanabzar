@@ -3,12 +3,6 @@ from product.models import Product
 CART_SESSION_ID = 'cart'
 
 
-def calculate_post_price(weight):
-    if 0 < weight <= 1:
-        return ["{:,.0f} تومان ".format(40000), 40000]
-    return ["{:,.0f} تومان ".format(8000 * weight + 32000), 8000 * weight + 32000]
-
-
 class Cart:
     def __init__(self, request):
         self.session = request.session
@@ -28,10 +22,8 @@ class Cart:
             self.cart[product_id] = {'id': str(product.id), 'title': product.title,
                                      'price': price,
                                      'formatted_price': "{:,.0f} تومان ".format(int(price)),
-                                     'post_weight': 0,
                                      'quantity': 0}
         self.cart[product_id]['quantity'] += int(quantity)
-        self.cart[product_id]['post_weight'] += int(quantity) * product.total_weight
         self.save()
 
     def __iter__(self):
@@ -47,7 +39,6 @@ class Cart:
         product_id = product.id
         if product_id in self.cart:
             self.cart[product_id]['quantity'] = int(quantity)
-            self.cart[product_id]['post_weight'] = int(product.total_weight * int(quantity))
         self.save()
 
     def total(self):
@@ -57,15 +48,6 @@ class Cart:
             total += int(item['quantity']) * int(item['price'])
         return total
 
-    def get_post_price(self):
-        cart = self.cart.values()
-        total = 0
-        for item in cart:
-            total += item["post_weight"]
-        if total > 30:
-            return [0, 0]
-        return calculate_post_price(total)
-
     def get_price(self, id):
         cart = self.cart.copy()
         return cart[id]["price"]
@@ -73,11 +55,6 @@ class Cart:
     def get_total(self):
         total = self.total()
         return "{:,.0f} تومان ".format(total)
-
-    def get_total_and_post(self):
-        total = self.total()
-        post_price = self.get_post_price()
-        return "{:,.0f} تومان ".format(total + post_price[1])
 
     def len(self):
         return len(self.cart)
