@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     # Libraries
     "ckeditor",
+    "django_social_share",
 ]
 
 MIDDLEWARE = [
