@@ -705,9 +705,11 @@
     });
 
     /*---widget sub categories---*/
-    $(".widget_sub_categories > a").on("click", function() {
+    $(".widget_sub_categories > a").on("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
         $(this).toggleClass('active');
-        $('.widget_dropdown_categories').slideToggle('medium');
+        var dropdownMenu = $(this).next('.widget_dropdown_categories'); // Find the corresponding dropdown menu
+        dropdownMenu.slideToggle('medium');
     });
 
 
@@ -924,4 +926,4 @@
 
 
 
-})(jQuery);	
+})(jQuery);

@@ -114,6 +114,18 @@ class Picture(models.Model):
         verbose_name_plural = 'تصویر محصول'
 
 
+class Features(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='features')
+    text = models.CharField('ویژگی', max_length=155)
+
+    def __str__(self):
+        return f"{self.product.title} - {self.text}"
+
+    class Meta:
+        verbose_name_plural = 'ویژگی‌ها'
+        verbose_name = 'ویژگی'
+
+
 class AdditionalItems(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='additional_items')
     item = models.CharField('اقلام محصول', max_length=155)

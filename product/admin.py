@@ -14,12 +14,16 @@ class AdditionalItemAdmin(admin.TabularInline):
     model = AdditionalItems
 
 
+class FeatureAdmin(admin.TabularInline):
+    model = Features
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'get_price', 'discount', 'get_discounted_price_admin')
     list_filter = ('created_at', 'call_before')
     search_fields = ('title', 'id', 'price')
-    inlines = [PictureAdmin, SpecAdmin, AdditionalItemAdmin]
+    inlines = [FeatureAdmin, PictureAdmin, SpecAdmin, AdditionalItemAdmin]
 
 
 @admin.register(Category)
