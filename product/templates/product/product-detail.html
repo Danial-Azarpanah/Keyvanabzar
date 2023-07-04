@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-     {{ product.title }} - دیوالت لند
+    {{ product.title }} - دیوالت لند
 {% endblock %}
 
 {% block main %}
@@ -333,9 +333,16 @@
                                         </div>
                                         <div class="product_content">
                                             <div class="product_content_inner">
-                                                <h4 class="product_name"><a
-                                                        href="{% url "product:product-detail" item.id %}">{{ item.title }}
-                                                    - {{ item.id }}</a></h4>
+                                                <h4 class="product_name">
+                                                    <a
+                                                            href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                    </a>
+                                                </h4>
+                                                <h4 class="product_name" style="direction: ltr">
+                                                    <a
+                                                            href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                    </a>
+                                                </h4>
                                                 <div class="price_box">
                                                     {% if not item.call_before %}
                                                         {% if item.discount %}

@@ -61,10 +61,16 @@
                                         </div>
                                         <div class="product_content grid_content">
                                             <div class="product_content_inner">
-                                                <h4 class="product_name"><a
-                                                        href="{% url "product:product-detail" product.id %}">
-                                                    {{ product.title }} - {{ product.id }}
-                                                </a></h4>
+                                                <h4 class="product_name">
+                                                    <a href="{% url "product:product-detail" product.id %}">
+                                                        {{ product.title }}
+                                                    </a>
+                                                </h4>
+                                                <h4 class="product_name" style="direction: ltr">
+                                                    <a href="{% url "product:product-detail" product.id %}">
+                                                        {{ product.id }}
+                                                    </a>
+                                                </h4>
                                                 <div class="price_box">
                                                     {% if not product.call_before %}
                                                         {% if product.discount > 0 %}
