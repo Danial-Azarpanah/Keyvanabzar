@@ -14,4 +14,5 @@ urlpatterns = [
     path('add-comparison/<str:pk>', views.AddCompareView.as_view(), name='add-comparison'),
     path('remove-comparison/<str:pk>', views.RemoveComparisonView.as_view(), name='remove-comparison'),
     path('comparison-list/', views.CompareListView.as_view(), name='comparison-list'),
+    path('get-csv/', views.export_products_csv, name='export_products_csv'),
 ]

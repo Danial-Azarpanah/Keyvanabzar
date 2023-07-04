@@ -94,6 +94,10 @@ class Product(models.Model):
         price = self.price
         return "{:,.0f} تومان ".format(price)
 
+    def get_csv_price(self):
+        price = self.price
+        return "{:,.0f}".format(price)
+
     get_price.short_description = 'قیمت'
 
     class Meta:
