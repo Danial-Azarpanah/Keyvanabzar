@@ -7,10 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
-    <meta name="description" content="">
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo/dewalt.jpeg" %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo/tab-logo-2.png" %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -108,7 +108,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4">
                         <div class="logo">
-                            <a href="{% url "home:home" %}"><img src="{% static "img/logo/logo.png" %}" alt=""></a>
+                            <a href="{% url "home:home" %}"><img src="{% static "img/logo/main-logo.png" %}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-6 col-sm-6 col-6">

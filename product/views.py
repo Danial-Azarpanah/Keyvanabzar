@@ -8,6 +8,9 @@ from django.contrib import messages as msg
 from django.core.paginator import Paginator
 from django.db.models import Q, PositiveIntegerField, Case, When
 
+import csv
+from django.http import HttpResponse
+
 
 class ProductListView(View):
     """
@@ -203,3 +206,25 @@ class RemoveComparisonView(RequiredLoginMixin, View):
         comparison.save()
 
         return CompareListView.as_view()(req)
+
+
+def export_products_csv(request):
+    if not request.user.is_authenticated:
+        return redirect(
+            reverse_lazy("accounts:sign-in") + f"?return_to=/get-csv"
+        )
+    if request.user.is_admin:
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="products.csv"'
+
+        writer = csv.writer(response)
+        writer.writerow(['ID', 'Price'])
+
+        # Retrieve all products from the database
+        products = Product.objects.all()
+
+        # Iterate through each product and write its information to the CSV file
+        for product in products:
+            writer.writerow([product.id, product.get_csv_price()])
+
+        return response

@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block metadescription %}
+    دیوالت لند, dewalt land, فروش ابزار دیوالت, نماینده رسمی دیوالت
+{% endblock %}
+
 {% block title %}
-    دیوالت لند
+    دیوالت لند | Dewalt Land
 {% endblock %}
 
 {% block main %}
@@ -85,9 +89,7 @@
                     <div class="col-12">
                         <div class="section_title">
                             <h2><span>محصولات </span>ما</h2>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با .</p>
+                            <p>تمام محصولات برند دیوالت را از ما با خیال راحت دریافت کنید.</p>
                         </div>
                         <div class="product_tab_btn">
                             <ul class="nav" role="tablist" id="nav-tab">
@@ -133,9 +135,16 @@
                                                     </div>
                                                     <div class="product_content">
                                                         <div class="product_content_inner">
-                                                            <h4 class="product_name"><a
-                                                                    href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                                - {{ product.id }}</a></h4>
+                                                            <h4 class="product_name">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                                </a>
+                                                            </h4>
+                                                            <h4 class="product_name" style="direction: ltr">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                                </a>
+                                                            </h4>
                                                             <div class="price_box">
                                                                 {% if not product.call_before %}
                                                                     {% if product.discount %}
@@ -227,9 +236,16 @@
                                                     </div>
                                                     <div class="product_content">
                                                         <div class="product_content_inner">
-                                                            <h4 class="product_name"><a
-                                                                    href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                                - {{ product.id }}</a></h4>
+                                                            <h4 class="product_name">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                                </a>
+                                                            </h4>
+                                                            <h4 class="product_name" style="direction: ltr">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                                </a>
+                                                            </h4>
                                                             <div class="price_box">
                                                                 {% if not product.call_before %}
                                                                     {% if product.discount %}
@@ -321,9 +337,16 @@
                                                     </div>
                                                     <div class="product_content">
                                                         <div class="product_content_inner">
-                                                            <h4 class="product_name"><a
-                                                                    href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                                - {{ product.id }}</a></h4>
+                                                            <h4 class="product_name">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                                </a>
+                                                            </h4>
+                                                            <h4 class="product_name" style="direction: ltr">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                                </a>
+                                                            </h4>
                                                             <div class="price_box">
                                                                 {% if not product.call_before %}
                                                                     {% if product.discount %}
@@ -436,9 +459,16 @@
                                                         </div>
                                                         <div class="product_content">
                                                             <div class="product_content_inner">
-                                                                <h4 class="product_name"><a
+                                                                <h4 class="product_name">
+                                                                <a
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                                    - {{ product.id }}</a></h4>
+                                                                </a>
+                                                            </h4>
+                                                            <h4 class="product_name" style="direction: ltr">
+                                                                <a
+                                                                        href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                                </a>
+                                                            </h4>
                                                                 <div class="price_box">
                                                                     {% if not product.call_before %}
                                                                         {% if product.discount %}

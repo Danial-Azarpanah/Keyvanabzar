@@ -61,10 +61,16 @@
                                         </div>
                                         <div class="product_content grid_content">
                                             <div class="product_content_inner">
-                                                <h4 class="product_name"><a
-                                                        href="{% url "product:product-detail" product.id %}">
-                                                    {{ product.title }} - {{ product.id }}
-                                                </a></h4>
+                                                <h4 class="product_name">
+                                                    <a href="{% url "product:product-detail" product.id %}">
+                                                        {{ product.title }}
+                                                    </a>
+                                                </h4>
+                                                <h4 class="product_name" style="direction: ltr">
+                                                    <a href="{% url "product:product-detail" product.id %}">
+                                                        {{ product.id }}
+                                                    </a>
+                                                </h4>
                                                 <div class="price_box">
                                                     {% if not product.call_before %}
                                                         {% if product.discount > 0 %}
@@ -202,9 +208,11 @@
                                                 href="#" class="category-toggle">{{ category.title }}</a>
                                             <ul class="widget_dropdown_categories" style="display: none">
                                                 {% for child in category.children.all %}
-                                                    <li>
-                                                        <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
-                                                    </li>
+                                                    {% if child.categories.all %}
+                                                        <li>
+                                                            <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                        </li>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </ul>
                                         </li>

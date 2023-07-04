@@ -36,10 +36,7 @@
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th class="product_remove">وضعیت</th>
                                             <th class="product_thumb">مبلغ تراکنش</th>
-                                            <th class="product_thumb">کد رهگیری مرسوله (پست)</th>
-                                            <th class="product_name">آدرس</th>
                                             <th class="product-price">تاریخ تراکنش</th>
                                             <th class="product_quantity">کد پیگیری تراکنش</th>
                                         </tr>
@@ -47,30 +44,9 @@
                                         <tbody>
                                         {% for order in orders %}
                                             <tr>
-                                                <td class="product_remove">
-                                                    <p>
-                                                        {% if order.is_sent %}
-                                                            ارسال شده
-                                                        {% else %}
-                                                            در حال پردازش
-                                                        {% endif %}
-                                                    </p>
-                                                </td>
                                                 <td class="product_thumb">
-                                                    {% if order.delivery_method == "post" %}
-                                                        {{ order.get_post_and_total_price }}
-                                                    {% else %}
-                                                        {{ order.get_total_price }}
-                                                    {% endif %}
+                                                    {{ order.get_total_price }}
                                                 </td>
-                                                <td class="product_name">
-                                                    {% if order.delivery_method == "post" %}
-                                                        {{ order.post_tracking_code }}
-                                                    {% else %}
-                                                        عدم ارسال توسط پست
-                                                    {% endif %}
-                                                </td>
-                                                <td>{{ order.address }}</td>
                                                 <td>{{ order.get_jalali_date }}</td>
                                                 <td>{{ order.tracking_code }}</td>
                                             </tr>
