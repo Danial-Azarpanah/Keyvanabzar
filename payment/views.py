@@ -130,7 +130,7 @@ description = "توضیحات مربوط به تراکنش را در این قس
 email = 'email@example.com'  # Optional
 mobile = ''  # Optional
 # Important: need to edit for realy server.
-CallbackURL = "http://127.0.0.1:8000/payment/order/verify/"
+CallbackURL = "http://127.0.0.1:8000/order/verify/"
 
 
 class SendRequestView(View):
@@ -173,7 +173,7 @@ class VerifyView(View):
         t_authority = request.GET['Authority']
         order_id = request.session['order_id']
         order = Order.objects.get(id=int(order_id))
-        for item in order.items:
+        for item in order.items.all():
             item.product.sale_count += item.quantity
             item.product.save()
         total_price = order.total_price * 10
