@@ -62,7 +62,7 @@ class OrderCreationView(RequiredLoginMixin, View):
         tracking_code = randint(100000, 999999)
         cart = Cart(request)
 
-        order = Order.objects.create(user=request.user, total_price=cart.total(), tracking_code=tracking_code,)
+        order = Order.objects.create(user=request.user, total_price=cart.total(), tracking_code=tracking_code, )
         for item in cart:
             OrderItems.objects.create(order=order, product=item['product'], quantity=item['quantity'],
                                       price=item['price'])
@@ -80,24 +80,42 @@ class ApplyDiscountCodeView(View):
         code = request.POST.get('discount_code')
         order = get_object_or_404(Order, id=pk)
         discount_code = get_object_or_404(DiscountCode, name=code)
-        if (not order.discount_applied) and (request.user not in discount_code.used_by.all()):
+        if (not order.discount_code) and (request.user not in discount_code.used_by.all()):
             if discount_code.is_not_expired():
+
                 if discount_code.quantity == 0:
                     return JsonResponse({'error': CODE_NOT_EXISTS})
 
-                # Apply discount code process
-                order.total_price -= order.total_price * discount_code.percent / 100
-                order.discount_applied = True
-                discount_code.used_by.add(request.user)
-                discount_code.used_by.add(User.objects.get(id=2))
-                for item in order.items.all():
-                    item.price -= item.price * discount_code.percent / 100
-                    item.save()
-                order.save()
-                discount_code.quantity -= 1
-                discount_code.save()
-                return JsonResponse(
-                    {'success': f' کد تخفیف {discount_code.percent} درصدی با موفقیت روی سفارش شما اعمال شد '})
+                if not discount_code.product:
+                    if discount_code.limit < order.total_price:
+                        order.total_price -= discount_code.price
+                        order.discount_code = discount_code.name
+                        discount_code.used_by.add(request.user)
+                        order.save()
+                        discount_code.quantity -= 1
+                        discount_code.save()
+                        return JsonResponse(
+                            {'success': f' کد تخفیف {discount_code.get_price()} تومانی با موفقیت روی سفارش شما اعمال شد '})
+                    return JsonResponse(
+                        {
+                            'error': f'برای استفاده از این کد تخفیف، مبلغ سفارش شما باید بیشتر از {discount_code.get_limit()} تومان باشد'})
+                else:
+                    for item in order.items.all():
+                        if discount_code.product == item.product:
+                            if discount_code.quantity >= item.quantity:
+                                discount_code.quantity -= item.quantity
+                                order.total_price -= item.quantity * discount_code.price
+                                item.price -= discount_code.price
+                            else:
+                                order.total_price -= discount_code.quantity * discount_code.price
+                                discount_code.quantity = 0
+                            discount_code.used_by.add(request.user)
+                            order.discount_code = discount_code.name
+                            order.save()
+                            item.save()
+                            discount_code.save()
+                            return JsonResponse({'success': f' کد تخفیف {discount_code.get_price()} تومانی با موفقیت روی سفارش شما اعمال شد '})
+                    return JsonResponse({"error": CODE_NOT_VALID})
             return JsonResponse({'error': CODE_EXPIRES})
         return JsonResponse({'error': CODE_ALREADY_USED})
 

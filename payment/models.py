@@ -13,7 +13,8 @@ class Order(models.Model):
     total_price = models.PositiveIntegerField('قیمت کل')
     created_at = models.DateTimeField('تاریخ ثبت سفارش در', auto_now_add=True)
     tracking_code = models.IntegerField('کد رهگیری', editable=False)
-    discount_applied = models.BooleanField("تخفیف اعمال شده", default=False)
+    discount_code = models.CharField("کد تخفیف اعمال شده", max_length=30,
+                                     null=True, blank=True)
     address = models.TextField("آدرس", null=True, blank=True)
 
     def save(self, *args, **kwargs):
