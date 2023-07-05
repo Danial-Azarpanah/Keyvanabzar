@@ -210,12 +210,23 @@ class Comment(models.Model):
 
 class DiscountCode(models.Model):
     name = models.CharField('نام کد تخفیف', max_length=30, )
-    percent = models.PositiveIntegerField('درصد', default=0)
+    price = models.PositiveIntegerField('قیمت (تومان)', default=0)
+    product = models.ForeignKey(Product, verbose_name="قابل استفاده برای محصولات",
+                                null=True, blank=True, on_delete=models.CASCADE)
+    limit = models.PositiveIntegerField('حداقل قیمت', null=True, blank=True)
     quantity = models.PositiveIntegerField('تعداد', default=1)
     used_by = models.ManyToManyField(User, null=True, blank=True,
                                      verbose_name="استفاده شده توسط",
                                      related_name="discounts")
     expiration = models.DateTimeField('تاریخ انقضا', null=True, blank=True)
+
+    def get_price(self):
+        price = self.price
+        return "{:,.0f}".format(price)
+
+    def get_limit(self):
+        limit = self.limit
+        return "{:,.0f}".format(limit)
 
     def is_not_expired(self):
         if self.expiration >= timezone.localtime(timezone.now()):
