@@ -3859,14 +3859,16 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .welcome_title h3 {
         font-size: 14px;
+        text-align: justify;
     }
 }
 
 @media (max-width: 767px) {
     .welcome_title h3 strong {
-      font-size: 17px;
+        font-size: 17px;
+        text-align: justify;
     }
-  }
+}
 
 .welcome_title h2 {
     font-size: 35px;
@@ -3880,6 +3882,7 @@ textarea:-ms-input-placeholder {
 }
 
 .welcome_title h3 span {
+    text-align: justify;
     color: #febd17;
 }
 
@@ -12791,18 +12794,18 @@ textarea:-ms-input-placeholder {
 .product-info {
     display: flex;
     flex-wrap: wrap;
-  }
+}
 
-  .product-info > div {
+.product-info > div {
     flex: 0 0 auto;
-  }
+}
 
-  @media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .product-info > div {
-      flex-basis: 100%;
+        flex-basis: 100%;
     }
 
     .product-info .product-id {
-      margin-top: 15px;
+        margin-top: 15px;
     }
-  }
+}
