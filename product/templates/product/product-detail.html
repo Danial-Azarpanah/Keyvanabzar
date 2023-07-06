@@ -335,12 +335,12 @@
                                             <div class="product_content_inner">
                                                 <h4 class="product_name">
                                                     <a
-                                                            href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                            href="{% url "product:product-detail" item.id %}">{{ item.title }}
                                                     </a>
                                                 </h4>
                                                 <h4 class="product_name" style="direction: ltr">
                                                     <a
-                                                            href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                            href="{% url "product:product-detail" item.id %}">{{ item.id }}
                                                     </a>
                                                 </h4>
                                                 <div class="price_box">
@@ -392,7 +392,7 @@
                                                                title="افزودن به لیست علاقمندی ها"><i
                                                                     class="icon-heart"></i></a>
                                                         {% else %}
-                                                            <a href="{% url "accounts:sign-in" %}?return_to=/product/{{ product.id }}"
+                                                            <a href="{% url "accounts:sign-in" %}?return_to=/product/{{ item.id }}"
                                                                title="افزودن به لیست علاقمندی ها"><i
                                                                     class="icon-heart"></i></a>
                                                         {% endif %}
