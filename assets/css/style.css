@@ -3879,7 +3879,7 @@ textarea:-ms-input-placeholder {
 .welcome_title p {
     font-size: 17px;
     line-height: 20px;
-    margin: 22px 0 0;
+    margin: 10px 0 0;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
