@@ -4122,7 +4122,7 @@ textarea:-ms-input-placeholder {
 
 .home_section_bg {
     background: #F8F8F8;
-    padding: 75px 0 80px;
+    padding-buttom: 80px;
 }
 
 @media only screen and (max-width: 767px) {
