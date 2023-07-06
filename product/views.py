@@ -78,7 +78,7 @@ class ProductDetailView(View):
     def get(self, request, pk):
         product = get_object_or_404(Product, id=pk)
         comments = Comment.objects.filter(product=product)
-        related_products = Product.objects.filter(category__title=product.category.title)
+        related_products = Product.objects.filter(category__title=product.category.title).exclude(title=product.title)
         return render(request, "product/product-detail.html", {"product": product,
                                                                "comments": comments,
                                                                "related_products": related_products})
