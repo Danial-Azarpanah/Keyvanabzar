@@ -27,6 +27,65 @@
     <div class="shop_area">
         <div class="container">
             <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <!--sidebar widget start-->
+                    <aside class="sidebar_widget">
+                        <div class="widget_list widget_categories">
+                            <h3>مرتب سازی بر اساس</h3>
+                            <ul>
+                                <li class="widget_sub_categories">
+                                    <ul>
+                                        <li>
+                                            <a href="?filter=most-selling{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">پرفروش
+                                                ترین‌ها</a>
+                                        </li>
+                                        <li>
+                                            <a href="?filter=most-recent{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">جدیدترین‌ها</a>
+                                        </li>
+                                        <li>
+                                            <a href="?filter=cheapest{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">ارزان
+                                                ترین‌ها</a>
+                                        </li>
+                                        <li>
+                                            <a href="?filter=most-expensive{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">گران
+                                                ترین‌ها</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_categories">
+                            <h3>دسته بندی ها</h3>
+                            <ul>
+                                {% for category in categories %}
+                                    {% if not category.parent %}
+                                        <li class="widget_sub_categories"><a
+                                                href="#" class="category-toggle">{{ category.title }}</a>
+                                            <ul class="widget_dropdown_categories" style="display: none">
+                                                {% for child in category.children.all %}
+                                                    {% if child.categories.all %}
+                                                        <li>
+                                                            <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_filter">
+                            <h3>قیمت</h3>
+                            <form id="price-form" action="#">
+                                <div id="slider-range"></div>
+                                <button type="submit">فیلتر</button>
+                                <input type="text" name="price" id="amount"/>
+                            </form>
+                        </div>
+                    </aside>
+                    <!--sidebar widget end-->
+                </div>
                 <div class="col-lg-9 col-md-12">
                     <!--shop banner area end-->
                     <!--shop toolbar start-->
@@ -171,65 +230,6 @@
                     {% endif %}
                     <!--shop toolbar end-->
                     <!--shop wrapper end-->
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <!--sidebar widget start-->
-                    <aside class="sidebar_widget">
-                        <div class="widget_list widget_categories">
-                            <h3>مرتب سازی بر اساس</h3>
-                            <ul>
-                                <li class="widget_sub_categories">
-                                    <ul>
-                                        <li>
-                                            <a href="?filter=most-selling{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">پرفروش
-                                                ترین‌ها</a>
-                                        </li>
-                                        <li>
-                                            <a href="?filter=most-recent{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">جدیدترین‌ها</a>
-                                        </li>
-                                        <li>
-                                            <a href="?filter=cheapest{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">ارزان
-                                                ترین‌ها</a>
-                                        </li>
-                                        <li>
-                                            <a href="?filter=most-expensive{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">گران
-                                                ترین‌ها</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="widget_list widget_categories">
-                            <h3>دسته بندی ها</h3>
-                            <ul>
-                                {% for category in categories %}
-                                    {% if not category.parent %}
-                                        <li class="widget_sub_categories"><a
-                                                href="#" class="category-toggle">{{ category.title }}</a>
-                                            <ul class="widget_dropdown_categories" style="display: none">
-                                                {% for child in category.children.all %}
-                                                    {% if child.categories.all %}
-                                                        <li>
-                                                            <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
-                                                        </li>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="widget_list widget_filter">
-                            <h3>قیمت</h3>
-                            <form id="price-form" action="#">
-                                <div id="slider-range"></div>
-                                <button type="submit">فیلتر</button>
-                                <input type="text" name="price" id="amount"/>
-                            </form>
-                        </div>
-                    </aside>
-                    <!--sidebar widget end-->
                 </div>
             </div>
         </div>
