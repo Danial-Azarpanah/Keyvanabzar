@@ -22,7 +22,7 @@ class Order(models.Model):
             sms = ghasedakpack.Ghasedak("c24ff1b633a6e59dfdb9a5229be300bf1a122ca2fdf17ee3083a346b3d8864e6")
             intro = "ممنون از خرید شما"
             code = f"کد رهگیری سفارش: {self.tracking_code}"
-            prompt = "جهت هماهنگی بیشتر برای ارسال بسته، با شما تماس گرفته خواهد شد"
+            prompt = "جهت هماهنگی برای ارسال بسته در اسرع وقت با شما تماس گرفته خواهد شد."
             respect = "با احترام، فروشگاه دیوالت لند"
 
             sms.send({'message': f'{intro}\n{code}\n{prompt}\n{respect}', 'receptor': f'{self.user.phone_number}',
