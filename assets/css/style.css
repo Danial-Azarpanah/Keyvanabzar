@@ -3852,14 +3852,24 @@ textarea:-ms-input-placeholder {
     font-weight: 600;
 }
 
+.welcome_title h3 strong {
+    font-size: 27px;
+}
+
 @media only screen and (max-width: 767px) {
     .welcome_title h3 {
         font-size: 14px;
     }
 }
 
+@media (max-width: 767px) {
+    .welcome_title h3 strong {
+      font-size: 17px;
+    }
+  }
+
 .welcome_title h2 {
-    font-size: 31px;
+    font-size: 35px;
     line-height: 30px;
     margin: 3px 0 0;
     font-weight: 600;
@@ -3869,17 +3879,26 @@ textarea:-ms-input-placeholder {
     color: #febd17;
 }
 
+.welcome_title h3 span {
+    color: #febd17;
+}
+
+.welcome_title p span {
+    color: #febd17;
+}
+
 @media only screen and (max-width: 767px) {
     .welcome_title h2 {
-        font-size: 18px;
+        font-size: 23px;
         line-height: 20px;
     }
 }
 
 .welcome_title p {
     font-size: 17px;
-    line-height: 20px;
-    margin: 10px 0 0;
+    margin: 22px 0 0;
+    width: 60%;
+    text-align: justify;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

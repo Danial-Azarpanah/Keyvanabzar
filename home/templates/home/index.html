@@ -40,12 +40,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="welcome_title">
-                        <p>فروشگاه دیوالت لند با ۱۳ سال سابقه، مرجع تخصصی ابزار آلات صنعتی دیوالت می‌باشد.</p>
-                        <p>این مجموعه، ابزار آلات با کیفیت دیوالت را که همگی برای استفاده‌های طولانی مدت و تحت شرایط</p>
-                        <p> سخت طراحی شده اند را با کمک مخاطبین و صنعتگران درجه یک کشورمان به راحت ترین و بهترین</p>
-                        <p class="m"> نحو ارائه می‌کند</p>
+                        <h3 style="width: 75%; line-height: 20px" class="mx-auto"><strong>فروشگاه <span>دیوالت لند</span> با ۱۳ سال سابقه</strong><span>،</span> مرجع تخصصی ابزار آلات صنعتی <span>دیوالت</span> می‌باشد.</h3>
+                        <p class="mx-auto">این مجموعه ابزار آلات با کیفیت <span>دیوالت</span> را که همگی برای استفاده‌های طولانی مدت و تحت شرایط سخت طراحی شده اند را با کمک مخاطبین و صنعتگران درجه یک کشورمان به راحت ترین و بهترین نحو ارائه می‌کند.</p>
                         <br>
-                        <h2><span>دیوالت </span>بهترین ابزار صنعتی دنیا</h2>
+                        <h2><span>دیوالت </span>برترین ابزار صنعتی دنیا</h2>
                     </div>
                 </div>
             </div>
@@ -462,15 +460,15 @@
                                                         <div class="product_content">
                                                             <div class="product_content_inner">
                                                                 <h4 class="product_name">
-                                                                <a
-                                                                        href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                                </a>
-                                                            </h4>
-                                                            <h4 class="product_name" style="direction: ltr">
-                                                                <a
-                                                                        href="{% url "product:product-detail" product.id %}">{{ product.id }}
-                                                                </a>
-                                                            </h4>
+                                                                    <a
+                                                                            href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                                    </a>
+                                                                </h4>
+                                                                <h4 class="product_name" style="direction: ltr">
+                                                                    <a
+                                                                            href="{% url "product:product-detail" product.id %}">{{ product.id }}
+                                                                    </a>
+                                                                </h4>
                                                                 <div class="price_box">
                                                                     {% if not product.call_before %}
                                                                         {% if product.discount %}
