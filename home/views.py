@@ -10,7 +10,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["categories"] = Category.objects.filter(image__isnull=False, parent__isnull=True)[:10]
+        context["main_categories"] = Category.objects.exclude(image="")[:10]
         context["most_selling_products"] = Product.objects.order_by("-sale_count")[:10]
         context["most_recent_products"] = Product.objects.order_by("-created_at")[:10]
         context["discounted_products"] = Product.objects.filter(discount__isnull=False, discount__gt=0)[:10]
