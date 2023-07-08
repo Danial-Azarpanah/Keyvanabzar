@@ -63,8 +63,9 @@
                                 <div class="product-title">
                                     <a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }}</a>
                                 </div>
+                                <span class="mobile-hyphen">&nbsp;-&nbsp;</span>
                                 <div class="product-id">
-                                    <a href="#"> &nbsp;- {{ product.id }}</a>
+                                    <a href="#">{{ product.id }}</a>
                                 </div>
                             </h3>
                             {% if product.comments.all.count %}

@@ -39,6 +39,7 @@ class SliderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Favorite)
+admin.site.register(Comparison)
 admin.site.register(Comment)
 admin.site.register(DiscountCode)
 

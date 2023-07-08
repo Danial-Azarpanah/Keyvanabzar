@@ -12809,3 +12809,9 @@ textarea:-ms-input-placeholder {
         margin-top: 15px;
     }
 }
+
+@media (max-width: 767px) {
+  .mobile-hyphen {
+    display: none;
+  }
+}

@@ -51,9 +51,14 @@
                                            class="title">{{ product1.title }}</a>
                                     </td>
                                     <td class="product-image-title">
-                                        <a href="{% url "product:product-detail" product2.id %}" class="image"><img src="{{ product2.pictures.first }}"></a>
-                                        <a href="{% url "product:product-list" %}?category={{ product1.category.slug }}" class="category">{{ product2.category.title }}</a>
-                                        <a href="{% url "product:product-detail" product1.id %}" class="title">{{ product2.title }}</a>
+                                        {% if product2 %}
+                                            <a href="{% url "product:product-detail" product2.id %}" class="image"><img
+                                                    src="{{ product2.pictures.first }}"></a>
+                                            <a href="{% url "product:product-list" %}?category={{ product1.category.slug }}"
+                                               class="category">{{ product2.category.title }}</a>
+                                            <a href="{% url "product:product-detail" product1.id %}"
+                                               class="title">{{ product2.title }}</a>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,19 +88,19 @@
                                     <td class="pro-price">{{ product1.weight }}</td>
                                     <td class="pro-price">{{ product2.weight }}</td>
                                 </tr>
-                                {% for field in fields %}
+                                {% for key, value in fields.items %}
                                     <tr>
-                                        <td class="first-column">{{ field.0 }}</td>
+                                        <td class="first-column">{{ key }}</td>
                                         <td class="pro-price">
-                                            {% if field.1 %}
-                                                {{ field.1 }}
+                                            {% if value.0 %}
+                                                {{ value.0 }}
                                             {% else %}
                                                 -
                                             {% endif %}
                                         </td>
                                         <td class="pro-price">
-                                            {% if field.2 %}
-                                                {{ field.2 }}
+                                            {% if value.1 %}
+                                                {{ value.1 }}
                                             {% else %}
                                                 -
                                             {% endif %}

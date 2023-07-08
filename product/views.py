@@ -162,27 +162,26 @@ class CompareListView(RequiredLoginMixin, View):
 
         product1 = comparison.product1
         product2 = comparison.product2
-        fields = []
+        fields = {}
 
         if product1 and product2:
             for spec in product1.specifications.all():
-                fields.append([spec.title, spec.value, None])
+                fields[f"{spec.title}"] = [spec.value]
             for spec in product2.specifications.all():
-                if [spec.title, spec.value, None] in fields:
-                    index = fields.index([spec.title, spec.value, None])
-                    fields[index][2] = spec.value
+                if spec.title in fields:
+                    fields[f"{spec.title}"].append(spec.value)
                 else:
-                    fields.append([spec.title, None, spec.value])
+                    fields[f"{spec.title}"] = [None, spec.value]
             context = {"product1": product1, "product2": product2, "fields": fields}
 
         elif product1 and not product2:
             for spec in product1.specifications.all():
-                fields.append([spec.title, spec.value, None])
+                fields[f"{spec.title}"] = [spec.value]
             context = {"product1": product1, "fields": fields}
 
         elif product2 and not product1:
             for spec in product2.specifications.all():
-                fields.append([spec.title, spec.value, None])
+                fields[f"{spec.title}"] = [None, spec.value]
             context = {"product1": product2, "fields": fields}
 
         else:
@@ -199,9 +198,11 @@ class RemoveComparisonView(RequiredLoginMixin, View):
 
     def get(self, req, pk):
         comparison = Comparison.objects.get(user=req.user)
-        if comparison.product1.id == pk:
+        if comparison.product1 and comparison.product1.id == pk:
             comparison.product1 = None
-        elif comparison.product2.id == pk:
+            comparison.product1 = comparison.product2
+            comparison.product2 = None
+        elif comparison.product2 and comparison.product2.id == pk:
             comparison.product2 = None
         comparison.save()
 
