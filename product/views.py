@@ -119,26 +119,21 @@ class AddCompareView(RequiredLoginMixin, View):
     def get(self, req, pk):
         product = Product.objects.get(id=pk)
 
-        try:
-            comparison = Comparison.objects.get(user=req.user)
-        except:
-            comparison = Comparison.objects.create(user=req.user)
-
-        if not (comparison.product1 or comparison.product2):
-            comparison.product1 = product
-            comparison.save()
-            return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
-        elif comparison.product1 and not comparison.product2:
-            if comparison.product1.category.title != product.category.title:
+        if Comparison.objects.filter(user=req.user).count() < 4:
+            if Comparison.objects.filter(user=req.user, product=product).exists():
+                return JsonResponse(
+                    {'error': "نمی‌توانید دو کالای یکسان در سبد مقایسه خود داشته باشید"})
+            elif Comparison.objects.filter(Q(user=req.user) & ~Q(product__category=product.category)).exists():
                 return JsonResponse(
                     {'error': "کالای منتخب باید با کالای موجود در لیست مقایسه شما، دسته بندی یکسان داشته باشد"})
-            elif comparison.product1.id == pk:
-                return JsonResponse({'error': 'نمی‌توانید دو کالای یکسان در سبد مقایسه خود داشته باشید'})
-            comparison.product2_id = pk
-            comparison.save()
-            return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
+            else:
+                obj = Comparison.objects.create(user=req.user, product=product)
+                obj.save()
+                return redirect(reverse("product:product-detail", kwargs={"pk": pk}))
         else:
-            return JsonResponse({'error': 'حداکثر ۲ محصول می‌توانید در سبد مقایسه خود داشته باشید'})
+            return JsonResponse(
+                {"error": "نمی‌توانید بیشتر از ۴ کالا برای مقایسه انتخاب کنید"}
+            )
 
 
 class FavoriteListView(RequiredLoginMixin, View):
@@ -155,58 +150,40 @@ class CompareListView(RequiredLoginMixin, View):
     """
 
     def get(self, req):
-        try:
-            comparison = Comparison.objects.get(user=req.user)
-        except:
-            return render(req, "product/comparison-list.html", {})
-
-        product1 = comparison.product1
-        product2 = comparison.product2
+        products = []
         fields = {}
+        max_length = 0
 
-        if product1 and product2:
-            for spec in product1.specifications.all():
-                fields[f"{spec.title}"] = [spec.value]
-            for spec in product2.specifications.all():
+        items = Comparison.objects.filter(user=req.user)
+        for item in items:
+            products.append(item.product)
+
+        for i, product in enumerate(products):
+            for spec in product.specifications.all():
                 if spec.title in fields:
-                    fields[f"{spec.title}"].append(spec.value)
+                    fields[f"{spec.title}"].append([i, spec.value])
                 else:
-                    fields[f"{spec.title}"] = [None, spec.value]
-            context = {"product1": product1, "product2": product2, "fields": fields}
+                    fields[f"{spec.title}"] = [[i, spec.value]]
+                    
+        for i in fields.values():
+            if len(i) > max_length:
+                max_length = len(i)
 
-        elif product1 and not product2:
-            for spec in product1.specifications.all():
-                fields[f"{spec.title}"] = [spec.value]
-            context = {"product1": product1, "fields": fields}
-
-        elif product2 and not product1:
-            for spec in product2.specifications.all():
-                fields[f"{spec.title}"] = [None, spec.value]
-            context = {"product1": product2, "fields": fields}
-
-        else:
-            context = {}
-
+        context = {"products": products, "fields": fields, "max_length": max_length}
         return render(req, "product/comparison-list.html", context)
 
 
 class RemoveComparisonView(RequiredLoginMixin, View):
     """
     View for removing a product
-    from the comparison object
+    from the comparison list
     """
 
     def get(self, req, pk):
-        comparison = Comparison.objects.get(user=req.user)
-        if comparison.product1 and comparison.product1.id == pk:
-            comparison.product1 = None
-            comparison.product1 = comparison.product2
-            comparison.product2 = None
-        elif comparison.product2 and comparison.product2.id == pk:
-            comparison.product2 = None
-        comparison.save()
+        comparison = Comparison.objects.get(user=req.user, product_id=pk)
+        comparison.delete()
 
-        return CompareListView.as_view()(req)
+        return redirect("product:comparison-list")
 
 
 def export_products_csv(request):

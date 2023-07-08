@@ -32,143 +32,151 @@
 
                     <!-- Compare Table -->
                     <div class="compare-table table-responsive">
-                        {% if product1 or product2 %}
+                        {% if products %}
                             <table class="table mb-0">
                                 <tbody>
                                 <tr>
                                     <td class="first-column">کد محصول</td>
-                                    <td class="pro-price">{{ product1.id }}</td>
-                                    <td class="pro-price">{{ product2.id }}</td>
+                                    {% for product in products %}
+                                        <td class="pro-price">{{ product.id }}</td>
+                                    {% endfor %}
                                 </tr>
                                 <tr>
                                     <td class="first-column">محصول</td>
-                                    <td class="product-image-title">
-                                        <a href="{% url "product:product-detail" product1.id %}" class="image"><img
-                                                src="{{ product1.pictures.first }}"></a>
-                                        <a href="{% url "product:product-list" %}?category={{ product1.category.slug }}"
-                                           class="category">{{ product1.category.title }}</a>
-                                        <a href="{% url "product:product-detail" product1.id %}"
-                                           class="title">{{ product1.title }}</a>
-                                    </td>
-                                    <td class="product-image-title">
-                                        {% if product2 %}
-                                            <a href="{% url "product:product-detail" product2.id %}" class="image"><img
-                                                    src="{{ product2.pictures.first }}"></a>
-                                            <a href="{% url "product:product-list" %}?category={{ product1.category.slug }}"
-                                               class="category">{{ product2.category.title }}</a>
-                                            <a href="{% url "product:product-detail" product1.id %}"
-                                               class="title">{{ product2.title }}</a>
-                                        {% endif %}
-                                    </td>
+                                    {% for product in products %}
+                                        <td class="product-image-title">
+                                            <a href="{% url "product:product-detail" product.id %}" class="image"><img
+                                                    src="{{ product.pictures.first }}"></a>
+                                            <a href="{% url "product:product-list" %}?category={{ product.category.slug }}"
+                                               class="category">{{ product.category.title }}</a>
+                                            <a href="{% url "product:product-detail" product.id %}"
+                                               class="title">{{ product.title }}</a>
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>ویژگی‌ها</td>
+                                    {% for product in products %}
+                                        <td>
+                                            {% for feature in product.features.all %}
+                                                <p>
+                                                    <span><i class="fa fa-check"></i> {{ feature.text }}</span>
+                                                </p>
+                                            {% endfor %}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>اقلام همراه</td>
+                                    {% for product in products %}
+                                        <td>
+                                            {% for item in product.additional_items.all %}
+                                                <p>
+                                                    <span><i class="fa fa-asterisk"></i> {{ item.item }}</span>
+                                                </p>
+                                            {% endfor %}
+                                        </td>
+                                    {% endfor %}
                                 </tr>
                                 <tr>
                                     <td class="first-column">کشور مونتاژ کننده</td>
-                                    <td class="pro-price">{{ product1.country }}</td>
-                                    <td class="pro-price">{{ product2.country }}</td>
+                                    {% for product in products %}
+                                        <td class="pro-price">{{ product.country }}</td>
+                                    {% endfor %}
                                 </tr>
                                 <tr>
                                     <td class="first-column">قیمت</td>
-                                    <td class="pro-price">
-                                        {% if not product1.call_before %}
-                                            {{ product1.get_discounted_price }}
-                                        {% else %}
-                                            -
-                                        {% endif %}
-                                    </td>
-                                    <td class="pro-price">
-                                        {% if not product2.call_before %}
-                                            {{ product2.get_discounted_price }}
-                                        {% else %}
-                                            -
-                                        {% endif %}
-                                    </td>
+                                    {% for product in products %}
+                                        <td class="pro-price">
+                                            {% if not product.call_before %}
+                                                {{ product.get_discounted_price }}
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
                                 </tr>
                                 <tr>
                                     <td class="first-column">وزن</td>
-                                    <td class="pro-price">{{ product1.weight }}</td>
-                                    <td class="pro-price">{{ product2.weight }}</td>
+                                    {% for product in products %}
+                                        <td class="pro-price">{{ product.weight }}</td>
+                                    {% endfor %}
                                 </tr>
                                 {% for key, value in fields.items %}
                                     <tr>
                                         <td class="first-column">{{ key }}</td>
                                         <td class="pro-price">
-                                            {% if value.0 %}
-                                                {{ value.0 }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
+                                            {% for i in value %}
+                                                {% if i.0 == 0 %}
+                                                    {{ i.1 }}
+                                                {% endif %}
+                                            {% endfor %}
                                         </td>
-                                        <td class="pro-price">
-                                            {% if value.1 %}
-                                                {{ value.1 }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
+                                        {% if max_length == 2 or max_length == 3 or max_length == 4 %}
+                                            <td class="pro-price">
+                                                {% for i in value %}
+                                                    {% if i.0 == 1 %}
+                                                        {{ i.1 }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                        {% endif %}
+                                        {% if max_length == 3 or max_length == 4 %}
+                                            <td class="pro-price">
+                                                {% for i in value %}
+                                                    {% if i.0 == 2 %}
+                                                        {{ i.1 }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                        {% endif %}
+                                        {% if max_length == 4 %}
+                                            <td class="pro-price">
+                                                {% for i in value %}
+                                                    {% if i.0 == 3 %}
+                                                        {{ i.1 }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                        {% endif %}
                                     </tr>
                                 {% endfor %}
                                 <tr>
                                     <td class="first-column">افزودن به سبد خرید</td>
-                                    {% if product1 and not product1.call_before %}
+                                    {% for product in products %}
+                                        {% if not product.call_before %}
+                                            <td class="product_total">
 
-                                        <td class="product_total">
+                                                <form method="post">
+                                                    {% csrf_token %}
 
-                                            <form method="post">
-                                                {% csrf_token %}
+                                                    <input min="1" max="100" value="1" type="number"
+                                                           id="quantity" hidden>
 
-                                                <input min="1" max="100" value="1" type="number"
-                                                       id="quantity" hidden>
+                                                    <button onclick="AddToCart('{{ product.id }}')"
+                                                            class="button"
+                                                            type="button"
+                                                            style="border-radius: 8px; border-width: 0px"
+                                                            title="افزودن به سبد خرید">افزودن به سبد
+                                                        خرید
+                                                    </button>
 
-                                                <button onclick="AddToCart('{{ product1.id }}')"
-                                                        class="button"
-                                                        type="button"
-                                                        style="border-radius: 8px; border-width: 0px"
-                                                        title="افزودن به سبد خرید">افزودن به سبد
-                                                    خرید
-                                                </button>
+                                                </form>
 
-                                            </form>
-
-                                        </td>
-                                    {% else %}
-                                        <td>-</td>
-                                    {% endif %}
-                                    {% if product2 and not product2.call_before %}
-                                        <td class="pro-addtocart">
-                                            <form method="post">
-                                                {% csrf_token %}
-
-                                                <input min="1" max="100" value="1" type="number"
-                                                       id="quantity" hidden>
-
-                                                <button onclick="AddToCart('{{ product2.id }}')"
-                                                        class="button"
-                                                        type="button"
-                                                        style="border-radius: 8px; border-width: 0px"
-                                                        title="افزودن به سبد خرید">افزودن به سبد
-                                                    خرید
-                                                </button>
-
-                                            </form>
-                                        </td>
-                                    {% else %}
-                                        <td>-</td>
-                                    {% endif %}
+                                            </td>
+                                        {% else %}
+                                            <td> -</td>
+                                        {% endif %}
+                                    {% endfor %}
                                 </tr>
                                 <tr>
                                     <td class="first-column">حذف</td>
-                                    {% if product1 %}
+                                    {% for product in products %}
                                         <td class="pro-remove">
-                                            <a href="{% url "product:remove-comparison" product1.id %}"><i
+                                            <a href="{% url "product:remove-comparison" product.id %}"><i
                                                     class="fa fa-trash" style="font-size: x-large; color: red"></i></a>
                                         </td>
-                                    {% endif %}
-                                    {% if product2 %}
-                                        <td class="pro-remove">
-                                            <a href="{% url "product:remove-comparison" product2.id %}"><i
-                                                    class="fa fa-trash" style="font-size: x-large; color: red"></i></a>
-                                        </td>
-                                    {% endif %}
+                                    {% endfor %}
                                 </tr>
                                 </tbody>
                             </table>

@@ -173,17 +173,18 @@ class Comparison(models.Model):
     """
     Model to save the products user wants to compare
     """
-    user = models.OneToOneField(User, on_delete=models.CASCADE,
-                                related_name="comparison", verbose_name="کاربر")
-    product1 = models.ForeignKey(Product, on_delete=models.SET_NULL,
-                                 related_name="productcompare1", verbose_name="کالای اول",
-                                 null=True, blank=True)
-    product2 = models.ForeignKey(Product, on_delete=models.SET_NULL,
-                                 related_name="productcompare2", verbose_name="کالای دوم",
-                                 null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name="comparison", verbose_name="کاربر")
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL,
+                                related_name="comparison", verbose_name="کالای اول",
+                                null=True, blank=True)
 
     def __str__(self):
         return self.user.fullname
+
+    class Meta:
+        verbose_name = "مقایسه"
+        verbose_name_plural = "مقایسه‌ها"
 
 
 class Comment(models.Model):
