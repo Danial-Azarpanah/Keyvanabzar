@@ -196,46 +196,39 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="product_d_inner">
-                            <div class="product_info_button">
-                                <ul class="nav" role="tablist" id="nav-tab">
-                                    <li>
-                                        <a class="active" data-bs-toggle="tab" href="#info" role="tab"
-                                           aria-controls="info" aria-selected="false">توضیحات</a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
-                                           aria-selected="false">مشخصات</a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                           aria-selected="false"> نظرات ({{ comments.all.count }})</a>
-                                    </li>
-                                </ul>
-                            </div>
                             <div class="tab-content">
-                                <div class="tab-pane fade show active" id="info" role="tabpanel">
-                                    <div class="product_info_content">
-                                        <p>{{ product.description }}</p>
+                                <div class="product-detail-tabs">
+                                    <h3 class="active product-description" role="tab" aria-controls="info"
+                                        aria-selected="false">توضیحات</h3>
+                                </div>
+                                <div class="show active" id="info" role="tabpanel">
+                                    <div class="product_info_content product-descriptino-div">
+                                        <p class="product-description-p">{{ product.description }}</p>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="sheet" role="tabpanel">
-                                    <div class="product_d_table">
-                                        <form action="#">
-                                            <table>
+                                <div class="mt-60 product-detail-tabs">
+                                    <h3 class="active product-specs" role="tab" aria-controls="info"
+                                        aria-selected="false">مشخصات</h3>
+                                </div>
+                                <div class="show active" id="sheet" role="tabpanel">
+                                    <div class="product_d_table container w-75">
+                                            <table class="product-spec-table">
                                                 <tbody>
                                                 {% for spec in product.specifications.all %}
                                                     <tr>
-                                                        <td class="first_child">{{ spec.title }}</td>
-                                                        <td>{{ spec.value }}</td>
+                                                        <td class="first_child" style="border: 3px white solid; border-radius: 15px; text-align: center">{{ spec.title }}</td>
+                                                        <td style="border: 3px white solid; border-radius: 10px; text-align: center">{{ spec.value }}</td>
                                                     </tr>
                                                 {% endfor %}
                                                 </tbody>
                                             </table>
-                                        </form>
                                     </div>
                                 </div>
-
-                                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                <div class="mt-60 product-detail-tabs">
+                                    <h3 class="active product-comments" role="tab" aria-controls="info"
+                                        aria-selected="false">نظرات</h3>
+                                </div>
+                                <div class="show active" id="reviews" role="tabpanel">
                                     <div class="reviews_wrapper">
                                         <div class="comment_title">
                                             <h2>افزودن نظر</h2>
