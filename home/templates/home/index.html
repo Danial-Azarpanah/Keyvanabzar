@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="welcome_title">
-                        <h3 style="width: 75%; line-height: 20px" class="mx-auto">
+                        <h3 class="mx-auto">
                             <strong>فروشگاه<span> دیوالت لند</span> با ۱۳ سال سابقه</strong><span>،</span> مرجع تخصصی
                             ابزار آلات صنعتی <span>دیوالت</span> می‌باشد.</h3>
                         <p class="mx-auto">این مجموعه، ابزار آلات با کیفیت <span>دیوالت</span> را که همگی برای
@@ -140,7 +140,7 @@
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 </a>
                                                             </h4>
-                                                            <h4 class="product_name" style="direction: ltr">
+                                                            <h4 class="product_name product-id-list">
                                                                 <a
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.id }}
                                                                 </a>
@@ -172,9 +172,8 @@
                                                                                    id="quantity" hidden>
 
                                                                             <button onclick="AddToCart('{{ product.id }}')"
-                                                                                    class="button"
+                                                                                    class="button add-to-cart-list"
                                                                                     type="button"
-                                                                                    style="border-radius: 8px; border-width: 0px"
                                                                                     title="افزودن به سبد خرید">افزودن به
                                                                                 سبد
                                                                                 خرید
@@ -182,9 +181,8 @@
                                                                         </form>
                                                                     {% else %}
                                                                         <a href="{% url "product:product-detail" product.id %}"
-                                                                           class="button"
+                                                                           class="button add-to-cart-list"
                                                                            type="button"
-                                                                           style="border-radius: 8px; border-width: 0px"
                                                                            title="افزودن به سبد خرید">اطلاعات بیشتر
                                                                         </a>
                                                                     {% endif %}
@@ -241,7 +239,7 @@
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 </a>
                                                             </h4>
-                                                            <h4 class="product_name" style="direction: ltr">
+                                                            <h4 class="product_name product-id-list">
                                                                 <a
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.id }}
                                                                 </a>
@@ -273,9 +271,8 @@
                                                                                    id="quantity" hidden>
 
                                                                             <button onclick="AddToCart('{{ product.id }}')"
-                                                                                    class="button"
+                                                                                    class="button add-to-cart-list"
                                                                                     type="button"
-                                                                                    style="border-radius: 8px; border-width: 0px"
                                                                                     title="افزودن به سبد خرید">افزودن به
                                                                                 سبد
                                                                                 خرید
@@ -283,9 +280,8 @@
                                                                         </form>
                                                                     {% else %}
                                                                         <a href="{% url "product:product-detail" product.id %}"
-                                                                           class="button"
+                                                                           class="button add-to-cart-list"
                                                                            type="button"
-                                                                           style="border-radius: 8px; border-width: 0px"
                                                                            title="افزودن به سبد خرید">اطلاعات بیشتر
                                                                         </a>
                                                                     {% endif %}
@@ -342,7 +338,7 @@
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                 </a>
                                                             </h4>
-                                                            <h4 class="product_name" style="direction: ltr">
+                                                            <h4 class="product_name product-id-list">
                                                                 <a
                                                                         href="{% url "product:product-detail" product.id %}">{{ product.id }}
                                                                 </a>
@@ -374,9 +370,8 @@
                                                                                    id="quantity" hidden>
 
                                                                             <button onclick="AddToCart('{{ product.id }}')"
-                                                                                    class="button"
+                                                                                    class="button add-to-cart-list"
                                                                                     type="button"
-                                                                                    style="border-radius: 8px; border-width: 0px"
                                                                                     title="افزودن به سبد خرید">افزودن به
                                                                                 سبد
                                                                                 خرید
@@ -384,9 +379,8 @@
                                                                         </form>
                                                                     {% else %}
                                                                         <a href="{% url "product:product-detail" product.id %}"
-                                                                           class="button"
+                                                                           class="button add-to-cart-list"
                                                                            type="button"
-                                                                           style="border-radius: 8px; border-width: 0px"
                                                                            title="افزودن به سبد خرید">اطلاعات بیشتر
                                                                         </a>
                                                                     {% endif %}
@@ -417,7 +411,7 @@
             </div>
         </div>
         {% if discounted_products.all %}
-            <div class="product_area" style="background: #febd17; border-radius: 50px; border: black 1.5px solid">
+            <div class="product_area special-products">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -464,7 +458,7 @@
                                                                             href="{% url "product:product-detail" product.id %}">{{ product.title }}
                                                                     </a>
                                                                 </h4>
-                                                                <h4 class="product_name" style="direction: ltr">
+                                                                <h4 class="product_name product-id-list">
                                                                     <a
                                                                             href="{% url "product:product-detail" product.id %}">{{ product.id }}
                                                                     </a>
@@ -496,9 +490,8 @@
                                                                                        id="quantity" hidden>
 
                                                                                 <button onclick="AddToCart('{{ product.id }}')"
-                                                                                        class="button"
+                                                                                        class="button add-to-cart-list"
                                                                                         type="button"
-                                                                                        style="border-radius: 8px; border-width: 0px"
                                                                                         title="افزودن به سبد خرید">
                                                                                     افزودن به
                                                                                     سبد
@@ -507,9 +500,8 @@
                                                                             </form>
                                                                         {% else %}
                                                                             <a href="{% url "product:product-detail" product.id %}"
-                                                                               class="button"
+                                                                               class="button add-to-cart-list"
                                                                                type="button"
-                                                                               style="border-radius: 8px; border-width: 0px"
                                                                                title="افزودن به سبد خرید">اطلاعات بیشتر
                                                                             </a>
                                                                         {% endif %}

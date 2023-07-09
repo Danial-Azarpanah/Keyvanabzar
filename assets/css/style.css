@@ -4354,6 +4354,21 @@ textarea:-ms-input-placeholder {
     margin-bottom: 7px;
 }
 
+.add-to-cart-list {
+    border-radius: 8px;
+    border-width: 0px
+}
+
+.product-id-list {
+    direction: ltr;
+}
+
+.special-products {
+    background: #febd17;
+    border-radius: 50px;
+    border: black 1.5px solid
+}
+
 .product_content h4 a:hover {
     color: #febd17;
     text-decoration: underline;
@@ -12873,4 +12888,9 @@ textarea:-ms-input-placeholder {
     .mobile-hyphen {
         display: none;
     }
+}
+
+.welcome_title h3 {
+    width: 75%;
+    line-height: 20px
 }
