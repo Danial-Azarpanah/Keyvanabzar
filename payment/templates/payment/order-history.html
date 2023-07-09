@@ -64,19 +64,5 @@
         </div>
     </div>
     <!--shopping cart area end -->
-    <script>
-        function updateDeliverySelection(value) {
-            document.getElementById('delivery-selection').value = value;
-            if (value !== "post") {
-                document.getElementById('delivery-cost').hidden = true
-                document.getElementById('total-and-post').hidden = true
-                document.getElementById('total').hidden = false
-            } else {
-                document.getElementById('delivery-cost').hidden = false
-                document.getElementById('total-and-post').hidden = false
-                document.getElementById('total').hidden = true
-            }
-        }
-    </script>
 
 {% endblock %}

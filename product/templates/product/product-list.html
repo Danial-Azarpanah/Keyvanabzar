@@ -235,24 +235,4 @@
         </div>
     </div>
     <!--shop  area end-->
-    <script>
-        // Get a reference to the form and input elements
-        const form = document.getElementById('price-form');
-        const input = document.getElementById('amount');
-
-        // Add a listener for the form submission event
-        form.addEventListener('submit', (event) => {
-            // Prevent the default form submission behavior
-            event.preventDefault();
-
-            // Get the current URL and parse it into its parts
-            const url = new URL(window.location.href);
-
-            // Set the value of the "text" parameter to the input value
-            url.searchParams.set('price', input.value);
-
-            // Redirect to the new URL
-            window.location.href = url.toString();
-        });
-    </script>
 {% endblock %}
