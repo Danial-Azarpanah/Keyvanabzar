@@ -110,7 +110,11 @@
                                         <td class="pro-price">
                                             {% for i in value %}
                                                 {% if i.0 == 0 %}
-                                                    {{ i.1 }}
+                                                    {% if i.1 %}
+                                                        {{ i.1 }}
+                                                    {% else %}
+
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endfor %}
                                         </td>
@@ -118,7 +122,11 @@
                                             <td class="pro-price">
                                                 {% for i in value %}
                                                     {% if i.0 == 1 %}
-                                                        {{ i.1 }}
+                                                        {% if i.1 %}
+                                                            {{ i.1 }}
+                                                        {% else %}
+
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor %}
                                             </td>
@@ -127,7 +135,11 @@
                                             <td class="pro-price">
                                                 {% for i in value %}
                                                     {% if i.0 == 2 %}
-                                                        {{ i.1 }}
+                                                        {% if i.1 %}
+                                                            {{ i.1 }}
+                                                        {% else %}
+
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor %}
                                             </td>
@@ -136,7 +148,11 @@
                                             <td class="pro-price">
                                                 {% for i in value %}
                                                     {% if i.0 == 3 %}
-                                                        {{ i.1 }}
+                                                        {% if i.1 %}
+                                                            {{ i.1 }}
+                                                        {% else %}
+
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor %}
                                             </td>

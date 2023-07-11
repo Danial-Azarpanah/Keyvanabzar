@@ -212,16 +212,23 @@
                                 </div>
                                 <div class="show active" id="sheet" role="tabpanel">
                                     <div class="product_d_table container w-75">
-                                            <table class="product-spec-table">
-                                                <tbody>
-                                                {% for spec in product.specifications.all %}
-                                                    <tr>
-                                                        <td class="first_child" style="border: 3px white solid; border-radius: 15px; text-align: center">{{ spec.title }}</td>
-                                                        <td style="border: 3px white solid; border-radius: 10px; text-align: center">{{ spec.value }}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
+                                        <table class="product-spec-table">
+                                            <tbody>
+                                            {% for spec in product.specifications.all %}
+                                                <tr>
+                                                    <td class="first_child"
+                                                        style="border: 3px white solid; border-radius: 15px; text-align: center">{{ spec.title }}</td>
+                                                    <td style="border: 3px white solid; border-radius: 10px; text-align: center">
+                                                        {% if spec.value %}
+                                                            {{ spec.value }}
+                                                        {% else %}
+
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                                 <div class="mt-60 product-detail-tabs">
