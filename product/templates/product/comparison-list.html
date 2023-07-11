@@ -45,7 +45,9 @@
                                     <td class="first-column">محصول</td>
                                     {% for product in products %}
                                         <td class="product-image-title">
-                                            <a href="{% url "product:product-detail" product.id %}" class="image"><img
+                                            <a href="{% url "product:product-detail" product.id %}"
+                                               class="comparison-image-link"><img
+                                                    class="comparison-image"
                                                     src="{{ product.pictures.first }}"></a>
                                             <a href="{% url "product:product-list" %}?category={{ product.category.slug }}"
                                                class="category">{{ product.category.title }}</a>

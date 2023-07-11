@@ -12894,3 +12894,16 @@ textarea:-ms-input-placeholder {
     width: 75%;
     line-height: 20px
 }
+
+.comparison-image-link {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.comparison-image {
+    width: 100%;
+    height: auto;
+}
