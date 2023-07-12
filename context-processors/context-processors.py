@@ -1,4 +1,4 @@
-from product.models import Category
+from product.models import Category, Favorite
 from accounts.models import Info
 from payment.cart import Cart
 
@@ -14,3 +14,7 @@ def cart_info(req):
 
 def info(req):
     return {'info': Info.objects.last()}
+
+
+def favorites(req):
+    return {'favorite_products': Favorite.objects.filter(user=req.user).values_list('product_id', flat=True)}

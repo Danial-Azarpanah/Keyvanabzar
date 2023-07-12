@@ -180,13 +180,31 @@
                                                     <li class="wishlist">
                                                         {% if request.user.is_authenticated %}
                                                             <a onclick="AddFavorite('{{ product.id }}')"
-                                                               title="افزودن به لیست علاقمندی ها"><i
-                                                                    class="icon-heart"></i></a>
+                                                               title="افزودن به لیست علاقمندی ها">
+                                                                {% if product.id in favorite_products %}
+                                                                    <i class="icon-heart2"></i>
+                                                                {% else %}
+                                                                    <i class="icon-heart"></i>
+                                                                {% endif %}
+                                                            </a>
                                                         {% else %}
-                                                            <a href="{% url "accounts:sign-in" %}?return_to=/product-list"
+                                                            <a href="{% url "accounts:sign-in" %}"
                                                                title="افزودن به لیست علاقمندی ها"><i
                                                                     class="icon-heart"></i></a>
                                                         {% endif %}
+
+
+                                                    <li class="compare">
+                                                        {% if request.user.is_authenticated %}
+                                                            <a onclick="AddCompare('{{ product.id }}')" title="مقایسه">
+                                                                <i class="icon-rotate-cw"></i>
+                                                            </a>
+                                                        {% else %}
+                                                            <a href="{% url "accounts:sign-in" %}" title="مقایسه">
+                                                                <i class="icon-rotate-cw"></i>
+                                                            </a>
+                                                        {% endif %}
+                                                    </li>
                                                     </li>
                                                 </ul>
                                             </div>

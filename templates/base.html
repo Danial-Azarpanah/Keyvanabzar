@@ -46,9 +46,8 @@
                         <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                     </div>
                     <div class="call_support">
-                        <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما : <a
-                                href="tel:{{ info.phone_number }}">{{ info.telephone }}</a></span></p>
-
+                        <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با فروشگاه : <a
+                                href="tel:{{ info.telephone }}">{{ info.telephone }}</a></span></p>
                     </div>
                     <div class="search_container">
                         <form action="{% url "product:product-list" %}">
@@ -73,7 +72,6 @@
                                         {% if request.user.is_authenticated %}
                                             <a href="{% url "accounts:edit-profile" %}">اطلاعات من</a>
                                             <a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a>
-                                            <a href="{% url "product:comparison-list" %}">مقایسه محصولات</a>
                                             <a href="{% url "accounts:log-out" %}">خروج از حساب</a>
                                         {% else %}
                                             <a href="{% url "accounts:sign-up" %}">ثبت نام</a>
@@ -84,6 +82,9 @@
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{% url "product:product-list" %}">لیست محصولات</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{% url "product:comparison-list" %}">مقایسه</a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{% url "blog:list" %}">وبلاگ</a>
@@ -257,26 +258,29 @@
                                             {% if request.user.is_authenticated %}
                                                 <li><a href="{% url "accounts:edit-profile" %}">اطلاعات من</a></li>
                                                 <li><a href="{% url "payment:order-history" %}">تاریخچه سفارشات</a></li>
-                                                <li><a href="{% url 'product:comparison-list' %}">مقایسه محصولات</a>
                                                 </li>
                                                 <li><a href="{% url "accounts:log-out" %}">خروج از حساب</a></li>
                                             {% else %}
                                                 <li><a href="{% url "accounts:sign-up" %}">ثبت نام</a></li>
                                                 <li><a href="{% url "accounts:sign-in" %}">ورود</a></li>
                                             {% endif %}
-                                        </ul>
-                                    </li>
-                                    <li><a href="{% url 'product:product-list' %}">لیست محصولات</a></li>
-                                    <li><a href="{% url "blog:list" %}">وبلاگ</a></li>
-                                    <li><a href="{% url "accounts:contact-us" %}"> تماس با ما</a></li>
+                                </ul>
+                                </li>
+                                <li><a href="{% url 'product:product-list' %}">لیست محصولات</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'product:comparison-list' %}">مقایسه</a></li>
+                                {% endif %}
+                                <li><a href="{% url "blog:list" %}">وبلاگ</a></li>
+                                <li><a href="{% url "accounts:contact-us" %}"> تماس با ما</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="call_support text-right">
-                            <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما: <a
-                                    href="tel:{{ info.phone_number }}">{{ info.telephone }}</a></span></p>
+                        <div class="call_support text-right" style="direction: ltr">
+                            <p><span>تماس با فروشگاه: <a
+                                    href="tel:{{ info.telephone }}">{{ info.telephone }}</a></span>
+                            <i class="icon-phone-call" style="color: #febd17" aria-hidden="true"></i></p>
                         </div>
                     </div>
                 </div>

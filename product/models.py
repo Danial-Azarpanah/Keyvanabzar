@@ -23,7 +23,7 @@ class Category(MPTTModel):
     class Meta:
         verbose_name = 'دسته بندی'
         verbose_name_plural = 'دسته بندی‌ ها'
-        ordering = ['parent__id']
+        ordering = ['parent__id', "-id"]
 
 
 class Product(models.Model):
