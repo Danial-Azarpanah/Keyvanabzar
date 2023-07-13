@@ -17,4 +17,6 @@ def info(req):
 
 
 def favorites(req):
-    return {'favorite_products': Favorite.objects.filter(user=req.user).values_list('product_id', flat=True)}
+    if req.user.is_authenticated:
+        return {'favorite_products': Favorite.objects.filter(user=req.user).values_list('product_id', flat=True)}
+    return []
