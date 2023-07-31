@@ -47,14 +47,16 @@ function AddCompare(id) {
 
 function AddFavorite(id) {
     $.get(`/add-favorite/${id}`).then(response => {
-        if (response['response'] === 'exists') {
+        if (response['response'] === 'deleted') {
             Swal.fire({
                 position: 'top-end-right',
-                icon: 'warning',
-                text: 'این محصول داخل لیست علاقه مندی های شما وجود دارد',
+                icon: 'success',
+                text: 'این محصول از علاقه مندی‌های شما حذف شد',
                 showConfirmButton: false,
                 confirmButtonColor: '#112031',
                 timer: 1500
+            }).then(function () {
+                location.reload()
             })
         } else {
             Swal.fire({

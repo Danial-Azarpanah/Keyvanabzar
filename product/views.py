@@ -97,9 +97,11 @@ class ProductDetailView(View):
 
 class AddFavoriteView(RequiredLoginMixin, View):
     def get(self, req, pk):
-        if Favorite.objects.filter(product_id=pk, user_id=req.user.id).exists():
-            return JsonResponse({'response': 'exists'})
-        else:
+        try:
+            obj = Favorite.objects.get(product_id=pk, user_id=req.user.id)
+            obj.delete()
+            return JsonResponse({'response': 'deleted'})
+        except:
             Favorite.objects.create(product_id=pk, user_id=req.user.id)
             return JsonResponse({'response': 'created'})
 
