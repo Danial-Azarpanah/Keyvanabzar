@@ -8180,9 +8180,10 @@ textarea:-ms-input-placeholder {
 .product-description-p {
     background: #1a1a1a;
     opacity: 40%;
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px;
-    color: white
+    color: white;
+    text-align: justify;
 }
 
 .product-spec-table {
