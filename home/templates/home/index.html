@@ -43,7 +43,8 @@
                         <h3 class="mx-auto">
                             <strong>فروشگاه<span> دیوالت لند</span> با ۱۳ سال سابقه</strong><span>،</span> مرجع تخصصی
                             ابزار آلات صنعتی <span>دیوالت</span> می‌باشد.</h3>
-                        <p class="mx-auto">این مجموعه، ابزار آلات با کیفیت <span>دیوالت</span> را که همگی برای
+                        <p class="mx-auto text-center">این مجموعه، ابزار آلات با کیفیت <span>دیوالت</span> را که همگی
+                            برای
                             استفاده‌های طولانی مدت و تحت شرایط سخت طراحی شده اند را با کمک مخاطبین و صنعتگران درجه یک
                             کشورمان به راحت ترین و بهترین نحو ارائه می‌کند.</p>
                         <br>
@@ -626,49 +627,52 @@
 
         <!--blog area start-->
         <div class="blog_area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section_title title_style2">
-                            <div class="title_content">
-                                <h2><span>آخرین</span> پست های وبلاگ</h2>
+            {% if articles %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section_title title_style2">
+                                <div class="title_content">
+                                    <h2><span>آخرین</span> پست های وبلاگ</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="blog_container blog_column4 owl-carousel">
-                        {% for article in articles %}
-                            <div class="col-lg-3">
-                                <article class="single_blog">
-                                    <figure>
-                                        <div class="blog_thumb">
-                                            <a href="{% url "blog:detail" article.slug %}"><img
-                                                    src="{{ article.image.url }}"
-                                                    alt=""></a>
-                                        </div>
-                                        <figcaption class="blog_content">
-                                            <h4><a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a>
-                                            </h4>
-                                            <div class="post_meta">
-                                                <p>
-                                                    <a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a>
-                                                    / {{ article.get_jalali_date }}</p>
+                    <div class="row">
+                        <div class="blog_container blog_column4 owl-carousel">
+                            {% for article in articles %}
+                                <div class="col-lg-3">
+                                    <article class="single_blog">
+                                        <figure>
+                                            <div class="blog_thumb">
+                                                <a href="{% url "blog:detail" article.slug %}"><img
+                                                        src="{{ article.image.url }}"
+                                                        alt=""></a>
                                             </div>
-                                            <div class="post_desc">
-                                                <p>{{ article.short_content|safe }}</p>
-                                            </div>
-                                            <footer class="post_readmore">
-                                                <a href="{% url "blog:detail" article.slug %}">ادامه خواندن</a>
-                                            </footer>
-                                        </figcaption>
-                                    </figure>
-                                </article>
-                            </div>
-                        {% endfor %}
+                                            <figcaption class="blog_content">
+                                                <h4>
+                                                    <a href="{% url "blog:detail" article.slug %}">{{ article.title }} </a>
+                                                </h4>
+                                                <div class="post_meta">
+                                                    <p>
+                                                        <a href="{% url "blog:list" %}?category={{ article.category.slug }}">{{ article.category.title }}</a>
+                                                        / {{ article.get_jalali_date }}</p>
+                                                </div>
+                                                <div class="post_desc">
+                                                    <p>{{ article.short_content|safe }}</p>
+                                                </div>
+                                                <footer class="post_readmore">
+                                                    <a href="{% url "blog:detail" article.slug %}">ادامه خواندن</a>
+                                                </footer>
+                                            </figcaption>
+                                        </figure>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
         <!--blog area end-->
     </div>
