@@ -9,8 +9,8 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
 CSRF_TRUSTED_ORIGINS = ['https://*.dewalt-land.com']
 
 
@@ -72,23 +72,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Dewalt.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "dewaltla_dewalt-land",
-        "USER": "dewaltla_admin",
-        "PASSWORD": "daniel8203",
-        "HOST": "127.0.0.1",
-        "PORT": "3306"
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "dewaltla_dewalt-land",
+#         "USER": "dewaltla_admin",
+#         "PASSWORD": "daniel8203",
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306"
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -120,12 +120,12 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     path.join(BASE_DIR, "assets")
 ]
-STATIC_ROOT = "/home/dewaltla/public_html/static"
-# STATIC_ROOT = path.join(BASE_DIR, "static")
+# STATIC_ROOT = "/home/dewaltla/public_html/static"
+STATIC_ROOT = path.join(BASE_DIR, "static")
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = "/home/dewaltla/public_html/media"
-# MEDIA_ROOT = path.join(BASE_DIR, "media")
+# MEDIA_ROOT = "/home/dewaltla/public_html/media"
+MEDIA_ROOT = path.join(BASE_DIR, "media")
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"

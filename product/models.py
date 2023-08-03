@@ -37,7 +37,7 @@ class Product(models.Model):
     description = models.TextField('توضیحات')
     call_before = models.BooleanField("تماس قبل از خرید", default=False)
     price = models.PositiveIntegerField('قیمت (تومان)', default=0)
-    discount = models.PositiveIntegerField('درصد تخفیف', null=True, blank=True)
+    discount = models.FloatField('درصد تخفیف', null=True, blank=True)
     discounted_price = models.PositiveIntegerField('قیمت تخفیف خورده (تومان)', null=True, blank=True)
     weight = models.CharField("وزن", max_length=30)
     total_weight = models.FloatField("وزن همراه جعبه (کیلوگرم)", null=True, blank=True)

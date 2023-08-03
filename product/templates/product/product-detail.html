@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filter %}
 
 {% block title %}
     {{ product.title }} - دیوالت لند
@@ -328,7 +329,11 @@
                                                     src="{{ item.pictures.all.1 }}" alt=""></a>
                                             {% if item.discount %}
                                                 <div class="label_product">
-                                                    <span class="label_sale">-{{ item.discount }}%</span>
+                                                    {% if item.discount|is_int %}
+                                                        <span class="label_sale">-{{ item.discount|add:0 }}%</span>
+                                                    {% else %}
+                                                        <span class="label_sale">-{{ item.discount }}%</span>
+                                                    {% endif %}
                                                 </div>
                                             {% endif %}
                                         </div>
