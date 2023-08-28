@@ -235,7 +235,7 @@
                                                         {% if child.categories.all %}
                                                             <div class="mb-2">
                                                                 <li class="">
-                                                                    <a href="{% url "product:product-list" %}?category={{ child.slug }}">{{ child.title }}</a>
+                                                                    <a href="{% url "product:product-list" %}?category={{ child.slug }}" class="sub-category">{{ child.title }}</a>
                                                                 </li>
                                                             </div>
                                                         {% endif %}
@@ -376,12 +376,17 @@
                             </div>
                         </div>
                         <div class="widgets_container widget_menu" style="width: 200px; padding-right: 30px">
-                            <a referrerpolicy="origin" target="_blank"
-                           href="https://trustseal.enamad.ir/?id=364406&amp;Code=Im1e4C6p6XA87JbGKYcZ"><img
-                                referrerpolicy="origin"
-                                src="{% static "img/logo/enamad.png" %}"
-                                alt="" style="cursor:pointer; background: #febd17; border-radius: 10px"
-                                id="Im1e4C6p6XA87JbGKYcZ"></a>
+                            <a class="pointer p-2 p-4-lg d-flex ai-center jc-center border-200 radius mr-2"
+                               target="_blank" referrerpolicy="origin"
+                               href="https://trustseal.enamad.ir/?id=364406&amp;Code=Im1e4C6p6XA87JbGKYcZ">
+                                <div style="width: 100px; height: 100px; background: #febd17; padding: 10px; border-radius: 10px">
+                                    <img id="Im1e4C6p6XA87JbGKYcZ"
+                                         referrerpolicy="origin"
+                                         class="w-100 d-inline-block"
+                                         src="https://Trustseal.eNamad.ir/logo.aspx?id=364406&amp;Code=Im1e4C6p6XA87JbGKYcZ"
+                                         width="75" height="75"
+                                         style="object-fit: contain;"></div>
+                            </a>
                         </div>
                     </div>
                 </div>

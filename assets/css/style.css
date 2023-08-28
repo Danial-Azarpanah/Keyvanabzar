@@ -12908,3 +12908,7 @@ textarea:-ms-input-placeholder {
     width: 100%;
     height: auto;
 }
+
+.sub-category:hover {
+    color: #febd17;
+}

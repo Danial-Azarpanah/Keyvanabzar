@@ -121,7 +121,7 @@ class ApplyDiscountCodeView(View):
 
 
 # ZARIN PAL INFORMATION
-MERCHANT = "f2b1f2ba-6ece-4c2d-9374-e901f03150e4"
+MERCHANT = "20d2618a-785f-4d2c-ae9a-2e726d1f3c3d"
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
 ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
@@ -173,9 +173,6 @@ class VerifyView(View):
         t_authority = request.GET['Authority']
         order_id = request.session['order_id']
         order = Order.objects.get(id=int(order_id))
-        for item in order.items.all():
-            item.product.sale_count += item.quantity
-            item.product.save()
         total_price = order.total_price * 10
         if request.GET.get('Status') == 'OK':
             req_header = {"accept": "application/json",
@@ -189,6 +186,9 @@ class VerifyView(View):
             if len(req.json()['errors']) == 0:
                 t_status = req.json()['data']['code']
                 if t_status == 100:
+                    for item in order.items.all():
+                        item.product.sale_count += item.quantity
+                        item.product.save()
                     order.is_paid = True
                     order.save()
                     return render(request, 'payment/payment-successfull.html', {"order": order})
