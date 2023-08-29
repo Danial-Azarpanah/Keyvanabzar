@@ -719,14 +719,14 @@ textarea:-ms-input-placeholder {
     top: 0;
     height: 100vh;
     transition: .5s;
-    right: 0;
-    margin-right: -300px;
+    left: 0;
+    margin-left: -300px;
     padding: 50px 20px 30px;
     overflow-y: auto;
 }
 
 .offcanvas_menu_wrapper.active {
-    margin-right: 0;
+    margin-left: 0;
 }
 
 .offcanvas_menu_wrapper .slinky-theme-default {
