@@ -10062,7 +10062,7 @@ textarea:-ms-input-placeholder {
     border-right: 2px solid #ebebeb;
     font-weight: 600;
     text-transform: capitalize;
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
     min-width: 150px;
 }
@@ -12365,7 +12365,7 @@ textarea:-ms-input-placeholder {
     clear: both;
     color: #454545;
     float: right;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 15px;
     margin-bottom: 7px;
     margin-top: 15px;
@@ -12391,7 +12391,7 @@ textarea:-ms-input-placeholder {
 }
 
 .compare-table .table tbody tr td.pro-price {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -12897,8 +12897,6 @@ textarea:-ms-input-placeholder {
 }
 
 .comparison-image-link {
-    width: 250px;
-    height: 250px;
     margin-bottom: 20px;
     display: inline-block;
     overflow: hidden;

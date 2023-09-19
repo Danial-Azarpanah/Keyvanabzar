@@ -42,17 +42,31 @@
                                     {% endfor %}
                                 </tr>
                                 <tr>
-                                    <td class="first-column">محصول</td>
+                                    <td class="first-column">عنوان محصول</td>
+                                    {% for product in products %}
+                                        <td class="pro-price">
+                                            <a href="{% url "product:product-detail" product.id %}"
+                                               class="title">{{ product.title }}</a>
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td class="first-column">دسته بندی</td>
+                                    {% for product in products %}
+                                        <td class="pro-price">
+                                            <a href="{% url "product:product-list" %}?category={{ product.category.slug }}"
+                                               class="category">{{ product.category.title }}</a>
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td class="first-column">تصویر</td>
                                     {% for product in products %}
                                         <td class="product-image-title">
                                             <a href="{% url "product:product-detail" product.id %}"
                                                class="comparison-image-link"><img
                                                     class="comparison-image"
                                                     src="{{ product.pictures.first }}"></a>
-                                            <a href="{% url "product:product-list" %}?category={{ product.category.slug }}"
-                                               class="category">{{ product.category.title }}</a>
-                                            <a href="{% url "product:product-detail" product.id %}"
-                                               class="title">{{ product.title }}</a>
                                         </td>
                                     {% endfor %}
                                 </tr>

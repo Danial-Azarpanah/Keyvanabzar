@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
@@ -33,7 +33,6 @@ INSTALLED_APPS = [
 
     # Libraries
     "ckeditor",
-    "django_social_share",
 ]
 
 MIDDLEWARE = [
