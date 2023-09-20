@@ -238,7 +238,7 @@
                                                     {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="current">{{ i }}</li>
                                             </a>
-                                        {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+                                        {% elif i > products.number|add:'-3' and i < products.number|add:'3' %}
                                             <a href="?page=
                                                     {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
