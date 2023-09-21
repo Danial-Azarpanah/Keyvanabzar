@@ -66,8 +66,7 @@
                                                 {% for child in category.children.all %}
                                                     {% if child.categories.all %}
                                                         <li>
-                                                            <a href="?category=
-                                                                    {{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                            <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}
