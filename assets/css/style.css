@@ -12910,3 +12910,15 @@ textarea:-ms-input-placeholder {
 .sub-category:hover {
     color: #febd17;
 }
+
+#zarinpal {
+    display: inline-block;
+    float: left;
+    margin-left: 20px;
+}
+
+#zarinpal img {
+    height: 100px;
+    margin-top: 8px;
+}
+
