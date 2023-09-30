@@ -8,12 +8,12 @@
 
 {% block main %}
     <meta name="product_id" content="{{ product.id }}">
-    <meta name="product_name" content="{{ product.title }}">
+    <meta name="product_name" content="{{ product.title }} - {{ product.id }}">
     {% if product.discount > 0 %}
-        <meta name="product_old_price">{{ product.get_price }}
-        <meta name="product_price">{{ product.get_discounted_price }}
+        <meta name="product_old_price" content="{{ product.get_price }}">
+        <meta name="product_price" content="{{ product.get_discounted_price }}">
     {% else %}
-        <meta name="product_price">{{ product.get_price }}
+        <meta name="product_price" content="{{ product.get_price }}">
     {% endif %}
     <meta name="availability" content="instock">
     {% for picture in product.pictures.all %}
