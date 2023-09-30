@@ -7,6 +7,18 @@
 {% endblock %}
 
 {% block main %}
+    <meta name="product_id" content="{{ product.id }}">
+    <meta name="product_name" content="{{ product.title }}">
+    {% if product.discount > 0 %}
+        <meta name="product_old_price">{{ product.get_price }}
+        <meta name="product_price">{{ product.get_discounted_price }}
+    {% else %}
+        <meta name="product_price">{{ product.get_price }}
+    {% endif %}
+    <meta name="availability" content="instock">
+    {% for picture in product.pictures.all %}
+        <meta property="og:image" content="http://dewalt-land.com{{ picture }}">
+    {% endfor %}
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
         <div class="container">
@@ -27,134 +39,134 @@
     <!--breadcrumbs area end-->
 
     <div class="product_page_bg">
-        <div class="container">
-            <!--product details start-->
-            <div class="product_details">
-                <div class="row">
-                    <div class="col-lg-5 col-md-6">
-                        <div class="product-details-tab">
-                            <div id="img-1" class="zoomWrapper single-zoom">
-                                <a href="#">
-                                    <img id="zoom1" src="{{ product.pictures.first }}"
-                                         data-zoom-image="{{ product.pictures.first }}" alt="big-1">
-                                </a>
-                            </div>
-                            <div class="single-zoom-thumb">
-                                <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-                                    {% for picture in product.pictures.all %}
-                                        <li>
-                                            <a href="#" class="elevatezoom-gallery active" data-update=""
-                                               data-image="{{ picture }}"
-                                               data-zoom-image="{{ picture }}">
-                                                <img src="{{ picture }}" alt="zo-th-1"/>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+    <div class="container">
+        <!--product details start-->
+        <div class="product_details">
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="product-details-tab">
+                        <div id="img-1" class="zoomWrapper single-zoom">
+                            <a href="#">
+                                <img id="zoom1" src="{{ product.pictures.first }}"
+                                     data-zoom-image="{{ product.pictures.first }}" alt="big-1">
+                            </a>
+                        </div>
+                        <div class="single-zoom-thumb">
+                            <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                                {% for picture in product.pictures.all %}
+                                    <li>
+                                        <a href="#" class="elevatezoom-gallery active" data-update=""
+                                           data-image="{{ picture }}"
+                                           data-zoom-image="{{ picture }}">
+                                            <img src="{{ picture }}" alt="zo-th-1"/>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-6">
-                        <div class="product_d_right">
+                </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="product_d_right">
 
-                            {% for message in messages %}
-                                <li class="alert alert-danger p-1">{{ message }}</li>
-                            {% endfor %}
-                            <h3 class="product-info">
-                                <div class="product-title">
-                                    <a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }}</a>
-                                </div>
-                                <span class="mobile-hyphen">&nbsp;-&nbsp;</span>
-                                <div class="product-id">
-                                    <a href="#">{{ product.id }}</a>
-                                </div>
-                            </h3>
-                            {% if product.comments.all.count %}
-                                <div class="product_rating">
-                                    <ul>
-                                        <li class="review"><a href="#">({{ comments.all.count }} نظر مشتری )</a></li>
-                                    </ul>
-                                </div>
-                            {% endif %}
-                            <div class="price_box">
-                                {% if not product.call_before %}
-                                    {% if product.discount > 0 %}
-                                        <span class="old_price">{{ product.get_price }}</span>
-                                        <span class="current_price">{{ product.get_discounted_price }}</span>
-                                    {% else %}
-                                        <span class="current_price">{{ product.get_price }}</span>
-                                    {% endif %}
+                        {% for message in messages %}
+                            <li class="alert alert-danger p-1">{{ message }}</li>
+                        {% endfor %}
+                        <h3 class="product-info">
+                            <div class="product-title">
+                                <a href="#" style="font-size: 25px; font-weight: bolder">{{ product.title }}</a>
+                            </div>
+                            <span class="mobile-hyphen">&nbsp;-&nbsp;</span>
+                            <div class="product-id">
+                                <a href="#">{{ product.id }}</a>
+                            </div>
+                        </h3>
+                        {% if product.comments.all.count %}
+                            <div class="product_rating">
+                                <ul>
+                                    <li class="review"><a href="#">({{ comments.all.count }} نظر مشتری )</a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <div class="price_box">
+                            {% if not product.call_before %}
+                                {% if product.discount > 0 %}
+                                    <span class="old_price">{{ product.get_price }}</span>
+                                    <span class="current_price">{{ product.get_discounted_price }}</span>
                                 {% else %}
-                                    <div class="mb-3"><span class="call_for_price">جهت اطلاع از قیمت تماس بگیرید</span>
+                                    <span class="current_price">{{ product.get_price }}</span>
                                 {% endif %}
-                                <div class="product_desc mt-4">
-                                    <p>
-                                        {% for feature in product.features.all %}
-                                            <span><i class="fa fa-check"></i> {{ feature.text }}</span>
+                            {% else %}
+                                <div class="mb-3"><span class="call_for_price">جهت اطلاع از قیمت تماس بگیرید</span>
+                            {% endif %}
+                            <div class="product_desc mt-4">
+                                <p>
+                                    {% for feature in product.features.all %}
+                                        <span><i class="fa fa-check"></i> {{ feature.text }}</span>
+                                        <br>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="product_variant color">
+                                <h3>مشخصات کلی</h3>
+                            </div>
+                            <div class=" product_d_action">
+                                <ul>
+                                    <li>
+                                        <p style="font-size: 17px">
+                                            - مونتاژ کشور {{ product.country }}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p style="font-size: 17px">
+                                            - {{ product.weight }} وزن
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <br>
+                                        <h4>اقلام همراه:</h4>
+                                        {% for item in product.additional_items.all %}
+                                            <span style="font-size: 17px">* {{ item.item }}</span>
                                             <br>
                                         {% endfor %}
-                                    </p>
-                                </div>
-                                <div class="product_variant color">
-                                    <h3>مشخصات کلی</h3>
-                                </div>
-                                <div class=" product_d_action">
-                                    <ul>
-                                        <li>
-                                            <p style="font-size: 17px">
-                                                - مونتاژ کشور {{ product.country }}
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p style="font-size: 17px">
-                                                - {{ product.weight }} وزن
-                                            </p>
-                                        </li>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <br>
+                                        <h4>دسته بندی ‌ها:</h4>
+                                        * <a style="font-size: 17px"
+                                             href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
+                                        <br>
+                                    </li>
+                                    {% if product.proper_tools.all %}
                                         <li>
                                             <p>
                                                 <br>
-                                            <h4>اقلام همراه:</h4>
-                                            {% for item in product.additional_items.all %}
-                                                <span style="font-size: 17px">* {{ item.item }}</span>
+                                            <h4>ابزار قابل استفاده با این محصول:</h4>
+                                            {% for product in product.proper_tools.all %}
+                                                * <a style="font-size: 17px"
+                                                     href="{% url "product:product-detail" product.id %}">{{ product.title }}
+                                                - {{ product.id }}</a>
                                                 <br>
                                             {% endfor %}
-                                            </p>
                                         </li>
-                                        <li>
-                                            <p>
-                                                <br>
-                                            <h4>دسته بندی ‌ها:</h4>
-                                            * <a style="font-size: 17px"
-                                                 href="{% url "product:product-list" %}?category={{ product.category.slug }}">{{ product.category.title }}</a>
-                                            <br>
-                                        </li>
-                                        {% if product.proper_tools.all %}
-                                            <li>
-                                                <p>
-                                                    <br>
-                                                <h4>ابزار قابل استفاده با این محصول:</h4>
-                                                {% for product in product.proper_tools.all %}
-                                                    * <a style="font-size: 17px"
-                                                         href="{% url "product:product-detail" product.id %}">{{ product.title }}
-                                                    - {{ product.id }}</a>
-                                                    <br>
-                                                {% endfor %}
-                                            </li>
-                                        {% endif %}
-                                    </ul>
-                                </div>
+                                    {% endif %}
+                                </ul>
+                            </div>
 
-                                {% if not product.call_before %}
-                                    <div class="product_variant quantity">
-                                        <form id="cart-detail-form" method="post"
-                                              action="{% url 'payment:cart-add' product.id %}">
-                                            {% csrf_token %}
-                                            <label>تعداد</label>
-                                            <input min="1" max="100" value="1" type="number" id="quantity">
-                                            <button class="cart_button" type="submit">افزودن به سبد خرید</button>
-                                        </form>
-                                    </div>
-                                {% endif %}
+                            {% if not product.call_before %}
+                                <div class="product_variant quantity">
+                                    <form id="cart-detail-form" method="post"
+                                          action="{% url 'payment:cart-add' product.id %}">
+                                        {% csrf_token %}
+                                        <label>تعداد</label>
+                                        <input min="1" max="100" value="1" type="number" id="quantity">
+                                        <button class="cart_button" type="submit">افزودن به سبد خرید</button>
+                                    </form>
+                                </div>
+                            {% endif %}
                             </div>
                             <div class=" product_d_action">
                                 <ul>
