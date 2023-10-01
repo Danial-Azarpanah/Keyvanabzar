@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load custom_filter %}
 
 {% block metadescription %}
     دیوالت لند, dewalt land, فروش ابزار دیوالت, نماینده رسمی دیوالت
@@ -131,11 +130,7 @@
                                                                 alt=""></a>
                                                         <div class="label_product">
                                                             {% if product.discount %}
-                                                                {% if product.discount|is_int %}
-                                                                    <span class="label_sale">-{{ product.discount }}%</span>
-                                                                {% else %}
-                                                                    <span class="label_sale">-{{ product.discount|add:0 }}%</span>
-                                                                {% endif %}
+                                                                <span class="label_sale">-{{ product.get_discount_rate }}%</span>
                                                             {% endif %}
                                                         </div>
                                                     </div>
@@ -253,11 +248,7 @@
                                                                 alt=""></a>
                                                         <div class="label_product">
                                                             {% if product.discount %}
-                                                                {% if product.discount|is_int %}
-                                                                    <span class="label_sale">-{{ product.discount }}%</span>
-                                                                {% else %}
-                                                                    <span class="label_sale">-{{ product.discount|add:0 }}%</span>
-                                                                {% endif %}
+                                                                <span class="label_sale">-{{ product.get_discount_rate }}%</span>
                                                             {% endif %}
                                                         </div>
                                                     </div>
@@ -375,11 +366,7 @@
                                                                 alt=""></a>
                                                         <div class="label_product">
                                                             {% if product.discount %}
-                                                                {% if product.discount|is_int %}
-                                                                    <span class="label_sale">-{{ product.discount }}%</span>
-                                                                {% else %}
-                                                                    <span class="label_sale">-{{ product.discount|add:0 }}%</span>
-                                                                {% endif %}
+                                                                <span class="label_sale">-{{ product.get_discount_rate }}%</span>
                                                             {% endif %}
                                                         </div>
                                                     </div>
@@ -518,11 +505,7 @@
                                                                     alt=""></a>
                                                             <div class="label_product">
                                                                 {% if product.discount %}
-                                                                    {% if product.discount|is_int %}
-                                                                        <span class="label_sale">-{{ product.discount }}%</span>
-                                                                    {% else %}
-                                                                        <span class="label_sale">-{{ product.discount|add:0 }}%</span>
-                                                                    {% endif %}
+                                                                    <span class="label_sale">-{{ product.get_discount_rate }}%</span>
                                                                 {% endif %}
                                                             </div>
                                                         </div>

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load custom_filter %}
 
 {% block title %}
     لیست محصولات - دیوالت لند
@@ -66,7 +65,8 @@
                                                 {% for child in category.children.all %}
                                                     {% if child.categories.all %}
                                                         <li>
-                                                            <a href="?category={{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
+                                                            <a href="?category=
+                                                                    {{ child.slug }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">{{ child.title }}</a>
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}
@@ -115,11 +115,7 @@
                                                     src="{{ product.pictures.all.1 }}" alt=""></a>
                                             <div class="label_product">
                                                 {% if product.discount %}
-                                                    {% if product.discount|is_int %}
-                                                        <span class="label_sale">-{{ product.discount}}%</span>
-                                                    {% else %}
-                                                        <span class="label_sale">-{{ product.discount|add:0  }}%</span>
-                                                    {% endif %}
+                                                    <span class="label_sale">-{{ product.get_discount_rate }}%</span>
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -227,6 +223,7 @@
 
                                     {% if products.has_previous %}
                                         <li class="next"><a href="?page=
+
                                                 {{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">قبلی</a>
                                         </li>
                                     {% endif %}
@@ -234,11 +231,13 @@
                                     {% for i in products.paginator.page_range %}
                                         {% if products.number == i %}
                                             <a href="?page=
+
                                                     {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="current">{{ i }}</li>
                                             </a>
                                         {% elif i > products.number|add:'-3' and i < products.number|add:'3' %}
                                             <a href="?page=
+
                                                     {{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">
                                                 <li class="next">{{ i }}</li>
                                             </a>
@@ -247,6 +246,7 @@
 
                                     {% if products.has_next %}
                                         <li class="next"><a href="?page=
+
                                                 {{ products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.price %}&price={{ request.GET.price }}{% endif %}">بعدی</a>
                                         </li>
                                     {% endif %}

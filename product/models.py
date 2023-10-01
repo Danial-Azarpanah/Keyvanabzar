@@ -88,6 +88,12 @@ class Product(models.Model):
             return self.get_discounted_price()
         return "-"
 
+    def get_discount_rate(self):
+        discount = "%.1f" % float(self.discount)
+        if discount[-1] == "0":
+            return int(float("%.1f" % self.discount))
+        return "%.1f" % self.discount
+
     get_discounted_price_admin.short_description = "قیمت تخفیف خورده"
 
     def get_price(self):
