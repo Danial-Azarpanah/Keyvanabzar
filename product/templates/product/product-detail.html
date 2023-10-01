@@ -341,9 +341,9 @@
                                             {% if item.discount %}
                                                 <div class="label_product">
                                                     {% if item.discount|is_int %}
-                                                        <span class="label_sale">-{{ item.discount|add:0 }}%</span>
-                                                    {% else %}
                                                         <span class="label_sale">-{{ item.discount }}%</span>
+                                                    {% else %}
+                                                        <span class="label_sale">-{{ item.discount|add:0 }}%</span>
                                                     {% endif %}
                                                 </div>
                                             {% endif %}
