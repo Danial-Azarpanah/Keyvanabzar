@@ -8,7 +8,7 @@
 
 {% block main %}
     <meta name="product_id" content="{{ product.id }}">
-    <meta name="product_name" content="{{ product.title }} - {{ product.id }}">
+    <meta name="product_name" content="{{ product.id }} {{ product.title }} مدل">
     {% if product.discount > 0 %}
         <meta name="product_old_price" content="{{ product.get_price }}">
         <meta name="product_price" content="{{ product.get_discounted_price }}">

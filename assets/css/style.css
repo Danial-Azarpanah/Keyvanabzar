@@ -8138,7 +8138,7 @@ textarea:-ms-input-placeholder {
     font-size: 21px;
     color: #555;
     font-weight: 600;
-    margin-left: 35px;
+    /*margin-left: 35px;*/
     line-height: 26px;
     position: relative;
 }
@@ -8150,7 +8150,7 @@ textarea:-ms-input-placeholder {
     font-size: 21px;
     color: #555;
     font-weight: 600;
-    margin-left: 35px;
+    /*margin-left: 35px;*/
     line-height: 26px;
     position: relative;
 }
@@ -8162,7 +8162,7 @@ textarea:-ms-input-placeholder {
     font-size: 21px;
     color: #555;
     font-weight: 600;
-    margin-left: 35px;
+    /*margin-left: 35px;*/
     line-height: 26px;
     position: relative;
 }
