@@ -337,8 +337,10 @@
                                             <a class="secondary_img"
                                                href="{% url "product:product-detail" item.id %}"><img
                                                     src="{{ item.pictures.all.1 }}" alt=""></a>
-                                            {% if product.discount %}
-                                                <span class="label_sale">-{{ product.get_discount_rate }}%</span>
+                                            {% if item.discount %}
+                                                <div class="label_product">
+                                                    <span class="label_sale">-{{ item.get_discount_rate }}%</span>
+                                                </div>
                                             {% endif %}
                                         </div>
                                         <div class="product_content">

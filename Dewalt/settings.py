@@ -127,8 +127,6 @@ MEDIA_ROOT = "/home/dewaltla/public_html/media"
 # MEDIA_ROOT = path.join(BASE_DIR, "media")
 TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
 
-TEMPLATE_CONTEXT_PROCESSORS = "django.contrib.messages.context_processors.messages"
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.User"
 
