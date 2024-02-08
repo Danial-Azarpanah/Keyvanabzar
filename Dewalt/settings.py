@@ -10,7 +10,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["www.dewalt-land.com", "dewalt-land.com"]
+ALLOWED_HOSTS = ["www.keyvanabzar.com", "keyvanabzar.com"]
 CSRF_TRUSTED_ORIGINS = ['https://*.dewalt-land.com']
 
 
