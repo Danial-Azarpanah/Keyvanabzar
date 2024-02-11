@@ -130,7 +130,7 @@ description = "توضیحات مربوط به تراکنش را در این قس
 email = 'email@example.com'  # Optional
 mobile = ''  # Optional
 # Important: need to edit for realy server.
-CallbackURL = "http://dewalt-land.com/order/verify/"
+CallbackURL = "http://keyvanabzar.com/order/verify/"
 
 
 class SendRequestView(View):
